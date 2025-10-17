@@ -1,0 +1,233 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".SignUp_Activity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="41dp">
+
+        <!-- Title- Customer Sign Up -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="@string/signUpTitle"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- first name prompt -->
+
+        <!-- first name input field-->
+
+        <!-- Last Name prompt -->
+
+        <!-- Last Name INPUT field -->
+
+        <!-- email PROMPT -->
+
+        <TextView
+            android:id="@+id/firstNamePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="76dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/first_name_prompt"
+            app:layout_constraintEnd_toEndOf="@+id/title"
+            app:layout_constraintHorizontal_bias="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/firstNameInput"
+            android:layout_width="272dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/first_name_input"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/lastnamePrompt"
+            app:layout_constraintStart_toStartOf="@+id/firstNamePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/firstNamePrompt"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <EditText
+            android:id="@+id/lastNameInput"
+            android:layout_width="272dp"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/last_name_input"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/emailPrompt"
+            app:layout_constraintStart_toStartOf="@+id/lastnamePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/lastnamePrompt"
+            app:layout_constraintVertical_bias="0.074" />
+
+        <!-- email INPUT field-->
+
+        <!-- Phone PROMPT -->
+
+        <!--Phone INPUT field -->
+
+        <!-- username PROMPT -->
+
+        <!-- username INPUT field -->
+
+        <!-- password PROMPT field -->
+
+        <!-- Password INPUT field -->
+
+        <!-- Submit Button -->
+        <!-- Buttons Row -->
+
+        <TextView
+            android:id="@+id/lastnamePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/coustard"
+            android:text="@string/last_name_prompt"
+            app:layout_constraintBottom_toTopOf="@+id/passwordPrompt"
+            app:layout_constraintStart_toStartOf="@+id/firstNameInput"
+            app:layout_constraintTop_toBottomOf="@+id/firstNamePrompt"
+            app:layout_constraintVertical_bias="0.159" />
+
+        <TextView
+            android:id="@+id/emailPrompt"
+            android:layout_width="82dp"
+            android:layout_height="24dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/email_prompt"
+            app:layout_constraintBottom_toTopOf="@+id/passwordPrompt"
+            app:layout_constraintStart_toStartOf="@+id/lastNameInput"
+            app:layout_constraintTop_toBottomOf="@+id/lastnamePrompt"
+            app:layout_constraintVertical_bias="0.181" />
+
+        <EditText
+            android:id="@+id/emailInput"
+            android:layout_width="272dp"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/phonePrompt"
+            app:layout_constraintStart_toStartOf="@+id/emailPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/emailPrompt"
+            app:layout_constraintVertical_bias="0.218" />
+
+        <TextView
+            android:id="@+id/phonePrompt"
+            android:layout_width="95dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/phone_prompt"
+            app:layout_constraintBottom_toTopOf="@+id/passwordPrompt"
+            app:layout_constraintStart_toStartOf="@+id/emailInput"
+            app:layout_constraintTop_toBottomOf="@+id/emailPrompt"
+            app:layout_constraintVertical_bias="0.281" />
+
+        <EditText
+            android:id="@+id/phoneInput"
+            android:layout_width="272dp"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_phoneNo"
+            android:inputType="phone"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/usernamePrompt"
+            app:layout_constraintStart_toStartOf="@+id/phonePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/phonePrompt" />
+
+        <TextView
+            android:id="@+id/usernamePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/coustard"
+            android:text="@string/username_prompt"
+            app:layout_constraintBottom_toTopOf="@+id/passwordPrompt"
+            app:layout_constraintStart_toStartOf="@+id/phoneInput"
+            app:layout_constraintTop_toBottomOf="@+id/phonePrompt"
+            app:layout_constraintVertical_bias="0.476" />
+
+        <EditText
+            android:id="@+id/usernameInput"
+            android:layout_width="272dp"
+            android:layout_height="48dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_username"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/passwordPrompt"
+            app:layout_constraintStart_toStartOf="@+id/usernamePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/usernamePrompt" />
+
+        <TextView
+            android:id="@+id/passwordPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="121dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/password_prompt"
+            app:layout_constraintBottom_toTopOf="@+id/submitButton"
+            app:layout_constraintStart_toStartOf="@+id/usernameInput" />
+
+        <EditText
+            android:id="@+id/passwordInput"
+            android:layout_width="272dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/rounded_input"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"
+            android:padding="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/submitButton"
+            app:layout_constraintStart_toStartOf="@+id/passwordPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/usernameInput"
+            app:layout_constraintVertical_bias="0.883" />
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="232dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Back"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="@+id/submitButton"
+            app:layout_constraintEnd_toEndOf="@+id/passwordInput"
+            app:layout_constraintTop_toBottomOf="@+id/passwordInput"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:backgroundTint="@color/black"
+            android:fontFamily="@font/coustard"
+            android:paddingHorizontal="20dp"
+            android:text="@string/submitLbl"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.891"
+            app:layout_constraintStart_toEndOf="@+id/backButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

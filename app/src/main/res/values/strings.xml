@@ -1,0 +1,75 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">COMP2000 Assessment</string>
+    <string name="restaurantName">The Restaurant 2000</string>
+    <!-- Sign Up & Login prompts-->
+    <string name="signUpTitle">Customer Sign Up</string>
+    <string name="loginTitle">Login</string>
+    <string name="first_name_prompt">First Name:</string>
+    <string name="last_name_prompt">Last Name:</string>
+    <string name="email_prompt">Email:</string>
+    <string name="phone_prompt">PhoneNo:</string>
+    <string name="username_prompt">Username:</string>
+    <string name="password_prompt">Password:</string>
+    <string name="viewTCLbl">View T&amp;C</string>
+    <!-- Sign Up & Login inputs-->
+    <string name="first_name_input" tools:ignore="TypographyEllipsis">Enter firstname...</string>
+    <string name="last_name_input" tools:ignore="TypographyEllipsis">Enter lastname...</string>
+    <string name="enter_password" tools:ignore="TypographyEllipsis">Enter password...</string>
+    <string name="enter_username" tools:ignore="TypographyEllipsis">Enter username...</string>
+    <string name="enter_email" tools:ignore="TypographyEllipsis">Enter email...</string>
+    <string name="enter_phoneNo" tools:ignore="TypographyEllipsis">Enter number...</string>
+    <!--General submit -->
+    <string name="submitLbl">Submit</string>"
+    <!-- Menu headers -->
+    <string name="menuLbl">Menu</string>
+    <string name="imageLbl">Image</string>
+    <string name="descriptionLbl">Description</string>
+    <string name="priceLbl">Price</string>
+    <!-- Menu Categories -->
+    <string name="starterLbl">Starters</string>
+    <string name="mainsLbl">Mains</string>
+    <string name="dessertsLbl">Desserts</string>
+    <string name="drinksLbl">Drinks</string>
+    <string name="sidesLbl">Sides</string>
+    <!-- Add menu item -->
+    <string name="itemCodeLbl">Item Code:</string>
+    <string name="itemNameLbl">Item Name:</string>
+    <string name="categoryLbl">Category:</string>
+    <string name="uploadLbl">Upload item cover:</string>
+    <string name="itemDescLbl">Item Description:</string>
+    <!-- Guest dashboard options -->
+    <string name="menuOption">VIEW MENU</string>
+    <string name="myBookingsOption">MY BOOKINGS</string>
+    <string name="tableReqOption">REQUEST TABLE</string>
+    <string name="preferencesOption">SETTINGS</string>
+    <!-- Alerts texts -->
+    <string name="alert">ALERT!</string>
+    <string name="accountCreated">Your account was created successfully!</string>
+    <string name="requestSent">Thank you for your request! Restaurant will confirm it shortly!</string>
+    <string name="amendAlert">You have amended your booking!</string>
+    <string name="cancelAlert">You are cancelling a booking! Do you wish to continue?</string>
+    <string name="backHomeTxt">Take me home</string>
+    <string name="showBookingTxt">Show booking</string>
+    <!--Making request labels-->
+    <string name="makeRequestTitle">Make a Reservation Enquiry</string>
+    <string name="guestNoLbl">No. of Guests:</string>
+    <string name="dateLbl">Date:</string>
+    <string name="timeLbl">Time:</string>
+    <string name="specialNotesLbL">Special Notes:</string>
+    <!--Viewing booking labels-->
+    <string name="confirmedBookingLbl">Confirmed Bookings</string>
+    <string name="unconfirmedBReqLbl">Unconfirmed Requests</string>
+    <string name="tableNoLbl">Table No:</string>
+    <string name="myBookingsTitle">My Bookings</string>
+    <!-- Preferences labels -->
+    <string name="preferencesTitle">App Preferences</string>
+    <string name="appearance">Appearance</string>
+    <string name="notifications">Notifications</string>
+    <string name="bkgrndColorLbl">Background color:</string>
+    <string name="textColorLbl">Text color:</string>
+    <string name="signOutLbl">Sign out</string>
+    <string name="saveChangesLbl">Save changes</string>
+    <string name="goBackLbl">No, go back</string>
+    <string name="confirmSignOut">Yes, sign out</string>
+
+</resources>
