@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#ADF0DE"
+    tools:context=".GuestHomepage">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="436dp"
+        app:layout_constraintEnd_toEndOf="@+id/preferencesBtn"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="@+id/requestTblBtn"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantName"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <TextView
+        android:id="@+id/restaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/abril_fatface"
+        android:foregroundTint="#2C399B"
+        android:text="@string/restaurantName"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#5D0A0A"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewMenuBtn"
+        android:layout_width="153dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="@color/coral"
+        android:fontFamily="@font/coustard"
+        android:text="@string/menuOption"
+        android:textSize="14sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.131"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/myBookingsBtn"
+        android:layout_width="153dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="@color/coral"
+        android:fontFamily="@font/coustard"
+        android:text="@string/myBookingsOption"
+        android:textSize="14sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toEndOf="@+id/viewMenuBtn"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantName" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/requestTblBtn"
+        android:layout_width="153dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="@color/coral"
+        android:fontFamily="@font/coustard"
+        android:text="@string/tableReqOption"
+        android:textSize="14sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewMenuBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/viewMenuBtn"
+        app:layout_constraintTop_toBottomOf="@+id/viewMenuBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/preferencesBtn"
+        android:layout_width="153dp"
+        android:layout_height="116dp"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="@color/coral"
+        android:fontFamily="@font/coustard"
+        android:text="@string/preferencesOption"
+        android:textSize="14sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toEndOf="@+id/requestTblBtn"
+        app:layout_constraintTop_toBottomOf="@+id/myBookingsBtn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

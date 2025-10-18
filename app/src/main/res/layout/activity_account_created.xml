@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountCreated">
+
+    <!--Restaurant title -->
+    <TextView
+        android:id="@+id/restaurantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/abril_fatface"
+        android:foregroundTint="#2C399B"
+        android:text="@string/restaurantName"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#5D0A0A"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- logo -->
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <!-- success message -->
+    <TextView
+        android:id="@+id/successMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/coustard"
+        android:text="@string/accountCreated"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantName"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/restaurantName"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantName"
+        app:layout_constraintVertical_bias="0.332" />
+
+    <!-- go to home button -->
+    <Button
+        android:id="@+id/goHomeBtn"
+        android:layout_width="141dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#621111"
+        android:fontFamily="@font/coustard"
+        android:text="@string/backHomeTxt"
+        app:layout_constraintEnd_toEndOf="@+id/successMsg"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/successMsg"
+        app:layout_constraintTop_toBottomOf="@+id/successMsg" />
+</androidx.constraintlayout.widget.ConstraintLayout>
