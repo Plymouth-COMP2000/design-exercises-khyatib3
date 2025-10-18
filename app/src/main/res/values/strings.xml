@@ -11,6 +11,8 @@
     <string name="username_prompt">Username:</string>
     <string name="password_prompt">Password:</string>
     <string name="viewTCLbl">View T&amp;C</string>
+    <string name="signUpBtn">Sign me Up</string>
+    <string name="loginBtn">Login</string>
     <!-- Sign Up & Login inputs-->
     <string name="first_name_input" tools:ignore="TypographyEllipsis">Enter firstname...</string>
     <string name="last_name_input" tools:ignore="TypographyEllipsis">Enter lastname...</string>
