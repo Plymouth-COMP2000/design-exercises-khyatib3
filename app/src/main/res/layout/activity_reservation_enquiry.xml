@@ -163,7 +163,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/timeDisplay"
         app:layout_constraintTop_toBottomOf="@+id/calendarBtn"
-        app:srcCompat="@drawable/ic_time_btn" />
+        app:srcCompat="@drawable/ic_time_btn"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/specialNotesPrompt"

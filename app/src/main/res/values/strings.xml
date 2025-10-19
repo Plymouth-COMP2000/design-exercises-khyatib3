@@ -47,7 +47,7 @@
     <!-- Alerts texts -->
     <string name="alert">ALERT!</string>
     <string name="accountCreated">Your account was created successfully!</string>
-    <string name="requestSent">Thank you for your request! Restaurant will confirm it shortly!</string>
+    <string name="requestSent">Thank you for your request! \n Restaurant will confirm it shortly!</string>
     <string name="amendAlert">You have amended your booking!</string>
     <string name="cancelAlert">You are cancelling a booking! Do you wish to continue?</string>
     <string name="backHomeTxt">Take me home</string>
