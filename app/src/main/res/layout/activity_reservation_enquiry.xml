@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#FDF9FC"
+    tools:context=".Reservation_Enquiry">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="54dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FDF9FC"
+        android:contentDescription="@string/goBackLbl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home" />
+
+    <TextView
+        android:id="@+id/enquiryTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/makeRequestTitle"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/namePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/nameLbl"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
+
+    <TextView
+        android:id="@+id/customerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/coustard"
+        android:text="Jane Doe"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.676"
+        app:layout_constraintStart_toEndOf="@+id/namePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
+
+    <!-- dropdown -->
+
+    <TextView
+        android:id="@+id/guestNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/guestNoLbl"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/namePrompt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/namePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/namePrompt" />
+
+    <Spinner
+        android:id="@+id/guestNoDropdown"
+        android:layout_width="141dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="15dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:entries="@array/guest_no_dropdown_items"
+        android:popupBackground="#FFFFFF"
+        android:spinnerMode="dropdown"
+        android:theme="@style/dropDownItemTheme"
+        app:layout_constraintEnd_toEndOf="@+id/customerName"
+        app:layout_constraintStart_toStartOf="@+id/customerName"
+        app:layout_constraintTop_toBottomOf="@+id/customerName" />
+
+    <TextView
+        android:id="@+id/dateLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/dateLbl"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/guestNo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guestNo"
+        app:layout_constraintTop_toBottomOf="@+id/guestNo" />
+
+    <TextView
+        android:id="@+id/dateDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="12dp"
+        android:text="__/__/__"
+        android:textColor="#333333"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/calendarBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guestNoDropdown"
+        app:layout_constraintTop_toBottomOf="@+id/guestNoDropdown" />
+
+    <TextView
+        android:id="@+id/timeLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/timeLbl"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/dateLbl"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/dateLbl"
+        app:layout_constraintTop_toBottomOf="@+id/dateLbl" />
+
+    <ImageButton
+        android:id="@+id/calendarBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FDF9FC"
+        android:contentDescription="@string/pickingDate"
+        app:layout_constraintEnd_toEndOf="@+id/guestNoDropdown"
+        app:layout_constraintTop_toBottomOf="@+id/guestNoDropdown"
+        app:srcCompat="@drawable/ic_calendar_month" />
+
+    <TextView
+        android:id="@+id/timeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/coustard"
+        android:text="__:__"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/dateDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/dateDisplay" />
+
+    <ImageButton
+        android:id="@+id/timeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#FDF9FC"
+        android:contentDescription="@string/timePicking"
+        app:layout_constraintEnd_toEndOf="@+id/calendarBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/timeDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/calendarBtn"
+        app:srcCompat="@drawable/ic_time_btn" />
+
+    <TextView
+        android:id="@+id/specialNotesPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/specialNotesLbL"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/timeLbl"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="@+id/timeLbl"
+        app:layout_constraintTop_toBottomOf="@+id/timeLbl" />
+
+    <EditText
+        android:id="@+id/specialNotesBox"
+        android:layout_width="326dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:fontFamily="@font/coustard"
+        android:hint="@string/specialNotesHint"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/timeBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/specialNotesPrompt"
+        app:layout_constraintTop_toBottomOf="@+id/specialNotesPrompt" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/coustard"
+        android:paddingHorizontal="20dp"
+        android:text="@string/sendRequestBtn"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/specialNotesBox"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/specialNotesBox"
+        app:layout_constraintTop_toBottomOf="@+id/specialNotesBox" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,11 +53,27 @@
     <string name="backHomeTxt">Take me home</string>
     <string name="showBookingTxt">Show booking</string>
     <!--Making request labels-->
-    <string name="makeRequestTitle">Make a Reservation Enquiry</string>
-    <string name="guestNoLbl">No. of Guests:</string>
-    <string name="dateLbl">Date:</string>
-    <string name="timeLbl">Time:</string>
-    <string name="specialNotesLbL">Special Notes:</string>
+    <string name="makeRequestTitle">Make a Reservation \n Enquiry</string>
+    <string name="nameLbl"><b>Name:</b></string>
+    <string name="guestNoLbl"><b>No. of Guests:</b></string>
+    <string name="dateLbl"><b>Date:</b></string>
+    <string name="timeLbl"><b>Time:</b></string>
+    <string name="specialNotesLbL"><b>Special Notes:</b></string>
+    <string-array name="guest_no_dropdown_items">
+        <item>Select No. of Guests…</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+    <string name="specialNotesHint" tools:ignore="StringEscaping,TypographyEllipsis">Write anything you'd like \n the restaurant to know...</string>
+    <string name="sendRequestBtn">Send Request</string>
     <!--Viewing booking labels-->
     <string name="confirmedBookingLbl">Confirmed Bookings</string>
     <string name="unconfirmedBReqLbl">Unconfirmed Requests</string>
@@ -73,5 +89,7 @@
     <string name="saveChangesLbl">Save changes</string>
     <string name="goBackLbl">No, go back</string>
     <string name="confirmSignOut">Yes, sign out</string>
+    <string name="pickingDate">You are picking a date!</string>
+    <string name="timePicking">You are picking a time for this date</string>
 
 </resources>
