@@ -49,7 +49,7 @@
     <string name="accountCreated">Your account was created successfully!</string>
     <string name="requestSent">Thank you for your request! \n Restaurant will confirm it shortly!</string>
     <string name="amendAlert">You have amended your booking!</string>
-    <string name="cancelAlert">You are cancelling a booking! Do you wish to continue?</string>
+    <string name="cancelAlert">You are cancelling a booking! \n Do you wish to continue?</string>
     <string name="backHomeTxt">Take me home</string>
     <string name="showBookingTxt">Show booking</string>
     <!--Making request labels-->
@@ -72,7 +72,7 @@
         <item>9</item>
         <item>10</item>
     </string-array>
-    <string name="specialNotesHint" tools:ignore="StringEscaping,TypographyEllipsis">Write anything you'd like \n the restaurant to know...</string>
+    <string name="specialNotesHint" tools:ignore="StringEscaping,TypographyEllipsis">Write anything you would like \n the restaurant to know...</string>
     <string name="sendRequestBtn">Send Request</string>
     <!--Viewing booking labels-->
     <string name="confirmedBookingLbl">Confirmed Bookings</string>
@@ -86,8 +86,9 @@
     <string name="bkgrndColorLbl">Background color:</string>
     <string name="textColorLbl">Text color:</string>
     <string name="signOutLbl">Sign out</string>
+    <string name="logoutText">You are signing out of \n The Restaurant 2000! \n Do you wish to continue</string>
     <string name="saveChangesLbl">Save changes</string>
-    <string name="goBackLbl">No, go back</string>
+    <string name="goBackTxt">No, go back</string>
     <string name="confirmSignOut">Yes, sign out</string>
     <string name="pickingDate">You are picking a date!</string>
     <string name="timePicking">You are picking a time for this date</string>

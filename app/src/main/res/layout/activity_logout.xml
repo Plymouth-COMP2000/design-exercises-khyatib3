@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Logout_Activity">
+
+    <TextView
+        android:id="@+id/restaurantName4"
+        android:layout_width="374dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/restaurantName"
+        android:textAlignment="center"
+        android:textColor="#5D0A0A"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantLogo"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/restaurantLogo"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantLogo" />
+
+    <ImageView
+        android:id="@+id/restaurantLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <TextView
+        android:id="@+id/logoutCheckText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/logoutText"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantName4"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/restaurantName4"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantName4" />
+
+    <Button
+        android:id="@+id/signOutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="264dp"
+        android:backgroundTint="#5D0A0A"
+        android:fontFamily="@font/coustard"
+        android:text="@string/confirmSignOut"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantName4" />
+
+    <Button
+        android:id="@+id/cancelSignOutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="264dp"
+        android:backgroundTint="#5D0A0A"
+        android:fontFamily="@font/coustard"
+        android:text="@string/goBackTxt"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/restaurantName4" />
+</androidx.constraintlayout.widget.ConstraintLayout>

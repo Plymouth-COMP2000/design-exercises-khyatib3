@@ -36,6 +36,8 @@
         app:srcCompat="@drawable/restaurant_logo" />
 
     <!-- success message -->
+
+    <!-- go to home button -->
     <TextView
         android:id="@+id/successMsg"
         android:layout_width="wrap_content"
@@ -45,12 +47,11 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/restaurantName"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/restaurantName"
         app:layout_constraintTop_toBottomOf="@+id/restaurantName"
-        app:layout_constraintVertical_bias="0.332" />
+        app:layout_constraintVertical_bias="0.292" />
 
-    <!-- go to home button -->
     <Button
         android:id="@+id/goHomeBtn"
         android:layout_width="141dp"

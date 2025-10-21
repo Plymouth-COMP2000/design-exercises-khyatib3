@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".Logout_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Guest_Menu_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Enquiry_Sent_Activity"
             android:exported="false" />
         <activity
@@ -27,7 +33,7 @@
             android:name=".AccountCreated"
             android:exported="false" />
         <activity
-            android:name=".SignUp_Activity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".StartUpActivity"
