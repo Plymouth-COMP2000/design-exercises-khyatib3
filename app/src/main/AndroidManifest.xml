@@ -16,7 +16,7 @@
             android:exported="false" />
         <activity
             android:name=".Guest_Menu_Activity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Enquiry_Sent_Activity"
             android:exported="false" />

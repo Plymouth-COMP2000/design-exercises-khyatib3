@@ -23,10 +23,10 @@
     <!--General submit -->
     <string name="submitLbl">Submit</string>"
     <!-- Menu headers -->
-    <string name="menuLbl">Menu</string>
-    <string name="imageLbl">Image</string>
-    <string name="descriptionLbl">Description</string>
-    <string name="priceLbl">Price</string>
+    <string name="menuLbl"><b>Menu</b></string>
+    <string name="imageLbl"><b>Image</b></string>
+    <string name="descriptionLbl"><b>Description</b></string>
+    <string name="priceLbl"><b>Price</b></string>
     <!-- Menu Categories -->
     <string name="starterLbl">Starters</string>
     <string name="mainsLbl">Mains</string>
@@ -86,11 +86,14 @@
     <string name="bkgrndColorLbl">Background color:</string>
     <string name="textColorLbl">Text color:</string>
     <string name="signOutLbl">Sign out</string>
-    <string name="logoutText">You are signing out of \n The Restaurant 2000! \n Do you wish to continue</string>
+    <string name="logoutText">You are signing out of \n The Restaurant 2000! \n Do you wish to continue?</string>
     <string name="saveChangesLbl">Save changes</string>
     <string name="goBackTxt">No, go back</string>
     <string name="confirmSignOut">Yes, sign out</string>
     <string name="pickingDate">You are picking a date!</string>
     <string name="timePicking">You are picking a time for this date</string>
+    <string name="sidebar">view categories</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
