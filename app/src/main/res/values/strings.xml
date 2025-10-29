@@ -75,8 +75,10 @@
     <string name="specialNotesHint" tools:ignore="StringEscaping,TypographyEllipsis">Write anything you would like \n the restaurant to know...</string>
     <string name="sendRequestBtn">Send Request</string>
     <!--Viewing booking labels-->
-    <string name="confirmedBookingLbl">Confirmed Bookings</string>
-    <string name="unconfirmedBReqLbl">Unconfirmed Requests</string>
+    <string-array name="booking_types">
+        <item>Confirmed Bookings</item>
+        <item>Unconfirmed Requests</item>
+    </string-array>
     <string name="tableNoLbl">Table No:</string>
     <string name="myBookingsTitle">My Bookings</string>
     <!-- Preferences labels -->

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_bookings_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".MyBookingsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/backHomeTxt"
+            android:src="@drawable/ic_home" />
+
+        <TextView
+            android:id="@+id/bookingsTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/abril_fatface"
+            android:gravity="center"
+            android:text="@string/myBookingsTitle"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="20dp"
+        android:layout_height="20dp">
+    </LinearLayout>
+
+    <!-- dropdown button -->
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_input"
+        android:paddingEnd="16dp"
+        android:layout_gravity="left">
+
+        <Spinner
+            android:id="@+id/bookingTypeDropdown"
+            android:layout_width="195dp"
+            android:layout_height="44dp"
+            android:background="@null"
+            android:dropDownSelector="@android:color/transparent"
+            android:entries="@array/booking_types"
+            android:paddingStart="10dp"
+            android:paddingEnd="20dp"
+            android:popupBackground="#FBDCDC"
+            android:spinnerMode="dropdown"
+            android:theme="@style/dropDownItemTheme" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/bookingTypeDropdown"
+            android:layout_centerVertical="true"
+            android:contentDescription="DropDown Arrow"
+            android:paddingEnd="8dp"
+            android:src="@drawable/ic_arrow_drop_down" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="20dp"
+        android:layout_height="20dp">
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookingsRecyclerView"
+        android:layout_width="394dp"
+        android:layout_height="604dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+
+
+</LinearLayout>
