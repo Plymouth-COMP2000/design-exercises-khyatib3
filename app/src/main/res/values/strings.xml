@@ -87,6 +87,9 @@
     <string name="notifications">Notifications</string>
     <string name="bkgrndColorLbl">Background color:</string>
     <string name="textColorLbl">Text color:</string>
+    <string name="cancelAlertOpt">Alert when a booking is cancelled:</string>
+    <string name="confirmAlertOpt">Alert when a booking is confirmed:</string>
+    <string name="modifyAlertOpt">Alert when a booking is modified:</string>
     <string name="signOutLbl">Sign out</string>
     <string name="logoutText">You are signing out of \n The Restaurant 2000! \n Do you wish to continue?</string>
     <string name="saveChangesLbl">Save changes</string>
@@ -95,7 +98,6 @@
     <string name="pickingDate">You are picking a date!</string>
     <string name="timePicking">You are picking a time for this date</string>
     <string name="sidebar">view categories</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
