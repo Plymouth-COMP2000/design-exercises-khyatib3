@@ -1,6 +1,10 @@
 package com.example.comp2000assessment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import androidx.activity.EdgeToEdge;
@@ -79,6 +83,18 @@ public class Guest_Menu_Activity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //home button icon on click logic
+        ImageButton homeBtn = findViewById(R.id.homeBtn);
+        //setting on click functionality
+        homeBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(Guest_Menu_Activity.this, GuestHomepage.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 }
