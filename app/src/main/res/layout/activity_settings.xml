@@ -64,16 +64,16 @@
         app:layout_constraintTop_toBottomOf="@+id/appearanceTitle" />
 
     <!-- BACKGROUND COLOR BUTTON -->
-    <RadioButton
+    <Button
         android:id="@+id/bkgColorOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="72dp"
         android:layout_marginTop="52dp"
-        android:background="@drawable/rounded_input"
+        android:background="#AB6868"
         android:fontFamily="@font/coustard"
-        android:text="@string/bkgrndColorLbl"
-        android:textColor="#56506A"
+        android:text="Pick background..."
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/backgroundColorOption"
         app:layout_constraintTop_toBottomOf="@+id/preferencesTitle" />
 
@@ -91,22 +91,21 @@
         app:layout_constraintTop_toBottomOf="@+id/backgroundColorOption" />
 
     <!-- TEXT COLOR BUTTON -->
-    <RadioButton
+    <Button
         android:id="@+id/txtColorOption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="132dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_input"
         android:fontFamily="@font/coustard"
-        android:text="@string/textColorLbl"
-        android:textColor="#56506A"
+        android:text="Pick text color..."
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/textColorOption"
         app:layout_constraintTop_toBottomOf="@+id/bkgColorOption" />
 
     <!-- DIVIDER -->
     <View
-        android:id="@+id/view"
+        android:id="@+id/divider"
         android:layout_width="380dp"
         android:layout_height="1dp"
         android:layout_marginTop="88dp"
@@ -129,96 +128,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/goHomeBtn"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <!-- CANCEL BOOKING ALERT OPTION -->
-    <TextView
-        android:id="@+id/alertCancelOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/cancelAlertOpt"
-        android:textColor="#56506A"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/notificationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/notificationTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <!-- CANCEL-ALERT BUTTON -->
     <RadioButton
         android:id="@+id/cancelAlertButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="232dp"
-        android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/alertCancelOption"
-        app:layout_constraintTop_toBottomOf="@+id/preferencesTitle" />
-
-    <!-- CONFIRM BOOKING ALERT OPTION -->
-    <TextView
-        android:id="@+id/alertConfirmOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/coustard"
-        android:text="@string/confirmAlertOpt"
+        android:gravity="center"
+        android:text="@string/cancelAlertOpt"
         android:textColor="#56506A"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/alertCancelOption"
-        app:layout_constraintTop_toBottomOf="@+id/alertCancelOption" />
+        app:layout_constraintStart_toStartOf="@+id/notificationTitle"
+        app:layout_constraintTop_toBottomOf="@+id/notificationTitle" />
 
     <!-- CONFIRM-ALERT BUTTON -->
     <RadioButton
         android:id="@+id/confirmAlertButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="4dp"
-        android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/alertConfirmOption"
-        app:layout_constraintTop_toBottomOf="@+id/cancelAlertButton" />
-
-    <!-- MODIFY BOOKING ALERT OPTION -->
-    <TextView
-        android:id="@+id/alertModifyOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/coustard"
-        android:text="@string/modifyAlertOpt"
+        android:gravity="center"
+        android:text="@string/confirmAlertOpt"
         android:textColor="#56506A"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/alertConfirmOption"
-        app:layout_constraintTop_toBottomOf="@+id/alertConfirmOption" />
+        app:layout_constraintStart_toStartOf="@+id/cancelAlertButton"
+        app:layout_constraintTop_toBottomOf="@+id/cancelAlertButton" />
 
     <!-- MODIFY-ALERT BUTTON -->
     <RadioButton
         android:id="@+id/modifyAlertButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/coustard"
         android:gravity="center"
-        app:layout_constraintStart_toEndOf="@+id/alertModifyOption"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        android:text="@string/modifyAlertOpt"
+        android:textColor="#56506A"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/confirmAlertButton"
+        app:layout_constraintTop_toBottomOf="@+id/confirmAlertButton" />
 
     <!-- DIVIDER -->
     <View
-        android:id="@+id/view2"
+        android:id="@+id/divider2"
         android:layout_width="380dp"
         android:layout_height="1dp"
-        android:layout_marginTop="316dp"
-        android:background="@color/black"
+        android:layout_marginTop="332dp"
+        android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/backgroundColorOption" />
 
     <!-- SAVE CHANGES BUTTON -->
-
-    <!-- SIGN OUT BUTTON -->
-
     <Button
         android:id="@+id/saveChangesBtn"
         android:layout_width="wrap_content"
@@ -231,17 +197,18 @@
         android:paddingHorizontal="20dp"
         android:text="@string/saveChangesLbl"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/view2"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintEnd_toEndOf="@+id/divider2"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="@+id/divider2"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
+    <!-- SIGN OUT BUTTON -->
     <Button
         android:id="@+id/signOutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#A9DC3D40"
         android:fontFamily="@font/coustard"
