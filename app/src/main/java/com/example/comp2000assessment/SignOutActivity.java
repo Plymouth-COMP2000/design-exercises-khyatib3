@@ -11,25 +11,35 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class AccountCreated extends AppCompatActivity {
+public class SignOutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_account_created);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.sidebarBtn), (v, insets) -> {
+        setContentView(R.layout.activity_sign_out);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.signOutScreen), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        Button goHomeBtn = findViewById(R.id.goHomeBtn1);
+        Button backHomeBtn = findViewById(R.id.cancelSignOutBtn);
         //setting on click functionality
-        goHomeBtn.setOnClickListener(new View.OnClickListener(){
+        backHomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignOutActivity.this, GuestHomepage.class);
+                startActivity(intent);
+            }
+        });
+
+        Button confirmSignOutBtn = findViewById(R.id.confirmSignOutBtn);
+        //setting on click functionality
+        confirmSignOutBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(AccountCreated.this, GuestHomepage.class);
+                Intent intent = new Intent(SignOutActivity.this, Login_Activity.class);
                 startActivity(intent);
             }
         });

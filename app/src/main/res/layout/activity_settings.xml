@@ -9,7 +9,7 @@
 
     <!-- HOME BUTTON -->
     <ImageButton
-        android:id="@+id/goHomeBtn"
+        android:id="@+id/settingsGoHomeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.293"
-        app:layout_constraintStart_toEndOf="@+id/goHomeBtn"
+        app:layout_constraintStart_toEndOf="@+id/settingsGoHomeBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- APPEARANCE TITLE -->
@@ -47,7 +47,7 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/goHomeBtn"
+        app:layout_constraintStart_toStartOf="@+id/settingsGoHomeBtn"
         app:layout_constraintTop_toBottomOf="@+id/preferencesTitle" />
 
     <!-- BACKGROUND COLOR OPTION-->
@@ -63,21 +63,19 @@
         app:layout_constraintStart_toStartOf="@+id/appearanceTitle"
         app:layout_constraintTop_toBottomOf="@+id/appearanceTitle" />
 
-    <!-- BACKGROUND COLOR BUTTON -->
     <Button
-        android:id="@+id/bkgColorOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="52dp"
-        android:background="#AB6868"
+        android:id="@+id/bkgColorBtn"
+        android:layout_width="141dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#595959"
         android:fontFamily="@font/coustard"
-        android:text="Pick background..."
-        android:textColor="@color/black"
+        android:text="@string/bkgrndColorLbl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.83"
         app:layout_constraintStart_toEndOf="@+id/backgroundColorOption"
         app:layout_constraintTop_toBottomOf="@+id/preferencesTitle" />
 
-    <!-- TEXT COLOR OPTION-->
     <TextView
         android:id="@+id/textColorOption"
         android:layout_width="wrap_content"
@@ -90,20 +88,19 @@
         app:layout_constraintStart_toStartOf="@+id/backgroundColorOption"
         app:layout_constraintTop_toBottomOf="@+id/backgroundColorOption" />
 
-    <!-- TEXT COLOR BUTTON -->
-    <Button
-        android:id="@+id/txtColorOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/coustard"
-        android:text="Pick text color..."
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/textColorOption"
-        app:layout_constraintTop_toBottomOf="@+id/bkgColorOption" />
 
-    <!-- DIVIDER -->
+    <Button
+        android:id="@+id/txtColorBtn"
+        android:layout_width="141dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#595959"
+        android:fontFamily="@font/coustard"
+        android:text="@string/textColorLbl"
+        app:layout_constraintStart_toEndOf="@+id/textColorOption"
+        app:layout_constraintTop_toBottomOf="@+id/bkgColorBtn" />
+
     <View
         android:id="@+id/divider"
         android:layout_width="380dp"
@@ -127,7 +124,7 @@
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/goHomeBtn"
+        app:layout_constraintStart_toStartOf="@+id/settingsGoHomeBtn"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <!-- CANCEL-ALERT BUTTON -->
@@ -205,8 +202,8 @@
     <!-- SIGN OUT BUTTON -->
     <Button
         android:id="@+id/signOutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="132dp"
+        android:layout_height="51dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="16dp"

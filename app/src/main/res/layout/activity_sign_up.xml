@@ -25,15 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- first name prompt -->
 
-        <!-- first name input field-->
-
-        <!-- Last Name prompt -->
-
-        <!-- Last Name INPUT field -->
-
-        <!-- email PROMPT -->
 
         <TextView
             android:id="@+id/firstNamePrompt"
@@ -165,7 +157,7 @@
             android:layout_marginBottom="121dp"
             android:fontFamily="@font/coustard"
             android:text="@string/password_prompt"
-            app:layout_constraintBottom_toTopOf="@+id/submitButton"
+            app:layout_constraintBottom_toTopOf="@+id/submitRegButton"
             app:layout_constraintStart_toStartOf="@+id/usernameInput" />
 
         <EditText
@@ -178,7 +170,7 @@
             android:hint="@string/enter_password"
             android:inputType="textPassword"
             android:padding="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/submitButton"
+            app:layout_constraintBottom_toTopOf="@+id/submitRegButton"
             app:layout_constraintStart_toStartOf="@+id/passwordPrompt"
             app:layout_constraintTop_toBottomOf="@+id/usernameInput"
             app:layout_constraintVertical_bias="0.883" />
@@ -192,13 +184,13 @@
             android:background="@android:color/transparent"
             android:contentDescription="Back"
             android:src="@drawable/ic_arrow_back"
-            app:layout_constraintBottom_toBottomOf="@+id/submitButton"
+            app:layout_constraintBottom_toBottomOf="@+id/submitRegButton"
             app:layout_constraintEnd_toEndOf="@+id/passwordInput"
             app:layout_constraintTop_toBottomOf="@+id/passwordInput"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/submitButton"
+            android:id="@+id/submitRegButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"

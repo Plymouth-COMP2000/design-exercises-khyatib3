@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signOutScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignOutActivity">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <TextView
+        android:id="@+id/restaurantTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/restaurantName"
+        android:textColor="#590000"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/signOutMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="144dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/logoutText"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantTitle" />
+
+    <Button
+        android:id="@+id/confirmSignOutBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#456B9E64"
+        android:fontFamily="@font/coustard"
+        android:paddingHorizontal="20dp"
+        android:text="@string/confirmSignOut"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantTitle"
+        app:layout_constraintTop_toBottomOf="@+id/signOutMsg" />
+
+    <Button
+        android:id="@+id/cancelSignOutBtn"
+        android:layout_width="132dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#A9DC3D40"
+        android:fontFamily="@font/coustard"
+        android:paddingHorizontal="20dp"
+        android:text="@string/goBackTxt"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/restaurantTitle"
+        app:layout_constraintTop_toBottomOf="@+id/signOutMsg" />
+</androidx.constraintlayout.widget.ConstraintLayout>

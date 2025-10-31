@@ -1,6 +1,9 @@
 package com.example.comp2000assessment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,6 +55,16 @@ public class MyBookingsActivity extends AppCompatActivity {
         BookingRecordAdapter adapter = new BookingRecordAdapter(this, bookingRecords);
         bookingRecycler.setAdapter(adapter);
 
+        //home icon on click
+        ImageButton homeIcon = findViewById(R.id.myBookingsHomeBtn);
+        //setting on click functionality
+        homeIcon.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MyBookingsActivity.this, GuestHomepage.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

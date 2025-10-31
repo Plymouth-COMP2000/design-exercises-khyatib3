@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/sidebarBtn"
+    android:id="@+id/reservation_EnquiryScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#FDF9FC"
     tools:context=".Reservation_Enquiry">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/reservationHomeIcon"
         android:layout_width="54dp"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
@@ -26,14 +26,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#090909"
+        android:textColor="@color/black"
         android:fontFamily="@font/abril_fatface"
         android:text="@string/makeRequestTitle"
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.211"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
+        app:layout_constraintStart_toEndOf="@+id/reservationHomeIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -45,7 +45,7 @@
         android:fontFamily="@font/coustard"
         android:text="@string/nameLbl"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="@+id/reservationHomeIcon"
         app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
 
     <TextView
@@ -198,7 +198,7 @@
         app:layout_constraintTop_toBottomOf="@+id/specialNotesPrompt" />
 
     <Button
-        android:id="@+id/submitButton"
+        android:id="@+id/submitRequestButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
