@@ -29,7 +29,7 @@ public class SignOutActivity extends AppCompatActivity {
         backHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignOutActivity.this, GuestHomepage.class);
+                Intent intent = new Intent(SignOutActivity.this, Settings.class);
                 startActivity(intent);
             }
         });

@@ -20,21 +20,23 @@
     <!-- restaurant name -->
 
     <!-- username prompt -->
+
+    <!-- username input field -->
+
     <TextView
         android:id="@+id/restaurantName3"
         android:layout_width="374dp"
         android:layout_height="50dp"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/abril_fatface"
         android:text="@string/restaurantName"
         android:textAlignment="center"
         android:textColor="#5D0A0A"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <!-- username input field -->
 
     <TextView
         android:id="@+id/usernamePrompt2"
@@ -62,12 +64,6 @@
         app:layout_constraintStart_toStartOf="@+id/usernamePrompt2"
         app:layout_constraintTop_toBottomOf="@+id/usernamePrompt2" />
 
-    <!-- password prompt -->
-
-    <!-- password input field -->
-
-    <!-- submit button -->
-
     <TextView
         android:id="@+id/passwordPrompt2"
         android:layout_width="wrap_content"
@@ -89,6 +85,7 @@
         android:background="@drawable/rounded_input"
         android:fontFamily="@font/coustard"
         android:hint="@string/enter_password"
+        android:inputType="textPassword"
         android:padding="10dp"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/usernameInput"
@@ -100,30 +97,42 @@
         android:id="@+id/submitButton"
         android:layout_width="130dp"
         android:layout_height="61dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="132dp"
         android:backgroundTint="@color/black"
         android:fontFamily="@font/coustard"
         android:paddingHorizontal="20dp"
         android:text="@string/submitLbl"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/passwordInput"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="@+id/passwordInput"
-        app:layout_constraintTop_toBottomOf="@+id/passwordInput"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintEnd_toEndOf="@+id/rectangleBorder"
+        app:layout_constraintHorizontal_bias="0.982"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/rectangleBorder"
-        android:layout_width="378dp"
-        android:layout_height="375dp"
+        android:layout_width="357dp"
+        android:layout_height="347dp"
         android:backgroundTint="@color/teal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restaurantName3"
-        app:layout_constraintVertical_bias="0.185"
+        app:layout_constraintVertical_bias="0.224"
         app:srcCompat="@drawable/border_rectangle" />
+
+    <Button
+        android:id="@+id/loginBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#6F0000"
+        android:fontFamily="@font/coustard"
+        android:text="Back"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/submitButton"
+        app:layout_constraintStart_toStartOf="@+id/submitButton"
+        app:layout_constraintTop_toBottomOf="@+id/submitButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -49,6 +49,18 @@ public class StartUpActivity extends AppCompatActivity {
             }
         });
 
+        //finding t&c button
+        Button tCBtn = findViewById(R.id.viewTCBtn);
+
+        //tc button on click functionality
+        tCBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StartUpActivity.this, T_C_Activity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 }

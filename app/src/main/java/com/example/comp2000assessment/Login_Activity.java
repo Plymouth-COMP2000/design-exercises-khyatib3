@@ -35,5 +35,18 @@ public class Login_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //find back button
+        Button backStartUpBtn = findViewById(R.id.loginBackBtn);
+        //setting on click functionality
+        backStartUpBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(Login_Activity.this, StartUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
