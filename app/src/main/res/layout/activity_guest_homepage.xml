@@ -5,16 +5,15 @@
     android:id="@+id/guest_homepage_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#ADF0DE"
     tools:context=".GuestHomepage">
 
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="436dp"
+        android:layout_marginTop="456dp"
         app:layout_constraintEnd_toEndOf="@+id/preferencesBtn"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.467"
         app:layout_constraintStart_toStartOf="@+id/requestTblBtn"
         app:layout_constraintTop_toBottomOf="@+id/restaurantName"
         app:srcCompat="@drawable/restaurant_logo" />
@@ -25,13 +24,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/abril_fatface"
-        android:foregroundTint="#2C399B"
         android:text="@string/restaurantName"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#5D0A0A"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.41"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

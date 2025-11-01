@@ -39,7 +39,7 @@ public class SignOutActivity extends AppCompatActivity {
         confirmSignOutBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(SignOutActivity.this, Login_Activity.class);
+                Intent intent = new Intent(SignOutActivity.this, StartUpActivity.class);
                 startActivity(intent);
             }
         });
