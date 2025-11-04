@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/addNewItemScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddMenuItemActivity">
+
+    <EditText
+        android:id="@+id/inputItemCode"
+        android:layout_width="202dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/rounded_light_pink_rectangle"
+        android:fontFamily="@font/coustard"
+        android:hint="@string/itemCodeLbl"
+        android:padding="10dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <EditText
+        android:id="@+id/inputItemCategory"
+        android:layout_width="202dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="208dp"
+        android:background="@drawable/rounded_light_pink_rectangle"
+        android:fontFamily="@font/coustard"
+        android:hint="@string/categoryLbl"
+        android:inputType="text"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <EditText
+        android:id="@+id/inputItemPrice"
+        android:layout_width="202dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="292dp"
+        android:background="@drawable/rounded_light_pink_rectangle"
+        android:fontFamily="@font/coustard"
+        android:hint="@string/priceLbl"
+        android:inputType="text"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <EditText
+        android:id="@+id/inputItemName"
+        android:layout_width="202dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/rounded_light_pink_rectangle"
+        android:fontFamily="@font/coustard"
+        android:hint="@string/itemNameLbl"
+        android:inputType="text"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <TextView
+        android:id="@+id/addItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/addItemTitle"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/addItemBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/goBackTxt"
+        app:layout_constraintEnd_toStartOf="@+id/addItemTitle"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back" />
+
+    <TextView
+        android:id="@+id/itemCodeLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/itemCodeLbl"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <TextView
+        android:id="@+id/itemPriceLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="308dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/priceLbl"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <TextView
+        android:id="@+id/itemNameLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="136dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/itemNameLbl"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <TextView
+        android:id="@+id/itemCategoryLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="220dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/categoryLbl"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <TextView
+        android:id="@+id/uploadItemImgLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="380dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/uploadLbl"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/addItemTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+
+    <Button
+        android:id="@+id/uploadImgBtn"
+        android:layout_width="269dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#ff4d6d"
+        android:fontFamily="@font/coustard"
+        android:padding="10dp"
+        android:text="Upload Image..."
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/uploadItemImgLbl"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toStartOf="@+id/uploadItemImgLbl"
+        app:layout_constraintTop_toBottomOf="@+id/uploadItemImgLbl" />
+
+    <ImageView
+        android:id="@+id/uploadIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#c9184a"
+        app:layout_constraintStart_toStartOf="@+id/uploadImgBtn"
+        app:layout_constraintTop_toTopOf="@+id/uploadImgBtn"
+        app:srcCompat="@drawable/ic_upload" />
+
+    <TextView
+        android:id="@+id/itemDescriptionLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/itemDescLbl"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/uploadImgBtn"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="@+id/uploadImgBtn"
+        app:layout_constraintTop_toBottomOf="@+id/uploadImgBtn" />
+
+    <EditText
+        android:id="@+id/inputDescription"
+        android:layout_width="326dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/rounded_light_pink_rectangle"
+        android:ems="10"
+        android:fontFamily="@font/coustard"
+        android:hint="@string/descriptionPrompt"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/itemDescriptionLbl"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/itemDescriptionLbl"
+        app:layout_constraintTop_toBottomOf="@+id/itemDescriptionLbl" />
+
+    <Button
+        android:id="@+id/addItemBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="@string/addItemTitle"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/inputDescription"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/inputDescription"
+        app:layout_constraintTop_toBottomOf="@+id/inputDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

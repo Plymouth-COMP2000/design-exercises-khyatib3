@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/staffDashboardScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StaffDashboard">
+
+    <TextView
+        android:id="@+id/restaurantNameDash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/restaurantName"
+        android:textColor="#570000"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--VIEW AND CHANGE MENU -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewChangeMenuBtn"
+        android:layout_width="253dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="48dp"
+        android:backgroundTint="#800f2F"
+        android:fontFamily="@font/coustard"
+        android:text="@string/changeViewMenuLbl"
+        android:textSize="16sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantNameDash"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintStart_toStartOf="@+id/restaurantNameDash"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
+
+    <!--View Reservations-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/viewTblResBtn"
+        android:layout_width="255dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="184dp"
+        android:backgroundTint="#800f2F"
+        android:fontFamily="@font/coustard"
+        android:text="@string/viewTblResLbl"
+        android:textSize="16sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantNameDash"
+        app:layout_constraintStart_toStartOf="@+id/restaurantNameDash"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
+
+    <!-- ADD STAFF MEMBER BTN-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addStaffBtn"
+        android:layout_width="255dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="320dp"
+        android:backgroundTint="#800f2F"
+        android:fontFamily="@font/coustard"
+        android:text="@string/addStaffLbl"
+        android:textSize="16sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewTblResBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/viewTblResBtn"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
+
+    <!-- preferences BTN-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/staffPreferencesBtn"
+        android:layout_width="255dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="460dp"
+        android:backgroundTint="#800f2F"
+        android:fontFamily="@font/coustard"
+        android:text="@string/preferencesOption"
+        android:textSize="16sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/restaurantNameDash"
+        app:layout_constraintStart_toStartOf="@+id/restaurantNameDash"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
+
+    <!-- Logo-->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/staffPreferencesBtn"
+        app:layout_constraintStart_toStartOf="@+id/staffPreferencesBtn"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

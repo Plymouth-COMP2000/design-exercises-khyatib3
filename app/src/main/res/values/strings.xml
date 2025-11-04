@@ -24,9 +24,9 @@
     <string name="submitLbl">Submit</string>"
     <!-- Menu headers -->
     <string name="menuLbl"><b>Menu</b></string>
-    <string name="imageLbl"><b>Image</b></string>
-    <string name="descriptionLbl"><b>Description</b></string>
-    <string name="priceLbl"><b>Price</b></string>
+    <string name="imageLbl"><b>Image:</b></string>
+    <string name="descriptionLbl"><b>Description:</b></string>
+    <string name="priceLbl"><b>Price:</b></string>
     <!-- Menu Categories -->
     <string name="starterLbl">Starters</string>
     <string name="mainsLbl">Mains</string>
@@ -34,16 +34,21 @@
     <string name="drinksLbl">Drinks</string>
     <string name="sidesLbl">Sides</string>
     <!-- Add menu item -->
-    <string name="itemCodeLbl">Item Code:</string>
-    <string name="itemNameLbl">Item Name:</string>
-    <string name="categoryLbl">Category:</string>
-    <string name="uploadLbl">Upload item cover:</string>
-    <string name="itemDescLbl">Item Description:</string>
+    <string name="addItemTitle">Add New Item</string>
+    <string name="itemCodeLbl"><b>Item Code:</b></string>
+    <string name="itemNameLbl"><b>Item Name:</b></string>
+    <string name="categoryLbl"><b>Category:</b></string>
+    <string name="uploadLbl"><b>Upload item cover:</b></string>
+    <string name="itemDescLbl"><b>Item Description:</b></string>
+    <string name="descriptionPrompt">Enter details about the \n food/drink for customers.. </string>
     <!-- Guest dashboard options -->
     <string name="menuOption">VIEW MENU</string>
     <string name="myBookingsOption">MY BOOKINGS</string>
     <string name="tableReqOption">REQUEST TABLE</string>
     <string name="preferencesOption">SETTINGS</string>
+    <string name="changeViewMenuLbl">CHANGE OR VIEW MENU</string>
+    <string name="viewTblResLbl">VIEW TABLE \n RESERVATIONS</string>
+    <string name="addStaffLbl">ADD NEW \n STAFF MEMBERS</string>
     <!-- Alerts texts -->
     <string name="alert">ALERT!</string>
     <string name="accountCreated">Your account was created successfully!</string>
