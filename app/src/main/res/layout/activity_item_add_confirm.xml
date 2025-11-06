@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemAddConfirmScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Item_Add_Confirm_Activity">
+
+    <TextView
+        android:id="@+id/restName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/restaurantName"
+        android:textColor="@color/wine_red"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restLogo" />
+
+    <ImageView
+        android:id="@+id/restLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <TextView
+        android:id="@+id/menuItemAddConfirmation"
+        android:layout_width="217dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="232dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/itemAddConfirmationTxt"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restName" />
+
+    <Button
+        android:id="@+id/dashboardBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/wine_red"
+        android:fontFamily="@font/coustard"
+        android:text="@string/dashboard"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/menuItemAddConfirmation"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/menuItemAddConfirmation"
+        app:layout_constraintTop_toBottomOf="@+id/menuItemAddConfirmation" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="242dp"
+        android:layout_height="204dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restName"
+        app:layout_constraintVertical_bias="0.379"
+        app:srcCompat="@drawable/border_rectangle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

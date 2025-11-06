@@ -41,7 +41,9 @@
     <string name="uploadLbl"><b>Upload item cover:</b></string>
     <string name="itemDescLbl"><b>Item Description:</b></string>
     <string name="descriptionPrompt">Enter details about the \n food/drink for customers.. </string>
+    <string name="itemAddConfirmationTxt">New item added to \n restaurant menu!</string>
     <!-- Guest dashboard options -->
+    <string name="dashboard">Dashboard</string>
     <string name="menuOption">VIEW MENU</string>
     <string name="myBookingsOption">MY BOOKINGS</string>
     <string name="tableReqOption">REQUEST TABLE</string>
