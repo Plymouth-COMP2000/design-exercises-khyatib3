@@ -18,7 +18,7 @@
         android:background="@drawable/border_rectangle"
         android:layout_marginEnd="8dp" />
 
-    <!--description column -->
+    <!--name column -->
     <TextView
         android:id="@+id/menu_item_name"
         android:layout_width="0dp"
@@ -51,5 +51,6 @@
         android:fontFamily="@font/coustard"
         android:textColor="@color/black"
         android:textSize="16sp" />
+
 
 </LinearLayout>

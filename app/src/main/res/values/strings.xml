@@ -51,6 +51,10 @@
     <string name="changeViewMenuLbl">CHANGE OR VIEW MENU</string>
     <string name="viewTblResLbl">VIEW TABLE \n RESERVATIONS</string>
     <string name="addStaffLbl">ADD NEW \n STAFF MEMBERS</string>
+    <!--Staff Menu -->
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+
     <!-- Alerts texts -->
     <string name="alert">ALERT!</string>
     <string name="accountCreated">Your account was created successfully!</string>

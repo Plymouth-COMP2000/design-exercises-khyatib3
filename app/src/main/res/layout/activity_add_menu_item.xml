@@ -8,67 +8,45 @@
     tools:context=".AddMenuItemActivity">
 
     <EditText
-        android:id="@+id/inputItemCode"
-        android:layout_width="202dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/itemCodeLbl"
-        android:padding="10dp"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
-
-    <EditText
         android:id="@+id/inputItemCategory"
         android:layout_width="202dp"
         android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_light_pink_rectangle"
         android:fontFamily="@font/coustard"
         android:hint="@string/categoryLbl"
         android:inputType="text"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
     <EditText
         android:id="@+id/inputItemPrice"
         android:layout_width="202dp"
         android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_light_pink_rectangle"
         android:fontFamily="@font/coustard"
         android:hint="@string/priceLbl"
         android:inputType="text"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
     <EditText
         android:id="@+id/inputItemName"
         android:layout_width="202dp"
         android:layout_height="52dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_light_pink_rectangle"
         android:fontFamily="@font/coustard"
         android:hint="@string/itemNameLbl"
         android:inputType="text"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toEndOf="@+id/itemCodeLbl"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
     <TextView
@@ -99,23 +77,11 @@
         app:srcCompat="@drawable/ic_arrow_back" />
 
     <TextView
-        android:id="@+id/itemCodeLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/itemCodeLbl"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
-
-    <TextView
         android:id="@+id/itemPriceLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginTop="204dp"
         android:fontFamily="@font/coustard"
         android:text="@string/priceLbl"
         android:textColor="@color/black"
@@ -128,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="@font/coustard"
         android:text="@string/itemNameLbl"
         android:textColor="@color/black"
@@ -141,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="124dp"
         android:fontFamily="@font/coustard"
         android:text="@string/categoryLbl"
         android:textColor="@color/black"
@@ -154,13 +120,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="316dp"
         android:fontFamily="@font/coustard"
         android:text="@string/uploadLbl"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/addItemTitle"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 

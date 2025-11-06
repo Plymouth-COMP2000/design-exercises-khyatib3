@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:id="@+id/guest_menu_page"
     android:padding="8dp"
+    android:orientation="vertical"
     tools:context=".Guest_Menu_Activity">
 
     <!-- home button and sidebar button -->

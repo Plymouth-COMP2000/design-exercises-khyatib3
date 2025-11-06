@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/staffMenuScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:orientation="vertical"
+    tools:context=".Staff_Menu_Activity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- home button -->
+        <ImageButton
+            android:id="@+id/staffMenuHomeBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/backHomeTxt"
+            android:src="@drawable/ic_home" />
+
+        <TextView
+            android:id="@+id/staffMenuTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/abril_fatface"
+            android:gravity="center"
+            android:text="@string/menuLbl"
+            android:textSize="34sp"
+            android:textColor="@color/black"/>
+
+        <ImageButton
+            android:id="@+id/addToMenuBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_add_item"
+            android:paddingRight="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/addItemTitle"/>
+
+        <ImageButton
+            android:id="@+id/staffMenuSidebarButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Sidebar"
+            android:src="@drawable/ic_sidebar" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <!-- menu items data -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/staffRecyclerView"
+            android:layout_width="394dp"
+            android:layout_height="604dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical" />
+    </ScrollView>
+
+
+
+
+</LinearLayout>
