@@ -3,6 +3,7 @@ package com.example.comp2000assessment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -29,6 +30,15 @@ public class AddMenuItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(AddMenuItemActivity.this, Staff_Menu_Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button addItemBtn = findViewById(R.id.addItemBtn);
+        addItemBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(AddMenuItemActivity.this, Item_Add_Confirm_Activity.class);
                 startActivity(intent);
             }
         });
