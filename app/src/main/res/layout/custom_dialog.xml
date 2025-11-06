@@ -1,11 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="370dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="329dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="@drawable/text_background">
+
+        <ImageButton
+            android:id="@+id/closeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#fff0f3"
+            android:src="@drawable/ic_close"
+            android:layout_gravity="right|top"/>
+
+        <!--Edit description -->
+        <TextView
+            android:id="@+id/editDescriptionTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/coustard"
+            android:text="Edit description:"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/editDescriptionInput"
+            android:layout_width="210dp"
+            android:layout_height="46dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="Change description..."
+            android:inputType="textLongMessage"
+            android:paddingLeft="8dp"/>
+
+        <!--Edit Price -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/coustard"
+            android:text="Change price:"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="46dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="Add price"
+            android:inputType="numberDecimal"
+            android:paddingLeft="8dp"/>
+
+        <!-- Image Upload -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/coustard"
+            android:text="Change cover:"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#a4133c"
+            android:text="Browse"
+            android:textSize="16sp"
+            android:fontFamily="@font/coustard"/>
 
 
 
+    </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
