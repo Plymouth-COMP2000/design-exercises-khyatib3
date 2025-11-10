@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/allTablesScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".All_Tables_Activity">
+
+    <ImageButton
+        android:id="@+id/allTablesHomeButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/backHomeTxt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home" />
+
+    <TextView
+        android:id="@+id/allTablesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="All Tables"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.302"
+        app:layout_constraintStart_toEndOf="@+id/allTablesHomeButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/openRequestsBtn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Open Requests"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/allTablesTitle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table1Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 1"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table2Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 2"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toEndOf="@+id/table1Btn"
+        app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table3Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="136dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 3"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintStart_toStartOf="@+id/table1Btn"
+        app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table4Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="136dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 4"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/table2Btn"
+        app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table5Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 5"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/table3Btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/table3Btn"
+        app:layout_constraintTop_toBottomOf="@+id/table3Btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table6Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 6"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/table4Btn"
+        app:layout_constraintTop_toBottomOf="@+id/table4Btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table7Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 7"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/table5Btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/table5Btn"
+        app:layout_constraintTop_toBottomOf="@+id/table5Btn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/table8Btn"
+        android:layout_width="165dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#c9184a"
+        android:fontFamily="@font/coustard"
+        android:text="Table 8"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/table6Btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/table6Btn"
+        app:layout_constraintTop_toBottomOf="@+id/table6Btn" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="476dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <TextView
+        android:id="@+id/restaurant_Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/restaurantName"
+        android:textColor="@color/wine_red"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +28,8 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
         TextView name;
         TextView description;
         TextView price;
+        Button editBtn;
+        Button deleteBtn;
 
         public SMItemViewHolder(View menuItemView){
             super(menuItemView);
@@ -50,6 +53,7 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
         holder.image.setImageResource(item.imageId);
         holder.description.setText(item.description);
         holder.price.setText(item.price);
+
     }
 
     @Override

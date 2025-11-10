@@ -33,5 +33,15 @@ public class StaffDashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //view tables
+        Button viewTables = findViewById(R.id.viewTblResBtn);
+        viewTables.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(StaffDashboard.this, All_Tables_Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

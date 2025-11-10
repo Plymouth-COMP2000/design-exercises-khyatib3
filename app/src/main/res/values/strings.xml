@@ -104,10 +104,19 @@
     <string name="signOutLbl">Sign out</string>
     <string name="logoutText">You are signing out of \n The Restaurant 2000! \n Do you wish to continue?</string>
     <string name="saveChangesLbl">Save changes</string>
+    <string name="cancelLbl">Cancel</string>
     <string name="goBackTxt">No, go back</string>
     <string name="confirmSignOut">Yes, sign out</string>
     <string name="pickingDate">You are picking a date!</string>
     <string name="timePicking">You are picking a time for this date</string>
     <string name="sidebar">view categories</string>
+
+    <string name="close_dialog">close dialog</string>
+    <string name="edit_description">Edit description:</string>
+    <string name="change_description">Change description...</string>
+    <string name="change_price">Change price:</string>
+    <string name="add_price_hint">Add price...</string>
+    <string name="change_cover_hint">Change cover:</string>
+    <string name="browse_image_hint">Browse</string>
 
 </resources>

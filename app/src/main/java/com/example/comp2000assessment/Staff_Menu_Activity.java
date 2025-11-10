@@ -1,12 +1,17 @@
 package com.example.comp2000assessment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -22,6 +27,8 @@ public class Staff_Menu_Activity extends AppCompatActivity {
     RecyclerView staffRecyclerView;
     StaffMenuAdapter adapter;
     List<RestMenuItem> menuItems;
+    Context context;
+    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +63,10 @@ public class Staff_Menu_Activity extends AppCompatActivity {
         adapter = new StaffMenuAdapter(this,menuItems);
         staffRecyclerView.setAdapter(adapter);
 
+        //find edit menu btn
+        Button editMenuBtn = findViewById(R.id.edit_button);
+
+
         //find home button
         ImageButton homeBtn = findViewById(R.id.staffMenuHomeBtn);
         homeBtn.setOnClickListener(new View.OnClickListener(){
@@ -77,4 +88,6 @@ public class Staff_Menu_Activity extends AppCompatActivity {
         });
 
     }
+
+
 }

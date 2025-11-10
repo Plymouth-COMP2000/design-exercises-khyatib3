@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".All_Tables_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Staff_Menu_Activity"
             android:exported="true" />
         <activity
@@ -22,7 +25,7 @@
             android:exported="false" />
         <activity
             android:name=".StaffDashboard"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".T_C_Activity"
             android:exported="false" />
