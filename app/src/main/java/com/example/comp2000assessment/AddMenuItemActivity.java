@@ -1,10 +1,15 @@
 package com.example.comp2000assessment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,13 +17,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.ByteArrayOutputStream;
+
 public class AddMenuItemActivity extends AppCompatActivity {
+    private Bitmap selectedBitmap;
+    private ImageButton imageView;
+    private static final MenuDatabaseHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_menu_item);
+        imageView = findViewById(R.id.uploadImgBtn);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.addNewItemScreen), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -34,13 +45,59 @@ public class AddMenuItemActivity extends AppCompatActivity {
             }
         });
 
+        Button browseBtn =  findViewById(R.id.uploadImgBtn);
+        browseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,100);
+            }
+        });
+
         Button addItemBtn = findViewById(R.id.addItemBtn);
         addItemBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                //convert bitmap image to bytes
+                byte[] imageBytes = convertBitmapToBytes(selectedBitmap);
+                EditText addName = findViewById(R.id.inputItemName);
+                EditText addPrice = findViewById(R.id.inputItemPrice);
+                EditText addCategory = findViewById(R.id.inputItemCategory);
+                EditText addDescription = findViewById(R.id.inputDescription);
+
+                String itemName = addName.getText().toString();
+                double itemPrice = Double.parseDouble(String.valueOf(addPrice));
+                int itemCategory = Integer.parseInt(String.valueOf(addCategory));
+                String itemDesc = addDescription.getText().toString();
+
+                RestMenuItem menuItem = new RestMenuItem(itemName, itemPrice, itemCategory, itemDesc, imageBytes);
+                db
+
                 Intent intent = new Intent(AddMenuItemActivity.this, Item_Add_Confirm_Activity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            Uri imageUri = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                selectedBitmap = bitmap;   // store in a field
+                imageView.setImageBitmap(bitmap); // preview
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private byte[] convertBitmapToBytes(Bitmap bm){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        return stream.toByteArray();
     }
 }

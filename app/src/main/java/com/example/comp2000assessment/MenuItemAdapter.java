@@ -49,10 +49,10 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuIt
     @Override
     public void onBindViewHolder(MenuItemViewHolder holder, int pos){
         RestMenuItem item = itemList.get(pos);
-        holder.image.setImageResource(item.imageId);
-        holder.name.setText(item.name);
-        holder.description.setText(item.description);
-        holder.price.setText(item.price);
+        holder.image.setImageResource(item.getImageId());
+        holder.name.setText(item.getName());
+        holder.description.setText(item.getDescription());
+        holder.price.setText(item.getPrice());
     }
 
     @Override

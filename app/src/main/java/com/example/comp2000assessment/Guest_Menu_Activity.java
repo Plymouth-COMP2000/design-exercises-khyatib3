@@ -41,19 +41,19 @@ public class Guest_Menu_Activity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         menuItems = new ArrayList<>();
-        RestMenuItem burrataCaprese = new RestMenuItem("£7.80", "Burrata Caprese","Authentic homemade Italian burrata \n in a fresh \n caprese salad", R.drawable.burrata_caprese);
+        RestMenuItem burrataCaprese = new RestMenuItem("£7.80", "Burrata Caprese","Authentic homemade Italian burrata \n in a fresh \n caprese salad",1, R.drawable.burrata_caprese);
         menuItems.add(burrataCaprese);
-        RestMenuItem oliveBowl = new RestMenuItem("£5.60", "Olive Bowl", "Mediterranean-inspired bowl with \n marinated olives and \n fresh ingredients.", R.drawable.olive_bowl);
+        RestMenuItem oliveBowl = new RestMenuItem("£5.60", "Olive Bowl", "Mediterranean-inspired bowl with \n marinated olives and \n fresh ingredients.", 5, R.drawable.olive_bowl);
         menuItems.add(oliveBowl);
-        RestMenuItem aubergineFritti = new RestMenuItem("£6.85", "Aubergine Fritti", "Crispy golden aubergine, \n lightly fried and \n perfectly seasoned.", R.drawable.aubergine_fritti);
+        RestMenuItem aubergineFritti = new RestMenuItem("£6.85", "Aubergine Fritti", "Crispy golden aubergine, \n lightly fried and \n perfectly seasoned.",2, R.drawable.aubergine_fritti);
         menuItems.add(aubergineFritti);
-        RestMenuItem polloMilanese = new RestMenuItem("£9.50", "Pollo Milanese", "Classic Italian breaded chicken cutlet, perfectly fried.", R.drawable.pollo_milanese);
+        RestMenuItem polloMilanese = new RestMenuItem("£9.50", "Pollo Milanese", "Classic Italian breaded chicken cutlet, perfectly fried.", 2, R.drawable.pollo_milanese);
         menuItems.add(polloMilanese);
-        RestMenuItem garlicBread = new RestMenuItem("£4.20", "Garlic Bread", "Warm, buttery bread with a rich garlic kick.", R.drawable.garlic_bread);
+        RestMenuItem garlicBread = new RestMenuItem("£4.20", "Garlic Bread", "Warm, buttery bread with a rich garlic kick.", 5, R.drawable.garlic_bread);
         menuItems.add(garlicBread);
-        RestMenuItem mozzarellaArancini = new RestMenuItem("£6.40", "Mozarella Arancini", "Classic Italian risotto balls with a cheesy heart.", R.drawable.mozzarella_arancini);
+        RestMenuItem mozzarellaArancini = new RestMenuItem("£6.40", "Mozarella Arancini", "Classic Italian risotto balls with a cheesy heart.",2, R.drawable.mozzarella_arancini);
         menuItems.add(mozzarellaArancini);
-        RestMenuItem primavera = new RestMenuItem("£8.00", "Primavera", "Fresh seasonal vegetables tossed in a light sauce.", R.drawable.primavera);
+        RestMenuItem primavera = new RestMenuItem("£8.00", "Primavera", "Fresh seasonal vegetables tossed in a light sauce.",2, R.drawable.primavera);
         menuItems.add(primavera);
 
         filteredItems = new ArrayList<>(menuItems);
@@ -74,7 +74,7 @@ public class Guest_Menu_Activity extends AppCompatActivity {
                 for (RestMenuItem item : menuItems){
                     //checking to see if the keyword input is part of any item's description
                     //hence show if it is
-                    if (item.description.toLowerCase().contains(query.toLowerCase())){
+                    if (item.getDescription().toLowerCase().contains(query.toLowerCase())){
                         filteredItems.add(item);
                     }
                 }

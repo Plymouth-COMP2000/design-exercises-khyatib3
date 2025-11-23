@@ -50,9 +50,9 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
     @Override
     public void onBindViewHolder(StaffMenuAdapter.SMItemViewHolder holder, int pos){
         RestMenuItem item = itemList.get(pos);
-        holder.image.setImageResource(item.imageId);
-        holder.description.setText(item.description);
-        holder.price.setText(item.price);
+        holder.image.setImageResource(item.getImageId());
+        holder.description.setText(item.getDescription());
+        holder.price.setText(item.getPrice());
 
     }
 
