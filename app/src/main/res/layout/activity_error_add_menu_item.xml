@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Error_Add_MenuItem">
+
+    <ImageView
+        android:id="@+id/restaurant.logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <ImageView
+        android:id="@+id/errorImg"
+        android:layout_width="164dp"
+        android:layout_height="122dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant.logo"
+        app:srcCompat="@drawable/ic_error" />
+
+    <TextView
+        android:id="@+id/errorAddingItemMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/errorAddingItemTxt"
+        android:textAlignment="center"
+        android:textColor="@color/wine_red"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/errorImg"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/errorImg"
+        app:layout_constraintTop_toBottomOf="@+id/errorImg" />
+
+    <Button
+        android:id="@+id/retryAddingItemBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/retryLbl"
+        android:fontFamily="@font/coustard"
+        android:backgroundTint="@color/error_red"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/errorAddingItemMsg"
+        app:layout_constraintTop_toBottomOf="@+id/errorAddingItemMsg" />
+</androidx.constraintlayout.widget.ConstraintLayout>

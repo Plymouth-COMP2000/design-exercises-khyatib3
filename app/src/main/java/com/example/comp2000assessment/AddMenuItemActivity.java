@@ -1,5 +1,6 @@
 package com.example.comp2000assessment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +23,14 @@ import java.io.ByteArrayOutputStream;
 
 public class AddMenuItemActivity extends AppCompatActivity {
     private Bitmap selectedBitmap;
-    private ImageButton imageView;
-    private static final MenuDatabaseHelper db;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_menu_item);
-        imageView = findViewById(R.id.uploadImgBtn);
+        imageView = findViewById(R.id.previewImage);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.addNewItemScreen), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -63,19 +64,26 @@ public class AddMenuItemActivity extends AppCompatActivity {
                 byte[] imageBytes = convertBitmapToBytes(selectedBitmap);
                 EditText addName = findViewById(R.id.inputItemName);
                 EditText addPrice = findViewById(R.id.inputItemPrice);
-                EditText addCategory = findViewById(R.id.inputItemCategory);
                 EditText addDescription = findViewById(R.id.inputDescription);
+                Spinner categorySpinner = findViewById(R.id.categorySelection);
 
                 String itemName = addName.getText().toString();
-                double itemPrice = Double.parseDouble(String.valueOf(addPrice));
-                int itemCategory = Integer.parseInt(String.valueOf(addCategory));
+                double itemPrice = Double.parseDouble(String.valueOf(addPrice.getText()));
                 String itemDesc = addDescription.getText().toString();
+                String categoryString = categorySpinner.getSelectedItem().toString();
+                int itemCategory = Integer.parseInt(categoryString.substring(0, 1));
 
                 RestMenuItem menuItem = new RestMenuItem(itemName, itemPrice, itemCategory, itemDesc, imageBytes);
-                db
+                MenuDatabaseHelper db = new MenuDatabaseHelper(AddMenuItemActivity.this);
+                boolean insert_result = db.addItem(menuItem);
 
-                Intent intent = new Intent(AddMenuItemActivity.this, Item_Add_Confirm_Activity.class);
-                startActivity(intent);
+                if(insert_result){
+                    Intent intent = new Intent(AddMenuItemActivity.this, Item_Add_Confirm_Activity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(AddMenuItemActivity.this, Error_Add_MenuItem.class);
+                    startActivity(intent);
+                }
             }
         });
     }

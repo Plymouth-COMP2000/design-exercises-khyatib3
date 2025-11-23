@@ -164,9 +164,20 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         itemValues.put("name", item.getName());
         itemValues.put("description", item.getDescription());
         itemValues.put("categoryID", item.getCategoryID());
-        itemValues
+        itemValues.put("image", item.getImageBlob());
 
+        //returning rowID of the newly inserted record
+        long insert_result = db.insert("MenuItems", null, itemValues);
+        db.close();
 
+        //if insert was successful return true (bigger than 0 = true, less than is false, unsuccessful)
+        return insert_result > 0;
+    }
+
+    public boolean deleteItem(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rows = db.delete("MenuItems", "itemId=?", new String[]{String.valueOf(id)});
+        return rows > 0;
     }
 
 

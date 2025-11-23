@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".Error_Add_MenuItem"
+            android:exported="false" />
+        <activity
             android:name=".All_Tables_Activity"
             android:exported="false" />
         <activity

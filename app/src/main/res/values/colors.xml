@@ -5,4 +5,7 @@
     <color name="teal">#ADF0DEFF</color>
     <color name="coral">#D06D6D</color>
     <color name="wine_red">#FE4B0000</color>
+    <color name="error_red">#FEFF1C1C</color>
+    <color name="success_green">#C563DE75</color>
+    <color name="light_pink">#ffccd5</color>
 </resources>

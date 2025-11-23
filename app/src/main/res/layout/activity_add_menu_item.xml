@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/addNewItemScreen"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
     tools:context=".AddMenuItemActivity">
 
-    <EditText
-        android:id="@+id/inputItemCategory"
-        android:layout_width="202dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="112dp"
-        android:layout_marginEnd="16dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+    <Spinner
+        android:id="@+id/categorySelection"
+        style="@android:style/Widget.Holo.DropDownItem.Spinner"
+        android:layout_width="141dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/categoryLbl"
-        android:inputType="text"
-        android:padding="10dp"
+        android:entries="@array/categoryOptions"
+        android:popupBackground="@color/light_pink"
+        android:spinnerMode="dropdown"
+        android:theme="@style/dropDownItemTheme"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toEndOf="@+id/itemCategoryLbl"
+        app:layout_constraintTop_toBottomOf="@+id/inputItemName" />
 
     <EditText
         android:id="@+id/inputItemPrice"
@@ -49,21 +56,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
-    <TextView
-        android:id="@+id/addItemTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/abril_fatface"
-        android:text="@string/addItemTitle"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/addItemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="@string/addItemTitle"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.573"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+        <ImageButton
         android:id="@+id/addItemBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
@@ -85,7 +93,7 @@
         android:fontFamily="@font/coustard"
         android:text="@string/priceLbl"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
@@ -98,7 +106,7 @@
         android:fontFamily="@font/coustard"
         android:text="@string/itemNameLbl"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
@@ -111,26 +119,26 @@
         android:fontFamily="@font/coustard"
         android:text="@string/categoryLbl"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
         app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
-    <TextView
-        android:id="@+id/uploadItemImgLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="316dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/uploadLbl"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/addItemTitle"
-        app:layout_constraintHorizontal_bias="0.071"
-        app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+        <TextView
+            android:id="@+id/uploadItemImgLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="256dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/uploadLbl"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/addItemTitle"
+            app:layout_constraintHorizontal_bias="0.323"
+            app:layout_constraintStart_toStartOf="@+id/addItemBackBtn"
+            app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
-    <Button
+        <Button
         android:id="@+id/uploadImgBtn"
         android:layout_width="269dp"
         android:layout_height="63dp"
@@ -140,11 +148,22 @@
         android:padding="10dp"
         android:text="Upload Image..."
         android:textColor="@color/black"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/uploadItemImgLbl"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="@+id/uploadItemImgLbl"
         app:layout_constraintTop_toBottomOf="@+id/uploadItemImgLbl" />
+
+    <!-- preview the image-->
+    <ImageView
+        android:id="@+id/previewImage"
+        android:layout_width="180dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/uploadImgBtn"/>
 
     <ImageView
         android:id="@+id/uploadIcon"
@@ -157,25 +176,25 @@
         app:layout_constraintTop_toTopOf="@+id/uploadImgBtn"
         app:srcCompat="@drawable/ic_upload" />
 
-    <TextView
-        android:id="@+id/itemDescriptionLbl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/itemDescLbl"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/uploadImgBtn"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="@+id/uploadImgBtn"
-        app:layout_constraintTop_toBottomOf="@+id/uploadImgBtn" />
+        <TextView
+            android:id="@+id/itemDescriptionLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="192dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/itemDescLbl"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/uploadImgBtn"
+            app:layout_constraintHorizontal_bias="0.553"
+            app:layout_constraintStart_toStartOf="@+id/uploadImgBtn"
+            app:layout_constraintTop_toBottomOf="@+id/uploadImgBtn" />
 
-    <EditText
+        <EditText
         android:id="@+id/inputDescription"
         android:layout_width="326dp"
         android:layout_height="177dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/rounded_light_pink_rectangle"
         android:ems="10"
         android:fontFamily="@font/coustard"
@@ -184,23 +203,23 @@
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/itemDescriptionLbl"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="@+id/itemDescriptionLbl"
         app:layout_constraintTop_toBottomOf="@+id/itemDescriptionLbl" />
 
-    <Button
-        android:id="@+id/addItemBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#c9184a"
-        android:fontFamily="@font/coustard"
-        android:text="@string/addItemTitle"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/inputDescription"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="@+id/inputDescription"
-        app:layout_constraintTop_toBottomOf="@+id/inputDescription" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/addItemBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#c9184a"
+            android:fontFamily="@font/coustard"
+            android:text="@string/addItemTitle"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/inputDescription"
+            app:layout_constraintHorizontal_bias="0.511"
+            app:layout_constraintStart_toStartOf="@+id/inputDescription"
+            app:layout_constraintTop_toBottomOf="@+id/inputDescription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

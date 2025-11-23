@@ -27,8 +27,6 @@ public class Staff_Menu_Activity extends AppCompatActivity {
     RecyclerView staffRecyclerView;
     StaffMenuAdapter adapter;
     List<RestMenuItem> menuItems;
-    Context context;
-    private static final int PICK_IMAGE_REQUEST = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
