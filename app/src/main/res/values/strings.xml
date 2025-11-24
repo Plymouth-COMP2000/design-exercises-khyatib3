@@ -133,5 +133,6 @@
     <string name="add_new_staffLbl">Add New Staff</string>
     <string name="work_email_Prompt">Work Email:</string>
     <string name="enter_work_email_Hint">Enter your WORK email...</string>
+    <string name="staff_added_Message">Staff member successfully added to \n admin database!</string>
 
 </resources>
