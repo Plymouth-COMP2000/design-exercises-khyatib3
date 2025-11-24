@@ -129,5 +129,9 @@
     <string name="errorAddingItemTxt">Oops! \n There was an issue adding this item to the database! \n Please go back and try again!</string>
     <string name="retryLbl">Retry</string>
     <string name="deleteItemPrompt">You are about to delete this item! \n Do you wish to continue?</string>
+    <string name="upload_imageLbl">Upload Image...</string>
+    <string name="add_new_staffLbl">Add New Staff</string>
+    <string name="work_email_Prompt">Work Email:</string>
+    <string name="enter_work_email_Hint">Enter your WORK email...</string>
 
 </resources>

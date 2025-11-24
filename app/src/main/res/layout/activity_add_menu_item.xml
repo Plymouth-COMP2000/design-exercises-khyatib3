@@ -12,79 +12,79 @@
         android:layout_height="wrap_content">
 
 
-    <Spinner
-        android:id="@+id/categorySelection"
-        style="@android:style/Widget.Holo.DropDownItem.Spinner"
-        android:layout_width="141dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:entries="@array/categoryOptions"
-        android:popupBackground="@color/light_pink"
-        android:spinnerMode="dropdown"
-        android:theme="@style/dropDownItemTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toEndOf="@+id/itemCategoryLbl"
-        app:layout_constraintTop_toBottomOf="@+id/inputItemName" />
+        <Spinner
+            android:id="@+id/categorySelection"
+            style="@android:style/Widget.Holo.DropDownItem.Spinner"
+            android:layout_width="175dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:entries="@array/categoryOptions"
+            android:popupBackground="@color/light_pink"
+            android:spinnerMode="dropdown"
+            android:theme="@style/dropDownItemTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.475"
+            app:layout_constraintStart_toEndOf="@+id/itemCategoryLbl"
+            app:layout_constraintTop_toBottomOf="@+id/inputItemName" />
 
-    <EditText
-        android:id="@+id/inputItemPrice"
-        android:layout_width="202dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="188dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/priceLbl"
-        android:inputType="text"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+        <EditText
+            android:id="@+id/inputItemPrice"
+            android:layout_width="188dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="184dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/priceLbl"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
-    <EditText
-        android:id="@+id/inputItemName"
-        android:layout_width="202dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/itemNameLbl"
-        android:inputType="text"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
+        <EditText
+            android:id="@+id/inputItemName"
+            android:layout_width="193dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="28dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/itemNameLbl"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addItemTitle" />
 
         <TextView
             android:id="@+id/addItemTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/abril_fatface"
             android:text="@string/addItemTitle"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="34sp"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.573"
+            app:layout_constraintHorizontal_bias="0.574"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-        android:id="@+id/addItemBackBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="@string/goBackTxt"
-        app:layout_constraintEnd_toStartOf="@+id/addItemTitle"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back" />
+            android:id="@+id/addItemBackBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/goBackTxt"
+            app:layout_constraintEnd_toStartOf="@+id/addItemTitle"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back" />
 
-    <TextView
+        <TextView
         android:id="@+id/itemPriceLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
         android:backgroundTint="#ff4d6d"
         android:fontFamily="@font/coustard"
         android:padding="10dp"
-        android:text="Upload Image..."
+        android:text="@string/upload_imageLbl"
         android:textColor="@color/black"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/uploadItemImgLbl"
@@ -155,17 +155,19 @@
         app:layout_constraintTop_toBottomOf="@+id/uploadItemImgLbl" />
 
     <!-- preview the image-->
-    <ImageView
-        android:id="@+id/previewImage"
-        android:layout_width="180dp"
-        android:layout_height="141dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/uploadImgBtn"/>
 
-    <ImageView
+        <ImageView
+            android:id="@+id/previewImage"
+            android:layout_width="180dp"
+            android:layout_height="141dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_input"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.595"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/uploadImgBtn" />
+
+        <ImageView
         android:id="@+id/uploadIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -180,15 +182,15 @@
             android:id="@+id/itemDescriptionLbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="192dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/coustard"
             android:text="@string/itemDescLbl"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@+id/uploadImgBtn"
-            app:layout_constraintHorizontal_bias="0.553"
+            app:layout_constraintHorizontal_bias="0.569"
             app:layout_constraintStart_toStartOf="@+id/uploadImgBtn"
-            app:layout_constraintTop_toBottomOf="@+id/uploadImgBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/previewImage" />
 
         <EditText
         android:id="@+id/inputDescription"

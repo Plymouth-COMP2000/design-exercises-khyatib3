@@ -28,7 +28,7 @@ public class EditMenuItemDialog extends DialogFragment {
         View dialogView = inflater.inflate(R.layout.custom_dialog, null);
         builder.setView(dialogView);
 
-        ImageButton closeBtn = dialogView.findViewById(R.id.closeBtn);
+        ImageButton closeBtn = dialogView.findViewById(R.id.closeEditDialogBtn);
         Button saveBtn = dialogView.findViewById(R.id.saveMenuChangeBtn);
         Button cancelBtn = dialogView.findViewById(R.id.cancelMenuChangesBtn);
         Button imageBtn = dialogView.findViewById(R.id.editImageBtn);

@@ -78,12 +78,14 @@
 
     <Spinner
         android:id="@+id/guestNoDropdown"
-        style="@android:style/Widget.Material.Light.Spinner.Underlined"
         android:layout_width="141dp"
         android:layout_height="48dp"
-        android:layout_marginTop="15dp"
+        android:background="@drawable/grey_dropdown"
+        android:dropDownSelector="@android:color/transparent"
         android:entries="@array/guest_no_dropdown_items"
-        android:popupBackground="#FFFFFF"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:popupBackground="#FBDCDC"
         android:spinnerMode="dropdown"
         android:theme="@style/dropDownItemTheme"
         app:layout_constraintEnd_toEndOf="@+id/customerName"
