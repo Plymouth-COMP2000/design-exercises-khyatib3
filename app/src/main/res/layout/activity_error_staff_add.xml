@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/error_StaffAddScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Error_StaffAdd">
+    <ImageView
+        android:id="@+id/restaurant_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+    <TextView
+        android:id="@+id/restaurant.Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="@string/restaurantName"
+        android:textColor="@color/wine_red"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/restaurant_logo"
+        app:layout_constraintStart_toStartOf="@+id/restaurant_logo"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_logo" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="125dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="112dp"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/ic_staff_add_error"
+        app:layout_constraintEnd_toEndOf="@+id/restaurant.Name"
+        app:layout_constraintStart_toStartOf="@+id/restaurant.Name"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant.Name" />
+
+    <TextView
+        android:id="@+id/memberAddFailMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="224dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/add_staff_FailTxt"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant.Name" />
+
+    <Button
+        android:id="@+id/staff_adminRetryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/error_red"
+        android:fontFamily="@font/coustard"
+        android:text="@string/retryLbl"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/memberAddFailMsg"
+        app:layout_constraintStart_toStartOf="@+id/memberAddFailMsg"
+        app:layout_constraintTop_toBottomOf="@+id/memberAddFailMsg"
+        app:layout_constraintVertical_bias="0.03" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".Error_StaffAdd"
+            android:exported="false" />
+        <activity
             android:name=".Staff_Added_Confirmation"
             android:exported="false" />
         <activity

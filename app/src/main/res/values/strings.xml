@@ -134,5 +134,6 @@
     <string name="work_email_Prompt">Work Email:</string>
     <string name="enter_work_email_Hint">Enter your WORK email...</string>
     <string name="staff_added_Message">Staff member successfully added to \n admin database!</string>
+    <string name="add_staff_FailTxt">Oops! \n This member could not be added \n to the admin database! \n Please try again!</string>
 
 </resources>
