@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/menuOptionsScreen_guest"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuOptions_Activity">
+
+    <ImageButton
+        android:id="@+id/g_menuOptHomeBtn"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/backHomeTxt"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintBottom_toBottomOf="@+id/menuOptionsTitle"
+        app:layout_constraintEnd_toStartOf="@+id/menuOptionsTitle"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/menuOptionsTitle"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/abril_fatface"
+        android:text="Full Menu"
+        android:textAlignment="center"
+        android:textColor="@color/wine_red"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/g_startersBtn"
+        android:layout_width="267dp"
+        android:layout_height="118dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/startersBtnImg"
+        android:contentDescription="Show Starters"
+        app:cornerRadius="8dp"
+        app:iconGravity="start"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toEndOf="@id/menuOptionsTitle"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@id/menuOptionsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/menuOptionsTitle" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/g_dessertsBtn"
+        android:layout_width="269dp"
+        android:layout_height="137dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/dessertsBtnImg"
+        android:contentDescription="Show Desserts"
+        app:cornerRadius="8dp"
+        app:iconGravity="start"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/g_mainsBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/g_mainsBtn"
+        app:layout_constraintTop_toBottomOf="@+id/g_mainsBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/g_drinksBtn"
+        android:layout_width="267dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/drinksBtnImg"
+        android:contentDescription="Show Drinks"
+        app:cornerRadius="8dp"
+        app:iconGravity="start"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/g_dessertsBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/g_dessertsBtn"
+        app:layout_constraintTop_toBottomOf="@+id/g_dessertsBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/g_mainsBtn"
+        android:layout_width="267dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/mainsBtnImg"
+        android:contentDescription="Show Mains"
+        app:cornerRadius="8dp"
+        app:iconGravity="start"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/g_startersBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/g_startersBtn"
+        app:layout_constraintTop_toBottomOf="@+id/g_startersBtn" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/g_sidesBtn"
+        android:layout_width="267dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/sidesBtnImg"
+        android:contentDescription="Show Sides"
+        app:cornerRadius="8dp"
+        app:iconGravity="start"
+        app:iconPadding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/g_drinksBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/g_drinksBtn"
+        app:layout_constraintTop_toBottomOf="@+id/g_drinksBtn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
