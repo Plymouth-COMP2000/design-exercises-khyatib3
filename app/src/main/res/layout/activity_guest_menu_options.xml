@@ -5,7 +5,7 @@
     android:id="@+id/menuOptionsScreen_guest"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuOptions_Activity">
+    tools:context=".Guest_Menu_Options_Activity">
 
     <ImageButton
         android:id="@+id/g_menuOptHomeBtn"
@@ -40,7 +40,7 @@
         android:layout_width="267dp"
         android:layout_height="118dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/startersBtnImg"
+        android:background="@drawable/starters_btn_img"
         android:contentDescription="Show Starters"
         app:cornerRadius="8dp"
         app:iconGravity="start"
@@ -55,7 +55,7 @@
         android:layout_width="269dp"
         android:layout_height="137dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/dessertsBtnImg"
+        android:background="@drawable/desserts_btn_img"
         android:contentDescription="Show Desserts"
         app:cornerRadius="8dp"
         app:iconGravity="start"
@@ -70,7 +70,7 @@
         android:layout_width="267dp"
         android:layout_height="142dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/drinksBtnImg"
+        android:background="@drawable/drinks_btn_img"
         android:contentDescription="Show Drinks"
         app:cornerRadius="8dp"
         app:iconGravity="start"
@@ -85,7 +85,7 @@
         android:layout_width="267dp"
         android:layout_height="123dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/mainsBtnImg"
+        android:background="@drawable/mains_btn_img"
         android:contentDescription="Show Mains"
         app:cornerRadius="8dp"
         app:iconGravity="start"
@@ -100,7 +100,7 @@
         android:layout_width="267dp"
         android:layout_height="150dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/sidesBtnImg"
+        android:background="@drawable/sides_btn_img"
         android:contentDescription="Show Sides"
         app:cornerRadius="8dp"
         app:iconGravity="start"
