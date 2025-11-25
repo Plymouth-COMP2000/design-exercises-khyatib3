@@ -3,13 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/guest_menu_page"
+    android:id="@+id/guest_starters_page"
     android:padding="8dp"
     android:orientation="vertical"
-    tools:context=".Guest_Menu_Activity">
+    tools:context=".Guest_Starters_Activity">
 
     <!-- home button and sidebar button -->
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -27,11 +26,11 @@
             android:src="@drawable/ic_home"/>
 
         <TextView
-            android:id="@+id/menuTitle"
+            android:id="@+id/startersTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/menuLbl"
+            android:text="@string/starterLbl"
             android:fontFamily="@font/abril_fatface"
             android:textSize="26sp"
             android:textStyle="bold"
@@ -59,7 +58,7 @@
         android:layout_height="wrap_content">
     <!-- menu items data -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/g_startersRecyclerView"
         android:layout_width="394dp"
         android:layout_height="604dp"
         android:layout_weight="1"

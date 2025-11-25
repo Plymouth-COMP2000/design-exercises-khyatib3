@@ -30,7 +30,7 @@ public class GuestHomepage extends AppCompatActivity {
         viewMenuBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(GuestHomepage.this, Guest_Menu_Activity.class);
+                Intent intent = new Intent(GuestHomepage.this, Guest_Starters_Activity.class);
                 startActivity(intent);
             }
         });
