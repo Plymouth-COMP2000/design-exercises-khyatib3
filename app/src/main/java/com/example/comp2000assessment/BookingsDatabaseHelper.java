@@ -33,6 +33,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+ DATABASE_NAME);
     }
 
+    //CREATE
     public boolean createBooking (BookingRecord booking){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -49,4 +50,13 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
         return insert_result > 0;
     }
+
+    //DELETE
+    public boolean deleteItem(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        int rows = db.delete(DATABASE_NAME, "itemId=?", new String[]{String.valueOf(id)});
+        return rows > 0;
+    }
+
+
 }
