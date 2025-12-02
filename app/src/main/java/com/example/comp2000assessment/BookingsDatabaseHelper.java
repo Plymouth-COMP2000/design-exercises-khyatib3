@@ -1,5 +1,6 @@
 package com.example.comp2000assessment;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -30,5 +31,22 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+ DATABASE_NAME);
+    }
+
+    public boolean createBooking (BookingRecord booking){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues bookingValues = new ContentValues();
+        bookingValues.put("confirmed", booking.confirmed);
+        bookingValues.put("guest_first_name", booking.guestFirstName);
+        bookingValues.put("guest_last_name", booking.guestLastName);
+        bookingValues.put("date", booking.date);
+        bookingValues.put("time", booking.time);
+        bookingValues.put("table_no", booking.tableNo);
+
+        long insert_result = db.insert(DATABASE_NAME, null, bookingValues);
+        db.close();
+
+        return insert_result > 0;
     }
 }

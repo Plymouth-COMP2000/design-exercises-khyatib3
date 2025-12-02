@@ -178,7 +178,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         itemValues.put("image", item.getImageBlob());
 
         //returning rowID of the newly inserted record
-        long insert_result = db.insert("MenuItems", null, itemValues);
+        long insert_result = db.insert(ITEM_TABLE_NAME, null, itemValues);
         db.close();
 
         //if insert was successful return true (bigger than 0 = true, less than is false, unsuccessful)
