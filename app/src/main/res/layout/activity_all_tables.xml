@@ -43,7 +43,7 @@
         android:text="Open Requests"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/allTablesTitle" />
@@ -59,7 +59,7 @@
         android:text="Table 1"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn" />
 
@@ -73,7 +73,7 @@
         android:text="Table 2"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toEndOf="@+id/table1Btn"
@@ -89,7 +89,7 @@
         android:text="Table 3"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintStart_toStartOf="@+id/table1Btn"
         app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn" />
 
@@ -103,7 +103,7 @@
         android:text="Table 4"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="@+id/table2Btn"
         app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn" />
 
@@ -117,7 +117,7 @@
         android:text="Table 5"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="@+id/table3Btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/table3Btn"
@@ -133,7 +133,7 @@
         android:text="Table 6"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="@+id/table4Btn"
         app:layout_constraintTop_toBottomOf="@+id/table4Btn" />
 
@@ -147,7 +147,7 @@
         android:text="Table 7"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="@+id/table5Btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/table5Btn"
@@ -163,7 +163,7 @@
         android:text="Table 8"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:cornerRadius="8dp"
+        app:cornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="@+id/table6Btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/table6Btn"
@@ -180,7 +180,7 @@
         app:srcCompat="@drawable/restaurant_logo" />
 
     <TextView
-        android:id="@+id/restaurant_Name"
+        android:id="@+id/restName_AllTables"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

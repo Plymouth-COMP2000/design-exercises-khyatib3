@@ -19,7 +19,7 @@ public class Guest_Menu_Options_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_guest_menu_options);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.menuOptionsScreen_guest), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -34,7 +34,7 @@ public class Guest_Menu_Options_Activity extends AppCompatActivity {
             }
         });
 
-        Button startersBtn = findViewById(R.id.g_startersBtn);
+        ImageButton startersBtn = findViewById(R.id.g_startersBtn);
         startersBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

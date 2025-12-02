@@ -2,11 +2,14 @@ package com.example.comp2000assessment;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.view.MenuItem;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class MenuDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "MenuDB";
@@ -47,7 +50,8 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
-                "m.price " +
+                "m.price, " +
+                "m.categoryID " +
                 "FROM MenuItems as m " +
                 "INNER JOIN Category c ON m.CategoryID = c.categoryID " +
                 "WHERE c.categoryName = 'Starters' " +
@@ -62,7 +66,8 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
-                "m.price " +
+                "m.price, " +
+                "m.categoryID " +
                 "FROM MenuItems as m " +
                 "INNER JOIN Category c ON m.categoryID = c.categoryID " +
                 "WHERE c.categoryName = 'Mains' " +
@@ -77,7 +82,8 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
-                "m.price " +
+                "m.price, " +
+                "m.categoryID " +
                 "FROM MenuItems as m " +
                 "INNER JOIN Category c ON m.categoryID = c.categoryID " +
                 "WHERE c.categoryName = 'Desserts' " +
@@ -90,7 +96,8 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
-                "m.price " +
+                "m.price, " +
+                "m.categoryID " +
                 "FROM MenuItems as m " +
                 "INNER JOIN Category c ON m.categoryID = c.categoryID " +
                 "WHERE c.categoryName = 'Drinks' " +
@@ -104,7 +111,8 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
-                "m.price " +
+                "m.price, " +
+                "m.categoryID " +
                 "FROM MenuItems as m " +
                 "INNER JOIN Category c ON m.categoryID = c.categoryID " +
                 "WHERE c.categoryName = 'Sides' " +
@@ -123,7 +131,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 ");";
         db.execSQL(createLogTable);
 
-        String createTriggerSQL = "CREATE TRIGGER IF NOT EXISTS trg_AddNewItem" +
+        String createTriggerSQL = "CREATE TRIGGER IF NOT EXISTS trg_AddNewItem " +
                 "AFTER INSERT ON MenuItems " +
                 "BEGIN " +
                 "INSERT INTO LogMenu(name, image, description, price, categoryID) " +
@@ -153,6 +161,9 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         //recreating all the tables and views
         onCreate(db);
     }
+
+
+    //CREATE
     //boolean to return result of insertion
     //if returns 1, add new item confirmation screen will be triggered.
     public boolean addItem(RestMenuItem item) {
@@ -174,12 +185,95 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         return insert_result > 0;
     }
 
-    public boolean deleteItem(int id){
+    //DELETE
+    public boolean deleteItem(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         int rows = db.delete("MenuItems", "itemId=?", new String[]{String.valueOf(id)});
         return rows > 0;
     }
 
+    //READ
+    public ArrayList<RestMenuItem> showMenuItems(String category) {
+//        declare and initiate an array list of type RestMenuItems
+//        this will hold all the records of items that the query returns (matching the category given)
+        ArrayList<RestMenuItem> menuItems = new ArrayList<>();
+
+        //getting a readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+//        since menu items are shown in categories, (for which there are views created above)
+//        I will select from that view to return menu items
+        String viewName;
+
+        //given the category passed in to this method, set the content of viewName
+        switch (category) {
+            case "starters":
+                viewName = "StartersView";
+                break;
+            case "mains":
+                viewName = "MainsView";
+                break;
+            case "desserts":
+                viewName = "DessertsView";
+                break;
+            case "drinks":
+                viewName = "DrinksView";
+                break;
+            case "sides":
+                viewName = "SidesView";
+                break;
+            default:
+                return menuItems;
+        }
+        //creating the query with the necessary view
+        //selecting all from the view as my RestMenuItem constructor requires all fields
+        String selectQuery = "SELECT * FROM " + viewName + ";";
+
+        //creating an instance of a cursor in order to traverse through the records in MenuItems table
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                //below I am retrieving all the fields of the RestMenuItem constructor from the record the cursor is pointing at
+                String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                String description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
+                double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
+                int categoryID = cursor.getInt(cursor.getColumnIndexOrThrow("categoryID"));
+                byte[] image = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
+
+                //creating a new RestMenuItem object and adding it to the array list
+                RestMenuItem item = new RestMenuItem(name, price, categoryID, description, image);
+                menuItems.add(item);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return menuItems;
+    }
+
+    //UPDATE
+    public void updateItem(RestMenuItem item){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues itemValues = new ContentValues();
+        double priceVal = Double.parseDouble(item.getPrice());
+        itemValues.put("price", priceVal);
+        itemValues.put("name", item.getName());
+        itemValues.put("description", item.getDescription());
+        itemValues.put("categoryID", item.getCategoryID());
+        itemValues.put("image", item.getImageBlob());
+
+        String whereClause = "name = ?";
+        String[] whereArgs = {item.getName()};
+
+        db.update(ITEM_TABLE_NAME, itemValues, whereClause, whereArgs);
+        db.close();
+
+    }
+
+    }
 
 
-}
+

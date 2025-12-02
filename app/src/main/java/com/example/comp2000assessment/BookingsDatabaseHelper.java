@@ -14,7 +14,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db){
-        String createAllBookings = "CREATE TABLE IF NOT EXISTS(" +
+        String createAllBookings = "CREATE TABLE IF NOT EXISTS Bookings(" +
                                         "bookingID INTEGER PRIMARY KEY AUTOINCREMENT,"+
                                         "confirmed INTEGER NOT NULL,"+
                                         "guest_first_name TEXT NOT NULL,"+

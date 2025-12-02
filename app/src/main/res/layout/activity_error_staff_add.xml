@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Error_StaffAdd">
     <ImageView
-        android:id="@+id/restaurant_logo"
+        android:id="@+id/restaurant_logo_AdminError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,12 +25,12 @@
         android:text="@string/restaurantName"
         android:textColor="@color/wine_red"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="@+id/restaurant_logo"
-        app:layout_constraintStart_toStartOf="@+id/restaurant_logo"
-        app:layout_constraintTop_toBottomOf="@+id/restaurant_logo" />
+        app:layout_constraintEnd_toEndOf="@+id/restaurant_logo_AdminError"
+        app:layout_constraintStart_toStartOf="@+id/restaurant_logo_AdminError"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_logo_AdminError" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/errorIcon"
         android:layout_width="125dp"
         android:layout_height="85dp"
         android:layout_marginTop="112dp"
@@ -49,9 +49,9 @@
         android:text="@string/add_staff_FailTxt"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/errorIcon"
         app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/errorIcon"
         app:layout_constraintTop_toBottomOf="@+id/restaurant.Name" />
 
     <Button

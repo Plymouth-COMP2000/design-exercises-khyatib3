@@ -61,10 +61,6 @@ public class Staff_Menu_Activity extends AppCompatActivity {
         adapter = new StaffMenuAdapter(this,menuItems);
         staffRecyclerView.setAdapter(adapter);
 
-        //find edit menu btn
-        Button editMenuBtn = findViewById(R.id.edit_button);
-
-
         //find home button
         ImageButton homeBtn = findViewById(R.id.staffMenuHomeBtn);
         homeBtn.setOnClickListener(new View.OnClickListener(){

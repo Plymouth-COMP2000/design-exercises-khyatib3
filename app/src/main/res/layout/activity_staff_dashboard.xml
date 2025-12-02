@@ -7,11 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".StaffDashboard">
 
+    <!--VIEW AND CHANGE MENU -->
+
+    <!--View Reservations-->
+
+    <!-- ADD STAFF MEMBER BTN-->
+
     <TextView
         android:id="@+id/restaurantNameDash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/abril_fatface"
         android:text="@string/restaurantName"
         android:textColor="#570000"
@@ -20,43 +26,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--VIEW AND CHANGE MENU -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/viewChangeMenuBtn"
         android:layout_width="253dp"
         android:layout_height="126dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#800f2F"
         android:fontFamily="@font/coustard"
         android:text="@string/changeViewMenuLbl"
         android:textSize="16sp"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="@+id/restaurantNameDash"
-        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/restaurantNameDash"
         app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
 
-    <!--View Reservations-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/viewTblResBtn"
         android:layout_width="255dp"
         android:layout_height="126dp"
-        android:layout_marginTop="184dp"
         android:backgroundTint="#800f2F"
         android:fontFamily="@font/coustard"
         android:text="@string/viewTblResLbl"
         android:textSize="16sp"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="@+id/restaurantNameDash"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/restaurantNameDash"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
+        app:layout_constraintTop_toBottomOf="@+id/viewChangeMenuBtn" />
 
-    <!-- ADD STAFF MEMBER BTN-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/addStaffBtn"
         android:layout_width="255dp"
         android:layout_height="131dp"
-        android:layout_marginTop="320dp"
         android:backgroundTint="#800f2F"
         android:fontFamily="@font/coustard"
         android:text="@string/addStaffLbl"
@@ -65,14 +67,13 @@
         app:layout_constraintEnd_toEndOf="@+id/viewTblResBtn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/viewTblResBtn"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
+        app:layout_constraintTop_toBottomOf="@+id/viewTblResBtn" />
 
     <!-- preferences BTN-->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/staffPreferencesBtn"
         android:layout_width="255dp"
         android:layout_height="131dp"
-        android:layout_marginTop="460dp"
         android:backgroundTint="#800f2F"
         android:fontFamily="@font/coustard"
         android:text="@string/preferencesOption"
@@ -80,14 +81,14 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="@+id/restaurantNameDash"
         app:layout_constraintStart_toStartOf="@+id/restaurantNameDash"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantNameDash" />
+        app:layout_constraintTop_toBottomOf="@+id/addStaffBtn" />
 
     <!-- Logo-->
     <ImageView
         android:id="@+id/dashboardLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="92dp"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/staffPreferencesBtn"

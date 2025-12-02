@@ -5,6 +5,7 @@
     android:id="@+id/menuOptionsScreen_guest"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:isScrollContainer="true"
     tools:context=".Guest_Menu_Options_Activity">
 
     <ImageButton
@@ -35,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/g_startersBtn"
         android:layout_width="267dp"
         android:layout_height="118dp"
@@ -50,7 +51,7 @@
         app:layout_constraintStart_toStartOf="@id/menuOptionsTitle"
         app:layout_constraintTop_toBottomOf="@+id/menuOptionsTitle" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/g_dessertsBtn"
         android:layout_width="269dp"
         android:layout_height="137dp"
@@ -65,7 +66,7 @@
         app:layout_constraintStart_toStartOf="@+id/g_mainsBtn"
         app:layout_constraintTop_toBottomOf="@+id/g_mainsBtn" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/g_drinksBtn"
         android:layout_width="267dp"
         android:layout_height="142dp"
@@ -80,7 +81,7 @@
         app:layout_constraintStart_toStartOf="@+id/g_dessertsBtn"
         app:layout_constraintTop_toBottomOf="@+id/g_dessertsBtn" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/g_mainsBtn"
         android:layout_width="267dp"
         android:layout_height="123dp"
@@ -95,7 +96,7 @@
         app:layout_constraintStart_toStartOf="@+id/g_startersBtn"
         app:layout_constraintTop_toBottomOf="@+id/g_startersBtn" />
 
-    <com.google.android.material.button.MaterialButton
+    <ImageButton
         android:id="@+id/g_sidesBtn"
         android:layout_width="267dp"
         android:layout_height="150dp"
