@@ -67,6 +67,11 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        db.execSQL("DROP VIEW IF EXISTS GConBookings");
+        db.execSQL("DROP VIEW IF EXISTS GUnconfirmedReqs");
+        db.execSQL("DROP VIEW IF EXISTS StaffConBookings");
+        db.execSQL("DROP VIEW IF EXISTS StaffBookingsReqs");
+        onCreate(db);
     }
 
     //CREATE
@@ -106,6 +111,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
         //declaring arraylist that will store bookings and be returned
         ArrayList<BookingRecord> confirmedBookings = new ArrayList<>();
+
 
 
     }
