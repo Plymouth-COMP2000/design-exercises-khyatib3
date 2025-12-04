@@ -1,9 +1,16 @@
 package com.example.comp2000assessment;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
+import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 
@@ -48,11 +55,11 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createGuestUnconfirmedView);
 
         //SQL for staff viewing confirmed bookings
-        String createStaffConfirmedView = "CREATE VIEW IF NOT EXISTS StaffConBookings "+
-                    "AS " +
-                    "SELECT date, time, guest_first_name, guest_last_name, no_guests, table_no " +
-                    "FROM Bookings " +
-                    "WHERE confirmed = 1";
+        String createStaffConfirmedView = "CREATE VIEW IF NOT EXISTS StaffConBookings " +
+                "AS " +
+                "SELECT date, time, guest_first_name, guest_last_name, no_guests, table_no " +
+                "FROM Bookings " +
+                "WHERE confirmed = 1";
         db.execSQL(createStaffConfirmedView);
 
         //SQL for staff viewing booking requests
@@ -105,23 +112,101 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
     //multiple required here, as I need to show:
     // guests confirmed bookings and unconfirmed requests
     // all unconfirmed requests and confirmed bookings for staff
-    public ArrayList<BookingRecord> showGuestConfirmedBookings(String guest_first_name, String guest_last_name){
+    public ArrayList<BookingRecord> showGuestConfirmedBookings(String guest_first_name, String guest_last_name) {
         //getting readable database
         SQLiteDatabase db = this.getReadableDatabase();
 
         //declaring arraylist that will store bookings and be returned
         ArrayList<BookingRecord> confirmedBookings = new ArrayList<>();
+        //using appropriate view to show confirmed bookings
+        String viewName = "GConBookings";
 
+        //creating query to get bookings for given user
+        String[] columns = {"bookingID", "date", "time", "no_guests", "table_no"};
+        String selection = "guest_first_name = ? AND guest_last_name = ?";
+        String[] selectionArgs = {guest_first_name, guest_last_name};
 
+        Cursor cursor;
+        cursor = db.query(viewName, columns, selection, selectionArgs, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                //getting the values of the attributes of the booking
+                String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+                String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
+                int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
+                int tableNo = cursor.getInt(cursor.getColumnIndexOrThrow("table_no"));
+                int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
+
+                //creating a BookingRecord object with the values
+                BookingRecord booking = new BookingRecord(date, time, noGuests, tableNo, R.drawable.ic_people_group);
+                booking.confirmed = true;
+                booking.tableNo = tableNo;
+                booking.setBookingID(bookingID);
+
+                //adding the booking to the arraylist
+                confirmedBookings.add(booking);
+
+            } while (cursor.moveToNext());
+        }
+
+        //closing cursor and database and returning the list of confirmed bookings
+        cursor.close();
+        db.close();
+        return confirmedBookings;
 
     }
+
+    public ArrayList<BookingRecord> showGuestUnconfirmedReqs(String guest_first_name, String guest_last_name) {
+        //getting readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //declaring arraylist that will store bookings and be returned
+        ArrayList<BookingRecord> guestBookingReqs = new ArrayList<>();
+        //using appropriate view to show confirmed bookings
+        String viewName = "GUnconfirmedReqs";
+
+        //creating query to get bookings for given user
+        String[] columns = {"bookingID", "date", "time", "no_guests"};
+        String selection = "guest_first_name = ? AND guest_last_name = ?";
+        String[] selectionArgs = {guest_first_name, guest_last_name};
+
+        Cursor cursor;
+        cursor = db.query(viewName, columns, selection, selectionArgs, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                //getting the values of the attributes of the booking
+                String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+                String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
+                int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
+                int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
+
+                //creating a BookingRecord object with the values
+                BookingRecord booking = new BookingRecord(date, time, noGuests, R.drawable.ic_people_group);
+                booking.confirmed = false;
+                booking.setBookingID(bookingID);
+
+                //adding the booking to the arraylist
+                guestBookingReqs.add(booking);
+
+            } while (cursor.moveToNext());
+        }
+
+        //closing cursor and database and returning the list of confirmed bookings
+        cursor.close();
+        db.close();
+        return guestBookingReqs;
+
+    }
+
+
+
 
 
     //UPDATE
     public boolean updateBooking(BookingRecord booking) {
         //first check booking passed has an id
         if (booking.getBookingID() > 0) {
-            SQLiteDatabase db = getWritableDatabase();
+            SQLiteDatabase db = this.getWritableDatabase();
 
             //retrieving booking attributes to be updated and setting them in content values
             ContentValues bookingVals = new ContentValues();

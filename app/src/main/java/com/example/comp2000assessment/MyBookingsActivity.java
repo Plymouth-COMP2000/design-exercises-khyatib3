@@ -43,13 +43,13 @@ public class MyBookingsActivity extends AppCompatActivity {
 
 
         List<BookingRecord> bookingRecords = new ArrayList<>();
-        BookingRecord booking1 = new BookingRecord("Sat. 4th Oct", "18:30", 4, R.drawable.ic_people_group);
+        BookingRecord booking1 = new BookingRecord("Sat. 4th Oct", "18:30", 4, 3, R.drawable.ic_people_group);
         bookingRecords.add(booking1);
 
-        BookingRecord booking2 = new BookingRecord("Thur. 11th Nov", "14:30", 3, R.drawable.ic_people_group);
+        BookingRecord booking2 = new BookingRecord("Thur. 11th Nov", "14:30", 3, 5, R.drawable.ic_people_group);
         bookingRecords.add(booking2);
 
-        BookingRecord booking3 = new BookingRecord("Mon. 15th Nov", "20:30", 6, R.drawable.ic_people_group);
+        BookingRecord booking3 = new BookingRecord("Mon. 15th Nov", "20:30", 6, 1, R.drawable.ic_people_group);
         bookingRecords.add(booking3);
 
         BookingRecordAdapter adapter = new BookingRecordAdapter(this, bookingRecords);

@@ -20,19 +20,41 @@ public class BookingRecord {
         this.bookingID = bookingID;
     }
 
+    //for guest confirmed bookings
+    public BookingRecord(String date, String time, int numberOfGuests, int tableNo, int peopleGroupIconId){
+        this.date = date;
+        this.time = time;
+        this.numberOfGuests = numberOfGuests;
+        this.tableNo = tableNo;
+        this.peopleGroupIconId = peopleGroupIconId;
+    }
 
+    //for guest unconfirmed requests
     public BookingRecord(String date, String time, int numberOfGuests, int peopleGroupIconId){
         this.date = date;
         this.time = time;
         this.numberOfGuests = numberOfGuests;
-        this.peopleGroupIconId = peopleGroupIconId;
+        this.peopleGroupIconId;
     }
 
-    public BookingRecord(String date, String time, int numberOfGuests, String guestFirstName, String guestLastName){
+    //for staff: booking requests
+    public BookingRecord(String date, String time, int numberOfGuests, String guestFirstName, String guestLastName, int peopleGroupIconId){
         this.date = date;
         this.time = time;
         this.numberOfGuests = numberOfGuests;
         this.guestFirstName = guestFirstName;
         this.guestLastName = guestLastName;
+        this.peopleGroupIconId = peopleGroupIconId;
+    }
+
+    //for staff: confirmed bookings
+    public BookingRecord(String date, String time, int numberOfGuests, String guestFirstName, String guestLastName, int tableNo, int peopleGroupIconId){
+        this.date = date;
+        this.time = time;
+        this.numberOfGuests = numberOfGuests;
+        this.guestFirstName = guestFirstName;
+        this.guestLastName = guestLastName;
+        this.tableNo = tableNo;
+        this.peopleGroupIconId = peopleGroupIconId;
     }
 }
