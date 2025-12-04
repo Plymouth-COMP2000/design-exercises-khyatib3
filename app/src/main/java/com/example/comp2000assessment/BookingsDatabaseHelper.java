@@ -156,6 +156,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //to show guests their unconfirmed bookings
     public ArrayList<BookingRecord> showGuestUnconfirmedReqs(String guest_first_name, String guest_last_name) {
         //getting readable database
         SQLiteDatabase db = this.getReadableDatabase();
@@ -198,9 +199,81 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //for staff to see unconfirmed requests
+    public ArrayList<BookingRecord> showStaffUnconfirmedReqs() {
+        //getting readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ArrayList<BookingRecord> allRequests = new ArrayList<>();
+        String viewName = "StaffBookingsReqs";
+
+        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests"};
+        Cursor cursor;
+        cursor = db.query(viewName, columns, null, null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+                String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
+                String firstName = cursor.getString(cursor.getColumnIndexOrThrow("guest_first_name"));
+                String lastName = cursor.getString(cursor.getColumnIndexOrThrow("guest_last_name"));
+                int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
+                int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
+
+                BookingRecord booking = new BookingRecord(date, time, noGuests, firstName, lastName, R.drawable.ic_people_group);
+                booking.confirmed = false;
+                booking.setBookingID(bookingID);
+
+                allRequests.add(booking);
+
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+        db.close();
+
+        return allRequests;
+
+    }
+
+    //to see bookings, which are confirmed and for a specific table
+    public ArrayList<BookingRecord> showStaffConfirmedBookings(int tableNo) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ArrayList<BookingRecord> allConfirmedBookings = new ArrayList<>();
+        String viewName = "StaffConBookings";
+
+        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests", "table_no"};
+        String selection = "table_no = ?";
+        String[] selectionArgs = {String.valueOf(tableNo)};
+
+        Cursor cursor;
+        cursor = db.query(viewName, columns, selection, selectionArgs, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
+                String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
+                String firstName = cursor.getString(cursor.getColumnIndexOrThrow("guest_first_name"));
+                String lastName = cursor.getString(cursor.getColumnIndexOrThrow("guest_last_name"));
+                int table_No = cursor.getInt(cursor.getColumnIndexOrThrow("table_no"));
+                int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
+                int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
+
+                BookingRecord booking = new BookingRecord(date, time, noGuests, firstName, lastName, table_No, R.drawable.ic_people_group);
+                booking.confirmed = true;
+                booking.setBookingID(bookingID);
+
+                allConfirmedBookings.add(booking);
+            } while (cursor.moveToNext());
 
 
+        }
 
+        cursor.close();
+        db.close();
+        return allConfirmedBookings;
+    }
 
     //UPDATE
     public boolean updateBooking(BookingRecord booking) {

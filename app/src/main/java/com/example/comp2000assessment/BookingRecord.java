@@ -34,7 +34,7 @@ public class BookingRecord {
         this.date = date;
         this.time = time;
         this.numberOfGuests = numberOfGuests;
-        this.peopleGroupIconId;
+        this.peopleGroupIconId = peopleGroupIconId;
     }
 
     //for staff: booking requests
