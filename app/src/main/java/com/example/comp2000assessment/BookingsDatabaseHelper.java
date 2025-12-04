@@ -5,36 +5,38 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class BookingsDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "Bookings";
+    private static final String TABLE_NAME = "Bookings";
     private static final int DATABASE_VER = 1;
 
     public BookingsDatabaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VER);
+        super(context, TABLE_NAME, null, DATABASE_VER);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db){
+    public void onCreate(SQLiteDatabase db) {
         String createAllBookings = "CREATE TABLE IF NOT EXISTS Bookings(" +
-                                        "bookingID INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                                        "confirmed INTEGER NOT NULL,"+
-                                        "guest_first_name TEXT NOT NULL,"+
-                                        "guest_last_name TEXT NOT NULL," +
-                                        "date TEXT NOT NULL," +
-                                        "time TEXT NOT NULL," +
-                                        "table_no INTEGER NOT NULL,"+
-                                        "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10)"+
-                                    ")";
+                "bookingID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "confirmed INTEGER NOT NULL," +
+                "guest_first_name TEXT NOT NULL," +
+                "guest_last_name TEXT NOT NULL," +
+                "date TEXT NOT NULL," +
+                "time TEXT NOT NULL," +
+                "table_no INTEGER NOT NULL," +
+                "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10)" +
+                ")";
         db.execSQL(createAllBookings);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+ DATABASE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
     }
 
     //CREATE
-    public boolean createBooking (BookingRecord booking){
+    public boolean addBooking(BookingRecord booking) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues bookingValues = new ContentValues();
@@ -45,16 +47,71 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         bookingValues.put("time", booking.time);
         bookingValues.put("table_no", booking.tableNo);
 
-        long insert_result = db.insert(DATABASE_NAME, null, bookingValues);
+        //retrieving the new booking id so it can be set to the BookingRecord object booking
+        long newBookingID = db.insert(TABLE_NAME, null, bookingValues);
+
+        //checking whether the insert into the database was successful
+        //only applying new booking id if it worked
+
+        if (newBookingID > 0) {
+            booking.setBookingID((int) newBookingID);
+        }
         db.close();
 
-        return insert_result > 0;
+        //returning if booking being added to the Bookings Table was successful
+        return newBookingID > 0;
+    }
+
+    //READ
+    //multiple required here, as I need to show:
+    // guests confirmed bookings and unconfirmed requests
+    // all unconfirmed requests and confirmed bookings for staff
+    public ArrayList<BookingRecord> showGuestConfirmedBookings(String guest_first_name, String guest_last_name){
+        //getting readable database
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //declaring arraylist that will store bookings and be returned
+        ArrayList<BookingRecord> confirmedBookings = new ArrayList<>();
+
+
+    }
+
+
+    //UPDATE
+    public boolean updateBooking(BookingRecord booking) {
+        //first check booking passed has an id
+        if (booking.getBookingID() > 0) {
+            SQLiteDatabase db = getWritableDatabase();
+
+            //retrieving booking attributes to be updated and setting them in content values
+            ContentValues bookingVals = new ContentValues();
+            bookingVals.put("confirmed", booking.confirmed);
+            bookingVals.put("guest_first_name", booking.guestFirstName);
+            bookingVals.put("guest_last_name", booking.guestLastName);
+            bookingVals.put("date", booking.date);
+            bookingVals.put("time", booking.time);
+            bookingVals.put("table_no", booking.tableNo);
+
+            //creating the where clause that identifies the booking to be updated
+            String whereClause = "bookingID = ?";
+            String[] whereArgs = {String.valueOf(booking.getBookingID())};
+
+            //updating the db with the updated booking and closing db
+            long updateResult = db.update(TABLE_NAME, bookingVals, whereClause, whereArgs);
+            db.close();
+
+            //return result
+            return updateResult > 0;
+        } else {
+            return false;
+        }
+
     }
 
     //DELETE
-    public boolean deleteItem(int id) {
+    public boolean deleteBooking(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        int rows = db.delete(DATABASE_NAME, "itemId=?", new String[]{String.valueOf(id)});
+        int rows = db.delete(TABLE_NAME, "bookingID=?", new String[]{String.valueOf(id)});
         return rows > 0;
     }
 

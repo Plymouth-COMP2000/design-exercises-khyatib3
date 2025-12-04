@@ -188,7 +188,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
     //DELETE
     public boolean deleteItem(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        int rows = db.delete("MenuItems", "itemId=?", new String[]{String.valueOf(id)});
+        int rows = db.delete("MenuItems", "itemID=?", new String[]{String.valueOf(id)});
         return rows > 0;
     }
 
@@ -254,9 +254,11 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
     }
 
     //UPDATE
-    public void updateItem(RestMenuItem item){
+    public boolean updateItem(RestMenuItem item){
+        //getting a writable database
         SQLiteDatabase db = getWritableDatabase();
 
+        //retrieving the values to be updated
         ContentValues itemValues = new ContentValues();
         double priceVal = Double.parseDouble(item.getPrice());
         itemValues.put("price", priceVal);
@@ -265,11 +267,15 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         itemValues.put("categoryID", item.getCategoryID());
         itemValues.put("image", item.getImageBlob());
 
+        //setting the where clause and where args
         String whereClause = "name = ?";
         String[] whereArgs = {item.getName()};
 
-        db.update(ITEM_TABLE_NAME, itemValues, whereClause, whereArgs);
+        //updating the menu item and closing db
+        long updateResult = db.update(ITEM_TABLE_NAME, itemValues, whereClause, whereArgs);
         db.close();
+
+        return updateResult > 0;
 
     }
 

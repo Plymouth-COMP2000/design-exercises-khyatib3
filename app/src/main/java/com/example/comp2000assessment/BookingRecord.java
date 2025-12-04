@@ -10,6 +10,15 @@ public class BookingRecord {
     public boolean confirmed;
     public int tableNo;
 
+    private int bookingID;
+
+    public int getBookingID() {
+        return bookingID;
+    }
+
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
+    }
 
 
     public BookingRecord(String date, String time, int numberOfGuests, int peopleGroupIconId){
