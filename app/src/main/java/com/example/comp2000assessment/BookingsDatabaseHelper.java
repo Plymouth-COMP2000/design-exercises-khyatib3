@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class BookingsDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "Bookings";
     private static final int DATABASE_VER = 1;
+    private static final String BOOKING_LOG_TABLE = "BookingsLog";
 
     public BookingsDatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, DATABASE_VER);
@@ -69,6 +70,26 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 "FROM Bookings " +
                 "WHERE confirmed = 0";
         db.execSQL(createStaffBookingsReqsView);
+
+        String createBookingsLogTable = "CREATE TABLE IF NOT EXISTS BookingsLog(" +
+                "bookingID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "confirmed INTEGER NOT NULL," +
+                "guest_first_name TEXT NOT NULL," +
+                "guest_last_name TEXT NOT NULL," +
+                "date TEXT NOT NULL," +
+                "time TEXT NOT NULL," +
+                "table_no INTEGER NOT NULL," +
+                "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10)" +
+                ")";
+        db.execSQL(createBookingsLogTable);
+
+        String createTrigger = "CREATE TRIGGER IF NOT EXISTS trg_AddNewBooking " +
+                "AFTER INSERT ON Bookings " +
+                "BEGIN " +
+                "INSERT INTO BookingsLog(confirmed, guest_first_name, guest_last_name, date, time, table_no, no_guests) " +
+                "VALUES (NEW.confirmed, NEW.guest_first_name, NEW.guest_last_name, NEW.date, NEW.time, NEW.table_no, NEW.no_guests);" +
+                "END;";
+        db.execSQL(createTrigger);
     }
 
     @Override
@@ -78,6 +99,8 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP VIEW IF EXISTS GUnconfirmedReqs");
         db.execSQL("DROP VIEW IF EXISTS StaffConBookings");
         db.execSQL("DROP VIEW IF EXISTS StaffBookingsReqs");
+        db.execSQL("DROP TABLE IF EXISTS " + BOOKING_LOG_TABLE);
+        db.execSQL("DROP TRIGGER IF EXISTS trg_AddNewBooking");
         onCreate(db);
     }
 
