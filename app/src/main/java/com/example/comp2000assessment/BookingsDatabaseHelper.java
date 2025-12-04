@@ -17,6 +17,8 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        //SQL for Bookings Table, with Primary Key bookingID
         String createAllBookings = "CREATE TABLE IF NOT EXISTS Bookings(" +
                 "bookingID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "confirmed INTEGER NOT NULL," +
@@ -28,6 +30,38 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10)" +
                 ")";
         db.execSQL(createAllBookings);
+
+        //SQL for confirmed bookings view (guest)
+        String createGuestConfirmedView = "CREATE VIEW IF NOT EXISTS GConBookings " +
+                "AS " +
+                "SELECT date, time, no_guests, table_no " +
+                "FROM Bookings " +
+                "WHERE confirmed = 1";
+        db.execSQL(createGuestConfirmedView);
+
+        //SQL for unconfirmed requests view (guest)
+        String createGuestUnconfirmedView = "CREATE VIEW IF NOT EXISTS GUnconfirmedReqs " +
+                "AS " +
+                "SELECT date, time, no_guests, table_no " +
+                "FROM Bookings " +
+                "WHERE confirmed = 0";
+        db.execSQL(createGuestUnconfirmedView);
+
+        //SQL for staff viewing confirmed bookings
+        String createStaffConfirmedView = "CREATE VIEW IF NOT EXISTS StaffConBookings "+
+                    "AS " +
+                    "SELECT date, time, guest_first_name, guest_last_name, no_guests, table_no " +
+                    "FROM Bookings " +
+                    "WHERE confirmed = 1";
+        db.execSQL(createStaffConfirmedView);
+
+        //SQL for staff viewing booking requests
+        String createStaffBookingsReqsView = "CREATE VIEW IF NOT EXISTS StaffBookingsReqs " +
+                "AS " +
+                "SELECT date, time, guest_first_name, guest_last_name, no_guests " +
+                "FROM Bookings " +
+                "WHERE confirmed = 0";
+        db.execSQL(createStaffBookingsReqsView);
     }
 
     @Override
