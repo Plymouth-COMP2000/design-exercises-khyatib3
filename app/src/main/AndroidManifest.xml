@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".Guest_Desserts_Activity"
+            android:exported="false" />
+        <activity
             android:name=".GuestMainsActivity"
             android:exported="false" />
         <activity

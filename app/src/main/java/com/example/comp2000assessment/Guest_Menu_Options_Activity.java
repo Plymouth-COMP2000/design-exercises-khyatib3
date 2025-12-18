@@ -52,6 +52,15 @@ public class Guest_Menu_Options_Activity extends AppCompatActivity {
             }
         });
 
+        ImageButton dessertsBtn = findViewById(R.id.g_dessertsBtn);
+        dessertsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Guest_Menu_Options_Activity.this, Guest_Desserts_Activity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
