@@ -70,6 +70,15 @@ public class Guest_Menu_Options_Activity extends AppCompatActivity {
             }
         });
 
+        ImageButton sidesBtn = findViewById(R.id.g_sidesBtn);
+        sidesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Guest_Menu_Options_Activity.this, Guest_Sides_Activity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }
