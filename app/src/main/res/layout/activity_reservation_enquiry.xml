@@ -36,32 +36,19 @@
         app:layout_constraintStart_toEndOf="@+id/reservationHomeIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- dropdown -->
+
     <TextView
         android:id="@+id/namePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/coustard"
         android:text="@string/nameLbl"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/reservationHomeIcon"
         app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
-
-    <TextView
-        android:id="@+id/customerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/coustard"
-        android:text="Jane Doe"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.676"
-        app:layout_constraintStart_toEndOf="@+id/namePrompt"
-        app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
-
-    <!-- dropdown -->
 
     <TextView
         android:id="@+id/guestNo"
@@ -80,6 +67,7 @@
         android:id="@+id/guestNoDropdown"
         android:layout_width="141dp"
         android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/grey_dropdown"
         android:dropDownSelector="@android:color/transparent"
         android:entries="@array/guest_no_dropdown_items"
@@ -88,9 +76,10 @@
         android:popupBackground="#FBDCDC"
         android:spinnerMode="dropdown"
         android:theme="@style/dropDownItemTheme"
-        app:layout_constraintEnd_toEndOf="@+id/customerName"
-        app:layout_constraintStart_toStartOf="@+id/customerName"
-        app:layout_constraintTop_toBottomOf="@+id/customerName" />
+        app:layout_constraintEnd_toEndOf="@+id/enterNameReservation"
+        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintStart_toEndOf="@+id/guestNo"
+        app:layout_constraintTop_toBottomOf="@+id/enterNameReservation" />
 
     <TextView
         android:id="@+id/dateLbl"
@@ -213,5 +202,20 @@
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="@+id/specialNotesBox"
         app:layout_constraintTop_toBottomOf="@+id/specialNotesBox" />
+
+    <EditText
+        android:id="@+id/enterNameReservation"
+        android:layout_width="158dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:fontFamily="@font/coustard"
+        android:inputType="text"
+        android:text="@string/nameLbl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.797"
+        app:layout_constraintStart_toEndOf="@+id/namePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

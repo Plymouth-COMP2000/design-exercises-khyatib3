@@ -9,7 +9,7 @@ public class BookingRecord {
     public String guestLastName;
     public boolean confirmed;
     public int tableNo;
-
+    public String additionalRequest;
     private int bookingID;
 
     public int getBookingID() {

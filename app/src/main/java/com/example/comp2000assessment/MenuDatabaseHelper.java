@@ -16,7 +16,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
     private static final String ITEM_TABLE_NAME = "MenuItems";
     private static final String CATEGORY_TABLE_NAME = "Category";
     private static final String LOG_TABLE_NAME = "LogMenu";
-    private static final int DATABASE_VER = 1;
+    private static final int DATABASE_VER = 2;
 
     public MenuDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VER);
@@ -30,6 +30,11 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 "categoryName TEXT NOT NULL" +
                 ");";
         db.execSQL(createCategoryTable);
+
+        //inserting the menu category into the category table
+        String insertCategories = "INSERT INTO Category(categoryName) " +
+                "VALUES ('Starters'), ('Mains'), ('Desserts'), ('Drinks'), ('Sides');";
+        db.execSQL(insertCategories);
 
         //create menu item table
         String createMenuItemsTable = "CREATE TABLE IF NOT EXISTS MenuItems(" +
@@ -171,7 +176,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
 
         //get content values
         ContentValues itemValues = new ContentValues();
-        itemValues.put("price", item.getPrice());
+        itemValues.put("price", item.getPriceAsDouble());
         itemValues.put("name", item.getName());
         itemValues.put("description", item.getDescription());
         itemValues.put("categoryID", item.getCategoryID());
@@ -179,7 +184,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
 
         //returning rowID of the newly inserted record
         long insert_result = db.insert(ITEM_TABLE_NAME, null, itemValues);
-        db.close();
+
 
         //if insert was successful return true (bigger than 0 = true, less than is false, unsuccessful)
         return insert_result > 0;
@@ -248,7 +253,6 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
 
         return menuItems;
     }
@@ -273,7 +277,6 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
 
         //updating the menu item and closing db
         long updateResult = db.update(ITEM_TABLE_NAME, itemValues, whereClause, whereArgs);
-        db.close();
 
         return updateResult > 0;
 

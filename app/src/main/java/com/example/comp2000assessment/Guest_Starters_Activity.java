@@ -39,33 +39,26 @@ public class Guest_Starters_Activity extends AppCompatActivity {
         recyclerView = findViewById(R.id.g_startersRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-
-
+        MenuDatabaseHelper db = new MenuDatabaseHelper(Guest_Starters_Activity.this);
+        menuItems = new ArrayList<>();
+        menuItems = db.showMenuItems("starters");
 
         filteredItems = new ArrayList<>(menuItems);
-        adapter = new MenuItemAdapter(this,filteredItems);
+
+        adapter = new MenuItemAdapter(this, menuItems, filteredItems);
         recyclerView.setAdapter(adapter);
 
         //filtering logic
         searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String newText) {
+                adapter.getFilter().filter(newText);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String query) {
-                filteredItems.clear();
-                //going through the list with each item
-                for (RestMenuItem item : menuItems){
-                    //checking to see if the keyword input is part of any item's description
-                    //hence show if it is
-                    if (item.getDescription().toLowerCase().contains(query.toLowerCase())){
-                        filteredItems.add(item);
-                    }
-                }
-
-                adapter.notifyDataSetChanged();
+                adapter.getFilter().filter(query);
                 return true;
             }
         });
@@ -76,7 +69,7 @@ public class Guest_Starters_Activity extends AppCompatActivity {
         homeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(Guest_Starters_Activity.this, GuestHomepage.class);
+                Intent intent = new Intent(Guest_Starters_Activity.this, Guest_Menu_Options_Activity.class);
                 startActivity(intent);
             }
         });

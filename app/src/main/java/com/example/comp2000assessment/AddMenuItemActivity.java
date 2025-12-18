@@ -61,7 +61,9 @@ public class AddMenuItemActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 //convert bitmap image to bytes
-                byte[] imageBytes = convertBitmapToBytes(selectedBitmap);
+                Bitmap uploadedBitmap = selectedBitmap;
+                byte[] imageBytes = RestMenuItem.bitmapToBytes(uploadedBitmap);
+
                 EditText addName = findViewById(R.id.inputItemName);
                 EditText addPrice = findViewById(R.id.inputItemPrice);
                 EditText addDescription = findViewById(R.id.inputDescription);

@@ -1,9 +1,37 @@
 package com.example.comp2000assessment;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+
+import java.io.ByteArrayOutputStream;
+
 public class RestMenuItem {
     public String getPrice() {
         return price;
     }
+    public double getPriceAsDouble() {
+        try {
+            return Double.parseDouble(price.replace("£",""));
+        } catch (Exception e) {
+            return 0.0;
+        }
+    }
+
+    public static byte[] bitmapToBytes(Bitmap bitmap){
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        return stream.toByteArray();
+    }
+
+    public static Bitmap bytesToBitmap(byte[] imageBytes){
+        if (imageBytes == null || imageBytes.length == 0) {
+            return null;
+        }
+        return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+
+    }
+
 
     public String getName() {
         return name;
@@ -47,12 +75,12 @@ public class RestMenuItem {
     }
 
     //real items constructor
-    public RestMenuItem(String name, double price, int categoryID, String description, byte[] imageBlob){
+    public RestMenuItem(String name, double price, int categoryID, String description, byte[] imageBytes){
         this.name = name;
-        this.price = String.valueOf(price);
+        this.price = String.format("£%.2f", price);
         this.categoryID = categoryID;
         this.description = description;
-        this.imageBlob = imageBlob;
+        this.imageBlob = imageBytes;
     }
 
 }
