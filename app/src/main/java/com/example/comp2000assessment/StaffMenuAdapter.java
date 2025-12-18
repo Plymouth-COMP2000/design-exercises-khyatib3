@@ -1,6 +1,7 @@
 package com.example.comp2000assessment;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,7 +51,16 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
     @Override
     public void onBindViewHolder(StaffMenuAdapter.SMItemViewHolder holder, int pos){
         RestMenuItem item = itemList.get(pos);
-        holder.image.setImageResource(item.getImageId());
+
+        //converting the byte array to a Bitmap
+        //adding bitmap validation to ensure I am displaying an image or a placeholder
+        Bitmap bitmap = RestMenuItem.bytesToBitmap(item.getImageBlob());
+        if (bitmap != null) {
+            holder.image.setImageBitmap(bitmap);
+        } else {
+            holder.image.setImageResource(R.drawable.ic_placeholder);
+        }
+
         holder.description.setText(item.getDescription());
         holder.price.setText(item.getPrice());
 

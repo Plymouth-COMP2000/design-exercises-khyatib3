@@ -49,7 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".AddMenuItemActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".StaffDashboard"
             android:exported="false" />
@@ -82,7 +82,7 @@
             android:exported="false" />
         <activity
             android:name=".GuestHomepage"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".AccountCreated"
             android:exported="false" />
