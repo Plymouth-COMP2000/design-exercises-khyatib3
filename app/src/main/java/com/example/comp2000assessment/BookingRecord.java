@@ -9,8 +9,10 @@ public class BookingRecord {
     public String guestLastName;
     public boolean confirmed;
     public int tableNo;
-    public String additionalRequest;
+    public String specialRequest;
     private int bookingID;
+
+
 
     public int getBookingID() {
         return bookingID;
@@ -18,6 +20,13 @@ public class BookingRecord {
 
     public void setBookingID(int bookingID) {
         this.bookingID = bookingID;
+    }
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
     }
 
     //for guest confirmed bookings

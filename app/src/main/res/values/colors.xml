@@ -8,4 +8,6 @@
     <color name="error_red">#FEFF1C1C</color>
     <color name="success_green">#5CB476</color>
     <color name="light_pink">#ffccd5</color>
+    <color name="dark_blue">#0E3075</color>
+
 </resources>

@@ -15,7 +15,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <!-- date and time fields -->
+        <!-- LEFT COLUMN: Date, Time, Guests -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/booking_date"
+                android:id="@+id/u_booking_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/coustard"
@@ -33,57 +33,57 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/booking_time"
+                android:id="@+id/u_booking_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/coustard"
                 android:text="Time"
                 android:textSize="16sp" />
 
+            <!-- no of guests and people icon together -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="4dp">
+
+                <ImageView
+                    android:id="@+id/u_group_icon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="Group size"
+                    android:src="@drawable/ic_people_group" />
+
+                <TextView
+                    android:id="@+id/u_noGuests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/coustard"
+                    android:text="No of Guests"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <!-- group icon -->
-        <ImageView
-            android:id="@+id/group_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="8dp"
-            android:contentDescription="Group size"
-            android:src="@drawable/ic_people_group" />
-
-        <TextView
-            android:id="@+id/noGuests"
+        <Button
+            android:id="@+id/changeBookingStatusBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:paddingHorizontal="12dp"
+            android:backgroundTint="@color/dark_blue"
+            android:textColor="@color/white"
             android:fontFamily="@font/coustard"
-            android:text="No of Guests"
-            android:textSize="16sp" />
-
-        <!-- edit button -->
-        <ImageButton
-            android:id="@+id/editBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="#E6FFFD"
-            android:contentDescription="Edit Booking"
-            android:src="@drawable/ic_edit"
-            tools:ignore="TouchTargetSizeCheck" />
-
-        <!-- delete button -->
-        <ImageButton
-            android:id="@+id/deleteBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/ic_delete"
-            android:contentDescription="@string/deleteBookingAltText"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:text="@string/change_statusTxt"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"/>
 
     </LinearLayout>
 
     <TextView
-        android:id="@+id/specialReqsText"
+        android:id="@+id/u_specialReqsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

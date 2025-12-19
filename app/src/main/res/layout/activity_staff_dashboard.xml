@@ -86,8 +86,8 @@
     <!-- Logo-->
     <ImageView
         android:id="@+id/dashboardLogo"
-        android:layout_width="183dp"
-        android:layout_height="118dp"
+        android:layout_width="156dp"
+        android:layout_height="104dp"
         android:layout_marginBottom="28dp"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

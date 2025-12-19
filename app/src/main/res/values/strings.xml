@@ -144,5 +144,7 @@
     <string name="no_cancel_text">No, cancel</string>
     <string name="delete_item_menu_title">Delete item \n from menu</string>
     <string name="delete_itemMenu_title">Delete item \n from the menu:</string>
+    <string name="deleteBookingAltText">Delete this booking</string>
+    <string name="change_statusTxt">Change Status</string>
 
 </resources>

@@ -28,14 +28,15 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
         //SQL for Bookings Table, with Primary Key bookingID
         String createAllBookings = "CREATE TABLE IF NOT EXISTS Bookings(" +
-                "bookingID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "confirmed INTEGER NOT NULL," +
-                "guest_first_name TEXT NOT NULL," +
-                "guest_last_name TEXT NOT NULL," +
-                "date TEXT NOT NULL," +
-                "time TEXT NOT NULL," +
-                "table_no INTEGER NOT NULL," +
-                "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10)" +
+                "bookingID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "confirmed INTEGER NOT NULL, " +
+                "guest_first_name TEXT NOT NULL, " +
+                "guest_last_name TEXT NOT NULL, " +
+                "date TEXT NOT NULL, " +
+                "time TEXT NOT NULL, " +
+                "table_no INTEGER NOT NULL, " +
+                "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10), " +
+                "special_request TEXT " +
                 ")";
         db.execSQL(createAllBookings);
 
@@ -58,7 +59,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         //SQL for staff viewing confirmed bookings
         String createStaffConfirmedView = "CREATE VIEW IF NOT EXISTS StaffConBookings " +
                 "AS " +
-                "SELECT date, time, guest_first_name, guest_last_name, no_guests, table_no " +
+                "SELECT date, time, guest_first_name, guest_last_name, no_guests, table_no, special_request " +
                 "FROM Bookings " +
                 "WHERE confirmed = 1";
         db.execSQL(createStaffConfirmedView);
@@ -66,7 +67,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         //SQL for staff viewing booking requests
         String createStaffBookingsReqsView = "CREATE VIEW IF NOT EXISTS StaffBookingsReqs " +
                 "AS " +
-                "SELECT date, time, guest_first_name, guest_last_name, no_guests " +
+                "SELECT date, time, guest_first_name, guest_last_name, no_guests, special_request " +
                 "FROM Bookings " +
                 "WHERE confirmed = 0";
         db.execSQL(createStaffBookingsReqsView);
