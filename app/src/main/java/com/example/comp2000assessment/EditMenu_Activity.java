@@ -57,9 +57,17 @@ public class EditMenu_Activity extends AppCompatActivity {
         editName.setText(itemName);
         editDescription.setText(itemDescription);
         editPrice.setText(String.valueOf(itemPrice));
-        if (currentImageBytes != null) {
+
+        //handling image preview
+        if (currentImageBytes != null && currentImageBytes.length > 0) {
             Bitmap existingBitmap = RestMenuItem.bytesToBitmap(currentImageBytes);
-            imageView.setImageBitmap(existingBitmap);
+            if (existingBitmap != null) {
+                imageView.setImageBitmap(existingBitmap);
+            } else {
+                imageView.setImageResource(R.drawable.ic_placeholder);
+            }
+        } else {
+            imageView.setImageResource(R.drawable.ic_placeholder);
         }
 
         //setting spinner to current category

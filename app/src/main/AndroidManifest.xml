@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".Delete_Menu_Item_Activity"
+            android:exported="false" />
+        <activity
             android:name=".EditMenu_Activity"
             android:exported="false" />
         <activity

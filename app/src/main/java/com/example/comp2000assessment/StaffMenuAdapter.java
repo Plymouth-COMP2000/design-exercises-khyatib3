@@ -85,6 +85,21 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
             }
         });
 
+        //delete button
+        holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Delete_Menu_Item_Activity.class);
+
+                //passing id of the item to be deleted
+                //so that the correct item gets deleted from the db
+                intent.putExtra("itemID", item.getItemID());
+                intent.putExtra("name", item.getName());
+
+                context.startActivity(intent);
+            }
+        });
+
 
     }
 

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/delete_item_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    tools:context=".Delete_Menu_Item_Activity">
+
+    <ImageButton
+        android:id="@+id/deleteItemToMainMenuBtn"
+        android:layout_width="42dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Back"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.163"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/deleteItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/coustard"
+        android:text="@string/delete_itemMenu_title"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.322"
+        app:layout_constraintStart_toEndOf="@+id/deleteItemToMainMenuBtn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="343dp"
+        android:layout_height="216dp"
+        android:layout_marginBottom="172dp"
+        android:background="@drawable/text_background"
+        android:orientation="vertical"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!--Delete prompt -->
+
+        <TextView
+            android:id="@+id/deleteItemPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="71dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/coustard"
+            android:text="@string/deleteItemPrompt"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/cancelDelItemBtn"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="#a4133c"
+            android:fontFamily="@font/coustard"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/no_cancel_text"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/confirmDelItemBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/success_green"
+            android:fontFamily="@font/coustard"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/yes_delete_this_item"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

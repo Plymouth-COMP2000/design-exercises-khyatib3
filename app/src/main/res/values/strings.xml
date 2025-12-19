@@ -139,5 +139,10 @@
     <string name="edit_name">Edit Name:</string>
     <string name="change_name_hint">Change name...</string>
     <string name="edit_category_txt">Edit Category...</string>
+    <string name="yes_delete_this_item">Yes, delete this item</string>
+    <string name="delete_item_from_menu_title">Delete item from menu:</string>
+    <string name="no_cancel_text">No, cancel</string>
+    <string name="delete_item_menu_title">Delete item \n from menu</string>
+    <string name="delete_itemMenu_title">Delete item \n from the menu:</string>
 
 </resources>
