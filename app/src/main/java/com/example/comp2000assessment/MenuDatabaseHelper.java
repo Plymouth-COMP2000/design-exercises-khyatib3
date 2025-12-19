@@ -16,7 +16,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
     private static final String ITEM_TABLE_NAME = "MenuItems";
     private static final String CATEGORY_TABLE_NAME = "Category";
     private static final String LOG_TABLE_NAME = "LogMenu";
-    private static final int DATABASE_VER = 2;
+    private static final int DATABASE_VER = 5;
 
     public MenuDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VER);
@@ -52,6 +52,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         String createStartersViewSQL = "CREATE VIEW IF NOT EXISTS StartersView " +
                 "AS " +
                 "SELECT " +
+                "m.itemID, " +
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
@@ -68,6 +69,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         String createMainsViewSQL = "CREATE VIEW IF NOT EXISTS MainsView " +
                 "AS " +
                 "SELECT " +
+                "m.itemID, " +
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
@@ -84,6 +86,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         String createDessertsViewSQL = "CREATE VIEW IF NOT EXISTS DessertsView " +
                 "AS " +
                 "SELECT " +
+                "m.itemID, " +
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
@@ -98,6 +101,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         String createDrinksView = "CREATE VIEW IF NOT EXISTS DrinksView " +
                 "AS " +
                 "SELECT " +
+                "m.itemID, " +
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
@@ -113,6 +117,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         String createSidesView = "CREATE VIEW IF NOT EXISTS SidesView " +
                 "AS " +
                 "SELECT " +
+                "m.itemID, " +
                 "m.image, " +
                 "m.name, " +
                 "m.description, " +
@@ -149,9 +154,9 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //dropping all dependencies
         // so referential integrity is maintained
-        db.execSQL("DROP TABLE IF EXISTS " + CATEGORY_TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + ITEM_TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
+//        db.execSQL("DROP TABLE IF EXISTS " + CATEGORY_TABLE_NAME);
+//        db.execSQL("DROP TABLE IF EXISTS " + ITEM_TABLE_NAME);
+//        db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
 
         //dropping views
         db.execSQL("DROP VIEW IF EXISTS StartersView");
@@ -240,6 +245,8 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 //below I am retrieving all the fields of the RestMenuItem constructor from the record the cursor is pointing at
+                //getting itemID from the cursor
+                int itemID = cursor.getInt(cursor.getColumnIndexOrThrow("itemID"));
                 String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
                 String description = cursor.getString(cursor.getColumnIndexOrThrow("description"));
                 double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
@@ -247,7 +254,7 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
                 byte[] image = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
 
                 //creating a new RestMenuItem object and adding it to the array list
-                RestMenuItem item = new RestMenuItem(name, price, categoryID, description, image);
+                RestMenuItem item = new RestMenuItem(itemID, name, price, categoryID, description, image);
                 menuItems.add(item);
             } while (cursor.moveToNext());
         }
@@ -260,11 +267,11 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
     //UPDATE
     public boolean updateItem(RestMenuItem item){
         //getting a writable database
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         //retrieving the values to be updated
         ContentValues itemValues = new ContentValues();
-        double priceVal = Double.parseDouble(item.getPrice());
+        double priceVal = item.getPriceAsDouble();
         itemValues.put("price", priceVal);
         itemValues.put("name", item.getName());
         itemValues.put("description", item.getDescription());
@@ -272,8 +279,8 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
         itemValues.put("image", item.getImageBlob());
 
         //setting the where clause and where args
-        String whereClause = "name = ?";
-        String[] whereArgs = {item.getName()};
+        String whereClause = "itemID = ?";
+        String[] whereArgs = {String.valueOf(item.getItemID())};
 
         //updating the menu item and closing db
         long updateResult = db.update(ITEM_TABLE_NAME, itemValues, whereClause, whereArgs);

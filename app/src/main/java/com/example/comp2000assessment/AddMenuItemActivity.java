@@ -64,6 +64,7 @@ public class AddMenuItemActivity extends AppCompatActivity {
                 Bitmap uploadedBitmap = selectedBitmap;
                 byte[] imageBytes = RestMenuItem.bitmapToBytes(uploadedBitmap);
 
+                //locating elements via their id
                 EditText addName = findViewById(R.id.inputItemName);
                 EditText addPrice = findViewById(R.id.inputItemPrice);
                 EditText addDescription = findViewById(R.id.inputDescription);
@@ -105,9 +106,4 @@ public class AddMenuItemActivity extends AppCompatActivity {
         }
     }
 
-    private byte[] convertBitmapToBytes(Bitmap bm){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        return stream.toByteArray();
-    }
 }

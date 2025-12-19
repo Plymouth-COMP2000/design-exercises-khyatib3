@@ -48,7 +48,7 @@ public class RestMenuItem {
     public int getImageId() {
         return imageId;
     }
-
+    private int itemID;
     private String price;
     private String name;
     private String description;
@@ -57,6 +57,9 @@ public class RestMenuItem {
 
     public byte[] getImageBlob() {
         return imageBlob;
+    }
+    public int getItemID() {
+        return itemID;
     }
 
     public void setImageBlob(byte[] imageBlob) {
@@ -74,8 +77,19 @@ public class RestMenuItem {
         this.imageId = imageId;
     }
 
-    //real items constructor
+    //actual items constructor
     public RestMenuItem(String name, double price, int categoryID, String description, byte[] imageBytes){
+        this.name = name;
+        this.price = String.format("£%.2f", price);
+        this.categoryID = categoryID;
+        this.description = description;
+        this.imageBlob = imageBytes;
+    }
+
+    //constructor for showing menu items
+    //uses itemID from DB
+    public RestMenuItem(int itemID, String name, double price, int categoryID, String description, byte[] imageBytes){
+        this.itemID = itemID;
         this.name = name;
         this.price = String.format("£%.2f", price);
         this.categoryID = categoryID;

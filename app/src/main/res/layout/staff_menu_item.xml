@@ -48,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <Button
-            android:id="@+id/edit_button"
+            android:id="@+id/s_edit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/edit"
@@ -56,7 +56,7 @@
             android:backgroundTint="#8fb996" />
 
         <Button
-            android:id="@+id/delete_button"
+            android:id="@+id/s_delete_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/delete"

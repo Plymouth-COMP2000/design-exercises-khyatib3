@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_menu_item_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditMenu_Activity">
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <ImageButton
+                android:id="@+id/editMenuToMainMenuBtn"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:backgroundTint="@color/white"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Back" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/coustard"
+                android:text="@string/edit_menu_item_title"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="48dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="329dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/text_background"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!--Edit name -->
+            <TextView
+                android:id="@+id/editNameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/coustard"
+                android:text="@string/edit_name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editNameInput"
+                android:layout_width="210dp"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_light_pink_rectangle"
+                android:fontFamily="@font/coustard"
+                android:hint="@string/change_name_hint"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp" />
+
+            <!--Edit description -->
+            <TextView
+                android:id="@+id/editDescriptionTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/coustard"
+                android:text="@string/edit_description"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editDescriptionInput"
+                android:layout_width="210dp"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_light_pink_rectangle"
+                android:fontFamily="@font/coustard"
+                android:hint="@string/change_description"
+                android:inputType="textLongMessage"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp" />
+
+            <!--Edit Price -->
+            <TextView
+                android:id="@+id/editPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/coustard"
+                android:text="@string/change_price"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/editPriceInput"
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:background="@drawable/rounded_light_pink_rectangle"
+                android:fontFamily="@font/coustard"
+                android:hint="@string/add_price_hint"
+                android:inputType="numberDecimal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp" />
+
+            <!--Edit Category -->
+            <TextView
+                android:id="@+id/editCategoryTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/coustard"
+                android:text="@string/edit_category_txt"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/editCategory"
+                style="@android:style/Widget.Holo.DropDownItem.Spinner"
+                android:layout_width="175dp"
+                android:layout_height="42dp"
+                android:background="@drawable/rounded_light_pink_rectangle"
+                android:entries="@array/categoryOptions"
+                android:popupBackground="@color/light_pink"
+                android:spinnerMode="dropdown"
+                android:theme="@style/dropDownItemTheme"/>
+
+            <!-- Image Upload -->
+            <TextView
+                android:id="@+id/editImageTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/coustard"
+                android:paddingTop="10dp"
+                android:text="@string/change_cover_hint"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/editImageBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:backgroundTint="#ff4d6d"
+                android:fontFamily="@font/coustard"
+                android:text="@string/browse_image_hint"
+                android:textSize="16sp" />
+
+            <!-- preview the image-->
+            <ImageView
+                android:id="@+id/previewNewImg"
+                android:layout_width="180dp"
+                android:layout_height="141dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_input" />
+
+            <Button
+                android:id="@+id/saveMenuChangeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:backgroundTint="#2d6a4f"
+                android:fontFamily="@font/coustard"
+                android:paddingTop="10dp"
+                android:paddingEnd="8dp"
+                android:text="@string/saveChangesLbl"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/cancelMenuChangesBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:backgroundTint="#a4133c"
+                android:fontFamily="@font/coustard"
+                android:paddingTop="10dp"
+                android:paddingRight="8dp"
+                android:text="@string/cancelLbl"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

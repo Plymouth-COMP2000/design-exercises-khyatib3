@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".EditMenu_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Guest_Sides_Activity"
             android:exported="false" />
         <activity
@@ -49,10 +52,10 @@
             android:exported="false" />
         <activity
             android:name=".AddMenuItemActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".StaffDashboard"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".T_C_Activity"
             android:exported="false" />

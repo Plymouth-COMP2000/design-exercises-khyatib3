@@ -1,6 +1,7 @@
 package com.example.comp2000assessment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -37,6 +38,8 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
             image = menuItemView.findViewById(R.id.item_Img);
             description = menuItemView.findViewById(R.id.item_Desc);
             price = menuItemView.findViewById(R.id.item_Price);
+            editBtn = menuItemView.findViewById(R.id.s_edit_button);
+            deleteBtn = menuItemView.findViewById(R.id.s_delete_button);
         }
 
     }
@@ -63,6 +66,25 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
 
         holder.description.setText(item.getDescription());
         holder.price.setText(item.getPrice());
+
+        holder.editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, EditMenu_Activity.class);
+                //passing the itemID to the edit item activity
+                //this is so i can update the correct item in the db
+                //also passing other attributes so they are pre-filled in the edit screen
+                intent.putExtra("itemID", item.getItemID());
+                intent.putExtra("name", item.getName());
+                intent.putExtra("description", item.getDescription());
+                intent.putExtra("price", item.getPriceAsDouble());
+                intent.putExtra("categoryID", item.getCategoryID());
+                intent.putExtra("image", item.getImageBlob());
+
+                context.startActivity(intent);
+            }
+        });
+
 
     }
 

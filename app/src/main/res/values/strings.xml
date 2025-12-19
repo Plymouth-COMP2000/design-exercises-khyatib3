@@ -135,5 +135,9 @@
     <string name="enter_work_email_Hint">Enter your WORK email...</string>
     <string name="staff_added_Message">Staff member successfully added to \n admin database!</string>
     <string name="add_staff_FailTxt">Oops! \n This member could not be added \n to the admin database! \n Please try again!</string>
+    <string name="edit_menu_item_title">Edit Menu Item:</string>
+    <string name="edit_name">Edit Name:</string>
+    <string name="change_name_hint">Change name...</string>
+    <string name="edit_category_txt">Edit Category...</string>
 
 </resources>
