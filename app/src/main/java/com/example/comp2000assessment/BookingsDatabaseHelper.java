@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class BookingsDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "Bookings";
-    private static final int DATABASE_VER = 1;
+    private static final int DATABASE_VER = 6;
     private static final String BOOKING_LOG_TABLE = "BookingsLog";
 
     public BookingsDatabaseHelper(Context context) {
@@ -44,7 +44,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         //SQL for confirmed bookings view (guest)
         String createGuestConfirmedView = "CREATE VIEW IF NOT EXISTS GConBookings " +
                 "AS " +
-                "SELECT date, time, no_guests, table_no " +
+                "SELECT bookingID, date, time, no_guests, table_no, guest_first_name, guest_last_name, special_request " +
                 "FROM Bookings " +
                 "WHERE confirmed = 1";
         db.execSQL(createGuestConfirmedView);
@@ -52,7 +52,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         //SQL for unconfirmed requests view (guest)
         String createGuestUnconfirmedView = "CREATE VIEW IF NOT EXISTS GUnconfirmedReqs " +
                 "AS " +
-                "SELECT date, time, no_guests, table_no " +
+                "SELECT bookingID, date, time, no_guests, table_no, guest_first_name, guest_last_name, special_request " +
                 "FROM Bookings " +
                 "WHERE confirmed = 0";
         db.execSQL(createGuestUnconfirmedView);
@@ -89,8 +89,8 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         String createTrigger = "CREATE TRIGGER IF NOT EXISTS trg_AddNewBooking " +
                 "AFTER INSERT ON Bookings " +
                 "BEGIN " +
-                "INSERT INTO BookingsLog(confirmed, guest_first_name, guest_last_name, date, time, table_no, no_guests) " +
-                "VALUES (NEW.confirmed, NEW.guest_first_name, NEW.guest_last_name, NEW.date, NEW.time, NEW.table_no, NEW.no_guests);" +
+                "INSERT INTO BookingsLog(confirmed, guest_first_name, guest_last_name, date, time, table_no, no_guests, special_request) " +
+                "VALUES (NEW.confirmed, NEW.guest_first_name, NEW.guest_last_name, NEW.date, NEW.time, NEW.table_no, NEW.no_guests, NEW.special_request);" +
                 "END;";
         db.execSQL(createTrigger);
     }
@@ -104,6 +104,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP VIEW IF EXISTS StaffBookingsReqs");
         db.execSQL("DROP TABLE IF EXISTS " + BOOKING_LOG_TABLE);
         db.execSQL("DROP TRIGGER IF EXISTS trg_AddNewBooking");
+
         onCreate(db);
     }
 
@@ -153,7 +154,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         String viewName = "GConBookings";
 
         //creating query to get bookings for given user
-        String[] columns = {"bookingID", "date", "time", "no_guests", "table_no"};
+        String[] columns = {"bookingID", "date", "time", "no_guests", "table_no, special_request"};
         String selection = "guest_first_name = ? AND guest_last_name = ?";
         String[] selectionArgs = {guest_first_name, guest_last_name};
 
@@ -166,10 +167,11 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
                 int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
                 int tableNo = cursor.getInt(cursor.getColumnIndexOrThrow("table_no"));
+                String special_request = cursor.getString(cursor.getColumnIndexOrThrow("special_request"));
                 int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
 
                 //creating a BookingRecord object with the values
-                BookingRecord booking = new BookingRecord(date, time, noGuests, tableNo, R.drawable.ic_people_group);
+                BookingRecord booking = new BookingRecord(date, time, special_request, noGuests, tableNo, R.drawable.ic_people_group);
                 booking.confirmed = true;
                 booking.tableNo = tableNo;
                 booking.setBookingID(bookingID);
@@ -182,7 +184,6 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
         //closing cursor and database and returning the list of confirmed bookings
         cursor.close();
-        db.close();
         return confirmedBookings;
 
     }
@@ -198,7 +199,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         String viewName = "GUnconfirmedReqs";
 
         //creating query to get bookings for given user
-        String[] columns = {"bookingID", "date", "time", "no_guests"};
+        String[] columns = {"bookingID", "date", "time", "no_guests, special_request"};
         String selection = "guest_first_name = ? AND guest_last_name = ?";
         String[] selectionArgs = {guest_first_name, guest_last_name};
 
@@ -209,11 +210,12 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 //getting the values of the attributes of the booking
                 String date = cursor.getString(cursor.getColumnIndexOrThrow("date"));
                 String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
+                String special_request = cursor.getString(cursor.getColumnIndexOrThrow("special_request"));
                 int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
                 int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
 
                 //creating a BookingRecord object with the values
-                BookingRecord booking = new BookingRecord(date, time, noGuests, R.drawable.ic_people_group);
+                BookingRecord booking = new BookingRecord(date, time, special_request, noGuests, R.drawable.ic_people_group);
                 booking.confirmed = false;
                 booking.setBookingID(bookingID);
 
@@ -225,7 +227,6 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
         //closing cursor and database and returning the list of confirmed bookings
         cursor.close();
-        db.close();
         return guestBookingReqs;
 
     }
@@ -261,7 +262,6 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
         }
         cursor.close();
-        db.close();
 
         return allRequests;
 
@@ -302,7 +302,6 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        db.close();
         return allConfirmedBookings;
     }
 

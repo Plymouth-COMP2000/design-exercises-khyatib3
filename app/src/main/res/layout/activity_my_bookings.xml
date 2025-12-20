@@ -83,7 +83,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookingsRecyclerView"
         android:layout_width="394dp"
-        android:layout_height="604dp"
+        android:layout_height="416dp"
         android:layout_weight="1"
         android:scrollbars="vertical" />
 

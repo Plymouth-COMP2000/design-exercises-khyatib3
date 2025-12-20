@@ -15,9 +15,11 @@ import android.widget.TimePicker;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
+import java.text.ParseException;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -107,13 +109,56 @@ public class Reservation_Enquiry extends AppCompatActivity {
                 EditText specialNotesBox = findViewById(R.id.specialNotesInput);
 
                 //retrieving values from the fields
-                String firstName = firstNameInput.getText().toString();
-                String lastName = lastNameInput.getText().toString();
+                String firstName = firstNameInput.getText().toString().trim();
+                String lastName = lastNameInput.getText().toString().trim();
                 int noGuests = Integer.parseInt(noGuestsSpinner.getSelectedItem().toString());
                 String specialNotes = specialNotesBox.getText().toString();
                 String date = dateText.getText().toString();
                 String time = timeText.getText().toString();
 
+                //handling date and time being empty
+                if(date.equals("__/__/__") || time.equals("__:__")){
+                    Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
+                    intent.putExtra("errorMsg", "Please select a date and time!");
+                    startActivity(intent);
+                    return;
+                }
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                try {
+                    Date selectedDate = sdf.parse(date);
+
+                    //getting today's date to compare
+                    Calendar todayCal = Calendar.getInstance();
+                    todayCal.set(Calendar.HOUR_OF_DAY, 0);
+                    todayCal.set(Calendar.MINUTE, 0);
+                    todayCal.set(Calendar.SECOND, 0);
+                    todayCal.set(Calendar.MILLISECOND, 0);
+                    Date today = todayCal.getTime();
+
+                    //handling if entered date is before the local date
+                    if (selectedDate != null && selectedDate.before(today)) {
+                        Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
+                        intent.putExtra("errorMsg", "You can't select a date before today's!");
+                        startActivity(intent);
+                        return;
+                    }
+
+                    // check that entered time is not between 10:00 and 21:00
+                    String[] timeParts = time.split(":");
+                    int hour = Integer.parseInt(timeParts[0]);
+                    int minute = Integer.parseInt(timeParts[1]);
+
+                    if (hour < 10 || hour > 21 || (hour == 21 && minute > 0)) {
+                        Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
+                        intent.putExtra("errorMsg", "The Restaurant takes bookings between 10:00-21:00!");
+                        startActivity(intent);
+                        return;
+                    }
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
                 //creating an instance of booking item (unconfirmed request by guest constructor used here)
                 BookingRecord newRequest = new BookingRecord(firstName, lastName, noGuests, date, time, 0, specialNotes, R.drawable.ic_people_group);

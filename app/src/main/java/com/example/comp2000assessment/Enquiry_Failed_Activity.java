@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,13 @@ public class Enquiry_Failed_Activity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        //retrieving error message
+        String errorMsg = getIntent().getStringExtra("errorMsg");
+
+        //get textview
+        TextView errorDisplay = findViewById(R.id.reservationSentFailText);
+        errorDisplay.setText(errorMsg);
 
         Button retryEnquiryBtn = findViewById(R.id.enquiryRetryBtn);
         retryEnquiryBtn.setOnClickListener(new View.OnClickListener() {

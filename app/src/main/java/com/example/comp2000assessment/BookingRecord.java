@@ -44,20 +44,22 @@ public class BookingRecord {
     }
 
     //for guest confirmed bookings
-    public BookingRecord(String date, String time, int numberOfGuests, int tableNo, int peopleGroupIconId){
+    public BookingRecord(String date, String time, String specialRequest, int numberOfGuests, int tableNo, int peopleGroupIconId){
         this.date = date;
         this.time = time;
         this.numberOfGuests = numberOfGuests;
         this.tableNo = tableNo;
         this.peopleGroupIconId = peopleGroupIconId;
+        this.specialRequest = specialRequest;
     }
 
     //for guest unconfirmed requests
-    public BookingRecord(String date, String time, int numberOfGuests, int peopleGroupIconId){
+    public BookingRecord(String date, String time, String specialRequest, int numberOfGuests, int peopleGroupIconId){
         this.date = date;
         this.time = time;
         this.numberOfGuests = numberOfGuests;
         this.peopleGroupIconId = peopleGroupIconId;
+        this.specialRequest = specialRequest;
     }
 
     //for staff: booking requests

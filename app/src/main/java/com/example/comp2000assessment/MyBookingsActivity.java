@@ -3,7 +3,11 @@ package com.example.comp2000assessment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,19 +23,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MyBookingsActivity extends AppCompatActivity {
+    List<BookingRecord> bookingRecords;
+    Spinner bookingTypeSpinner;
+    BookingsDatabaseHelper db;
+    BookingRecordAdapter adapter;
+
+    RecyclerView bookingRecycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_my_bookings);
+        bookingTypeSpinner = findViewById(R.id.bookingTypeDropdown);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.my_bookings_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        RecyclerView bookingRecycler = findViewById(R.id.bookingsRecyclerView);
+        bookingRecycler = findViewById(R.id.bookingsRecyclerView);
         bookingRecycler.setLayoutManager(new LinearLayoutManager(this));
 
         DividerItemDecoration divider = new DividerItemDecoration(
@@ -41,16 +53,35 @@ public class MyBookingsActivity extends AppCompatActivity {
         divider.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
         bookingRecycler.addItemDecoration(divider);
 
+        //setting options for spinner
+        String[] categories = {"Confirmed Bookings", "Unconfirmed Requests"};
+        //setting the spinner to the categories
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                categories
+        );
+        bookingTypeSpinner.setAdapter(spinnerAdapter);
 
-        List<BookingRecord> bookingRecords = new ArrayList<>();
-        BookingRecord booking1 = new BookingRecord("Sat. 4th Oct", "18:30", 4, 3, R.drawable.ic_people_group);
-        bookingRecords.add(booking1);
+        //adding functionality to the spinner
+        //should show items of that category when selected
+        bookingTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                //getting selected category
+                String bookingType = parent.getItemAtPosition(position).toString();
 
-        BookingRecord booking2 = new BookingRecord("Thur. 11th Nov", "14:30", 3, 5, R.drawable.ic_people_group);
-        bookingRecords.add(booking2);
+                //loading bookings as per bookingType
+                //TODO CHANGE PASSING NAME SANDRA SMITH TO USER.FIRSTNAME AND USER.LASTNAME ONCE API IS IMPLEMENTED
+                loadBookings(bookingType, "Sandra", "Smith");
+            }
 
-        BookingRecord booking3 = new BookingRecord("Mon. 15th Nov", "20:30", 6, 1, R.drawable.ic_people_group);
-        bookingRecords.add(booking3);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                //default should be starters
+                loadBookings("Unconfirmed Requests", "Sandra", "Smith");
+            }
+        });
 
         BookingRecordAdapter adapter = new BookingRecordAdapter(this, bookingRecords);
         bookingRecycler.setAdapter(adapter);
@@ -67,5 +98,25 @@ public class MyBookingsActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void loadBookings(String bookingType, String fName, String lName){
+        bookingRecords = new ArrayList<>();
+        //retrieving items of the current category from DB
+        db = new BookingsDatabaseHelper(MyBookingsActivity.this);
+        if (bookingType.equals("Confirmed Bookings")) {
+            bookingRecords = db.showGuestConfirmedBookings(fName, lName);
+        }else if (bookingType.equals("Unconfirmed Requests")){
+            bookingRecords = db.showGuestUnconfirmedReqs(fName, lName);
+        }
+
+        //setting adapter to show list of bookings
+        adapter = new BookingRecordAdapter(this, bookingRecords);
+        bookingRecycler.setAdapter(adapter);
+
+
+        if (bookingRecords.isEmpty()) {
+            Toast.makeText(this, "No bookings made", Toast.LENGTH_SHORT).show();
+        }
     }
 }

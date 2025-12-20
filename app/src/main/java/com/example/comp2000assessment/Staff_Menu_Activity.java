@@ -123,7 +123,7 @@ public class Staff_Menu_Activity extends AppCompatActivity {
         adapter = new StaffMenuAdapter(this, currentCategoryList);
         staffRecyclerView.setAdapter(adapter);
 
-        // Optional: Show a message if empty
+
         if (currentCategoryList.isEmpty()) {
             Toast.makeText(this, "Nothing found in " + category, Toast.LENGTH_SHORT).show();
         }

@@ -31,6 +31,8 @@ public class BookingRecordAdapter extends RecyclerView.Adapter<BookingRecordAdap
         TextView noOfGuests;
         ImageButton editButton;
         ImageButton deleteButton;
+        TextView specialRequestsInfo;
+
 
         public BookingViewHolder(View bookingRecordView) {
             super(bookingRecordView);
@@ -40,6 +42,7 @@ public class BookingRecordAdapter extends RecyclerView.Adapter<BookingRecordAdap
             noOfGuests = bookingRecordView.findViewById(R.id.noGuests);
             editButton = bookingRecordView.findViewById(R.id.editBtn);
             deleteButton = bookingRecordView.findViewById(R.id.deleteBtn);
+            specialRequestsInfo = bookingRecordView.findViewById(R.id.specialReqsText);
         }
 
     }
@@ -57,12 +60,15 @@ public class BookingRecordAdapter extends RecyclerView.Adapter<BookingRecordAdap
         holder.time.setText(item.time);
         holder.noOfGuests.setText(String.format("%d", item.numberOfGuests));
         holder.peopleGroupIcon.setImageResource(item.peopleGroupIconId);
+        holder.specialRequestsInfo.setText(item.specialRequest);
 
 
     }
 
     public int getItemCount() {
-        return bookingList.size();
+        if (bookingList == null) {
+            return 0;
+        }return bookingList.size();
     }
 
 }
