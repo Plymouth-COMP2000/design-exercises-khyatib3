@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#FDF9FC"
-    tools:context=".Reservation_Enquiry">
+    tools:context=".Reservation_Enquiry"
+    tools:layout_editor_absoluteX="6dp"
+    tools:layout_editor_absoluteY="0dp">
 
     <ImageButton
         android:id="@+id/reservationHomeIcon"
@@ -21,53 +23,64 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_home" />
 
+    <!-- dropdown -->
+
     <TextView
         android:id="@+id/enquiryTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/abril_fatface"
         android:text="@string/makeRequestTitle"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.211"
+        app:layout_constraintHorizontal_bias="0.361"
         app:layout_constraintStart_toEndOf="@+id/reservationHomeIcon"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- dropdown -->
-
     <TextView
-        android:id="@+id/namePrompt"
+        android:id="@+id/b_firstNamePrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/coustard"
-        android:text="@string/nameLbl"
+        android:text="@string/first_name_prompt"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/reservationHomeIcon"
         app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
 
     <TextView
+        android:id="@+id/b_lastNamePrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/last_name_prompt"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/b_firstNamePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/b_firstNamePrompt" />
+
+    <TextView
         android:id="@+id/guestNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/coustard"
         android:text="@string/guestNoLbl"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/namePrompt"
+        app:layout_constraintEnd_toEndOf="@+id/b_firstNamePrompt"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/namePrompt"
-        app:layout_constraintTop_toBottomOf="@+id/namePrompt" />
+        app:layout_constraintStart_toStartOf="@+id/b_firstNamePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/b_firstNamePrompt" />
 
     <Spinner
         android:id="@+id/guestNoDropdown"
         android:layout_width="141dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/grey_dropdown"
         android:dropDownSelector="@android:color/transparent"
         android:entries="@array/guest_no_dropdown_items"
@@ -76,21 +89,21 @@
         android:popupBackground="#FBDCDC"
         android:spinnerMode="dropdown"
         android:theme="@style/dropDownItemTheme"
-        app:layout_constraintEnd_toEndOf="@+id/enterNameReservation"
-        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintEnd_toEndOf="@+id/br_firstNameInput"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toEndOf="@+id/guestNo"
-        app:layout_constraintTop_toBottomOf="@+id/enterNameReservation" />
+        app:layout_constraintTop_toBottomOf="@+id/br_firstNameInput" />
 
     <TextView
         android:id="@+id/dateLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/coustard"
         android:text="@string/dateLbl"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/guestNo"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="@+id/guestNo"
         app:layout_constraintTop_toBottomOf="@+id/guestNo" />
 
@@ -98,7 +111,7 @@
         android:id="@+id/dateDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:padding="12dp"
         android:text="__/__/__"
         android:textColor="#333333"
@@ -125,7 +138,7 @@
         android:id="@+id/calendarBtn"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:backgroundTint="#FDF9FC"
         android:contentDescription="@string/pickingDate"
         app:layout_constraintEnd_toEndOf="@+id/guestNoDropdown"
@@ -137,7 +150,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/coustard"
         android:text="__:__"
         android:textSize="16sp"
@@ -148,7 +161,7 @@
         android:id="@+id/timeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#FDF9FC"
         android:contentDescription="@string/timePicking"
         app:layout_constraintEnd_toEndOf="@+id/calendarBtn"
@@ -162,7 +175,7 @@
         android:id="@+id/specialNotesPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/coustard"
         android:text="@string/specialNotesLbL"
         android:textSize="16sp"
@@ -172,10 +185,10 @@
         app:layout_constraintTop_toBottomOf="@+id/timeLbl" />
 
     <EditText
-        android:id="@+id/specialNotesBox"
+        android:id="@+id/specialNotesInput"
         android:layout_width="326dp"
         android:layout_height="177dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/rounded_input"
         android:ems="10"
         android:fontFamily="@font/coustard"
@@ -184,7 +197,7 @@
         android:textAlignment="center"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/timeBtn"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.611"
         app:layout_constraintStart_toStartOf="@+id/specialNotesPrompt"
         app:layout_constraintTop_toBottomOf="@+id/specialNotesPrompt" />
 
@@ -192,19 +205,19 @@
         android:id="@+id/submitRequestButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="48dp"
         android:backgroundTint="@color/black"
         android:fontFamily="@font/coustard"
         android:paddingHorizontal="20dp"
         android:text="@string/sendRequestBtn"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/specialNotesBox"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="@+id/specialNotesBox"
-        app:layout_constraintTop_toBottomOf="@+id/specialNotesBox" />
+        app:layout_constraintEnd_toEndOf="@+id/specialNotesInput"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="@+id/specialNotesInput"
+        app:layout_constraintTop_toBottomOf="@+id/specialNotesInput" />
 
     <EditText
-        android:id="@+id/enterNameReservation"
+        android:id="@+id/br_firstNameInput"
         android:layout_width="158dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
@@ -212,10 +225,25 @@
         android:ems="10"
         android:fontFamily="@font/coustard"
         android:inputType="text"
-        android:text="@string/nameLbl"
+        android:hint="@string/first_name_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.797"
-        app:layout_constraintStart_toEndOf="@+id/namePrompt"
+        app:layout_constraintStart_toEndOf="@+id/b_firstNamePrompt"
         app:layout_constraintTop_toBottomOf="@+id/enquiryTitle" />
+
+    <EditText
+        android:id="@+id/br_lastNameInput"
+        android:layout_width="158dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/rounded_input"
+        android:ems="10"
+        android:fontFamily="@font/coustard"
+        android:inputType="text"
+        android:hint="@string/last_name_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.796"
+        app:layout_constraintStart_toEndOf="@+id/b_firstNamePrompt"
+        app:layout_constraintTop_toBottomOf="@+id/br_firstNameInput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

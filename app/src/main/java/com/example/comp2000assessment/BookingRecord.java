@@ -29,6 +29,20 @@ public class BookingRecord {
         this.specialRequest = specialRequest;
     }
 
+    //constructor for a new table booking request (used in reservation enquiry)
+    public BookingRecord(String guestFirstName, String guestLastName, int numberOfGuests, String date, String time, int tableNo, String specialRequest, int peopleGroupIconId){
+        this.guestFirstName = guestFirstName;
+        this.guestLastName = guestLastName;
+        this.numberOfGuests = numberOfGuests;
+        this.date = date;
+        this.time = time;
+        this.tableNo = 0;
+        this.specialRequest = specialRequest;
+        this.confirmed = false;
+        this.peopleGroupIconId = peopleGroupIconId;
+
+    }
+
     //for guest confirmed bookings
     public BookingRecord(String date, String time, int numberOfGuests, int tableNo, int peopleGroupIconId){
         this.date = date;

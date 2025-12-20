@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import androidx.activity.EdgeToEdge;
@@ -34,20 +36,10 @@ public class Reservation_Enquiry extends AppCompatActivity {
 
         ImageButton resEnq_HomeIcon = findViewById(R.id.reservationHomeIcon);
         //setting on click functionality
-        resEnq_HomeIcon.setOnClickListener(new View.OnClickListener(){
+        resEnq_HomeIcon.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(Reservation_Enquiry.this, GuestHomepage.class);
-                startActivity(intent);
-            }
-        });
-
-        Button sendRequestBtn = findViewById(R.id.submitRequestButton);
-        //setting on click functionality
-        sendRequestBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Sent_Activity.class);
                 startActivity(intent);
             }
         });
@@ -63,7 +55,7 @@ public class Reservation_Enquiry extends AppCompatActivity {
                 int month = calendar.get(Calendar.MONTH);
                 int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-               //creating a date picker dialog
+                //creating a date picker dialog
                 DatePickerDialog datePickerDialog = new DatePickerDialog(Reservation_Enquiry.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
@@ -101,5 +93,46 @@ public class Reservation_Enquiry extends AppCompatActivity {
                 timePickerDialog.show();
             }
         });
+
+
+        Button sendRequestBtn = findViewById(R.id.submitRequestButton);
+        //setting on click functionality
+        sendRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //getting the other user input fields
+                EditText firstNameInput = findViewById(R.id.br_firstNameInput);
+                EditText lastNameInput = findViewById(R.id.br_lastNameInput);
+                Spinner noGuestsSpinner = findViewById(R.id.guestNoDropdown);
+                EditText specialNotesBox = findViewById(R.id.specialNotesInput);
+
+                //retrieving values from the fields
+                String firstName = firstNameInput.getText().toString();
+                String lastName = lastNameInput.getText().toString();
+                int noGuests = Integer.parseInt(noGuestsSpinner.getSelectedItem().toString());
+                String specialNotes = specialNotesBox.getText().toString();
+                String date = dateText.getText().toString();
+                String time = timeText.getText().toString();
+
+
+                //creating an instance of booking item (unconfirmed request by guest constructor used here)
+                BookingRecord newRequest = new BookingRecord(firstName, lastName, noGuests, date, time, 0, specialNotes, R.drawable.ic_people_group);
+
+                //adding the new request in the Bookings DB
+                BookingsDatabaseHelper bookingDb = new BookingsDatabaseHelper(Reservation_Enquiry.this);
+                boolean addRequestResult = bookingDb.addBooking(newRequest);
+
+                if(addRequestResult){
+                    Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Sent_Activity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
+                    startActivity(intent);
+                }
+
+
+            }
+        });
+
     }
 }

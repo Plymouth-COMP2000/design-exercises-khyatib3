@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".Enquiry_Failed_Activity"
+            android:exported="false" />
+        <activity
             android:name=".Delete_Menu_Item_Activity"
             android:exported="false" />
         <activity
@@ -58,7 +61,7 @@
             android:exported="false" />
         <activity
             android:name=".StaffDashboard"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".T_C_Activity"
             android:exported="false" />
@@ -88,7 +91,7 @@
             android:exported="false" />
         <activity
             android:name=".GuestHomepage"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AccountCreated"
             android:exported="false" />

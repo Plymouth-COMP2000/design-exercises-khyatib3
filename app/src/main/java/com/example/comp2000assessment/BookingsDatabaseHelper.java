@@ -11,6 +11,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -80,7 +81,8 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 "date TEXT NOT NULL," +
                 "time TEXT NOT NULL," +
                 "table_no INTEGER NOT NULL," +
-                "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10)" +
+                "no_guests INTEGER NOT NULL CHECK (no_guests > 0 AND no_guests <=10), " +
+                "special_request TEXT "+
                 ")";
         db.execSQL(createBookingsLogTable);
 
@@ -116,6 +118,9 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         bookingValues.put("date", booking.date);
         bookingValues.put("time", booking.time);
         bookingValues.put("table_no", booking.tableNo);
+        bookingValues.put("no_guests", booking.numberOfGuests);
+        bookingValues.put("special_request", booking.specialRequest);
+
 
         //retrieving the new booking id so it can be set to the BookingRecord object booking
         long newBookingID = db.insert(TABLE_NAME, null, bookingValues);
@@ -125,8 +130,10 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
         if (newBookingID > 0) {
             booking.setBookingID((int) newBookingID);
+            Log.e("New booking added, bookingID: ", String.valueOf(newBookingID));
+        }else{
+            Log.e("New booking not added", String.valueOf(newBookingID));
         }
-        db.close();
 
         //returning if booking being added to the Bookings Table was successful
         return newBookingID > 0;
