@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".T_C_Activity">
+    tools:context=".terms_conditions.T_C_Activity">
 
     <TextView
         android:id="@+id/t_cLbl"

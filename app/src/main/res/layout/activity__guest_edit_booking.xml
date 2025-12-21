@@ -5,7 +5,7 @@
     android:id="@+id/guest_edit_booking_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Guest_EditBooking_Activity">
+    tools:context=".bookings.Guest_EditBooking_Activity">
 
     <ScrollView
         android:layout_width="match_parent"

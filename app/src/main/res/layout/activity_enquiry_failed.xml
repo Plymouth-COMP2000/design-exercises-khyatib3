@@ -5,7 +5,7 @@
     android:id="@+id/enquiry_failed_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Enquiry_Failed_Activity">
+    tools:context=".bookings.Enquiry_Failed_Activity">
 
     <TextView
         android:id="@+id/restaurant2000Title"

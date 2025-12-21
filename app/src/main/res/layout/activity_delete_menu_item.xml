@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="12dp"
-    tools:context=".Delete_Menu_Item_Activity">
+    tools:context=".menu.Delete_Menu_Item_Activity">
 
     <ImageButton
         android:id="@+id/deleteItemToMainMenuBtn"

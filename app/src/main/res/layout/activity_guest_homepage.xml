@@ -5,7 +5,7 @@
     android:id="@+id/guest_homepage_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GuestHomepage">
+    tools:context=".homepages.GuestHomepage">
 
     <ImageView
         android:id="@+id/logo"

@@ -5,7 +5,7 @@
     android:id="@+id/addNewStaffScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".New_Staff_Admin">
+    tools:context=".users.New_Staff_Admin">
 
     <TextView
         android:id="@+id/addNewStaffTitle"

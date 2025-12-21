@@ -5,7 +5,7 @@
     android:id="@+id/staffAdd_SuccessScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Staff_Added_Confirmation">
+    tools:context=".users.Staff_Added_Confirmation">
 
     <ImageView
         android:id="@+id/restaurant_Logo"

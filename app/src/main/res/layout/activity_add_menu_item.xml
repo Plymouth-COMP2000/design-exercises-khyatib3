@@ -5,7 +5,7 @@
     android:id="@+id/addNewItemScreen"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    tools:context=".AddMenuItemActivity">
+    tools:context=".menu.AddMenuItemActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"

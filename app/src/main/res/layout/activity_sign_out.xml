@@ -5,7 +5,7 @@
     android:id="@+id/signOutScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignOutActivity">
+    tools:context=".users.SignOutActivity">
 
     <ImageView
         android:id="@+id/imageView3"

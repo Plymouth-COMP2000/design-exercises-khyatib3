@@ -5,7 +5,7 @@
     android:id="@+id/error_StaffAddScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Error_StaffAdd">
+    tools:context=".users.Error_StaffAdd">
     <ImageView
         android:id="@+id/restaurant_logo_AdminError"
         android:layout_width="wrap_content"

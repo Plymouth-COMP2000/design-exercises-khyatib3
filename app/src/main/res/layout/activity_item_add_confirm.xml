@@ -5,7 +5,7 @@
     android:id="@+id/itemAddConfirmScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Item_Add_Confirm_Activity">
+    tools:context=".menu.Item_Add_Confirm_Activity">
 
     <TextView
         android:id="@+id/restName"

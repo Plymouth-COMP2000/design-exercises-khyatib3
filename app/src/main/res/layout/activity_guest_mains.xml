@@ -6,7 +6,7 @@
     android:id="@+id/guest_mains_page"
     android:padding="8dp"
     android:orientation="vertical"
-    tools:context=".GuestMainsActivity">
+    tools:context=".menu.GuestMainsActivity">
 
     <!-- home button and sidebar button -->
     <LinearLayout

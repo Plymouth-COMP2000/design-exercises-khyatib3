@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="8dp"
     android:orientation="vertical"
-    tools:context=".Staff_Menu_Activity">
+    tools:context=".menu.Staff_Menu_Activity">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -5,7 +5,7 @@
     android:id="@+id/edit_menu_item_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditMenu_Activity">
+    tools:context=".menu.EditMenu_Activity">
 
     <ScrollView
         android:layout_width="match_parent"

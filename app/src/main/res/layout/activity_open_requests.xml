@@ -5,7 +5,7 @@
     android:id="@+id/openRequests_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Open_Requests">
+    tools:context=".bookings.Open_Requests">
 
     <TextView
         android:id="@+id/openReqsTitle"

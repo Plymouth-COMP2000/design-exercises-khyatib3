@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools" >
 
     <application
         android:allowBackup="true"
@@ -10,109 +10,112 @@
         android:label="@string/restaurantName"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.COMP2000Assessment">
+        android:theme="@style/Theme.COMP2000Assessment" >
         <activity
-            android:name=".Guest_EditBooking_Activity"
+            android:name=".bookings.DeleteBooking_Activity"
             android:exported="false" />
         <activity
-            android:name=".TableNo_ReservationActivity"
+            android:name=".bookings.Guest_EditBooking_Activity"
             android:exported="false" />
         <activity
-            android:name=".Open_Requests"
+            android:name=".bookings.TableNo_ReservationActivity"
             android:exported="false" />
         <activity
-            android:name=".Change_Status"
+            android:name=".bookings.Open_Requests"
             android:exported="false" />
         <activity
-            android:name=".Enquiry_Failed_Activity"
+            android:name=".bookings.Change_Status"
             android:exported="false" />
         <activity
-            android:name=".Delete_Menu_Item_Activity"
+            android:name=".bookings.Enquiry_Failed_Activity"
             android:exported="false" />
         <activity
-            android:name=".EditMenu_Activity"
+            android:name=".menu.Delete_Menu_Item_Activity"
             android:exported="false" />
         <activity
-            android:name=".Guest_Sides_Activity"
+            android:name=".menu.EditMenu_Activity"
             android:exported="false" />
         <activity
-            android:name=".Guest_Drinks_Activity"
+            android:name=".menu.Guest_Sides_Activity"
             android:exported="false" />
         <activity
-            android:name=".Guest_Desserts_Activity"
+            android:name=".menu.Guest_Drinks_Activity"
             android:exported="false" />
         <activity
-            android:name=".GuestMainsActivity"
+            android:name=".menu.Guest_Desserts_Activity"
             android:exported="false" />
         <activity
-            android:name=".Guest_Menu_Options_Activity"
+            android:name=".menu.GuestMainsActivity"
             android:exported="false" />
         <activity
-            android:name=".Error_StaffAdd"
+            android:name=".menu.Guest_Menu_Options_Activity"
             android:exported="false" />
         <activity
-            android:name=".Staff_Added_Confirmation"
+            android:name=".users.Error_StaffAdd"
             android:exported="false" />
         <activity
-            android:name=".New_Staff_Admin"
+            android:name=".users.Staff_Added_Confirmation"
             android:exported="false" />
         <activity
-            android:name=".Error_Add_MenuItem"
+            android:name=".users.New_Staff_Admin"
             android:exported="false" />
         <activity
-            android:name=".All_Tables_Activity"
+            android:name=".menu.Error_Add_MenuItem"
             android:exported="false" />
         <activity
-            android:name=".Staff_Menu_Activity"
+            android:name=".bookings.All_Tables_Activity"
             android:exported="false" />
         <activity
-            android:name=".Item_Add_Confirm_Activity"
+            android:name=".menu.Staff_Menu_Activity"
             android:exported="false" />
         <activity
-            android:name=".AddMenuItemActivity"
+            android:name=".menu.Item_Add_Confirm_Activity"
             android:exported="false" />
         <activity
-            android:name=".StaffDashboard"
+            android:name=".menu.AddMenuItemActivity"
+            android:exported="false" />
+        <activity
+            android:name=".homepages.StaffDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".terms_conditions.T_C_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".users.SignOutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".settings.Settings"
+            android:exported="false" />
+        <activity
+            android:name=".bookings.MyBookingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".users.Logout_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".menu.Guest_Starters_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".bookings.Enquiry_Sent_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".bookings.Reservation_Enquiry"
+            android:exported="false" />
+        <activity
+            android:name=".users.Login_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".homepages.GuestHomepage"
             android:exported="true" />
         <activity
-            android:name=".T_C_Activity"
+            android:name=".users.AccountCreated"
             android:exported="false" />
         <activity
-            android:name=".SignOutActivity"
+            android:name=".users.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Settings"
-            android:exported="false" />
-        <activity
-            android:name=".MyBookingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Logout_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Guest_Starters_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Enquiry_Sent_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".Reservation_Enquiry"
-            android:exported="false" />
-        <activity
-            android:name=".Login_Activity"
-            android:exported="false" />
-        <activity
-            android:name=".GuestHomepage"
-            android:exported="false" />
-        <activity
-            android:name=".AccountCreated"
-            android:exported="false" />
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StartUpActivity"
-            android:exported="true">
+            android:name=".users.StartUpActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

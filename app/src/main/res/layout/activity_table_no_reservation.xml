@@ -5,7 +5,7 @@
     android:id="@+id/tableNo_reservation_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TableNo_ReservationActivity">
+    tools:context=".bookings.TableNo_ReservationActivity">
 
     <TextView
         android:id="@+id/tableNoTitle"

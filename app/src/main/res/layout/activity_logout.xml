@@ -5,7 +5,7 @@
     android:id="@+id/sidebarBtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Logout_Activity">
+    tools:context=".users.Logout_Activity">
 
     <TextView
         android:id="@+id/restaurantName4"

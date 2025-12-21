@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/delete_booking_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    tools:context=".bookings.DeleteBooking_Activity">
+
+    <TextView
+        android:id="@+id/deleteBookingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/coustard"
+        android:text="Delete this booking?"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="343dp"
+        android:layout_height="216dp"
+        android:layout_marginBottom="204dp"
+        android:background="@drawable/text_background"
+        android:orientation="vertical"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/deleteBooking_resLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!--Delete prompt -->
+        <TextView
+            android:id="@+id/deleteBookingPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="71dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/coustard"
+            android:text="You are about to delete this booking! \n This will cancel this booking. \n Are you sure you want to do this?"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <!-- delete booking btn-->
+        <Button
+            android:id="@+id/confirmDeleteBookingBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/success_green"
+            android:fontFamily="@font/coustard"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Yes, delete this booking"
+            android:textSize="16sp" />
+
+        <!-- cancel deleting booking btn -->
+        <Button
+            android:id="@+id/cancelDelBookingBtn"
+            android:layout_width="122dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="#a4133c"
+            android:fontFamily="@font/coustard"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/no_cancel_text"
+            android:textSize="16sp" />
+
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/deleteBooking_resLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

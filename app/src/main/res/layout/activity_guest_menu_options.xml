@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:isScrollContainer="true"
-    tools:context=".Guest_Menu_Options_Activity">
+    tools:context=".menu.Guest_Menu_Options_Activity">
 
     <ImageButton
         android:id="@+id/g_menuOptHomeBtn"
