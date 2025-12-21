@@ -75,6 +75,9 @@ public class S_BookingRecordAdapter extends RecyclerView.Adapter<S_BookingRecord
             public void onClick(View v) {
                 Intent intent = new Intent(context, Change_Status.class);
                 intent.putExtra("bookingID", item.getBookingID());
+                intent.putExtra("firstName", item.guestFirstName);
+                intent.putExtra("lastName", item.guestLastName);
+                intent.putExtra("specialRequest", item.specialRequest);
                 intent.putExtra("fullName", fullName);
                 intent.putExtra("date", item.date);
                 intent.putExtra("time", item.time);

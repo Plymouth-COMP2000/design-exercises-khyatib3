@@ -74,7 +74,7 @@ public class BookingRecord {
     }
 
     //for staff: confirmed bookings
-    public BookingRecord(String date, String time, int numberOfGuests, String guestFirstName, String guestLastName, int tableNo, int peopleGroupIconId){
+    public BookingRecord(String date, String time, int numberOfGuests, String guestFirstName, String guestLastName, String specialRequest, int tableNo, int peopleGroupIconId){
         this.date = date;
         this.time = time;
         this.numberOfGuests = numberOfGuests;
@@ -82,5 +82,7 @@ public class BookingRecord {
         this.guestLastName = guestLastName;
         this.tableNo = tableNo;
         this.peopleGroupIconId = peopleGroupIconId;
+        this.specialRequest = specialRequest;
+        this.confirmed = true;
     }
 }

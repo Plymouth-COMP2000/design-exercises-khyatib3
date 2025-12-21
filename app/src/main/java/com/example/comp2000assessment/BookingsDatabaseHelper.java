@@ -275,7 +275,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         ArrayList<BookingRecord> allConfirmedBookings = new ArrayList<>();
         String viewName = "StaffConBookings";
 
-        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests", "table_no"};
+        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests", "table_no, special_request"};
         String selection = "table_no = ?";
         String[] selectionArgs = {String.valueOf(tableNo)};
 
@@ -288,11 +288,12 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
                 String firstName = cursor.getString(cursor.getColumnIndexOrThrow("guest_first_name"));
                 String lastName = cursor.getString(cursor.getColumnIndexOrThrow("guest_last_name"));
+                String special_request = cursor.getString(cursor.getColumnIndexOrThrow("special_request"));
                 int table_No = cursor.getInt(cursor.getColumnIndexOrThrow("table_no"));
                 int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
                 int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
 
-                BookingRecord booking = new BookingRecord(date, time, noGuests, firstName, lastName, table_No, R.drawable.ic_people_group);
+                BookingRecord booking = new BookingRecord(date, time, noGuests, firstName, lastName, special_request, table_No, R.drawable.ic_people_group);
                 booking.confirmed = true;
                 booking.setBookingID(bookingID);
 
