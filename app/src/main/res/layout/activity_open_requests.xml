@@ -38,8 +38,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/openReqsRecyclerView"
-        android:layout_width="392dp"
-        android:layout_height="750dp"
+        android:layout_width="386dp"
+        android:layout_height="745dp"
         android:layout_weight="1"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
