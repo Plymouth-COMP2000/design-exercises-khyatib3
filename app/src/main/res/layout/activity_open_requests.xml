@@ -7,8 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".Open_Requests">
 
-
-
     <TextView
         android:id="@+id/openReqsTitle"
         android:layout_width="wrap_content"
@@ -25,8 +23,8 @@
 
     <ImageButton
         android:id="@+id/openReqsToHomeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/backHomeTxt"
         app:layout_constraintBottom_toBottomOf="@+id/openReqsTitle"
@@ -38,14 +36,15 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/openReqsRecyclerView"
-        android:layout_width="386dp"
-        android:layout_height="745dp"
-        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openReqsTitle" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
