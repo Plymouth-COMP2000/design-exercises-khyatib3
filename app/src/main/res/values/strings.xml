@@ -109,7 +109,18 @@
     <string name="confirmSignOut">Yes, sign out</string>
     <string name="pickingDate">You are picking a date!</string>
     <string name="timePicking">You are picking a time for this date</string>
-    <string name="sidebar">view categories</string>
+
+    <string-array name="table_numbers">
+        <item tools:ignore="TypographyEllipsis">Choose a table...</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
 
     <string name="close_dialog">close dialog</string>
     <string name="edit_description">Edit description:</string>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Change_Status">
+
+    <TextView
+        android:id="@+id/confirmBookingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/coustard"
+        android:text="Confirm Booking:"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="168dp"
+        android:fontFamily="@font/coustard"
+        android:text="@string/nameLbl"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmBookingTitle" />
+
+    <TextView
+        android:id="@+id/guestFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="168dp"
+        android:fontFamily="@font/coustard"
+        android:text="Guest Full Name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.741"
+        app:layout_constraintStart_toEndOf="@+id/nameTag"
+        app:layout_constraintTop_toBottomOf="@+id/confirmBookingTitle" />
+
+    <TextView
+        android:id="@+id/guestNoTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/guestNoLbl"
+        android:fontFamily="@font/coustard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/nameTag"
+        app:layout_constraintTop_toBottomOf="@+id/nameTag" />
+
+    <TextView
+        android:id="@+id/cs_guestNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="No of Guests"
+        android:fontFamily="@font/coustard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/guestFullName"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/guestNoTag"
+        app:layout_constraintTop_toBottomOf="@+id/guestFullName" />
+
+    <TextView
+        android:id="@+id/bookingDateTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/dateLbl"
+        android:fontFamily="@font/coustard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/guestNoTag"
+        app:layout_constraintTop_toBottomOf="@+id/guestNoTag" />
+
+    <TextView
+        android:id="@+id/cs_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Booking Date"
+        android:fontFamily="@font/coustard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/cs_guestNo"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/bookingDateTag"
+        app:layout_constraintTop_toBottomOf="@+id/cs_guestNo" />
+
+    <TextView
+        android:id="@+id/bookingTimeTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="@string/timeLbl"
+        android:fontFamily="@font/coustard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/guestNoTag"
+        app:layout_constraintTop_toBottomOf="@+id/guestNoTag" />
+
+    <TextView
+        android:id="@+id/cs_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="68dp"
+        android:text="Booking Time"
+        android:fontFamily="@font/coustard"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/cs_date"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/bookingDateTag"
+        app:layout_constraintTop_toBottomOf="@+id/cs_guestNo" />
+
+
+    <TextView
+        android:id="@+id/assignTableNoTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/coustard"
+        android:text="Assign Table No:"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/bookingTimeTag"
+        app:layout_constraintTop_toBottomOf="@+id/bookingTimeTag" />
+
+    <Spinner
+        android:id="@+id/assignTableNoSpinner"
+        android:layout_width="122dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/grey_dropdown"
+        android:entries="@array/table_numbers"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toEndOf="@+id/assignTableNoTag"
+        app:layout_constraintTop_toBottomOf="@+id/cs_time"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/confirmResBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="428dp"
+        android:backgroundTint="@color/success_green"
+        android:fontFamily="@font/coustard"
+        android:text="Confirm Reservation"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/assignTableNoSpinner"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="@+id/assignTableNoTag"
+        app:layout_constraintTop_toBottomOf="@+id/confirmBookingTitle" />
+
+    <Button
+        android:id="@+id/denyRequestBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/error_red"
+        android:fontFamily="@font/coustard"
+        android:text="Deny Request"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/confirmResBtn"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="@+id/confirmResBtn"
+        app:layout_constraintTop_toBottomOf="@+id/confirmResBtn" />
+
+    <ImageButton
+        android:id="@+id/changeStatusGoBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/goBackTxt"
+        app:layout_constraintEnd_toStartOf="@+id/confirmBookingTitle"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_back"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <ImageView
+        android:id="@+id/res_logo"
+        android:layout_width="191dp"
+        android:layout_height="111dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/denyRequestBtn"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

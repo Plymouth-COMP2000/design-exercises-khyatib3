@@ -170,10 +170,10 @@
         app:layout_constraintTop_toBottomOf="@+id/table6Btn" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="476dp"
+        android:id="@+id/allTables_resLogo"
+        android:layout_width="186dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="492dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/openRequestsBtn"
@@ -188,7 +188,7 @@
         android:text="@string/restaurantName"
         android:textColor="@color/wine_red"
         android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toEndOf="@+id/allTables_resLogo"
+        app:layout_constraintStart_toStartOf="@+id/allTables_resLogo"
+        app:layout_constraintTop_toBottomOf="@+id/allTables_resLogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

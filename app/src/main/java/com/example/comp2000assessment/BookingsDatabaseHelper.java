@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class BookingsDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "Bookings";
-    private static final int DATABASE_VER = 6;
+    private static final int DATABASE_VER = 7;
     private static final String BOOKING_LOG_TABLE = "BookingsLog";
 
     public BookingsDatabaseHelper(Context context) {
@@ -68,7 +68,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         //SQL for staff viewing booking requests
         String createStaffBookingsReqsView = "CREATE VIEW IF NOT EXISTS StaffBookingsReqs " +
                 "AS " +
-                "SELECT date, time, guest_first_name, guest_last_name, no_guests, special_request " +
+                "SELECT bookingID, date, time, guest_first_name, guest_last_name, no_guests, special_request " +
                 "FROM Bookings " +
                 "WHERE confirmed = 0";
         db.execSQL(createStaffBookingsReqsView);
@@ -239,7 +239,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         ArrayList<BookingRecord> allRequests = new ArrayList<>();
         String viewName = "StaffBookingsReqs";
 
-        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests"};
+        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests", "special_request"};
         Cursor cursor;
         cursor = db.query(viewName, columns, null, null, null, null, null);
 
@@ -249,10 +249,11 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 String time = cursor.getString(cursor.getColumnIndexOrThrow("time"));
                 String firstName = cursor.getString(cursor.getColumnIndexOrThrow("guest_first_name"));
                 String lastName = cursor.getString(cursor.getColumnIndexOrThrow("guest_last_name"));
+                String specialRequest = cursor.getString(cursor.getColumnIndexOrThrow("special_request"));
                 int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
                 int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
 
-                BookingRecord booking = new BookingRecord(date, time, noGuests, firstName, lastName, R.drawable.ic_people_group);
+                BookingRecord booking = new BookingRecord(date, time, noGuests, firstName, lastName, specialRequest, R.drawable.ic_people_group);
                 booking.confirmed = false;
                 booking.setBookingID(bookingID);
 

@@ -1,0 +1,64 @@
+package com.example.comp2000assessment;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Open_Requests extends AppCompatActivity {
+    RecyclerView requestsRecycler;
+    List<BookingRecord> openRequestsList;
+    S_BookingRecordAdapter adapter;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_open_requests);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
+
+        requestsRecycler = findViewById(R.id.openReqsRecyclerView);
+        requestsRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        //getting instance of db
+        BookingsDatabaseHelper db = new BookingsDatabaseHelper(Open_Requests.this);
+        openRequestsList = new ArrayList<>();
+
+        //retrieving bookings
+        openRequestsList = db.showStaffUnconfirmedReqs();
+
+        //setting list to adapter and adapter to recycler view
+        adapter = new S_BookingRecordAdapter(this, openRequestsList);
+        requestsRecycler.setAdapter(adapter);
+
+        if (openRequestsList.isEmpty()) {
+            Toast.makeText(this, "No requests currently", Toast.LENGTH_SHORT).show();
+        }
+
+        //home button naviagtion functionality
+        ImageButton openReqsToHomeBtn = findViewById(R.id.openReqsToHomeBtn);
+        openReqsToHomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Open_Requests.this, StaffDashboard.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+}

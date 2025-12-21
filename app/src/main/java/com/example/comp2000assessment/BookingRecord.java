@@ -63,12 +63,13 @@ public class BookingRecord {
     }
 
     //for staff: booking requests
-    public BookingRecord(String date, String time, int numberOfGuests, String guestFirstName, String guestLastName, int peopleGroupIconId){
+    public BookingRecord(String date, String time, int numberOfGuests, String guestFirstName, String guestLastName, String specialRequest, int peopleGroupIconId){
         this.date = date;
         this.time = time;
         this.numberOfGuests = numberOfGuests;
         this.guestFirstName = guestFirstName;
         this.guestLastName = guestLastName;
+        this.specialRequest = specialRequest;
         this.peopleGroupIconId = peopleGroupIconId;
     }
 
