@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.comp2000assessment.bookings.BookingRecord;
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.bookings.DeleteBooking_Activity;
+import com.example.comp2000assessment.bookings.Guest_EditBooking_Activity;
+import com.example.comp2000assessment.bookings.Staff_EditBooking_Activity;
 
 import java.util.List;
 
@@ -72,6 +74,26 @@ public class S_BookingRecordAdapter extends RecyclerView.Adapter<S_BookingRecord
         holder.noOfGuests.setText(String.format("%d", item.numberOfGuests));
         holder.peopleGroupIcon.setImageResource(item.peopleGroupIconId);
         holder.specialRequestsInfo.setText(item.specialRequest);
+
+        holder.editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Staff_EditBooking_Activity.class);
+
+                //passing the booking
+                intent.putExtra("bookingID", item.getBookingID());
+                intent.putExtra("guestFirstName", item.guestFirstName);
+                intent.putExtra("guestLastName", item.guestLastName);
+                intent.putExtra("date", item.date);
+                intent.putExtra("time", item.time);
+                intent.putExtra("numberOfGuests", item.numberOfGuests);
+                intent.putExtra("confirmed", item.confirmed);
+                intent.putExtra("specialRequest", item.specialRequest);
+                intent.putExtra("tableNo", item.tableNo);
+
+                context.startActivity(intent);
+            }
+        });
 
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override

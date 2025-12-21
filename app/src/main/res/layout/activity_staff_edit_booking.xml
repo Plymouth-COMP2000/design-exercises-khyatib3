@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/guest_edit_booking_page"
+    android:id="@+id/staff_edit_booking_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".bookings.Guest_EditBooking_Activity">
+    tools:context=".bookings.Staff_EditBooking_Activity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:layout_marginBottom="16dp">
 
                 <ImageButton
-                    android:id="@+id/g_editBookingBackBtn"
+                    android:id="@+id/s_editBookingBackBtn"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:backgroundTint="@color/white"
@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/coustard"
-                    android:text="Edit your booking:"
+                    android:text="Edit booking:"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="26sp"
@@ -52,17 +52,18 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:layout_width="329dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/rounded_blue_rectangle"
+                android:background="@drawable/rounded_teal_rectangle"
                 android:orientation="vertical"
                 android:layout_gravity="center"
                 android:padding="12dp">
 
                 <!--Edit booking holder name -->
                 <TextView
-                    android:id="@+id/editHolderFNameTxt"
+                    android:id="@+id/s_editHolderFNameTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/coustard"
@@ -71,17 +72,17 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/g_HolderFNameInput"
+                    android:id="@+id/s_HolderFNameInput"
                     android:layout_width="210dp"
                     android:layout_height="48dp"
                     android:background="@drawable/rounded_input"
                     android:fontFamily="@font/coustard"
-                    android:hint="@string/change_name_hint"
+                    android:text="@string/change_name_hint"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp" />
 
                 <TextView
-                    android:id="@+id/editHolderLNameTxt"
+                    android:id="@+id/s_editHolderLNameTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/coustard"
@@ -90,18 +91,18 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/g_HolderLNameInput"
+                    android:id="@+id/s_HolderLNameInput"
                     android:layout_width="210dp"
                     android:layout_height="48dp"
                     android:background="@drawable/rounded_input"
                     android:fontFamily="@font/coustard"
-                    android:hint="@string/change_name_hint"
+                    android:text="@string/change_name_hint"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp" />
 
                 <!--Edit no of guests attending -->
                 <TextView
-                    android:id="@+id/editNoGuestsTxt"
+                    android:id="@+id/s_editNoGuestsTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -111,7 +112,7 @@
                     android:textSize="18sp" />
 
                 <Spinner
-                    android:id="@+id/g_editGuestNoSpinner"
+                    android:id="@+id/s_editGuestNoSpinner"
                     android:layout_width="210dp"
                     android:layout_height="48dp"
                     android:background="@drawable/grey_dropdown"
@@ -121,9 +122,31 @@
                     android:paddingEnd="8dp"
                     android:spinnerMode="dropdown" />
 
+                <!-- edit table no -->
+                <TextView
+                    android:id="@+id/s_editTableNoTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/coustard"
+                    android:text="Change table:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/s_editTableNoSpinner"
+                    android:layout_width="210dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/grey_dropdown"
+                    android:entries="@array/table_numbers"
+                    android:fontFamily="@font/coustard"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:spinnerMode="dropdown" />
+
                 <!--Edit date -->
                 <TextView
-                    android:id="@+id/editDateTxt"
+                    android:id="@+id/s_editDateTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -142,7 +165,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/g_editDateBtn"
+                        android:id="@+id/s_editDateBtn"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:backgroundTint="#00FFFFFF"
@@ -151,7 +174,7 @@
                         android:src="@drawable/ic_calendar_month" />
 
                     <TextView
-                        android:id="@+id/g_editDateDisplay"
+                        android:id="@+id/s_editDateDisplay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
@@ -163,7 +186,7 @@
 
                 <!--Edit booking time -->
                 <TextView
-                    android:id="@+id/editTimeTxt"
+                    android:id="@+id/s_editTimeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -182,7 +205,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/g_editTimeBtn"
+                        android:id="@+id/s_editTimeBtn"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:backgroundTint="#00FFFFFF"
@@ -191,7 +214,7 @@
                         android:src="@drawable/ic_time_btn" />
 
                     <TextView
-                        android:id="@+id/g_editTimeDisplay"
+                        android:id="@+id/s_editTimeDisplay"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
@@ -202,7 +225,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/g_updateBookingBtn"
+                    android:id="@+id/s_updateBookingBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -215,7 +238,7 @@
                     tools:ignore="RtlCompat" />
 
                 <Button
-                    android:id="@+id/g_cancelBookingChangesBtn"
+                    android:id="@+id/s_cancelBookingChangesBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -225,16 +248,6 @@
                     android:textAlignment="center"
                     android:textSize="16sp"
                     tools:ignore="RtlCompat" />
-
-                <ImageView
-                    android:id="@+id/editBooking_resLogo"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:src="@drawable/restaurant_logo"
-                    android:contentDescription="Logo" />
 
             </LinearLayout>
 
