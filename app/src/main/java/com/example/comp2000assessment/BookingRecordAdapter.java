@@ -1,6 +1,7 @@
 package com.example.comp2000assessment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,28 @@ public class BookingRecordAdapter extends RecyclerView.Adapter<BookingRecordAdap
         holder.noOfGuests.setText(String.format("%d", item.numberOfGuests));
         holder.peopleGroupIcon.setImageResource(item.peopleGroupIconId);
         holder.specialRequestsInfo.setText(item.specialRequest);
+
+        holder.editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Guest_EditBooking_Activity.class);
+
+                //passing the booking
+                intent.putExtra("bookingID", item.getBookingID());
+                intent.putExtra("guestFirstName", item.guestFirstName);
+                intent.putExtra("guestLastName", item.guestLastName);
+                intent.putExtra("date", item.date);
+                intent.putExtra("time", item.time);
+                intent.putExtra("numberOfGuests", item.numberOfGuests);
+                intent.putExtra("confirmed", item.confirmed);
+                intent.putExtra("specialRequest", item.specialRequest);
+                intent.putExtra("tableNo", item.tableNo);
+
+                context.startActivity(intent);
+
+
+            }
+        });
 
 
     }

@@ -319,6 +319,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
             bookingVals.put("confirmed", booking.confirmed);
             bookingVals.put("guest_first_name", booking.guestFirstName);
             bookingVals.put("guest_last_name", booking.guestLastName);
+            bookingVals.put("no_guests", booking.numberOfGuests);
             bookingVals.put("date", booking.date);
             bookingVals.put("time", booking.time);
             bookingVals.put("table_no", booking.tableNo);

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/guest_edit_booking_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Guest_EditBooking_Activity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.07">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="16dp">
+
+                <ImageButton
+                    android:id="@+id/g_editBookingBackBtn"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/ic_arrow_back"
+                    android:contentDescription="Back" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/coustard"
+                    android:text="Edit your booking:"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="48dp"/>
+
+            </LinearLayout>
+
+            <!-- THIS IS THE BLUE LAYOUT CONTAINER -->
+            <LinearLayout
+                android:layout_width="329dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_blue_rectangle"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:padding="12dp">
+
+                <!--Edit booking holder name -->
+                <TextView
+                    android:id="@+id/editHolderFNameTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/coustard"
+                    android:text="Change first name:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/g_HolderFNameInput"
+                    android:layout_width="210dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rounded_input"
+                    android:fontFamily="@font/coustard"
+                    android:hint="@string/change_name_hint"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+
+                <TextView
+                    android:id="@+id/editHolderLNameTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/coustard"
+                    android:text="Change last name:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/g_HolderLNameInput"
+                    android:layout_width="210dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/rounded_input"
+                    android:fontFamily="@font/coustard"
+                    android:hint="@string/change_name_hint"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp" />
+
+                <!--Edit no of guests attending -->
+                <TextView
+                    android:id="@+id/editNoGuestsTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/coustard"
+                    android:text="Change no of guests:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/g_editGuestNoSpinner"
+                    android:layout_width="210dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/grey_dropdown"
+                    android:entries="@array/guest_no_dropdown_items"
+                    android:fontFamily="@font/coustard"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:spinnerMode="dropdown" />
+
+                <!--Edit date -->
+                <TextView
+                    android:id="@+id/editDateTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/coustard"
+                    android:text="Change booking date:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="9dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/g_editDateBtn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:contentDescription="Pick Date"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_calendar_month" />
+
+                    <TextView
+                        android:id="@+id/g_editDateDisplay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/coustard"
+                        android:text="__/__/__"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <!--Edit booking time -->
+                <TextView
+                    android:id="@+id/editTimeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/coustard"
+                    android:text="Change Time:"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="9dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/g_editTimeBtn"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:backgroundTint="#00FFFFFF"
+                        android:contentDescription="Pick Time"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/ic_time_btn" />
+
+                    <TextView
+                        android:id="@+id/g_editTimeDisplay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:fontFamily="@font/coustard"
+                        android:text="__:__"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/g_updateBookingBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="#2d6a4f"
+                    android:fontFamily="@font/coustard"
+                    android:text="@string/saveChangesLbl"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    tools:ignore="RtlCompat" />
+
+                <Button
+                    android:id="@+id/g_cancelBookingChangesBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#a4133c"
+                    android:fontFamily="@font/coustard"
+                    android:text="@string/cancelLbl"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    tools:ignore="RtlCompat" />
+
+                <ImageView
+                    android:id="@+id/editBooking_resLogo"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/restaurant_logo"
+                    android:contentDescription="Logo" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
