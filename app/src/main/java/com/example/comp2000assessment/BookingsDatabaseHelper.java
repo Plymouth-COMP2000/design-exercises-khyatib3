@@ -328,7 +328,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
 
             //updating the db with the updated booking and closing db
             long updateResult = db.update(TABLE_NAME, bookingVals, whereClause, whereArgs);
-            db.close();
+
 
             //return result
             return updateResult > 0;

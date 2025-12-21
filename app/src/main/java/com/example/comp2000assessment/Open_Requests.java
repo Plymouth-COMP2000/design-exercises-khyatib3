@@ -50,7 +50,7 @@ public class Open_Requests extends AppCompatActivity {
             Toast.makeText(this, "No requests currently", Toast.LENGTH_SHORT).show();
         }
 
-        //home button naviagtion functionality
+        //home button navigation functionality
         ImageButton openReqsToHomeBtn = findViewById(R.id.openReqsToHomeBtn);
         openReqsToHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -64,6 +64,13 @@ public class Change_Status extends AppCompatActivity {
                 //update booking in database
                 //use constructor for staff confirmed bookings as here we are confirming booking
                 BookingRecord booking = new BookingRecord(date, time, noOfGuests, firstName, lastName, specialRequest, assignedTableNo, R.drawable.ic_people_group);
+
+                //setting bookingID to it
+                booking.setBookingID(bookingID);
+
+                //setting booking to confirmed
+                booking.confirmed = true;
+
                 BookingsDatabaseHelper db = new BookingsDatabaseHelper(Change_Status.this);
                 boolean updateResult = db.updateBooking(booking);
 
