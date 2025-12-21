@@ -45,92 +45,92 @@ public class All_Tables_Activity extends AppCompatActivity {
             }
         });
 
-//        //table 1
-//        Button table1Btn = findViewById(R.id.table1Btn);
-//        table1Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 1);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //table 2
-//        Button table2Btn = findViewById(R.id.table2Btn);
-//        table2Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 2);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //table 3
-//        Button table3Btn = findViewById(R.id.table3Btn);
-//        table3Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 3);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //table 1
-//        Button table4Btn = findViewById(R.id.table4Btn);
-//        table4Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 4);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //table 5
-//        Button table5Btn = findViewById(R.id.table5Btn);
-//        table5Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 5);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //table 6
-//        Button table6Btn = findViewById(R.id.table6Btn);
-//        table6Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 6);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //table 7
-//        Button table7Btn = findViewById(R.id.table7Btn);
-//        table7Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 7);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        //table 8
-//        Button table8Btn = findViewById(R.id.table8Btn);
-//        table8Btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(All_Tables_Activity.this, Table_Activity.class);
-//                intent.putExtra("tableNumber", 8);
-//                startActivity(intent);
-//            }
-//        });
+        //table 1
+        Button table1Btn = findViewById(R.id.table1Btn);
+        table1Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 1);
+                startActivity(intent);
+            }
+        });
+
+        //table 2
+        Button table2Btn = findViewById(R.id.table2Btn);
+        table2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 2);
+                startActivity(intent);
+            }
+        });
+
+        //table 3
+        Button table3Btn = findViewById(R.id.table3Btn);
+        table3Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 3);
+                startActivity(intent);
+            }
+        });
+
+        //table 1
+        Button table4Btn = findViewById(R.id.table4Btn);
+        table4Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 4);
+                startActivity(intent);
+            }
+        });
+
+        //table 5
+        Button table5Btn = findViewById(R.id.table5Btn);
+        table5Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 5);
+                startActivity(intent);
+            }
+        });
+
+        //table 6
+        Button table6Btn = findViewById(R.id.table6Btn);
+        table6Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 6);
+                startActivity(intent);
+            }
+        });
+
+        //table 7
+        Button table7Btn = findViewById(R.id.table7Btn);
+        table7Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 7);
+                startActivity(intent);
+            }
+        });
+
+        //table 8
+        Button table8Btn = findViewById(R.id.table8Btn);
+        table8Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
+                intent.putExtra("tableNumber", 8);
+                startActivity(intent);
+            }
+        });
     }
 }

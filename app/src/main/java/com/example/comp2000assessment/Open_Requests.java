@@ -20,13 +20,13 @@ import java.util.List;
 public class Open_Requests extends AppCompatActivity {
     RecyclerView requestsRecycler;
     List<BookingRecord> openRequestsList;
-    S_BookingRecordAdapter adapter;
+    S_BookingRequestAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_open_requests);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.openRequests_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -43,7 +43,7 @@ public class Open_Requests extends AppCompatActivity {
         openRequestsList = db.showStaffUnconfirmedReqs();
 
         //setting list to adapter and adapter to recycler view
-        adapter = new S_BookingRecordAdapter(this, openRequestsList);
+        adapter = new S_BookingRequestAdapter(this, openRequestsList);
         requestsRecycler.setAdapter(adapter);
 
         if (openRequestsList.isEmpty()) {

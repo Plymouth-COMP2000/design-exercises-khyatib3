@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class BookingsDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "Bookings";
-    private static final int DATABASE_VER = 7;
+    private static final int DATABASE_VER = 8;
     private static final String BOOKING_LOG_TABLE = "BookingsLog";
 
     public BookingsDatabaseHelper(Context context) {
@@ -60,7 +60,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         //SQL for staff viewing confirmed bookings
         String createStaffConfirmedView = "CREATE VIEW IF NOT EXISTS StaffConBookings " +
                 "AS " +
-                "SELECT date, time, guest_first_name, guest_last_name, no_guests, table_no, special_request " +
+                "SELECT bookingID, date, time, guest_first_name, guest_last_name, no_guests, table_no, special_request " +
                 "FROM Bookings " +
                 "WHERE confirmed = 1";
         db.execSQL(createStaffConfirmedView);
@@ -275,7 +275,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         ArrayList<BookingRecord> allConfirmedBookings = new ArrayList<>();
         String viewName = "StaffConBookings";
 
-        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests", "table_no, special_request"};
+        String[] columns = {"bookingID", "date", "time", "guest_first_name", "guest_last_name", "no_guests", "table_no", "special_request"};
         String selection = "table_no = ?";
         String[] selectionArgs = {String.valueOf(tableNo)};
 
@@ -293,6 +293,7 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
                 int noGuests = cursor.getInt(cursor.getColumnIndexOrThrow("no_guests"));
                 int bookingID = cursor.getInt(cursor.getColumnIndexOrThrow("bookingID"));
 
+                //using staff confirmed bookings constructor
                 BookingRecord booking = new BookingRecord(date, time, noGuests, firstName, lastName, special_request, table_No, R.drawable.ic_people_group);
                 booking.confirmed = true;
                 booking.setBookingID(bookingID);

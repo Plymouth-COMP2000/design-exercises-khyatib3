@@ -2,18 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/openRequests_page"
+    android:id="@+id/tableNo_reservation_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Open_Requests">
+    tools:context=".TableNo_ReservationActivity">
 
     <TextView
-        android:id="@+id/openReqsTitle"
+        android:id="@+id/tableNoTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/abril_fatface"
-        android:text="Open Requests"
+        android:text="Table No"
         android:textColor="@color/black"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,20 +22,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/openReqsToHomeBtn"
+        android:id="@+id/tableNoToAllTablesBtn"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/backHomeTxt"
-        app:layout_constraintBottom_toBottomOf="@+id/openReqsTitle"
-        app:layout_constraintEnd_toStartOf="@+id/openReqsTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/tableNoTitle"
+        app:layout_constraintEnd_toStartOf="@+id/tableNoTitle"
         app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/openReqsTitle"
-        app:srcCompat="@drawable/ic_home" />
+        app:layout_constraintTop_toTopOf="@+id/tableNoTitle"
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/openReqsRecyclerView"
+        android:id="@+id/tableNoRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -45,6 +45,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/openReqsTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tableNoTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="5dp"
+    android:background="@drawable/booking_record_bkgrnd"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- Date and Time fields -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/s_booking_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/coustard"
+                android:text="Date"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/s_booking_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/coustard"
+                android:text="Time"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/s_booking_holder_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/coustard"
+                android:text="Guest Full Name"
+                android:textSize="14sp" />
+
+
+
+        </LinearLayout>
+
+        <!-- group icon -->
+        <ImageView
+            android:id="@+id/s_group_icon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="Group size"
+            android:src="@drawable/ic_people_group" />
+
+        <TextView
+            android:id="@+id/s_noGuests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/coustard"
+            android:layout_marginStart="6dp"
+            android:text="No of Guests"
+            android:textSize="14sp" />
+
+        <!-- edit button -->
+        <ImageButton
+            android:id="@+id/editBookingBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:backgroundTint="#E6FFFD"
+            android:contentDescription="Edit Booking"
+            android:src="@drawable/ic_edit"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <!-- delete button -->
+        <ImageButton
+            android:id="@+id/deleteBookingBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/ic_delete"
+            android:contentDescription="@string/deleteBookingAltText"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/s_specialReqsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/coustard"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:text="Special Requests"/>
+
+</LinearLayout>

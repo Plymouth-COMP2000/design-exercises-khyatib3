@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".TableNo_ReservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".Open_Requests"
             android:exported="false" />
         <activity
