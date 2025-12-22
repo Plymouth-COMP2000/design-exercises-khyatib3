@@ -105,6 +105,14 @@ public class UserAPI_Helper {
 
     }
 
+    //get all users endpoint -- used for checking duplicate users existence in SignUp_Activity.java
+    public void getAllUsers(UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorCallback){
+        String url = BASE_URL + READ_ALL_USERS_ENDPOINT;
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, callback, errorCallback);
+        apiHelper.getRequestQueue().add(request);
+    }
+
+
 
 
 
