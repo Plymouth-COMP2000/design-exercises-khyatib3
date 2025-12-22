@@ -158,17 +158,44 @@ public class SignUpActivity extends AppCompatActivity {
         UserAPI_Helper.createUser(newUser, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                // Success!
-                Toast.makeText(SignUpActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
+                try {
+                    //first check that the api response actually has the key 'message'
+                    if (response.has("message")) {
 
-                Intent intent = new Intent(SignUpActivity.this, AccountCreated.class);
-                startActivity(intent);
-                finish();
+                        //get the message
+                        String message = response.getString("message");
+
+                        //check message says 'user created successfully'
+                        if (message.equals("User created successfully")) {
+                            //if so, show the account created screen
+                            Toast.makeText(SignUpActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SignUpActivity.this, AccountCreated.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            //return api error message (so when testing we know what the error was in registering)
+                            Toast.makeText(SignUpActivity.this, "API Error: " + message, Toast.LENGTH_LONG).show();
+                            submitBtn.setEnabled(true);
+                            submitBtn.setText("Sign Up");
+                        }
+                    } else {
+                        //in the event the api didnt respond in the way we expected to (again, for testing)
+                        Toast.makeText(SignUpActivity.this, "Invalid response from server.", Toast.LENGTH_LONG).show();
+                        submitBtn.setEnabled(true);
+                        submitBtn.setText("Sign Up");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(SignUpActivity.this, "Error parsing server response.", Toast.LENGTH_LONG).show();
+                    //so we can retry, enable button
+                    submitBtn.setEnabled(true);
+                    submitBtn.setText("Sign Up");
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                // Failure
+                //registration failed, return toast
                 Toast.makeText(SignUpActivity.this, "Registration Failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
                 submitBtn.setEnabled(true);
                 submitBtn.setText("Sign Up");
