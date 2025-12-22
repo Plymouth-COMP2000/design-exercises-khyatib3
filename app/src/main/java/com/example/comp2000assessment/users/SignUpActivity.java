@@ -88,6 +88,19 @@ public class SignUpActivity extends AppCompatActivity {
                 checkUsernameRegister(username, password, firstname, lastname, email, contact, submitBtn);
             }
         });
+
+        //create student database (one time)
+        api_helper.createStudentDatabase(new UserAPI_Helper.APIResponseCallback<JSONObject>() {
+            @Override
+            public void onSuccess(JSONObject response) {
+                Toast.makeText(SignUpActivity.this, "Database Initialized! You can now Sign Up.", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(String message) {
+                android.util.Log.e("DB_INIT", "Error: " + message);
+            }
+        });
     }
 
     private void checkUsernameRegister(String username, String password, String firstname, String lastname, String email, String contact, Button submitBtn) {
@@ -138,7 +151,19 @@ public class SignUpActivity extends AppCompatActivity {
                 if (error.networkResponse != null && error.networkResponse.statusCode == 404) {
                     registerUser(firstname, lastname, contact, email, username, password, submitBtn);
                 } else {
-                    Toast.makeText(SignUpActivity.this, "Network Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    //debugging the error
+                    String errorMessage = "Unknown error";
+                    if (error.networkResponse != null) {
+                        errorMessage = "Status Code: " + error.networkResponse.statusCode;
+                    } else if (error.getMessage() != null) {
+                        errorMessage = error.getMessage();
+                    } else {
+                        errorMessage = error.getClass().getSimpleName();
+                    }
+
+                    error.printStackTrace();
+
+                    Toast.makeText(SignUpActivity.this, "Network Error: " + errorMessage, Toast.LENGTH_LONG).show();
                     submitBtn.setEnabled(true);
                     submitBtn.setText("Sign Up");
                 }
@@ -148,11 +173,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void registerUser(String firstname, String lastname, String contact, String email, String username, String password, Button submitBtn) {
         //making user object
-        AppUser newUser = new AppUser(firstname, lastname, contact, email, username, password);
-
-        //setting user type to guest -- anyone who signs up on the sign up activity screen is guest
-        //anyone who signs up using the add new staff screen will be a staff member so will assign user type 'staff' there
-        newUser.setUser_type("guest");
+        //setting user type to (guest) -- anyone who signs up on the sign up activity screen is guest
+        //anyone who signs up using the add new staff screen will be a staff member so will assign user type (staff) there
+        AppUser newUser = new AppUser(firstname, lastname, contact, email, username, password, "guest");
+        newUser.setLogged_in(true);
 
         //creating new user via api
         UserAPI_Helper.createUser(newUser, new Response.Listener<JSONObject>() {
@@ -195,6 +219,24 @@ public class SignUpActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                String errorMessage = "Unknown Registration Error";
+                if (error.networkResponse != null) {
+                    errorMessage = "Status Code: " + error.networkResponse.statusCode;
+                    try {
+
+                        String responseBody = new String(error.networkResponse.data, "UTF-8");
+                        errorMessage += "\nBody: " + responseBody;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else if (error.getMessage() != null) {
+                    errorMessage = error.getMessage();
+                } else {
+                    errorMessage = error.getClass().getSimpleName();
+                }
+
+                error.printStackTrace();
+
                 //registration failed, return toast
                 Toast.makeText(SignUpActivity.this, "Registration Failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
                 submitBtn.setEnabled(true);

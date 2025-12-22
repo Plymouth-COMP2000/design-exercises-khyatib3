@@ -13,17 +13,18 @@ public class AppUser {
     private String email;
     private String username;
     private String password;
-    private String user_type;
+    private String usertype;
     private boolean logged_in;
 
     //constructor
-    public AppUser(String firstname, String lastname, String contact, String email, String username, String password){
+    public AppUser(String firstname, String lastname, String contact, String email, String username, String password, String usertype){
         this.firstname = firstname;
         this.lastname = lastname;
         this.contact = contact;
         this.email = email;
         this.username = username;
         this.password = password;
+        this.usertype = usertype;
     }
 
     public JSONObject returnUserJSON(){
@@ -47,12 +48,12 @@ public class AppUser {
     }
 
     //getters and setters below
-    public String getUser_type() {
-        return user_type;
+    public String getUserType() {
+        return usertype;
     }
 
-    public void setUser_type(String user_type) {
-        this.user_type = user_type;
+    public void setUserType(String usertype) {
+        this.usertype = usertype;
     }
 
     public String getPassword() {
