@@ -136,7 +136,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //if user array is empty, no users added yet, so still safe to add a user
                 if (error.networkResponse != null && error.networkResponse.statusCode == 404) {
-                    regiseterUser(firstname, lastname, contact, email, username, password, submitBtn);
+                    registerUser(firstname, lastname, contact, email, username, password, submitBtn);
                 } else {
                     Toast.makeText(SignUpActivity.this, "Network Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     submitBtn.setEnabled(true);
