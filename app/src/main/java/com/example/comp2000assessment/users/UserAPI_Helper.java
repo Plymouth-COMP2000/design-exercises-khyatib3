@@ -9,15 +9,15 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 public class UserAPI_Helper {
-    private String BASE_URL = "http://10.240.72.69/comp2000/coursework/";
-    private String CREATE_USER_ENDPOINT = "create_user/10920850";
-    private String CREATE_STUDENT_DATABASE_ENDPOINT = "create_student/10920850";
-    private String READ_ALL_USERS_ENDPOINT = "read_all_users/10920850";
-    private String READ_SPECIFIC_USER_ENDPOINT = "read_user/10920850";
-    private String UPDATE_USER_ENDPOINT = "update_user/10920850";
-    private String DELETE_USER_ENDPOINT = "delete_user/10920850";
-    private Context context;
-    private RequestQueue requestQueue;
+    private static String BASE_URL = "http://10.240.72.69/comp2000/coursework/";
+    private static String CREATE_USER_ENDPOINT = "create_user/10920850";
+    private static String CREATE_STUDENT_DATABASE_ENDPOINT = "create_student/10920850";
+    private static String READ_ALL_USERS_ENDPOINT = "read_all_users/10920850";
+    private static String READ_SPECIFIC_USER_ENDPOINT = "read_user/10920850";
+    private static String UPDATE_USER_ENDPOINT = "update_user/10920850";
+    private static String DELETE_USER_ENDPOINT = "delete_user/10920850";
+    private static Context context;
+    private static RequestQueue requestQueue;
 
     public UserAPI_Helper(Context context) {
         this.requestQueue = Volley.newRequestQueue(context.getApplicationContext());
@@ -28,7 +28,7 @@ public class UserAPI_Helper {
         void onSuccess(T response);
         void onError(String message);
     }
-    public RequestQueue getRequestQueue() {
+    public static RequestQueue getRequestQueue() {
         if (requestQueue == null) {
             requestQueue = Volley.newRequestQueue(context.getApplicationContext());
         }
@@ -60,14 +60,27 @@ public class UserAPI_Helper {
     }
 
     //create user endpoint
-    public void createUser(AppUser user, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorListener){
+    public static void createUser(AppUser user, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorListener, UserAPI_Helper apiHelper){
         String url = BASE_URL + CREATE_USER_ENDPOINT;
 
         //converting the user object to json object
         JSONObject userJSON = user.returnUserJSON();
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, userJSON, callback, errorListener);
-        getRequestQueue().add(request);
+        apiHelper.getRequestQueue().add(request);
+    }
+
+    //update user endpoint
+    public static void updateUser(AppUser user, UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorListener){
+        String username = user.getUsername();
+
+        String url = BASE_URL + UPDATE_USER_ENDPOINT + "/" + username;
+
+        JSONObject userJSON = user.returnUserJSON();
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, userJSON, callback, errorListener);
+        apiHelper.getRequestQueue().add(request);
+
     }
 
 
