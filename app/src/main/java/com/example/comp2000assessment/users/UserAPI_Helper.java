@@ -83,6 +83,22 @@ public class UserAPI_Helper {
 
     }
 
+    //delete user endpoint
+    public static void deleteUser(AppUser user, UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorListener){
+        String username = user.getUsername();
+
+        String url = BASE_URL + DELETE_USER_ENDPOINT + "/" + username;
+
+        JSONObject userJSON = user.returnUserJSON();
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.DELETE, url, userJSON, callback, errorListener);
+        apiHelper.getRequestQueue().add(request);
+
+    }
+
+
+
+
 
 
 }
