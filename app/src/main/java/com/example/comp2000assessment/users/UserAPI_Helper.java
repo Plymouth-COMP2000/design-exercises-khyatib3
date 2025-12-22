@@ -96,7 +96,14 @@ public class UserAPI_Helper {
 
     }
 
+    //get specific user endpoint
+    public static void getSpecificUser(String username, UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorCallback){
+        String url = BASE_URL + READ_SPECIFIC_USER_ENDPOINT + "/" + username;
 
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, callback, errorCallback);
+        apiHelper.getRequestQueue().add(request);
+
+    }
 
 
 
