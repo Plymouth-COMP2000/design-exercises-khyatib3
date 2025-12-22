@@ -1,22 +1,49 @@
 package com.example.comp2000assessment.users;
 
+
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
+import org.json.JSONException;
+
 public class AppUser {
-    private String first_name;
-    private String last_name;
-    private int phone_number;
+    private String firstname;
+    private String lastname;
+    private String contact;
     private String email;
     private String username;
     private String password;
     private String user_type;
+    private boolean logged_in;
 
     //constructor
-    public AppUser(String first_name, String last_name, int phone_number, String email, String username, String password){
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.phone_number = phone_number;
+    public AppUser(String firstname, String lastname, String contact, String email, String username, String password){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.contact = contact;
         this.email = email;
         this.username = username;
         this.password = password;
+    }
+
+    public JSONObject returnUserJSON(){
+        Gson gson = new Gson();
+
+        try{
+           String jsonString = gson.toJson(this);
+           return new JSONObject(jsonString);
+
+        }catch (JSONException e){
+            e.printStackTrace();;
+            return null;
+        }
+
+    }
+
+    //this function will be used with the GET methods of the api endpoints: i.e. reading users, reading specific users
+    public AppUser returnAppUserFromJson(JSONObject userJSON){
+        Gson gson = new Gson();
+        return gson.fromJson(userJSON.toString(), AppUser.class);
     }
 
     //getters and setters below
@@ -52,28 +79,36 @@ public class AppUser {
         this.email = email;
     }
 
-    public int getPhone_number() {
-        return phone_number;
+    public String getContact() {
+        return contact;
     }
 
-    public void setPhone_number(int phone_number) {
-        this.phone_number = phone_number;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public boolean isLogged_in() {
+        return logged_in;
+    }
+
+    public void setLogged_in(boolean logged_in) {
+        this.logged_in = logged_in;
     }
 
 }
