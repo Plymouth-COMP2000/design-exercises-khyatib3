@@ -1,9 +1,11 @@
 package com.example.comp2000assessment.users;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
@@ -14,7 +16,17 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.R;
 
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SignUpActivity extends AppCompatActivity {
+    private UserAPI_Helper api_helper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +39,14 @@ public class SignUpActivity extends AppCompatActivity {
             return insets;
         });
 
+        //initialising api helper
+        api_helper = new UserAPI_Helper(this);
+
         ImageButton goBackBtn = findViewById(R.id.backButton);
         //setting on click functionality
-        goBackBtn.setOnClickListener(new View.OnClickListener(){
+        goBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 Intent intent = new Intent(SignUpActivity.this, StartUpActivity.class);
                 startActivity(intent);
             }
@@ -39,14 +54,126 @@ public class SignUpActivity extends AppCompatActivity {
 
         Button submitBtn = findViewById(R.id.submitRegButton);
         //setting on click functionality
-        submitBtn.setOnClickListener(new View.OnClickListener(){
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onClick(View view){
-                Intent intent = new Intent(SignUpActivity.this, AccountCreated.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                EditText firstNameInput = findViewById(R.id.firstNameInput);
+                EditText lastNameInput = findViewById(R.id.lastNameInput);
+                EditText emailInput = findViewById(R.id.emailInput);
+                EditText phoneInput = findViewById(R.id.phoneInput);
+                EditText usernameInput = findViewById(R.id.usernameInput);
+                EditText passwordInput = findViewById(R.id.passwordInput);
+
+                //getting user entered values
+                String firstname = firstNameInput.getText().toString();
+                String lastname = lastNameInput.getText().toString();
+                String email = emailInput.getText().toString();
+                String contact = phoneInput.getText().toString();
+                String username = usernameInput.getText().toString();
+                String password = passwordInput.getText().toString();
+
+                //performing validation checks on the entered values
+                if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() ||
+                        contact.isEmpty() || username.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(SignUpActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //disabling the button from being clicked so user account doesn't get made accidentally whilst checks are being performed
+                submitBtn.setEnabled(false);
+                submitBtn.setText("Validating account...");
+
+                //performing a check on username to see if it is unique
+                checkUsernameRegister(username, password, firstname, lastname, email, contact, submitBtn);
             }
         });
+    }
 
+    private void checkUsernameRegister(String username, String password, String firstname, String lastname, String email, String contact, Button submitBtn) {
+        api_helper.getAllUsers(api_helper, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    boolean usernameTaken = false;
+
+                    //checking the api responds with array of users
+                    if (response.has("users")) {
+
+                        //getting users array
+                        JSONArray usersArray = response.getJSONArray("users");
+
+                        //iterating through the users array to check for a username that matches the new user's username
+                        for (int i = 0; i < usersArray.length(); i++) {
+                            JSONObject userObj = usersArray.getJSONObject(i);
+                            // Use optString to avoid crashes if key is missing
+                            String existingUsername = userObj.optString("username");
+
+                            if (existingUsername.equalsIgnoreCase(username)) {
+                                usernameTaken = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (usernameTaken) {
+                        // sending toast to user that the username they're signing up with is already taken
+                        Toast.makeText(SignUpActivity.this, "Username already taken! Please choose another.", Toast.LENGTH_LONG).show();
+                        submitBtn.setEnabled(true);
+                        submitBtn.setText("Sign Up");
+                    } else {
+                        //else if the username is unique, then go ahead and register the new user
+                        registerUser(firstname, lastname, contact, email, username, password, submitBtn);
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //if user array is empty, no users added yet, so still safe to add a user
+                if (error.networkResponse != null && error.networkResponse.statusCode == 404) {
+                    regiseterUser(firstname, lastname, contact, email, username, password, submitBtn);
+                } else {
+                    Toast.makeText(SignUpActivity.this, "Network Error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    submitBtn.setEnabled(true);
+                    submitBtn.setText("Sign Up");
+                }
+            }
+        });
+    }
+
+    private void registerUser(String firstname, String lastname, String contact, String email, String username, String password, Button submitBtn) {
+        //making user object
+        AppUser newUser = new AppUser(firstname, lastname, contact, email, username, password);
+
+        //setting user type to guest -- anyone who signs up on the sign up activity screen is guest
+        //anyone who signs up using the add new staff screen will be a staff member so will assign user type 'staff' there
+        newUser.setUser_type("guest");
+
+        //creating new user via api
+        UserAPI_Helper.createUser(newUser, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                // Success!
+                Toast.makeText(SignUpActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(SignUpActivity.this, AccountCreated.class);
+                startActivity(intent);
+                finish();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // Failure
+                Toast.makeText(SignUpActivity.this, "Registration Failed: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                submitBtn.setEnabled(true);
+                submitBtn.setText("Sign Up");
+            }
+        }, api_helper);
 
     }
 }
