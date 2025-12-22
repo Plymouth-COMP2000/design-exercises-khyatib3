@@ -59,5 +59,17 @@ public class UserAPI_Helper {
 
     }
 
+    //create user endpoint
+    public void createUser(AppUser user, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorListener){
+        String url = BASE_URL + CREATE_USER_ENDPOINT;
+
+        //converting the user object to json object
+        JSONObject userJSON = user.returnUserJSON();
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, userJSON, callback, errorListener);
+        getRequestQueue().add(request);
+    }
+
+
 
 }
