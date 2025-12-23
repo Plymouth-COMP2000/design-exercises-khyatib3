@@ -65,15 +65,15 @@
         app:layout_constraintTop_toBottomOf="@+id/usernamePrompt2" />
 
     <TextView
-        android:id="@+id/passwordPrompt2"
+        android:id="@+id/login_passwordPrompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/coustard"
         android:text="@string/password_prompt"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/usernameInput"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="@+id/usernameInput"
         app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
 
@@ -91,13 +91,12 @@
         app:layout_constraintEnd_toEndOf="@+id/usernameInput"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/usernameInput"
-        app:layout_constraintTop_toBottomOf="@+id/passwordPrompt2" />
+        app:layout_constraintTop_toBottomOf="@+id/login_passwordPrompt" />
 
     <Button
         android:id="@+id/submitButton"
         android:layout_width="130dp"
         android:layout_height="61dp"
-        android:layout_marginEnd="112dp"
         android:layout_marginBottom="132dp"
         android:backgroundTint="@color/black"
         android:fontFamily="@font/coustard"
@@ -106,22 +105,9 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/rectangleBorder"
-        app:layout_constraintHorizontal_bias="0.982"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/rectangleBorder"
-        android:layout_width="357dp"
-        android:layout_height="347dp"
-        android:backgroundTint="@color/teal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurantName3"
-        app:layout_constraintVertical_bias="0.224"
-        app:srcCompat="@drawable/border_rectangle" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordInput"
+        app:layout_constraintStart_toStartOf="@+id/passwordInput"
+        app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <Button
         android:id="@+id/loginBackBtn"

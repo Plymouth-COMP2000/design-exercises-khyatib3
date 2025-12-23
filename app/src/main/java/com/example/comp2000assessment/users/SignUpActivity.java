@@ -66,12 +66,12 @@ public class SignUpActivity extends AppCompatActivity {
                 EditText passwordInput = findViewById(R.id.passwordInput);
 
                 //getting user entered values
-                String firstname = firstNameInput.getText().toString();
-                String lastname = lastNameInput.getText().toString();
-                String email = emailInput.getText().toString();
-                String contact = phoneInput.getText().toString();
-                String username = usernameInput.getText().toString();
-                String password = passwordInput.getText().toString();
+                String firstname = firstNameInput.getText().toString().trim();
+                String lastname = lastNameInput.getText().toString().trim();
+                String email = emailInput.getText().toString().trim();
+                String contact = phoneInput.getText().toString().trim();
+                String username = usernameInput.getText().toString().trim();
+                String password = passwordInput.getText().toString().trim();
 
                 //performing validation checks on the entered values
                 if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty() ||
@@ -89,18 +89,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        //create student database (one time)
-        api_helper.createStudentDatabase(new UserAPI_Helper.APIResponseCallback<JSONObject>() {
-            @Override
-            public void onSuccess(JSONObject response) {
-                Toast.makeText(SignUpActivity.this, "Database Initialized! You can now Sign Up.", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onError(String message) {
-                android.util.Log.e("DB_INIT", "Error: " + message);
-            }
-        });
     }
 
     private void checkUsernameRegister(String username, String password, String firstname, String lastname, String email, String contact, Button submitBtn) {
@@ -194,6 +182,17 @@ public class SignUpActivity extends AppCompatActivity {
                             //if so, show the account created screen
                             Toast.makeText(SignUpActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUpActivity.this, AccountCreated.class);
+
+                            //passing the user details to the next activity
+                            intent.putExtra("user_firstname", firstname);
+                            intent.putExtra("user_lastname", lastname);
+                            intent.putExtra("user_contact", contact);
+                            intent.putExtra("user_email", email);
+                            intent.putExtra("user_username", username);
+                            intent.putExtra("user_password", password);
+                            intent.putExtra("user_usertype", newUser.getUserType());
+                            intent.putExtra("user_logged_in", newUser.isLogged_in());
+
                             startActivity(intent);
                             finish();
                         } else {

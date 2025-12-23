@@ -42,7 +42,7 @@ public class AppUser {
     }
 
     //this function will be used with the GET methods of the api endpoints: i.e. reading users, reading specific users
-    public AppUser returnAppUserFromJson(JSONObject userJSON){
+    public static AppUser returnAppUserFromJson(JSONObject userJSON){
         Gson gson = new Gson();
         return gson.fromJson(userJSON.toString(), AppUser.class);
     }

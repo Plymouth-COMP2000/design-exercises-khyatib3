@@ -51,6 +51,12 @@ public class MyBookingsActivity extends AppCompatActivity {
         bookingRecycler = findViewById(R.id.bookingsRecyclerView);
         bookingRecycler.setLayoutManager(new LinearLayoutManager(this));
 
+        //getting details of user passed in the intent
+        String user_firstname = getIntent().getStringExtra("user_firstname");
+        String user_lastname = getIntent().getStringExtra("user_lastname");
+        String user_usertype = getIntent().getStringExtra("user_usertype");
+        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
+
         //setting options for spinner
         String[] categories = {"Confirmed Bookings", "Unconfirmed Requests"};
         //setting the spinner to the categories
@@ -71,13 +77,13 @@ public class MyBookingsActivity extends AppCompatActivity {
 
                 //loading bookings as per bookingType
                 //TODO CHANGE PASSING NAME SANDRA SMITH TO USER.FIRSTNAME AND USER.LASTNAME ONCE API IS IMPLEMENTED
-                loadBookings(bookingType, "Sandra", "Smith");
+                loadBookings(bookingType, user_firstname, user_lastname);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 //default should be starters
-                loadBookings("Unconfirmed Requests", "Sandra", "Smith");
+                loadBookings("Unconfirmed Requests", user_firstname, user_lastname);
             }
         });
 

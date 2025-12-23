@@ -98,11 +98,49 @@ public class UserAPI_Helper {
 
     //get specific user endpoint
     public static void getSpecificUser(String username, UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorCallback){
-        String url = BASE_URL + READ_SPECIFIC_USER_ENDPOINT + "/" + username;
+        String cleanUsername = username.trim();    String url = BASE_URL + READ_ALL_USERS_ENDPOINT;
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, callback, errorCallback);
+        com.android.volley.toolbox.StringRequest request = new com.android.volley.toolbox.StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        android.util.Log.d("API_DEBUG", "Server Response: " + response);
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean userFound = false;
+
+                            if (jsonResponse.has("users")) {
+                                org.json.JSONArray usersArray = jsonResponse.getJSONArray("users");
+                                android.util.Log.d("API_DEBUG", "Users Array found: " + usersArray.length());
+
+                                for (int i = 0; i < usersArray.length(); i++) {
+                                    JSONObject userObj = usersArray.getJSONObject(i);
+                                    String serverUsername = userObj.getString("username");
+
+                                    android.util.Log.d("API_DEBUG", "Checking against: " + serverUsername);
+
+                                    if (userObj.getString("username").equalsIgnoreCase(cleanUsername)) {
+                                        userFound = true;
+                                        JSONObject result = new JSONObject();
+                                        result.put("user", userObj);
+                                        callback.onResponse(result);
+                                        return;
+                                    }
+                                }
+                            }
+
+                            if (!userFound) {
+                                com.android.volley.NetworkResponse networkResponse = new com.android.volley.NetworkResponse(404, null, false, 0, null);
+                                errorCallback.onErrorResponse(new com.android.volley.VolleyError(networkResponse));
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            errorCallback.onErrorResponse(new com.android.volley.VolleyError(e));
+                        }
+                    }
+                }, errorCallback);
+
         apiHelper.getRequestQueue().add(request);
-
     }
 
     //get all users endpoint -- used for checking duplicate users existence in SignUp_Activity.java

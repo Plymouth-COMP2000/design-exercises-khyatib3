@@ -41,6 +41,21 @@ public class Reservation_Enquiry extends AppCompatActivity {
             return insets;
         });
 
+        //retrieving user details
+        String user_firstname = getIntent().getStringExtra("user_firstname");
+        String user_lastname = getIntent().getStringExtra("user_lastname");
+
+
+        //getting elements by their ids
+        EditText firstNameInput = findViewById(R.id.br_firstNameInput);
+        EditText lastNameInput = findViewById(R.id.br_lastNameInput);
+        Spinner noGuestsSpinner = findViewById(R.id.guestNoDropdown);
+        EditText specialNotesBox = findViewById(R.id.specialNotesInput);
+
+        //setting text to the input fields
+        firstNameInput.setText(user_firstname);
+        lastNameInput.setText(user_lastname);
+
         ImageButton resEnq_HomeIcon = findViewById(R.id.reservationHomeIcon);
         //setting on click functionality
         resEnq_HomeIcon.setOnClickListener(new View.OnClickListener() {
@@ -107,12 +122,6 @@ public class Reservation_Enquiry extends AppCompatActivity {
         sendRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //getting the other user input fields
-                EditText firstNameInput = findViewById(R.id.br_firstNameInput);
-                EditText lastNameInput = findViewById(R.id.br_lastNameInput);
-                Spinner noGuestsSpinner = findViewById(R.id.guestNoDropdown);
-                EditText specialNotesBox = findViewById(R.id.specialNotesInput);
-
                 //retrieving values from the fields
                 String firstName = firstNameInput.getText().toString().trim();
                 String lastName = lastNameInput.getText().toString().trim();
