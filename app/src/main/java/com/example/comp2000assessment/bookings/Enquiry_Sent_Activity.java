@@ -27,12 +27,19 @@ public class Enquiry_Sent_Activity extends AppCompatActivity {
             return insets;
         });
 
+        //retrieving user details
+        String user_firstname = getIntent().getStringExtra("user_firstname");
+        String user_lastname = getIntent().getStringExtra("user_lastname");
+
         Button takeMeHomeBtn = findViewById(R.id.goHomeBtn3);
         //setting on click functionality
         takeMeHomeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(Enquiry_Sent_Activity.this, GuestHomepage.class);
+                //passing the user details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
                 startActivity(intent);
             }
         });

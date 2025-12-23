@@ -183,6 +183,9 @@ public class Reservation_Enquiry extends AppCompatActivity {
 
                 if(addRequestResult){
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Sent_Activity.class);
+                    //passing the user details
+                    intent.putExtra("user_firstname", user_firstname);
+                    intent.putExtra("user_lastname", user_lastname);
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
