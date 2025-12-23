@@ -35,186 +35,151 @@
         app:layout_constraintStart_toEndOf="@+id/settingsGoHomeBtn"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- APPEARANCE TITLE -->
+    <!-- View account TITLE -->
     <TextView
-        android:id="@+id/appearanceTitle"
+        android:id="@+id/viewAccountLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/coustard"
-        android:text="@string/appearance"
+        android:text="View my account:"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="@+id/settingsGoHomeBtn"
         app:layout_constraintTop_toBottomOf="@+id/preferencesTitle" />
 
-    <!-- BACKGROUND COLOR OPTION-->
     <TextView
-        android:id="@+id/backgroundColorOption"
+        android:id="@+id/seeAccountTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/coustard"
-        android:text="@string/bkgrndColorLbl"
-        android:textColor="#56506A"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/appearanceTitle"
-        app:layout_constraintTop_toBottomOf="@+id/appearanceTitle" />
+        android:text="See account details:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/viewAccountLbl"
+        app:layout_constraintTop_toBottomOf="@+id/viewAccountLbl" />
 
     <Button
-        android:id="@+id/bkgColorBtn"
-        android:layout_width="141dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#595959"
+        android:id="@+id/viewAccountBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_pink"
         android:fontFamily="@font/coustard"
-        android:text="@string/bkgrndColorLbl"
+        android:text="View"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toEndOf="@+id/backgroundColorOption"
-        app:layout_constraintTop_toBottomOf="@+id/preferencesTitle" />
-
-    <TextView
-        android:id="@+id/textColorOption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/textColorLbl"
-        android:textColor="#56506A"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/backgroundColorOption"
-        app:layout_constraintTop_toBottomOf="@+id/backgroundColorOption" />
-
-
-    <Button
-        android:id="@+id/txtColorBtn"
-        android:layout_width="141dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#595959"
-        android:fontFamily="@font/coustard"
-        android:text="@string/textColorLbl"
-        app:layout_constraintStart_toEndOf="@+id/textColorOption"
-        app:layout_constraintTop_toBottomOf="@+id/bkgColorBtn" />
+        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintStart_toEndOf="@+id/seeAccountTxt"
+        app:layout_constraintTop_toBottomOf="@+id/viewAccountLbl" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="380dp"
         android:layout_height="1dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="16dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backgroundColorOption" />
+        app:layout_constraintTop_toBottomOf="@+id/viewAccountBtn" />
 
-    <!-- NOTIFICATIONS -->
+    <!-- update account -->
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="380dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateDetailsBtn" />
+
     <TextView
-        android:id="@+id/notificationTitle"
+        android:id="@+id/updateAccountLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/coustard"
-        android:text="@string/notifications"
+        android:text="Update details"
         android:textColor="@color/black"
-        android:textSize="22sp"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="@+id/settingsGoHomeBtn"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-    <!-- CANCEL-ALERT BUTTON -->
-    <RadioButton
-        android:id="@+id/cancelAlertButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/coustard"
-        android:gravity="center"
-        android:text="@string/cancelAlertOpt"
-        android:textColor="#56506A"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/notificationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/notificationTitle" />
-
-    <!-- CONFIRM-ALERT BUTTON -->
-    <RadioButton
-        android:id="@+id/confirmAlertButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/coustard"
-        android:gravity="center"
-        android:text="@string/confirmAlertOpt"
-        android:textColor="#56506A"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/cancelAlertButton"
-        app:layout_constraintTop_toBottomOf="@+id/cancelAlertButton" />
-
-    <!-- MODIFY-ALERT BUTTON -->
-    <RadioButton
-        android:id="@+id/modifyAlertButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:fontFamily="@font/coustard"
-        android:gravity="center"
-        android:text="@string/modifyAlertOpt"
-        android:textColor="#56506A"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/confirmAlertButton"
-        app:layout_constraintTop_toBottomOf="@+id/confirmAlertButton" />
-
-    <!-- DIVIDER -->
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="380dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="332dp"
-        android:backgroundTint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/backgroundColorOption" />
-
-    <!-- SAVE CHANGES BUTTON -->
-    <Button
-        android:id="@+id/saveChangesBtn"
+    <TextView
+        android:id="@+id/updateDetailsTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="24dp"
-        android:backgroundTint="#456B9E64"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/coustard"
-        android:paddingHorizontal="20dp"
-        android:text="@string/saveChangesLbl"
+        android:text="Update information:"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/divider2"
-        app:layout_constraintHorizontal_bias="0.53"
-        app:layout_constraintStart_toStartOf="@+id/divider2"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/updateAccountLbl"
+        app:layout_constraintTop_toBottomOf="@+id/updateAccountLbl" />
 
-    <!-- SIGN OUT BUTTON -->
+
+    <Button
+        android:id="@+id/updateDetailsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_pink"
+        android:fontFamily="@font/coustard"
+        android:text="Update"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.801"
+        app:layout_constraintStart_toEndOf="@+id/updateDetailsTxt"
+        app:layout_constraintTop_toBottomOf="@+id/updateAccountLbl" />
+
+
+    <!-- SIGN OUT-->
+    <TextView
+        android:id="@+id/logoutLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/coustard"
+        android:text="Logout"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintStart_toStartOf="@+id/settingsGoHomeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <TextView
+        android:id="@+id/logoutTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/coustard"
+        android:text="Log out of the app:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/logoutLbl"
+        app:layout_constraintTop_toBottomOf="@+id/logoutLbl" />
+
     <Button
         android:id="@+id/signOutBtn"
-        android:layout_width="132dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:backgroundTint="#A9DC3D40"
         android:fontFamily="@font/coustard"
         android:paddingHorizontal="20dp"
         android:text="@string/signOutLbl"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/saveChangesBtn"
-        app:layout_constraintStart_toStartOf="@+id/saveChangesBtn"
-        app:layout_constraintTop_toBottomOf="@+id/saveChangesBtn" />
+        app:layout_constraintEnd_toEndOf="@+id/updateDetailsBtn"
+        app:layout_constraintHorizontal_bias="0.972"
+        app:layout_constraintStart_toEndOf="@+id/logoutTxt"
+        tools:layout_editor_absoluteY="347dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
