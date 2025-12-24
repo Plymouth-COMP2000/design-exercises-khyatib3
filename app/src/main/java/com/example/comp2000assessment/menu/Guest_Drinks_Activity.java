@@ -39,6 +39,16 @@ public class Guest_Drinks_Activity extends AppCompatActivity {
             return insets;
         });
 
+        //getting user details from account created
+        String user_firstname = getIntent().getStringExtra("user_firstname");
+        String user_lastname = getIntent().getStringExtra("user_lastname");
+        String user_contact = getIntent().getStringExtra("user_contact");
+        String user_email = getIntent().getStringExtra("user_email");
+        String user_username = getIntent().getStringExtra("user_username");
+        String user_password = getIntent().getStringExtra("user_password");
+        String user_usertype = getIntent().getStringExtra("user_usertype");
+        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
+
         recyclerView = findViewById(R.id.g_drinksRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -73,6 +83,17 @@ public class Guest_Drinks_Activity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(Guest_Drinks_Activity.this, Guest_Menu_Options_Activity.class);
+
+                //passing the user details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
+
                 startActivity(intent);
             }
         });

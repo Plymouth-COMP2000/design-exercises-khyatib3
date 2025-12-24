@@ -29,6 +29,16 @@ public class DeleteBooking_Activity extends AppCompatActivity {
             return insets;
         });
 
+        //getting user details from account created
+        String user_firstname = getIntent().getStringExtra("user_firstname");
+        String user_lastname = getIntent().getStringExtra("user_lastname");
+        String user_contact = getIntent().getStringExtra("user_contact");
+        String user_email = getIntent().getStringExtra("user_email");
+        String user_username = getIntent().getStringExtra("user_username");
+        String user_password = getIntent().getStringExtra("user_password");
+        String user_usertype = getIntent().getStringExtra("user_usertype");
+        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
+
         //receiving values passed in intent
         int bookingID = getIntent().getIntExtra("bookingID", -1);
         String screenName = getIntent().getStringExtra("screenName");
@@ -40,10 +50,32 @@ public class DeleteBooking_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 if(screenName.equals("MyBookings")){
                     Intent intent = new Intent(DeleteBooking_Activity.this, MyBookingsActivity.class);
+
+                    //passing the user details
+                    intent.putExtra("user_firstname", user_firstname);
+                    intent.putExtra("user_lastname", user_lastname);
+                    intent.putExtra("user_contact", user_contact);
+                    intent.putExtra("user_email", user_email);
+                    intent.putExtra("user_username", user_username);
+                    intent.putExtra("user_password", user_password);
+                    intent.putExtra("user_usertype", user_usertype);
+                    intent.putExtra("user_logged_in", user_logged_in);
+
                     startActivity(intent);
                     return;
                 }else if(screenName.equals("AllTables")) {
                     Intent intent = new Intent(DeleteBooking_Activity.this, All_Tables_Activity.class);
+
+                    //passing the user details
+                    intent.putExtra("user_firstname", user_firstname);
+                    intent.putExtra("user_lastname", user_lastname);
+                    intent.putExtra("user_contact", user_contact);
+                    intent.putExtra("user_email", user_email);
+                    intent.putExtra("user_username", user_username);
+                    intent.putExtra("user_password", user_password);
+                    intent.putExtra("user_usertype", user_usertype);
+                    intent.putExtra("user_logged_in", user_logged_in);
+
                     startActivity(intent);
                     return;
                 }
@@ -63,11 +95,33 @@ public class DeleteBooking_Activity extends AppCompatActivity {
                     if(screenName.equals("MyBookings")){
                         Intent intent = new Intent(DeleteBooking_Activity.this, MyBookingsActivity.class);
                         Toast.makeText(DeleteBooking_Activity.this, "This booking was deleted successfully", Toast.LENGTH_SHORT).show();
+
+                        //passing the user details
+                        intent.putExtra("user_firstname", user_firstname);
+                        intent.putExtra("user_lastname", user_lastname);
+                        intent.putExtra("user_contact", user_contact);
+                        intent.putExtra("user_email", user_email);
+                        intent.putExtra("user_username", user_username);
+                        intent.putExtra("user_password", user_password);
+                        intent.putExtra("user_usertype", user_usertype);
+                        intent.putExtra("user_logged_in", user_logged_in);
+
                         startActivity(intent);
                         return;
                     }else if(screenName.equals("AllTables")) {
                         Intent intent = new Intent(DeleteBooking_Activity.this, All_Tables_Activity.class);
                         Toast.makeText(DeleteBooking_Activity.this, "This booking was deleted successfully", Toast.LENGTH_SHORT).show();
+
+                        //passing the user details
+                        intent.putExtra("user_firstname", user_firstname);
+                        intent.putExtra("user_lastname", user_lastname);
+                        intent.putExtra("user_contact", user_contact);
+                        intent.putExtra("user_email", user_email);
+                        intent.putExtra("user_username", user_username);
+                        intent.putExtra("user_password", user_password);
+                        intent.putExtra("user_usertype", user_usertype);
+                        intent.putExtra("user_logged_in", user_logged_in);
+
                         startActivity(intent);
                         return;
                     }else{

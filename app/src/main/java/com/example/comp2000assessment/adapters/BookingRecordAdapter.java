@@ -24,9 +24,22 @@ public class BookingRecordAdapter extends RecyclerView.Adapter<BookingRecordAdap
     public List<BookingRecord> bookingList;
     private Context context;
 
-    public BookingRecordAdapter(Context context, List<BookingRecord> bookingList) {
+    private String user_firstname, user_lastname, user_contact, user_email, user_username, user_password, user_usertype;
+    private boolean user_logged_in;
+
+    public BookingRecordAdapter(Context context, List<BookingRecord> bookingList, String user_firstname, String user_lastname, String contact, String email,
+                                String username, String password, String usertype, boolean user_logged_in) {
         this.context = context;
         this.bookingList = bookingList;
+
+        this.user_firstname = user_firstname;
+        this.user_lastname = user_lastname;
+        this.user_contact = contact;
+        this.user_email = email;
+        this.user_username = username;
+        this.user_password = password;
+        this.user_usertype = usertype;
+        this.user_logged_in = user_logged_in;
     }
 
     public static class BookingViewHolder extends RecyclerView.ViewHolder {
@@ -83,6 +96,16 @@ public class BookingRecordAdapter extends RecyclerView.Adapter<BookingRecordAdap
                 intent.putExtra("specialRequest", item.specialRequest);
                 intent.putExtra("tableNo", item.tableNo);
 
+                //passing details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
+
                 context.startActivity(intent);
 
             }
@@ -98,6 +121,16 @@ public class BookingRecordAdapter extends RecyclerView.Adapter<BookingRecordAdap
 
                 //passing the name of screen to go back to
                 intent.putExtra("screenName", "MyBookings");
+
+                //passing details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
 
                 context.startActivity(intent);
 

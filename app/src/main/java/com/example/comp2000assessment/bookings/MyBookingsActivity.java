@@ -54,6 +54,10 @@ public class MyBookingsActivity extends AppCompatActivity {
         //getting details of user passed in the intent
         String user_firstname = getIntent().getStringExtra("user_firstname");
         String user_lastname = getIntent().getStringExtra("user_lastname");
+        String user_contact = getIntent().getStringExtra("user_contact");
+        String user_email = getIntent().getStringExtra("user_email");
+        String user_username = getIntent().getStringExtra("user_username");
+        String user_password = getIntent().getStringExtra("user_password");
         String user_usertype = getIntent().getStringExtra("user_usertype");
         boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
 
@@ -77,17 +81,18 @@ public class MyBookingsActivity extends AppCompatActivity {
 
                 //loading bookings as per bookingType
                 //TODO CHANGE PASSING NAME SANDRA SMITH TO USER.FIRSTNAME AND USER.LASTNAME ONCE API IS IMPLEMENTED
-                loadBookings(bookingType, user_firstname, user_lastname);
+                loadBookings(bookingType, user_firstname, user_lastname, user_contact, user_email, user_username, user_password, user_usertype, user_logged_in);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                //default should be starters
-                loadBookings("Unconfirmed Requests", user_firstname, user_lastname);
+                //default should be unconfirmed requests
+                loadBookings("Unconfirmed Requests", user_firstname, user_lastname, user_contact, user_email, user_username, user_password, user_usertype, user_logged_in);
             }
         });
 
-        BookingRecordAdapter adapter = new BookingRecordAdapter(this, bookingRecords);
+        BookingRecordAdapter adapter = new BookingRecordAdapter(this, bookingRecords, user_firstname, user_lastname, user_contact, user_email,
+                user_username, user_password, user_usertype, user_logged_in);
         bookingRecycler.setAdapter(adapter);
 
         //home icon on click
@@ -97,6 +102,17 @@ public class MyBookingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MyBookingsActivity.this, GuestHomepage.class);
+
+                //passing details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
+
                 startActivity(intent);
             }
         });
@@ -104,7 +120,7 @@ public class MyBookingsActivity extends AppCompatActivity {
 
     }
 
-    public void loadBookings(String bookingType, String fName, String lName){
+    public void loadBookings(String bookingType, String fName, String lName, String user_contact, String user_email, String user_username, String user_password, String user_usertype, boolean user_logged_in){
         bookingRecords = new ArrayList<>();
         //retrieving items of the current category from DB
         db = new BookingsDatabaseHelper(MyBookingsActivity.this);
@@ -115,7 +131,8 @@ public class MyBookingsActivity extends AppCompatActivity {
         }
 
         //setting adapter to show list of bookings
-        adapter = new BookingRecordAdapter(this, bookingRecords);
+        adapter = new BookingRecordAdapter(this, bookingRecords, fName, lName, user_contact, user_email,
+                user_username, user_password, user_usertype, user_logged_in);
         bookingRecycler.setAdapter(adapter);
 
 

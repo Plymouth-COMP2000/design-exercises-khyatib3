@@ -44,7 +44,12 @@ public class Reservation_Enquiry extends AppCompatActivity {
         //retrieving user details
         String user_firstname = getIntent().getStringExtra("user_firstname");
         String user_lastname = getIntent().getStringExtra("user_lastname");
-
+        String user_contact = getIntent().getStringExtra("user_contact");
+        String user_email = getIntent().getStringExtra("user_email");
+        String user_username = getIntent().getStringExtra("user_username");
+        String user_password = getIntent().getStringExtra("user_password");
+        String user_usertype = getIntent().getStringExtra("user_usertype");
+        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
 
         //getting elements by their ids
         EditText firstNameInput = findViewById(R.id.br_firstNameInput);
@@ -130,6 +135,15 @@ public class Reservation_Enquiry extends AppCompatActivity {
                 String date = dateText.getText().toString();
                 String time = timeText.getText().toString();
 
+                //adding check to reduce risk of guest name not matching their account name
+                //and hence booking not being found
+                if(!firstName.equals(user_firstname) || !lastName.equals(user_lastname)){
+                    Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
+                    intent.putExtra("errorMsg", "Your name does not match the name on your account!");
+                    startActivity(intent);
+                    return;
+                }
+
                 //handling date and time being empty
                 if(date.equals("__/__/__") || time.equals("__:__")){
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
@@ -183,16 +197,55 @@ public class Reservation_Enquiry extends AppCompatActivity {
 
                 if(addRequestResult){
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Sent_Activity.class);
+
                     //passing the user details
                     intent.putExtra("user_firstname", user_firstname);
                     intent.putExtra("user_lastname", user_lastname);
+                    intent.putExtra("user_contact", user_contact);
+                    intent.putExtra("user_email", user_email);
+                    intent.putExtra("user_username", user_username);
+                    intent.putExtra("user_password", user_password);
+                    intent.putExtra("user_usertype", user_usertype);
+                    intent.putExtra("user_logged_in", user_logged_in);
+
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);
+
+                    //passing the user details
+                    intent.putExtra("user_firstname", user_firstname);
+                    intent.putExtra("user_lastname", user_lastname);
+                    intent.putExtra("user_contact", user_contact);
+                    intent.putExtra("user_email", user_email);
+                    intent.putExtra("user_username", user_username);
+                    intent.putExtra("user_password", user_password);
+                    intent.putExtra("user_usertype", user_usertype);
+                    intent.putExtra("user_logged_in", user_logged_in);
+
                     startActivity(intent);
                 }
 
 
+            }
+        });
+
+        ImageButton resEnquiryToHomeBtn = findViewById(R.id.reservationHomeIcon);
+        resEnquiryToHomeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Reservation_Enquiry.this, GuestHomepage.class);
+
+                //passing the user details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
+
+                startActivity(intent);
             }
         });
 

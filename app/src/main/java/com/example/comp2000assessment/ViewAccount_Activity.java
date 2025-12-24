@@ -1,9 +1,10 @@
-package com.example.comp2000assessment.bookings;
+package com.example.comp2000assessment;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,23 +12,22 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.comp2000assessment.homepages.GuestHomepage;
-import com.example.comp2000assessment.R;
+import com.example.comp2000assessment.settings.Settings;
 
-public class Enquiry_Sent_Activity extends AppCompatActivity {
+public class ViewAccount_Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_enquiry_sent);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.sidebarBtn), (v, insets) -> {
+        setContentView(R.layout.activity_view_account);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.view_account_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        //retrieving user details
+        //receiving user details passed
         String user_firstname = getIntent().getStringExtra("user_firstname");
         String user_lastname = getIntent().getStringExtra("user_lastname");
         String user_contact = getIntent().getStringExtra("user_contact");
@@ -37,15 +37,30 @@ public class Enquiry_Sent_Activity extends AppCompatActivity {
         String user_usertype = getIntent().getStringExtra("user_usertype");
         boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
 
+        //getting detail textviews
+        TextView acc_firstName = findViewById(R.id.acc_firstName);
+        TextView acc_lastName = findViewById(R.id.acc_lastName);
+        TextView acc_email = findViewById(R.id.acc_email);
+        TextView acc_phone = findViewById(R.id.acc_phone);
+        TextView acc_username = findViewById(R.id.acc_username);
+        TextView acc_password = findViewById(R.id.acc_password);
 
-        Button takeMeHomeBtn = findViewById(R.id.goHomeBtn3);
-        //setting on click functionality
-        takeMeHomeBtn.setOnClickListener(new View.OnClickListener(){
+        //changing the default text of the textviews to display real details
+        acc_firstName.setText(user_firstname);
+        acc_lastName.setText(user_lastname);
+        acc_email.setText(user_email);
+        acc_phone.setText(user_contact);
+        acc_username.setText(user_username);
+        acc_password.setText(user_password);
+
+        //go back to settings
+        ImageButton viewAccountBackBtn = findViewById(R.id.viewAccountBackBtn);
+        viewAccountBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                Intent intent = new Intent(Enquiry_Sent_Activity.this, GuestHomepage.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewAccount_Activity.this, Settings.class);
 
-                //passing the user details
+                //passing user details back to settings
                 intent.putExtra("user_firstname", user_firstname);
                 intent.putExtra("user_lastname", user_lastname);
                 intent.putExtra("user_contact", user_contact);
@@ -58,5 +73,8 @@ public class Enquiry_Sent_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
 }

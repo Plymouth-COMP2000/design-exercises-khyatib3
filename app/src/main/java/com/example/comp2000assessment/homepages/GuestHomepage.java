@@ -48,6 +48,17 @@ public class GuestHomepage extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(GuestHomepage.this, Guest_Menu_Options_Activity.class);
+
+                //passing the user details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
+
                 startActivity(intent);
             }
         });
@@ -62,6 +73,10 @@ public class GuestHomepage extends AppCompatActivity {
                 //passing the user details
                 intent.putExtra("user_firstname", user_firstname);
                 intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
                 intent.putExtra("user_usertype", user_usertype);
                 intent.putExtra("user_logged_in", user_logged_in);
 
@@ -79,6 +94,12 @@ public class GuestHomepage extends AppCompatActivity {
                 //passing the user details
                 intent.putExtra("user_firstname", user_firstname);
                 intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
                 startActivity(intent);
             }
         });

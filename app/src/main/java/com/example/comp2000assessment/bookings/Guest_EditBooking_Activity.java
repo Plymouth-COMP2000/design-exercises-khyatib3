@@ -41,6 +41,16 @@ public class Guest_EditBooking_Activity extends AppCompatActivity {
             return insets;
         });
 
+        //getting user details from account created
+        String user_firstname = getIntent().getStringExtra("user_firstname");
+        String user_lastname = getIntent().getStringExtra("user_lastname");
+        String user_contact = getIntent().getStringExtra("user_contact");
+        String user_email = getIntent().getStringExtra("user_email");
+        String user_username = getIntent().getStringExtra("user_username");
+        String user_password = getIntent().getStringExtra("user_password");
+        String user_usertype = getIntent().getStringExtra("user_usertype");
+        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
+
         //retrieving booking values passed
         String guestFirstName = getIntent().getStringExtra("guestFirstName");
         String guestLastName = getIntent().getStringExtra("guestLastName");
@@ -173,6 +183,16 @@ public class Guest_EditBooking_Activity extends AppCompatActivity {
                 String newTime = timeDisplay.getText().toString();
                 int newGuestNo = Integer.parseInt(g_editGuestNoSpinner.getSelectedItem().toString());
 
+                if(newFName.isEmpty() || newLName.isEmpty()){
+                    Toast.makeText(Guest_EditBooking_Activity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if(!newFName.equals(user_firstname) || !newLName.equals(user_lastname)){
+                    Toast.makeText(Guest_EditBooking_Activity.this, "Your name does not match the name on your account!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 //creating a booking record object to pass into updateBooking
                 BookingRecord updatedBooking = new BookingRecord(
                         newFName,
@@ -194,6 +214,16 @@ public class Guest_EditBooking_Activity extends AppCompatActivity {
 
                 if(updateBookingResult){
                     Intent intent = new Intent(Guest_EditBooking_Activity.this, MyBookingsActivity.class);
+
+                    //passing the user details
+                    intent.putExtra("user_firstname", user_firstname);
+                    intent.putExtra("user_lastname", user_lastname);
+                    intent.putExtra("user_contact", user_contact);
+                    intent.putExtra("user_email", user_email);
+                    intent.putExtra("user_username", user_username);
+                    intent.putExtra("user_password", user_password);
+                    intent.putExtra("user_usertype", user_usertype);
+                    intent.putExtra("user_logged_in", user_logged_in);
 
                     Toast.makeText(Guest_EditBooking_Activity.this, "Booking updated", Toast.LENGTH_SHORT).show();
                     startActivity(intent);
