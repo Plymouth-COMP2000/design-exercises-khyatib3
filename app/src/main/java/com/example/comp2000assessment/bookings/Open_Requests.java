@@ -58,7 +58,7 @@ public class Open_Requests extends AppCompatActivity {
         openRequestsList = db.showStaffUnconfirmedReqs();
 
         //setting list to adapter and adapter to recycler view
-        adapter = new S_BookingRequestAdapter(this, openRequestsList);
+        adapter = new S_BookingRequestAdapter(this, openRequestsList, staff_firstname, staff_lastname, staff_contact, staff_email, staff_username, staff_password, "staff", staff_logged_in);
         requestsRecycler.setAdapter(adapter);
 
         if (openRequestsList.isEmpty()) {

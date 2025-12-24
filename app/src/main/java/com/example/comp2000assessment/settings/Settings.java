@@ -53,6 +53,11 @@ public class Settings extends AppCompatActivity {
         String staff_usertype = getIntent().getStringExtra("staff_usertype");
         boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
 
+        android.util.Log.d("SETTINGS_DEBUG", "UserType: " + user_usertype);
+        android.util.Log.d("SETTINGS_DEBUG", "StaffType: " + staff_usertype);
+        boolean isGuest = (user_usertype != null && user_usertype.equals("guest"));
+        boolean isStaff = (staff_usertype != null && staff_usertype.equals("staff"));
+
 
 
         ImageButton takeMeHomeBtn = findViewById(R.id.settingsGoHomeBtn);
@@ -61,7 +66,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                if(user_usertype != null &&user_usertype.equals("guest")){
+                if(isGuest){
                     Intent intent = new Intent(Settings.this, GuestHomepage.class);
 
                     //passing the user details
@@ -76,7 +81,7 @@ public class Settings extends AppCompatActivity {
 
                     startActivity(intent);
                     finish();
-                }else if (staff_usertype !=null && staff_usertype.equals("staff")){
+                }else if (isStaff){
                     Intent intent = new Intent(Settings.this, StaffDashboard.class);
 
                     //passing the user details
@@ -101,7 +106,7 @@ public class Settings extends AppCompatActivity {
         viewAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user_usertype != null && user_usertype.equals("guest")){
+                if(isGuest){
                     Intent intent = new Intent(Settings.this, ViewAccount_Activity.class);
 
                     //passing values to view account activity
@@ -115,7 +120,7 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra("user_logged_in", user_logged_in);
 
                     startActivity(intent);
-                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
+                } else if (isStaff) {
                     Intent intent = new Intent(Settings.this, ViewAccount_Activity.class);
 
                     //passing the user details
@@ -140,7 +145,7 @@ public class Settings extends AppCompatActivity {
         updateAccountScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user_usertype != null && user_usertype.equals("guest")){
+                if(isGuest){
                     Intent intent = new Intent(Settings.this, UpdateAccount_Activity.class);
 
                     //passing values to view account activity
@@ -154,7 +159,7 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra("user_logged_in", user_logged_in);
 
                     startActivity(intent);
-                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
+                } else if (isStaff) {
                     Intent intent = new Intent(Settings.this, UpdateAccount_Activity.class);
 
                     //passing the user details
@@ -177,7 +182,7 @@ public class Settings extends AppCompatActivity {
         deleteAccountScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user_usertype != null && user_usertype.equals("guest")){
+                if(isGuest){
                     Intent intent = new Intent(Settings.this, DeleteAccount_Activity.class);
 
                     //passing values to view account activity
@@ -192,7 +197,7 @@ public class Settings extends AppCompatActivity {
 
                     startActivity(intent);
                     finish();
-                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
+                } else if (isStaff) {
                     Intent intent = new Intent(Settings.this, DeleteAccount_Activity.class);
 
                     //passing the user details
@@ -216,7 +221,7 @@ public class Settings extends AppCompatActivity {
         signOutBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if(user_usertype != null && user_usertype.equals("guest")){
+                if(isGuest){
                     Intent intent = new Intent(Settings.this, SignOutActivity.class);
 
                     //passing values to view account activity
@@ -230,7 +235,7 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra("user_logged_in", user_logged_in);
 
                     startActivity(intent);
-                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
+                } else if (isStaff) {
                     Intent intent = new Intent(Settings.this, SignOutActivity.class);
 
                     //passing the user details

@@ -86,7 +86,7 @@ public class TableNo_ReservationActivity extends AppCompatActivity {
         tableBookingsRecycler = findViewById(R.id.tableNoRecyclerView);
         tableBookingsRecycler.setLayoutManager(new androidx.recyclerview.widget.LinearLayoutManager(this));
 
-        adapter = new S_BookingRecordAdapter(this, tableBookings);
+        adapter = new S_BookingRecordAdapter(this, tableBookings, staff_firstname, staff_lastname, staff_contact, staff_email, staff_username, staff_password, staff_usertype, staff_logged_in);
         tableBookingsRecycler = findViewById(R.id.tableNoRecyclerView);
         tableBookingsRecycler.setAdapter(adapter);
 

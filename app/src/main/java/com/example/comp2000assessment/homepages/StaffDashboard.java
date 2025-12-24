@@ -18,7 +18,7 @@ import com.example.comp2000assessment.settings.Settings;
 import com.example.comp2000assessment.users.New_Staff_Admin;
 
 public class StaffDashboard extends AppCompatActivity {
-
+    private static String staff_usertype;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,15 +30,22 @@ public class StaffDashboard extends AppCompatActivity {
             return insets;
         });
 
-        //getting staff details from account created
+        //getting staff details
         String staff_firstname = getIntent().getStringExtra("staff_firstname");
         String staff_lastname = getIntent().getStringExtra("staff_lastname");
         String staff_contact = getIntent().getStringExtra("staff_contact");
         String staff_email = getIntent().getStringExtra("staff_email");
         String staff_username = getIntent().getStringExtra("staff_username");
         String staff_password = getIntent().getStringExtra("staff_password");
-        String staff_usertype = getIntent().getStringExtra("staff_usertype");
+
+        staff_usertype = getIntent().getStringExtra("staff_usertype");
+        //setting staff_usertype to staff in case it becomes null
+        if (staff_usertype == null || staff_usertype.isEmpty()) {
+            staff_usertype = "staff";
+        }
         boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+
+
 
         //navigate to menu
         Button toMenuBtn = findViewById(R.id.viewChangeMenuBtn);

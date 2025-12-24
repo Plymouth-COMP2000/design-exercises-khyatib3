@@ -22,10 +22,21 @@ public class S_BookingRequestAdapter extends RecyclerView.Adapter<S_BookingReque
 
     public List<BookingRecord> bookingList;
     private Context context;
+    private String staff_firstname, staff_lastname, staff_contact, staff_email, staff_username, staff_password, staff_usertype;
+    private boolean staff_logged_in;
 
-    public S_BookingRequestAdapter(Context context, List<BookingRecord> bookingList) {
+    public S_BookingRequestAdapter(Context context, List<BookingRecord> bookingList, String staff_firstname, String staff_lastname, String contact, String email,
+                                   String username, String password, String usertype, boolean staff_logged_in) {
         this.context = context;
         this.bookingList = bookingList;
+        this.staff_firstname = staff_firstname;
+        this.staff_lastname = staff_lastname;
+        this.staff_contact = staff_contact;
+        this.staff_email = staff_email;
+        this.staff_username = staff_username;
+        this.staff_password = staff_password;
+        this.staff_usertype = staff_usertype;
+        this.staff_logged_in = staff_logged_in;
     }
 
     public static class BookingReqViewHolder extends RecyclerView.ViewHolder {
@@ -84,6 +95,16 @@ public class S_BookingRequestAdapter extends RecyclerView.Adapter<S_BookingReque
                 intent.putExtra("time", item.time);
                 intent.putExtra("noGuests", item.numberOfGuests);
                 context.startActivity(intent);
+
+                //passing the staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
 
             }
         });
