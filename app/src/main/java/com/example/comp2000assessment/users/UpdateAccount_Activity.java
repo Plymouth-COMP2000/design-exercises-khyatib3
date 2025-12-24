@@ -189,21 +189,20 @@ public class UpdateAccount_Activity extends AppCompatActivity {
                         BookingsDatabaseHelper db = new BookingsDatabaseHelper(UpdateAccount_Activity.this);
                         boolean result = db.updateBookingHolderName(oldFName, fName, oldLName, lName);
 
-                        if(result){
-                            //go back to settings with updated info
-                            Intent intent = new Intent(UpdateAccount_Activity.this, Settings.class);
-                            intent.putExtra("user_firstname", fName);
-                            intent.putExtra("user_lastname", lName);
-                            intent.putExtra("user_contact", contact);
-                            intent.putExtra("user_email", email);
-                            intent.putExtra("user_username", newUsername);
-                            intent.putExtra("user_password", password);
-                            intent.putExtra("user_usertype", usertype);
-                            intent.putExtra("user_logged_in", loggedIn);
+                        //go back to settings with updated info
+                        Intent intent = new Intent(UpdateAccount_Activity.this, Settings.class);
+                        intent.putExtra("user_firstname", fName);
+                        intent.putExtra("user_lastname", lName);
+                        intent.putExtra("user_contact", contact);
+                        intent.putExtra("user_email", email);
+                        intent.putExtra("user_username", newUsername);
+                        intent.putExtra("user_password", password);
+                        intent.putExtra("user_usertype", usertype);
+                        intent.putExtra("user_logged_in", loggedIn);
 
-                            startActivity(intent);
-                            finish();
-                        }
+                        startActivity(intent);
+                        finish();
+
 
                     } else {
                         Toast.makeText(UpdateAccount_Activity.this, "Failed: " + message, Toast.LENGTH_LONG).show();
