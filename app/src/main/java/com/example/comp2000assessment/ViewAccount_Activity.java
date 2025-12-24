@@ -53,6 +53,21 @@ public class ViewAccount_Activity extends AppCompatActivity {
         acc_username.setText(user_username);
         acc_password.setText(user_password);
 
+        //getting toggle visibility button
+        ImageButton toggleVisbilityBtn = findViewById(R.id.togglePassVisbilityBtn);
+        toggleVisbilityBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (acc_password.getText().equals("********")){
+                    acc_password.setText(user_password);
+                    toggleVisbilityBtn.setImageResource(R.drawable.ic_visibility_off);
+                }else{
+                    acc_password.setText("********");
+                    toggleVisbilityBtn.setImageResource(R.drawable.ic_visibility_on);
+                }
+            }
+        });
+
         //go back to settings
         ImageButton viewAccountBackBtn = findViewById(R.id.viewAccountBackBtn);
         viewAccountBackBtn.setOnClickListener(new View.OnClickListener() {

@@ -220,7 +220,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:background="@android:color/transparent"
-                android:src="@drawable/ic_visibility_on"
+                android:src="@drawable/ic_visibility_off"
                 android:contentDescription="Toggle password visibility"
                 android:scaleType="fitCenter"
                 app:tint="@color/black"/>
