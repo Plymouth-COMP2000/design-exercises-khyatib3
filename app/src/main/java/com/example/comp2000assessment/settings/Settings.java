@@ -33,7 +33,7 @@ public class Settings extends AppCompatActivity {
             return insets;
         });
 
-        //receiving user details passed
+        //receiving GUEST details passed (if guest details were passed)
         String user_firstname = getIntent().getStringExtra("user_firstname");
         String user_lastname = getIntent().getStringExtra("user_lastname");
         String user_contact = getIntent().getStringExtra("user_contact");
@@ -43,6 +43,17 @@ public class Settings extends AppCompatActivity {
         String user_usertype = getIntent().getStringExtra("user_usertype");
         boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
 
+        //getting STAFF details (if staff details were passed)
+        String staff_firstname = getIntent().getStringExtra("staff_firstname");
+        String staff_lastname = getIntent().getStringExtra("staff_lastname");
+        String staff_contact = getIntent().getStringExtra("staff_contact");
+        String staff_email = getIntent().getStringExtra("staff_email");
+        String staff_username = getIntent().getStringExtra("staff_username");
+        String staff_password = getIntent().getStringExtra("staff_password");
+        String staff_usertype = getIntent().getStringExtra("staff_usertype");
+        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+
+
 
         ImageButton takeMeHomeBtn = findViewById(R.id.settingsGoHomeBtn);
         //setting on click functionality
@@ -50,7 +61,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View view){
 
-                if(user_usertype.equals("guest")){
+                if(user_usertype != null &&user_usertype.equals("guest")){
                     Intent intent = new Intent(Settings.this, GuestHomepage.class);
 
                     //passing the user details
@@ -65,18 +76,18 @@ public class Settings extends AppCompatActivity {
 
                     startActivity(intent);
                     finish();
-                }else if (user_usertype.equals("staff")){
+                }else if (staff_usertype !=null && staff_usertype.equals("staff")){
                     Intent intent = new Intent(Settings.this, StaffDashboard.class);
 
                     //passing the user details
-                    intent.putExtra("staff_firstname", user_firstname);
-                    intent.putExtra("staff_lastname", user_lastname);
-                    intent.putExtra("staff_contact", user_contact);
-                    intent.putExtra("staff_email", user_email);
-                    intent.putExtra("staff_username", user_username);
-                    intent.putExtra("staff_password", user_password);
-                    intent.putExtra("staff_usertype", user_usertype);
-                    intent.putExtra("staff_logged_in", user_logged_in);
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
 
                     startActivity(intent);
                     finish();
@@ -90,7 +101,7 @@ public class Settings extends AppCompatActivity {
         viewAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user_usertype.equals("guest")){
+                if(user_usertype != null && user_usertype.equals("guest")){
                     Intent intent = new Intent(Settings.this, ViewAccount_Activity.class);
 
                     //passing values to view account activity
@@ -104,18 +115,18 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra("user_logged_in", user_logged_in);
 
                     startActivity(intent);
-                } else if (user_usertype.equals("staff")) {
+                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
                     Intent intent = new Intent(Settings.this, ViewAccount_Activity.class);
 
                     //passing the user details
-                    intent.putExtra("staff_firstname", user_firstname);
-                    intent.putExtra("staff_lastname", user_lastname);
-                    intent.putExtra("staff_contact", user_contact);
-                    intent.putExtra("staff_email", user_email);
-                    intent.putExtra("staff_username", user_username);
-                    intent.putExtra("staff_password", user_password);
-                    intent.putExtra("staff_usertype", user_usertype);
-                    intent.putExtra("staff_logged_in", user_logged_in);
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
 
                     startActivity(intent);
                     finish();
@@ -129,7 +140,7 @@ public class Settings extends AppCompatActivity {
         updateAccountScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user_usertype.equals("guest")){
+                if(user_usertype != null && user_usertype.equals("guest")){
                     Intent intent = new Intent(Settings.this, UpdateAccount_Activity.class);
 
                     //passing values to view account activity
@@ -143,18 +154,18 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra("user_logged_in", user_logged_in);
 
                     startActivity(intent);
-                } else if (user_usertype.equals("staff")) {
+                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
                     Intent intent = new Intent(Settings.this, UpdateAccount_Activity.class);
 
                     //passing the user details
-                    intent.putExtra("staff_firstname", user_firstname);
-                    intent.putExtra("staff_lastname", user_lastname);
-                    intent.putExtra("staff_contact", user_contact);
-                    intent.putExtra("staff_email", user_email);
-                    intent.putExtra("staff_username", user_username);
-                    intent.putExtra("staff_password", user_password);
-                    intent.putExtra("staff_usertype", user_usertype);
-                    intent.putExtra("staff_logged_in", user_logged_in);
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
 
                     startActivity(intent);
                     finish();
@@ -166,7 +177,7 @@ public class Settings extends AppCompatActivity {
         deleteAccountScreenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(user_usertype.equals("guest")){
+                if(user_usertype != null && user_usertype.equals("guest")){
                     Intent intent = new Intent(Settings.this, DeleteAccount_Activity.class);
 
                     //passing values to view account activity
@@ -181,18 +192,18 @@ public class Settings extends AppCompatActivity {
 
                     startActivity(intent);
                     finish();
-                } else if (user_usertype.equals("staff")) {
+                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
                     Intent intent = new Intent(Settings.this, DeleteAccount_Activity.class);
 
                     //passing the user details
-                    intent.putExtra("staff_firstname", user_firstname);
-                    intent.putExtra("staff_lastname", user_lastname);
-                    intent.putExtra("staff_contact", user_contact);
-                    intent.putExtra("staff_email", user_email);
-                    intent.putExtra("staff_username", user_username);
-                    intent.putExtra("staff_password", user_password);
-                    intent.putExtra("staff_usertype", user_usertype);
-                    intent.putExtra("staff_logged_in", user_logged_in);
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
 
                     startActivity(intent);
                     finish();
@@ -205,7 +216,7 @@ public class Settings extends AppCompatActivity {
         signOutBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if(user_usertype.equals("guest")){
+                if(user_usertype != null && user_usertype.equals("guest")){
                     Intent intent = new Intent(Settings.this, SignOutActivity.class);
 
                     //passing values to view account activity
@@ -219,18 +230,18 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra("user_logged_in", user_logged_in);
 
                     startActivity(intent);
-                } else if (user_usertype.equals("staff")) {
+                } else if (staff_usertype != null && staff_usertype.equals("staff")) {
                     Intent intent = new Intent(Settings.this, SignOutActivity.class);
 
                     //passing the user details
-                    intent.putExtra("staff_firstname", user_firstname);
-                    intent.putExtra("staff_lastname", user_lastname);
-                    intent.putExtra("staff_contact", user_contact);
-                    intent.putExtra("staff_email", user_email);
-                    intent.putExtra("staff_username", user_username);
-                    intent.putExtra("staff_password", user_password);
-                    intent.putExtra("staff_usertype", user_usertype);
-                    intent.putExtra("staff_logged_in", user_logged_in);
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
 
                     startActivity(intent);
                     finish();

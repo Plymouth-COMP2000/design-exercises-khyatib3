@@ -73,7 +73,7 @@
             android:exported="false" />
         <activity
             android:name=".users.New_Staff_Admin"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".menu.Error_Add_MenuItem"
             android:exported="false" />

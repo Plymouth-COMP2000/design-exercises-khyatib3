@@ -23,7 +23,7 @@ import com.example.comp2000assessment.settings.Settings;
 import org.json.JSONObject;
 
 public class UpdateAccount_Activity extends AppCompatActivity {
-
+    private boolean isGuest;
     private UserAPI_Helper api_helper;
 
     @Override
@@ -47,6 +47,22 @@ public class UpdateAccount_Activity extends AppCompatActivity {
         String user_usertype = getIntent().getStringExtra("user_usertype");
         boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
 
+        //getting STAFF details (if staff details were passed)
+        String staff_firstname = getIntent().getStringExtra("staff_firstname");
+        String staff_lastname = getIntent().getStringExtra("staff_lastname");
+        String staff_contact = getIntent().getStringExtra("staff_contact");
+        String staff_email = getIntent().getStringExtra("staff_email");
+        String staff_username = getIntent().getStringExtra("staff_username");
+        String staff_password = getIntent().getStringExtra("staff_password");
+        String staff_usertype = getIntent().getStringExtra("staff_usertype");
+        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+
+        //determing type of user logged in
+        if(user_usertype != null && user_usertype.equals("guest")){
+            isGuest = true;
+        }else{
+            isGuest = false;
+        }
 
         EditText fNameInput = findViewById(R.id.accUpdate_firstName);
         EditText lNameInput = findViewById(R.id.accUpdate_lastName);
@@ -56,12 +72,21 @@ public class UpdateAccount_Activity extends AppCompatActivity {
         EditText passwordInput = findViewById(R.id.accUpdate_password);
 
         //so users can see their current info and make a change depending on that
-        fNameInput.setText(user_firstname);
-        lNameInput.setText(user_lastname);
-        emailInput.setText(user_email);
-        phoneInput.setText(user_contact);
-        usernameInput.setText(user_username);
-        passwordInput.setText(user_password);
+        if(isGuest){
+            fNameInput.setText(user_firstname);
+            lNameInput.setText(user_lastname);
+            emailInput.setText(user_email);
+            phoneInput.setText(user_contact);
+            usernameInput.setText(user_username);
+            passwordInput.setText(user_password);
+        }else{
+            fNameInput.setText(staff_firstname);
+            lNameInput.setText(staff_lastname);
+            emailInput.setText(staff_email);
+            phoneInput.setText(staff_contact);
+            usernameInput.setText(staff_username);
+            passwordInput.setText(staff_password);
+        }
 
         //back to settings
         ImageButton backToSettingsBtn = findViewById(R.id.updateAccountBackBtn);
@@ -70,20 +95,35 @@ public class UpdateAccount_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UpdateAccount_Activity.this, Settings.class);
 
-                //passing the user details
-                intent.putExtra("user_firstname", user_firstname);
-                intent.putExtra("user_lastname", user_lastname);
-                intent.putExtra("user_contact", user_contact);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_username", user_username);
-                intent.putExtra("user_password", user_password);
-                intent.putExtra("user_usertype", user_usertype);
-                intent.putExtra("user_logged_in", user_logged_in);
+                if(isGuest){
+                    //passing the user details
+                    intent.putExtra("user_firstname", user_firstname);
+                    intent.putExtra("user_lastname", user_lastname);
+                    intent.putExtra("user_contact", user_contact);
+                    intent.putExtra("user_email", user_email);
+                    intent.putExtra("user_username", user_username);
+                    intent.putExtra("user_password", user_password);
+                    intent.putExtra("user_usertype", user_usertype);
+                    intent.putExtra("user_logged_in", user_logged_in);
 
+                }else{
+                    //passing the staff details
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
+                }
                 startActivity(intent);
 
             }
         });
+
+        //initialise api helper
+        api_helper = new UserAPI_Helper(UpdateAccount_Activity.this);
 
         //update the user's account
         Button updateAccountBtn = findViewById(R.id.updateAccountBtn);
@@ -106,17 +146,25 @@ public class UpdateAccount_Activity extends AppCompatActivity {
                 }
                 updateAccountBtn.setText("Checking username...");
 
-                if (!new_username.equalsIgnoreCase(user_username)) {
-                    //username changed, so check inf unique
-                    checkUsernameAndUpdate(new_username, user_firstname, user_lastname, new_firstname, new_lastname, new_contact, new_email, new_password, user_usertype, user_logged_in, updateAccountBtn);
+                //determining who is logged in and what the details to be passed are
+                String currentUsername = isGuest ? user_username : staff_username;
+                String currentUserType = isGuest ? user_usertype : staff_usertype;
+                String currentFirstName = isGuest ? user_firstname : staff_firstname;
+                String currentLastName = isGuest ? user_lastname : staff_lastname;
+                boolean currentLoggedIn = isGuest ? user_logged_in : staff_logged_in;
+
+                //check to see if the username field has changed
+                if (!new_username.equalsIgnoreCase(currentUsername)) {
+                    //username changes so check it is unique
+                    checkUsernameAndUpdate(currentUsername, new_username, currentFirstName, currentLastName, new_firstname, new_lastname, new_contact, new_email, new_password, currentUserType, currentLoggedIn, updateAccountBtn);
                 } else {
-                    //username hasn't changed dont perform check
-                    performUpdate(user_username, new_username, user_firstname, user_lastname, new_firstname, new_lastname, new_contact, new_email, new_password, user_usertype, user_logged_in, updateAccountBtn);
+                    //no change, straight to update
+                    performUpdate(currentUsername, new_username, currentFirstName, currentLastName, new_firstname, new_lastname, new_contact, new_email, new_password, currentUserType, currentLoggedIn, updateAccountBtn);
                 }
             }
         });
     }
-    private void checkUsernameAndUpdate(String new_username, String oldFName, String oldLName, String fName, String lName, String contact, String email, String password, String usertype, boolean loggedIn, Button btn) {
+    private void checkUsernameAndUpdate(String originalUsername, String new_username, String oldFName, String oldLName, String fName, String lName, String contact, String email, String password, String usertype, boolean loggedIn, Button btn) {
         btn.setText("Checking username...");
 
         api_helper.getAllUsers(api_helper, new Response.Listener<JSONObject>() {
@@ -175,6 +223,7 @@ public class UpdateAccount_Activity extends AppCompatActivity {
         //making an app user object so it can be converted to json in api helper class and sent to api
         AppUser updatedUser = new AppUser(fName, lName, contact, email, newUsername, password, usertype);
         updatedUser.setLogged_in(loggedIn);
+        updatedUser.setLogged_in(loggedIn);
 
         //all api update user
         UserAPI_Helper.updateUser(originalUsername, updatedUser, api_helper, new Response.Listener<JSONObject>() {
@@ -185,24 +234,44 @@ public class UpdateAccount_Activity extends AppCompatActivity {
                     if (message.toLowerCase().contains("success") || response.has("message")) {
                         Toast.makeText(UpdateAccount_Activity.this, "Account Updated!", Toast.LENGTH_SHORT).show();
 
-                        //call updateBookingHolderName immediately after updating user
-                        BookingsDatabaseHelper db = new BookingsDatabaseHelper(UpdateAccount_Activity.this);
-                        boolean result = db.updateBookingHolderName(oldFName, fName, oldLName, lName);
+                        //update the guest's existing bookings in db to have new name
+                        //only if user type is guest, as staff dont have bookings of their own
+                        if (usertype.equalsIgnoreCase("guest")) {
+                            BookingsDatabaseHelper db = new BookingsDatabaseHelper(UpdateAccount_Activity.this);
+                            // We don't check the result boolean here, just run it
+                            db.updateBookingHolderName(oldFName, fName, oldLName, lName);
+                        }
 
                         //go back to settings with updated info
                         Intent intent = new Intent(UpdateAccount_Activity.this, Settings.class);
-                        intent.putExtra("user_firstname", fName);
-                        intent.putExtra("user_lastname", lName);
-                        intent.putExtra("user_contact", contact);
-                        intent.putExtra("user_email", email);
-                        intent.putExtra("user_username", newUsername);
-                        intent.putExtra("user_password", password);
-                        intent.putExtra("user_usertype", usertype);
-                        intent.putExtra("user_logged_in", loggedIn);
 
-                        startActivity(intent);
-                        finish();
+                        if(usertype.equals("guest")){
+                            intent.putExtra("user_firstname", fName);
+                            intent.putExtra("user_lastname", lName);
+                            intent.putExtra("user_contact", contact);
+                            intent.putExtra("user_email", email);
+                            intent.putExtra("user_username", newUsername);
+                            intent.putExtra("user_password", password);
+                            intent.putExtra("user_usertype", usertype);
+                            intent.putExtra("user_logged_in", loggedIn);
 
+                            startActivity(intent);
+                            finish();
+
+                        }else{
+                            //passing the staff details
+                            intent.putExtra("staff_firstname", fName);
+                            intent.putExtra("staff_lastname", lName);
+                            intent.putExtra("staff_contact", contact);
+                            intent.putExtra("staff_email", email);
+                            intent.putExtra("staff_username", newUsername);
+                            intent.putExtra("staff_password", password);
+                            intent.putExtra("staff_usertype", usertype);
+                            intent.putExtra("staff_logged_in", loggedIn);
+
+                            startActivity(intent);
+                            finish();
+                        }
 
                     } else {
                         Toast.makeText(UpdateAccount_Activity.this, "Failed: " + message, Toast.LENGTH_LONG).show();

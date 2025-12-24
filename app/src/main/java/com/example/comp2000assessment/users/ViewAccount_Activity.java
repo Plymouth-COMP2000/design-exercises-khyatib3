@@ -17,6 +17,8 @@ import com.example.comp2000assessment.settings.Settings;
 
 public class ViewAccount_Activity extends AppCompatActivity {
 
+    private boolean isGuest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +40,23 @@ public class ViewAccount_Activity extends AppCompatActivity {
         String user_usertype = getIntent().getStringExtra("user_usertype");
         boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
 
+        //getting STAFF details (if staff details were passed)
+        String staff_firstname = getIntent().getStringExtra("staff_firstname");
+        String staff_lastname = getIntent().getStringExtra("staff_lastname");
+        String staff_contact = getIntent().getStringExtra("staff_contact");
+        String staff_email = getIntent().getStringExtra("staff_email");
+        String staff_username = getIntent().getStringExtra("staff_username");
+        String staff_password = getIntent().getStringExtra("staff_password");
+        String staff_usertype = getIntent().getStringExtra("staff_usertype");
+        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+
+        //determining if the logged in user is guest
+        if(user_usertype != null && user_usertype.equals("guest")){
+            isGuest = true;
+        }else{
+            isGuest = false;
+        }
+
         //getting detail textviews
         TextView acc_firstName = findViewById(R.id.acc_firstName);
         TextView acc_lastName = findViewById(R.id.acc_lastName);
@@ -47,12 +66,21 @@ public class ViewAccount_Activity extends AppCompatActivity {
         TextView acc_password = findViewById(R.id.acc_password);
 
         //changing the default text of the textviews to display real details
-        acc_firstName.setText(user_firstname);
-        acc_lastName.setText(user_lastname);
-        acc_email.setText(user_email);
-        acc_phone.setText(user_contact);
-        acc_username.setText(user_username);
-        acc_password.setText(user_password);
+        if(isGuest){
+            acc_firstName.setText(user_firstname);
+            acc_lastName.setText(user_lastname);
+            acc_email.setText(user_email);
+            acc_phone.setText(user_contact);
+            acc_username.setText(user_username);
+            acc_password.setText(user_password);
+        } else{
+            acc_firstName.setText(staff_firstname);
+            acc_lastName.setText(staff_lastname);
+            acc_email.setText(staff_email);
+            acc_phone.setText(staff_contact);
+            acc_username.setText(staff_username);
+            acc_password.setText(staff_password);
+        }
 
         //getting toggle visibility button
         ImageButton toggleVisbilityBtn = findViewById(R.id.togglePassVisbilityBtn);
@@ -60,7 +88,12 @@ public class ViewAccount_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (acc_password.getText().equals("********")){
-                    acc_password.setText(user_password);
+                    if(isGuest){
+                        acc_password.setText(user_password);
+                    }else{
+                        acc_password.setText(staff_password);
+                    }
+
                     toggleVisbilityBtn.setImageResource(R.drawable.ic_visibility_off);
                 }else{
                     acc_password.setText("********");
@@ -76,17 +109,31 @@ public class ViewAccount_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ViewAccount_Activity.this, Settings.class);
 
-                //passing user details back to settings
-                intent.putExtra("user_firstname", user_firstname);
-                intent.putExtra("user_lastname", user_lastname);
-                intent.putExtra("user_contact", user_contact);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_username", user_username);
-                intent.putExtra("user_password", user_password);
-                intent.putExtra("user_usertype", user_usertype);
-                intent.putExtra("user_logged_in", user_logged_in);
+                if(isGuest){
+                    //passing user details back to settings
+                    intent.putExtra("user_firstname", user_firstname);
+                    intent.putExtra("user_lastname", user_lastname);
+                    intent.putExtra("user_contact", user_contact);
+                    intent.putExtra("user_email", user_email);
+                    intent.putExtra("user_username", user_username);
+                    intent.putExtra("user_password", user_password);
+                    intent.putExtra("user_usertype", user_usertype);
+                    intent.putExtra("user_logged_in", user_logged_in);
 
+                }else{
+                    //passing the staff details
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
+
+                }
                 startActivity(intent);
+
             }
         });
 

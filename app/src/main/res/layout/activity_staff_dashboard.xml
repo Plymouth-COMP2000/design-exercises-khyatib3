@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/viewChangeMenuBtn" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/addStaffBtn"
+        android:id="@+id/addStaffScreenBtn"
         android:layout_width="255dp"
         android:layout_height="131dp"
         android:backgroundTint="#800f2F"
@@ -81,7 +81,7 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="@+id/restaurantNameDash"
         app:layout_constraintStart_toStartOf="@+id/restaurantNameDash"
-        app:layout_constraintTop_toBottomOf="@+id/addStaffBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/addStaffScreenBtn" />
 
     <!-- Logo-->
     <ImageView

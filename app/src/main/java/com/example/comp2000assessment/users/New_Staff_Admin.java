@@ -28,6 +28,15 @@ import com.example.comp2000assessment.homepages.StaffDashboard;
 public class New_Staff_Admin extends AppCompatActivity {
 
     private UserAPI_Helper api_helper;
+    private static String staff_firstname;
+    private static String staff_lastname;
+    private static String staff_contact;
+    private static String staff_email;
+    private static String staff_username;
+    private static String staff_password;
+    private static String staff_usertype;
+    private static boolean staff_logged_in;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +49,33 @@ public class New_Staff_Admin extends AppCompatActivity {
             return insets;
         });
 
+        //getting staff details
+        staff_firstname = getIntent().getStringExtra("staff_firstname");
+        staff_lastname = getIntent().getStringExtra("staff_lastname");
+        staff_contact = getIntent().getStringExtra("staff_contact");
+        staff_email = getIntent().getStringExtra("staff_email");
+        staff_username = getIntent().getStringExtra("staff_username");
+        staff_password = getIntent().getStringExtra("staff_password");
+        staff_usertype = getIntent().getStringExtra("staff_usertype");
+        staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+
+        //navigate to staff dashboard
         ImageButton register_HomeBtn = findViewById(R.id.staff_RegisterHomeBtn);
         register_HomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(New_Staff_Admin.this, StaffDashboard.class);
+
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
+
                 startActivity(intent);
             }
         });
@@ -64,16 +95,16 @@ public class New_Staff_Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //retrieve values from inout fields
-                String staff_firstname = firstNameInput.getText().toString().trim();
-                String staff_lastname = lastNameInput.getText().toString().trim();
-                String staff_email = workEmailInput.getText().toString().trim();
-                String staff_contact = phoneInput.getText().toString().trim();
-                String staff_username = usernameInput.getText().toString().trim();
-                String staff_password = passwordInput.getText().toString().trim();
+                String newStaff_firstname = firstNameInput.getText().toString().trim();
+                String newStaff_lastname = lastNameInput.getText().toString().trim();
+                String newStaff_email = workEmailInput.getText().toString().trim();
+                String newStaff_contact = phoneInput.getText().toString().trim();
+                String newStaff_username = usernameInput.getText().toString().trim();
+                String newStaff_password = passwordInput.getText().toString().trim();
 
                 //check all fields were entered
-                if(staff_firstname.isEmpty() || staff_lastname.isEmpty() || staff_email.isEmpty() ||
-                        staff_contact.isEmpty() || staff_username.isEmpty() || staff_password.isEmpty()){
+                if(newStaff_firstname.isEmpty() || newStaff_lastname.isEmpty() || newStaff_email.isEmpty() ||
+                        newStaff_contact.isEmpty() || newStaff_username.isEmpty() || newStaff_password.isEmpty()){
                     Toast.makeText(New_Staff_Admin.this, "You must fill in ALL the fields!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -83,13 +114,13 @@ public class New_Staff_Admin extends AppCompatActivity {
                 addNewStaffBtn.setText("Validating account...");
 
                 //performing a check on username to see if it is unique
-                checkUsernameRegister(staff_username, staff_password, staff_firstname, staff_lastname, staff_email, staff_contact, addNewStaffBtn);
+                checkUsernameRegister(newStaff_username, newStaff_password, newStaff_firstname, newStaff_lastname, newStaff_email, newStaff_contact, addNewStaffBtn);
             }
         });
 
     }
 
-    private void checkUsernameRegister(String staff_username, String staff_password, String staff_firstname, String staff_lastname, String email, String staff_contact, Button submitBtn) {
+    private void checkUsernameRegister(String newStaff_username, String newStaff_password, String newStaff_firstname, String newStaff_lastname, String email, String newStaff_contact, Button submitBtn) {
         api_helper.getAllUsers(api_helper, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -108,7 +139,7 @@ public class New_Staff_Admin extends AppCompatActivity {
                             // Use optString to avoid crashes if key is missing
                             String existingUsername = userObj.optString("username");
 
-                            if (existingUsername.equalsIgnoreCase(staff_username)) {
+                            if (existingUsername.equalsIgnoreCase(newStaff_username)) {
                                 usernameTaken = true;
                                 break;
                             }
@@ -122,7 +153,7 @@ public class New_Staff_Admin extends AppCompatActivity {
                         submitBtn.setText("Submit");
                     } else {
                         //else if the username is unique, then go ahead and register the new user
-                        registerUser(staff_firstname, staff_lastname, staff_contact, email, staff_username, staff_password, submitBtn);
+                        registerUser(newStaff_firstname, newStaff_lastname, newStaff_contact, email, newStaff_username, newStaff_password, submitBtn);
                     }
 
 
@@ -135,7 +166,7 @@ public class New_Staff_Admin extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //if user array is empty, no users added yet, so still safe to add a user
                 if (error.networkResponse != null && error.networkResponse.statusCode == 404) {
-                    registerUser(staff_firstname, staff_lastname, staff_contact, email, staff_username, staff_password, submitBtn);
+                    registerUser(newStaff_firstname, newStaff_lastname, newStaff_contact, email, newStaff_username, newStaff_password, submitBtn);
                 } else {
                     //debugging the error
                     String errorMessage = "Unknown error";
@@ -157,10 +188,10 @@ public class New_Staff_Admin extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String staff_firstname, String staff_lastname, String staff_contact, String staff_email, String staff_username, String staff_password, Button submitBtn) {
+    private void registerUser(String newStaff_firstname, String newStaff_lastname, String newStaff_contact, String newStaff_email, String newStaff_username, String newStaff_password, Button submitBtn) {
         //making user object
         //setting user type to staff, as this is the add new staff screen
-        AppUser newUser = new AppUser(staff_firstname, staff_lastname, staff_contact, staff_email, staff_username, staff_password, "staff");
+        AppUser newUser = new AppUser(newStaff_firstname, newStaff_lastname, newStaff_contact, newStaff_email, newStaff_username, newStaff_password, "staff");
         newUser.setLogged_in(true);
 
         //creating new user via api
@@ -178,17 +209,17 @@ public class New_Staff_Admin extends AppCompatActivity {
                         if (message.equals("User created successfully")) {
                             //if so, show the account created screen
                             Toast.makeText(New_Staff_Admin.this, "New staff member successfully added!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(New_Staff_Admin.this, StaffDashboard.class);
+                            Intent intent = new Intent(New_Staff_Admin.this, Staff_Added_Confirmation.class);
 
-                            //passing the user details to the next activity
+                            //passing the current staff details to the next activity
                             intent.putExtra("staff_firstname", staff_firstname);
                             intent.putExtra("staff_lastname", staff_lastname);
                             intent.putExtra("staff_contact", staff_contact);
                             intent.putExtra("staff_email", staff_email);
                             intent.putExtra("staff_username", staff_username);
                             intent.putExtra("staff_password", staff_password);
-                            intent.putExtra("staff_usertype", newUser.getUserType());
-                            intent.putExtra("staff_logged_in", newUser.isLogged_in());
+                            intent.putExtra("staff_usertype", staff_usertype);
+                            intent.putExtra("staff_logged_in", staff_logged_in);
 
                             startActivity(intent);
                             finish();
