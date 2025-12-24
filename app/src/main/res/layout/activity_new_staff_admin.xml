@@ -1,195 +1,202 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/addNewStaffScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".users.New_Staff_Admin">
 
-    <TextView
-        android:id="@+id/addNewStaffTitle"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addNewStaffScreen"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/abril_fatface"
-        android:text="@string/add_new_staffLbl"
-        android:textColor="@color/wine_red"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:paddingBottom="50dp">
 
-    <ImageButton
-        android:id="@+id/staff_RegisterHomeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/white"
-        android:contentDescription="@string/backHomeTxt"
-        app:layout_constraintEnd_toStartOf="@+id/addNewStaffTitle"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_home" />
+        <TextView
+            android:id="@+id/addNewStaffTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/abril_fatface"
+            android:text="@string/add_new_staffLbl"
+            android:textColor="@color/wine_red"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/staff_FNamePrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/first_name_prompt"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/staff_RegisterHomeBtn"
-        app:layout_constraintTop_toBottomOf="@+id/addNewStaffTitle" />
+        <ImageButton
+            android:id="@+id/staff_RegisterHomeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/backHomeTxt"
+            app:layout_constraintEnd_toStartOf="@+id/addNewStaffTitle"
+            app:layout_constraintHorizontal_bias="0.421"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_home" />
 
-    <EditText
-        android:id="@+id/staff_enterFName"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/first_name_input"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/staff_FNamePrompt"
-        app:layout_constraintTop_toBottomOf="@+id/staff_FNamePrompt" />
+        <TextView
+            android:id="@+id/staff_FNamePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/first_name_prompt"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/staff_RegisterHomeBtn"
+            app:layout_constraintTop_toBottomOf="@+id/addNewStaffTitle" />
 
-    <TextView
-        android:id="@+id/staff_LNamePrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/last_name_prompt"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/staff_enterFName"
-        app:layout_constraintTop_toBottomOf="@+id/staff_FNamePrompt" />
+        <EditText
+            android:id="@+id/staff_enterFName"
+            android:layout_width="355dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/first_name_input"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="@+id/staff_FNamePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/staff_FNamePrompt" />
 
-    <EditText
-        android:id="@+id/staff_enterLName"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/last_name_input"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/staff_LNamePrompt"
-        app:layout_constraintTop_toBottomOf="@+id/staff_LNamePrompt" />
+        <TextView
+            android:id="@+id/staff_LNamePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/last_name_prompt"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/staff_enterFName"
+            app:layout_constraintTop_toBottomOf="@+id/staff_FNamePrompt" />
 
-    <TextView
-        android:id="@+id/staff_EmailPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/work_email_Prompt"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/staff_enterLName"
-        app:layout_constraintTop_toBottomOf="@+id/staff_enterLName" />
+        <EditText
+            android:id="@+id/staff_enterLName"
+            android:layout_width="355dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/last_name_input"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="@+id/staff_LNamePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/staff_LNamePrompt" />
 
-    <EditText
-        android:id="@+id/staff_enterWorkEmail"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/enter_work_email_Hint"
-        android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="@+id/staff_EmailPrompt"
-        app:layout_constraintTop_toBottomOf="@+id/staff_EmailPrompt" />
+        <TextView
+            android:id="@+id/staff_EmailPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/work_email_Prompt"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/staff_enterLName"
+            app:layout_constraintTop_toBottomOf="@+id/staff_enterLName" />
 
-    <TextView
-        android:id="@+id/staff_PhoneNoPrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/phone_prompt"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/staff_enterWorkEmail"
-        app:layout_constraintTop_toBottomOf="@+id/staff_enterWorkEmail" />
+        <EditText
+            android:id="@+id/staff_enterWorkEmail"
+            android:layout_width="355dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_work_email_Hint"
+            android:inputType="textEmailAddress"
+            app:layout_constraintStart_toStartOf="@+id/staff_EmailPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/staff_EmailPrompt" />
 
-    <EditText
-        android:id="@+id/staff_enterPhoneNo"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/enter_phoneNo"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="@+id/staff_PhoneNoPrompt"
-        app:layout_constraintTop_toBottomOf="@+id/staff_PhoneNoPrompt" />
+        <TextView
+            android:id="@+id/staff_PhoneNoPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/phone_prompt"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/staff_enterWorkEmail"
+            app:layout_constraintTop_toBottomOf="@+id/staff_enterWorkEmail" />
 
-    <TextView
-        android:id="@+id/staff_UsernamePrompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/username_prompt"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/staff_enterPhoneNo"
-        app:layout_constraintTop_toBottomOf="@+id/staff_enterPhoneNo" />
+        <EditText
+            android:id="@+id/staff_enterPhoneNo"
+            android:layout_width="355dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_phoneNo"
+            android:inputType="phone"
+            app:layout_constraintStart_toStartOf="@+id/staff_PhoneNoPrompt"
+            app:layout_constraintTop_toBottomOf="@+id/staff_PhoneNoPrompt" />
 
-    <EditText
-        android:id="@+id/staff_CreateUsername"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/enter_username"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="@+id/staff_UsernamePrompt"
-        app:layout_constraintTop_toBottomOf="@+id/staff_UsernamePrompt" />
+        <TextView
+            android:id="@+id/staff_UsernamePrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/username_prompt"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/staff_enterPhoneNo"
+            app:layout_constraintTop_toBottomOf="@+id/staff_enterPhoneNo" />
 
-    <TextView
-        android:id="@+id/staff_CreatePwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/coustard"
-        android:text="@string/password_prompt"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/staff_CreateUsername"
-        app:layout_constraintTop_toBottomOf="@+id/staff_CreateUsername" />
+        <EditText
+            android:id="@+id/staff_CreateUsername"
+            android:layout_width="355dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_username"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="@+id/staff_UsernamePrompt"
+            app:layout_constraintTop_toBottomOf="@+id/staff_UsernamePrompt" />
 
-    <EditText
-        android:id="@+id/staff_enterPwd"
-        android:layout_width="355dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/rounded_light_pink_rectangle"
-        android:fontFamily="@font/coustard"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@+id/staff_CreatePwd"
-        app:layout_constraintTop_toBottomOf="@+id/staff_CreatePwd" />
+        <TextView
+            android:id="@+id/staff_CreatePwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/coustard"
+            android:text="@string/password_prompt"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/staff_CreateUsername"
+            app:layout_constraintTop_toBottomOf="@+id/staff_CreateUsername" />
 
-    <Button
-        android:id="@+id/staff_registerBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:backgroundTint="@color/success_green"
-        android:fontFamily="@font/coustard"
-        android:text="@string/submitLbl"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/staff_enterPwd"
-        app:layout_constraintHorizontal_bias="0.548"
-        app:layout_constraintStart_toStartOf="@+id/staff_enterPwd"
-        app:layout_constraintTop_toBottomOf="@+id/staff_enterPwd" />
+        <EditText
+            android:id="@+id/staff_enterPwd"
+            android:layout_width="355dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/rounded_light_pink_rectangle"
+            android:fontFamily="@font/coustard"
+            android:hint="@string/enter_password"
+            android:inputType="textPassword"
+            app:layout_constraintStart_toStartOf="@+id/staff_CreatePwd"
+            app:layout_constraintTop_toBottomOf="@+id/staff_CreatePwd" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/staff_registerBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:backgroundTint="@color/success_green"
+            android:fontFamily="@font/coustard"
+            android:text="@string/submitLbl"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/staff_enterPwd"
+            app:layout_constraintHorizontal_bias="0.548"
+            app:layout_constraintStart_toStartOf="@+id/staff_enterPwd"
+            app:layout_constraintTop_toBottomOf="@+id/staff_enterPwd" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

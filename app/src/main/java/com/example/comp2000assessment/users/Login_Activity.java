@@ -106,14 +106,14 @@ public class Login_Activity extends AppCompatActivity {
                                         user.setLogged_in(true);
 
                                         //pass user details
-                                        intent.putExtra("user_firstname", user.getFirstname());
-                                        intent.putExtra("user_lastname", user.getLastname());
-                                        intent.putExtra("user_contact", user.getContact());
-                                        intent.putExtra("user_email", user.getEmail());
-                                        intent.putExtra("user_username", user.getUsername());
-                                        intent.putExtra("user_password", user.getPassword());
-                                        intent.putExtra("user_usertype", user.getUserType());
-                                        intent.putExtra("user_logged_in", user.isLogged_in());
+                                        intent.putExtra("staff_firstname", user.getFirstname());
+                                        intent.putExtra("staff_lastname", user.getLastname());
+                                        intent.putExtra("staff_contact", user.getContact());
+                                        intent.putExtra("staff_email", user.getEmail());
+                                        intent.putExtra("staff_username", user.getUsername());
+                                        intent.putExtra("staff_password", user.getPassword());
+                                        intent.putExtra("staff_usertype", user.getUserType());
+                                        intent.putExtra("staff_logged_in", user.isLogged_in());
 
                                         startActivity(intent);
                                         finish();

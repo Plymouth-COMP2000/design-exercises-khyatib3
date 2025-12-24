@@ -28,6 +28,16 @@ public class StaffDashboard extends AppCompatActivity {
             return insets;
         });
 
+        //getting user details from account created
+        String staff_firstname = getIntent().getStringExtra("staff_firstname");
+        String staff_lastname = getIntent().getStringExtra("staff_lastname");
+        String staff_contact = getIntent().getStringExtra("staff_contact");
+        String staff_email = getIntent().getStringExtra("staff_email");
+        String staff_username = getIntent().getStringExtra("staff_username");
+        String staff_password = getIntent().getStringExtra("staff_password");
+        String staff_usertype = getIntent().getStringExtra("staff_usertype");
+        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+
         //navigate to menu
         Button toMenuBtn = findViewById(R.id.viewChangeMenuBtn);
         toMenuBtn.setOnClickListener(new View.OnClickListener(){
