@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.R;
+import com.example.comp2000assessment.users.DeleteAccount_Activity;
 import com.example.comp2000assessment.users.UpdateAccount_Activity;
 import com.example.comp2000assessment.users.ViewAccount_Activity;
 import com.example.comp2000assessment.homepages.GuestHomepage;
@@ -89,6 +90,26 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Settings.this, UpdateAccount_Activity.class);
+
+                //passing the user details
+                intent.putExtra("user_firstname", user_firstname);
+                intent.putExtra("user_lastname", user_lastname);
+                intent.putExtra("user_contact", user_contact);
+                intent.putExtra("user_email", user_email);
+                intent.putExtra("user_username", user_username);
+                intent.putExtra("user_password", user_password);
+                intent.putExtra("user_usertype", user_usertype);
+                intent.putExtra("user_logged_in", user_logged_in);
+
+                startActivity(intent);
+            }
+        });
+
+        Button deleteAccountScreenBtn = findViewById(R.id.deleteAccountScreenBtn);
+        deleteAccountScreenBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Settings.this, DeleteAccount_Activity.class);
 
                 //passing the user details
                 intent.putExtra("user_firstname", user_firstname);

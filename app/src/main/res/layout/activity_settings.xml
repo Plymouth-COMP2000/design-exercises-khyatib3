@@ -86,17 +86,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewAccountBtn" />
 
-    <!-- update account -->
+    <!-- delete account -->
     <View
-        android:id="@+id/divider3"
+        android:id="@+id/divider4"
         android:layout_width="380dp"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updateDetailsBtn" />
 
+    <TextView
+        android:id="@+id/deleteAccountLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/coustard"
+        android:text="Delete my account"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/settingsGoHomeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+    <TextView
+        android:id="@+id/deleteAccountTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/coustard"
+        android:text="Delete your account with  \nThe Restaurant 2000:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/deleteAccountLbl"
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountLbl" />
+
+    <Button
+        android:id="@+id/deleteAccountScreenBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#A9DC3D40"
+        android:fontFamily="@font/coustard"
+        android:text="Delete \n account"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toEndOf="@+id/deleteAccountTxt"
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountLbl" />
+
+    <!-- update account -->
     <TextView
         android:id="@+id/updateAccountLbl"
         android:layout_width="wrap_content"
@@ -138,8 +179,18 @@
         app:layout_constraintStart_toEndOf="@+id/updateDetailsTxt"
         app:layout_constraintTop_toBottomOf="@+id/updateAccountLbl" />
 
-
     <!-- SIGN OUT-->
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="380dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="176dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/updateDetailsBtn" />
+
     <TextView
         android:id="@+id/logoutLbl"
         android:layout_width="wrap_content"

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/delete_account_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    tools:context=".users.DeleteAccount_Activity">
+
+    <TextView
+        android:id="@+id/deleteAccountTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/coustard"
+        android:text="Delete your account?"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="379dp"
+        android:layout_height="244dp"
+        android:layout_marginBottom="204dp"
+        android:background="@drawable/rounded_teal_rectangle"
+        android:orientation="vertical"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/deleteAccount_resLogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!--Delete prompt -->
+        <TextView
+            android:id="@+id/deleteBookingPrompt"
+            android:layout_width="314dp"
+            android:layout_height="111dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/coustard"
+            android:text="We are sorry to see you go ! :( \n If you delete your account that is \npermanent. But you can always \ncome back and register again!"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <!-- delete account btn-->
+        <Button
+            android:id="@+id/confirmDeleteAccountBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="@color/success_green"
+            android:fontFamily="@font/coustard"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="Yes, delete my account :("
+            android:textSize="16sp" />
+
+        <!-- cancel deleting account btn -->
+        <Button
+            android:id="@+id/cancelDelAccountBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            android:backgroundTint="#a4133c"
+            android:fontFamily="@font/coustard"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="No, I want to stay :)"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/deleteAccount_resLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/restaurant_logo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

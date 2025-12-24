@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
+            android:name=".users.DeleteAccount_Activity"
+            android:exported="false" />
+        <activity
             android:name=".users.UpdateAccount_Activity"
             android:exported="false" />
         <activity

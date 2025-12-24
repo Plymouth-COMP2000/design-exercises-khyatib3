@@ -50,6 +50,8 @@
         app:layout_constraintStart_toStartOf="@+id/updateAccountBackBtn"
         app:layout_constraintTop_toBottomOf="@+id/updateAccountTitle" />
 
+    <!-- updateAccount button-->
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="370dp"
@@ -59,10 +61,9 @@
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/updateAccountTitle"
-        app:layout_constraintVertical_bias="0.359">
+        app:layout_constraintVertical_bias="0.437">
 
         <!-- Row 1: First Name -->
         <LinearLayout
@@ -244,7 +245,6 @@
 
     </LinearLayout>
 
-    <!-- updateAccount button-->
     <Button
         android:id="@+id/updateAccountBtn"
         android:layout_width="wrap_content"
