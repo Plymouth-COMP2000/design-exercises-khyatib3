@@ -1,4 +1,4 @@
-package com.example.comp2000assessment;
+package com.example.comp2000assessment.users;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.settings.Settings;
 
 public class ViewAccount_Activity extends AppCompatActivity {

@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.COMP2000Assessment">
         <activity
-            android:name=".ViewAccount_Activity"
+            android:name=".users.UpdateAccount_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".users.ViewAccount_Activity"
             android:exported="false" />
         <activity
             android:name=".bookings.Staff_EditBooking_Activity"

@@ -2,18 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/view_account_page"
+    android:id="@+id/update_account_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".users.ViewAccount_Activity">
+    tools:context=".users.UpdateAccount_Activity">
 
     <TextView
-        android:id="@+id/myAccountTitle"
+        android:id="@+id/updateAccountTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/abril_fatface"
-        android:text="My account"
+        android:text="Update account:"
         android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,19 +21,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/viewAccountBackBtn"
+        android:id="@+id/updateAccountBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/myAccountTitle"
+        app:layout_constraintEnd_toStartOf="@+id/updateAccountTitle"
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back" />
 
     <!-- account details section -->
+
+    <TextView
+        android:id="@+id/explanationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="96dp"
+        android:fontFamily="@font/coustard"
+        android:text="Please enter your new information in the \n fields provided below:"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/updateAccountTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/updateAccountBackBtn"
+        app:layout_constraintTop_toBottomOf="@+id/updateAccountTitle" />
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
         android:background="@drawable/text_background"
@@ -43,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myAccountTitle"
+        app:layout_constraintTop_toBottomOf="@+id/updateAccountTitle"
         app:layout_constraintVertical_bias="0.359">
 
         <!-- Row 1: First Name -->
@@ -63,14 +81,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/acc_firstName"
+            <EditText
+                android:id="@+id/accUpdate_firstName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
+                android:background="@drawable/rounded_light_pink_rectangle"
                 android:fontFamily="@font/coustard"
-                android:gravity="end"
-                android:text="Loading..."
+                android:gravity="center"
+                android:text="First Name"
                 android:textColor="#333333"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -91,14 +110,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/acc_lastName"
+            <EditText
+                android:id="@+id/accUpdate_lastName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
+                android:background="@drawable/rounded_light_pink_rectangle"
                 android:fontFamily="@font/coustard"
-                android:gravity="end"
-                android:text="Loading..."
+                android:gravity="center"
+                android:text="Last Name"
                 android:textColor="#333333"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -119,14 +139,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/acc_email"
+            <EditText
+                android:id="@+id/accUpdate_email"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_light_pink_rectangle"
                 android:fontFamily="@font/coustard"
-                android:gravity="end"
-                android:text="Loading..."
+                android:gravity="center"
+                android:text="Email"
                 android:textColor="#333333"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -147,14 +168,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/acc_phone"
+            <EditText
+                android:id="@+id/accUpdate_phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
+                android:background="@drawable/rounded_light_pink_rectangle"
                 android:fontFamily="@font/coustard"
-                android:gravity="end"
-                android:text="Loading..."
+                android:gravity="center"
+                android:text="Phone no"
                 android:textColor="#333333"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -175,14 +197,15 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/acc_username"
+            <EditText
+                android:id="@+id/accUpdate_username"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
+                android:background="@drawable/rounded_light_pink_rectangle"
                 android:fontFamily="@font/coustard"
-                android:gravity="end"
-                android:text="Loading..."
+                android:gravity="center"
+                android:text="Username"
                 android:textColor="#333333"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -190,8 +213,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
@@ -203,30 +226,39 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/acc_password"
+            <EditText
+                android:id="@+id/accUpdate_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.3"
+                android:background="@drawable/rounded_light_pink_rectangle"
                 android:fontFamily="@font/coustard"
-                android:gravity="end|center_vertical"
-                android:text="********"
+                android:gravity="center"
+                android:paddingEnd="8dp"
+                android:text="Password"
                 android:textColor="#333333"
-                android:textSize="18sp"
-                android:paddingEnd="8dp"/>
+                android:textSize="18sp" />
 
-            <ImageButton
-                android:id="@+id/togglePassVisbilityBtn"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_visibility_off"
-                android:contentDescription="Toggle password visibility"
-                android:scaleType="fitCenter"
-                app:tint="@color/black"/>
 
         </LinearLayout>
 
     </LinearLayout>
+
+    <!-- updateAccount button-->
+    <Button
+        android:id="@+id/updateAccountBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/success_green"
+        android:fontFamily="@font/coustard"
+        android:text="Update account"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.167" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

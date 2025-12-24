@@ -344,5 +344,26 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
         return rows > 0;
     }
 
+    //in the event a user updates their first or last name in account settings, change the booking name so they can still see their bookings
+    public boolean updateBookingHolderName(String oldFirstName, String newFirstName, String oldLastName, String newLastName){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("guest_first_name", newFirstName);
+        values.put("guest_last_name", newLastName);
+
+        //where clause: where names equal old names
+        String whereClause = "guest_first_name = ? AND guest_last_name = ?";
+        String[] whereArgs = {oldFirstName, oldLastName};
+
+        //update booking
+        int rowsAffected = db.update(TABLE_NAME, values, whereClause, whereArgs);
+
+        //update booking log table just for consistency
+        db.update(BOOKING_LOG_TABLE, values, whereClause, whereArgs);
+
+        return rowsAffected > 0;
+    }
+
 
 }

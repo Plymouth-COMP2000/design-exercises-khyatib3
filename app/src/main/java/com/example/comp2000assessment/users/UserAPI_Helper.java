@@ -71,10 +71,9 @@ public class UserAPI_Helper {
     }
 
     //update user endpoint
-    public static void updateUser(AppUser user, UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorListener){
-        String username = user.getUsername();
+    public static void updateUser(String originalUsername, AppUser user, UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorListener){
 
-        String url = BASE_URL + UPDATE_USER_ENDPOINT + "/" + username;
+        String url = BASE_URL + UPDATE_USER_ENDPOINT + "/" + originalUsername;
 
         JSONObject userJSON = user.returnUserJSON();
 
