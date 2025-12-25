@@ -22,10 +22,22 @@ import java.util.List;
 public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMItemViewHolder>{
     public List<RestMenuItem> itemList;
     private Context context;
+    private String staff_firstname, staff_lastname, staff_contact, staff_email, staff_username, staff_password, staff_usertype;
+    private boolean staff_logged_in;
 
-    public StaffMenuAdapter(Context context, List<RestMenuItem> itemList){
+
+    public StaffMenuAdapter(Context context, List<RestMenuItem> itemList, String staff_firstname, String staff_lastname, String contact, String email,
+                            String username, String password, String usertype, boolean staff_logged_in){
         this.context = context;
         this.itemList = itemList;
+        this.staff_firstname = staff_firstname;
+        this.staff_lastname = staff_lastname;
+        this.staff_contact = staff_contact;
+        this.staff_email = staff_email;
+        this.staff_username = staff_username;
+        this.staff_password = staff_password;
+        this.staff_usertype = staff_usertype;
+        this.staff_logged_in = staff_logged_in;
     }
 
     public static class SMItemViewHolder extends RecyclerView.ViewHolder{
@@ -84,6 +96,16 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
                 intent.putExtra("categoryID", item.getCategoryID());
                 intent.putExtra("image", item.getImageBlob());
 
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
+
                 context.startActivity(intent);
             }
         });
@@ -98,6 +120,16 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
                 //so that the correct item gets deleted from the db
                 intent.putExtra("itemID", item.getItemID());
                 intent.putExtra("name", item.getName());
+
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
 
                 context.startActivity(intent);
             }

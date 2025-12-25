@@ -19,6 +19,7 @@ import com.example.comp2000assessment.R;
 public class Delete_Menu_Item_Activity extends AppCompatActivity {
     private int THIS_ITEM_ID;
     private String CURRENT_NAME;
+    private static String staff_usertype;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,22 @@ public class Delete_Menu_Item_Activity extends AppCompatActivity {
             return insets;
         });
 
+        //getting staff details
+        String staff_firstname = getIntent().getStringExtra("staff_firstname");
+        String staff_lastname = getIntent().getStringExtra("staff_lastname");
+        String staff_contact = getIntent().getStringExtra("staff_contact");
+        String staff_email = getIntent().getStringExtra("staff_email");
+        String staff_username = getIntent().getStringExtra("staff_username");
+        String staff_password = getIntent().getStringExtra("staff_password");
+
+        //in the event that staff_usertype is null, set it to staff
+        staff_usertype = getIntent().getStringExtra("staff_usertype");
+        //setting staff_usertype to staff in case it becomes null
+        if (staff_usertype == null || staff_usertype.isEmpty()) {
+            staff_usertype = "staff";
+        }
+        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+
         THIS_ITEM_ID = getIntent().getIntExtra("itemID", -1);
         CURRENT_NAME = getIntent().getStringExtra("name");
 
@@ -40,6 +57,17 @@ public class Delete_Menu_Item_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Delete_Menu_Item_Activity.this, Staff_Menu_Activity.class);
+
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
+
                 startActivity(intent);
             }
         });
@@ -58,6 +86,17 @@ public class Delete_Menu_Item_Activity extends AppCompatActivity {
                     Toast.makeText(Delete_Menu_Item_Activity.this, "Item deleted from database: " + CURRENT_NAME, Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(Delete_Menu_Item_Activity.this, Staff_Menu_Activity.class);
+
+                    //passing staff details
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
+
                     startActivity(intent);
                 }else{
                     Toast.makeText(Delete_Menu_Item_Activity.this, "Error! Item could not be deleted: " + CURRENT_NAME, Toast.LENGTH_SHORT).show();
@@ -70,6 +109,17 @@ public class Delete_Menu_Item_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Delete_Menu_Item_Activity.this, Staff_Menu_Activity.class);
+
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
+
                 startActivity(intent);
             }
         });

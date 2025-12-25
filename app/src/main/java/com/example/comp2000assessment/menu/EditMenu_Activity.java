@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class EditMenu_Activity extends AppCompatActivity {
     private ImageView imageView;
     private byte[] currentImageBytes;
     private int THIS_ITEM_ID;
+    private static String staff_usertype;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,21 @@ public class EditMenu_Activity extends AppCompatActivity {
         double itemPrice = getIntent().getDoubleExtra("price", 0.00);
         int itemCategory = getIntent().getIntExtra("categoryID", -1);
 
+        //getting staff details
+        String staff_firstname = getIntent().getStringExtra("staff_firstname");
+        String staff_lastname = getIntent().getStringExtra("staff_lastname");
+        String staff_contact = getIntent().getStringExtra("staff_contact");
+        String staff_email = getIntent().getStringExtra("staff_email");
+        String staff_username = getIntent().getStringExtra("staff_username");
+        String staff_password = getIntent().getStringExtra("staff_password");
+
+        //in the event that staff_usertype is null, set it to staff
+        staff_usertype = getIntent().getStringExtra("staff_usertype");
+        //setting staff_usertype to staff in case it becomes null
+        if (staff_usertype == null || staff_usertype.isEmpty()) {
+            staff_usertype = "staff";
+        }
+        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
 
         //finding input fields
         EditText editName = findViewById(R.id.editNameInput);
@@ -100,6 +118,17 @@ public class EditMenu_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditMenu_Activity.this, Staff_Menu_Activity.class);
+
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
+
                 startActivity(intent);
             }
         });
@@ -111,6 +140,17 @@ public class EditMenu_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
+
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
+
                 startActivityForResult(intent, 100);
             }
         });
@@ -120,6 +160,17 @@ public class EditMenu_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EditMenu_Activity.this, Staff_Menu_Activity.class);
+
+                //passing staff details
+                intent.putExtra("staff_firstname", staff_firstname);
+                intent.putExtra("staff_lastname", staff_lastname);
+                intent.putExtra("staff_contact", staff_contact);
+                intent.putExtra("staff_email", staff_email);
+                intent.putExtra("staff_username", staff_username);
+                intent.putExtra("staff_password", staff_password);
+                intent.putExtra("staff_usertype", staff_usertype);
+                intent.putExtra("staff_logged_in", staff_logged_in);
+
                 startActivity(intent);
             }
         });
@@ -159,10 +210,33 @@ public class EditMenu_Activity extends AppCompatActivity {
                 //switching display depending on success of item being edited
                 if (update_result) {
                     Intent intent = new Intent(EditMenu_Activity.this, Staff_Menu_Activity.class);
+                    Toast.makeText(EditMenu_Activity.this, "Item updated successfully: " + Integer.toString(THIS_ITEM_ID), Toast.LENGTH_SHORT).show();
+
+                    //passing staff details
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
+
                     startActivity(intent);
 
                 } else {
                     Intent intent = new Intent(EditMenu_Activity.this, Error_Add_MenuItem.class);
+
+                    //passing staff details
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
+
                     startActivity(intent);
                 }
 

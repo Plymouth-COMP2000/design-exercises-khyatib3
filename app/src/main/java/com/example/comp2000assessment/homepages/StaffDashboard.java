@@ -38,14 +38,13 @@ public class StaffDashboard extends AppCompatActivity {
         String staff_username = getIntent().getStringExtra("staff_username");
         String staff_password = getIntent().getStringExtra("staff_password");
 
+        //in the event that staff_usertype is null, set it to staff
         staff_usertype = getIntent().getStringExtra("staff_usertype");
         //setting staff_usertype to staff in case it becomes null
         if (staff_usertype == null || staff_usertype.isEmpty()) {
             staff_usertype = "staff";
         }
         boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
-
-
 
         //navigate to menu
         Button toMenuBtn = findViewById(R.id.viewChangeMenuBtn);
