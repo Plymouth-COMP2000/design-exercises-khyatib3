@@ -156,7 +156,18 @@ public class Change_Status extends AppCompatActivity {
                 if(updateResult) {
                     Intent intent = new Intent(Change_Status.this, Open_Requests.class);
 
+                    NotificationsHelper.displayNotification(Change_Status.this, "Booking Denied", "You have denied booking: " + guest_fullName);
+
                     Toast.makeText(Change_Status.this, "Booking denied: " + guest_fullName, Toast.LENGTH_SHORT).show();
+                    //passing the staff details
+                    intent.putExtra("staff_firstname", staff_firstname);
+                    intent.putExtra("staff_lastname", staff_lastname);
+                    intent.putExtra("staff_contact", staff_contact);
+                    intent.putExtra("staff_email", staff_email);
+                    intent.putExtra("staff_username", staff_username);
+                    intent.putExtra("staff_password", staff_password);
+                    intent.putExtra("staff_usertype", staff_usertype);
+                    intent.putExtra("staff_logged_in", staff_logged_in);
 
                     startActivity(intent);
                 }
