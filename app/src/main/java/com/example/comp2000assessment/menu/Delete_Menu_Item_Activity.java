@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.databases.MenuDatabaseHelper;
 import com.example.comp2000assessment.R;
+import com.example.comp2000assessment.notifications.NotificationsHelper;
 
 public class Delete_Menu_Item_Activity extends AppCompatActivity {
     private int THIS_ITEM_ID;
@@ -82,10 +83,12 @@ public class Delete_Menu_Item_Activity extends AppCompatActivity {
                 boolean delete_result = db.deleteItem(THIS_ITEM_ID);
                 if(delete_result){
                     //making toast to confirm it was deleted
-
                     Toast.makeText(Delete_Menu_Item_Activity.this, "Item deleted from database: " + CURRENT_NAME, Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(Delete_Menu_Item_Activity.this, Staff_Menu_Activity.class);
+
+                    //push notification to tell it was deleted
+                    NotificationsHelper.displayNotification(Delete_Menu_Item_Activity.this, "Menu Item Deleted", "You just deleted from the database: " + CURRENT_NAME);
 
                     //passing staff details
                     intent.putExtra("staff_firstname", staff_firstname);

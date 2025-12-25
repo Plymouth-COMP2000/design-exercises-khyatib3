@@ -21,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.databases.MenuDatabaseHelper;
 import com.example.comp2000assessment.R;
+import com.example.comp2000assessment.notifications.NotificationsHelper;
 
 public class EditMenu_Activity extends AppCompatActivity {
     private Bitmap selectedBitmap;
@@ -211,6 +212,10 @@ public class EditMenu_Activity extends AppCompatActivity {
                 if (update_result) {
                     Intent intent = new Intent(EditMenu_Activity.this, Staff_Menu_Activity.class);
                     Toast.makeText(EditMenu_Activity.this, "Item updated successfully: " + Integer.toString(THIS_ITEM_ID), Toast.LENGTH_SHORT).show();
+
+                    //push notification that an item was changed
+                    NotificationsHelper.displayNotification(EditMenu_Activity.this, "Menu Item Changed", "You just edited item: " + itemName);
+
 
                     //passing staff details
                     intent.putExtra("staff_firstname", staff_firstname);

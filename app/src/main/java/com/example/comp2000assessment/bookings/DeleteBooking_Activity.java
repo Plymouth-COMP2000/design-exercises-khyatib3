@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
+import com.example.comp2000assessment.notifications.NotificationsHelper;
 
 public class DeleteBooking_Activity extends AppCompatActivity {
 
@@ -106,6 +107,9 @@ public class DeleteBooking_Activity extends AppCompatActivity {
                         Intent intent = new Intent(DeleteBooking_Activity.this, MyBookingsActivity.class);
                         Toast.makeText(DeleteBooking_Activity.this, "This booking was deleted successfully", Toast.LENGTH_SHORT).show();
 
+                        //push notification
+                        NotificationsHelper.displayNotification(DeleteBooking_Activity.this, "Booking Deleted!", "You successfully deleted your booking!");
+
                         //passing the user details
                         intent.putExtra("user_firstname", user_firstname);
                         intent.putExtra("user_lastname", user_lastname);
@@ -121,6 +125,9 @@ public class DeleteBooking_Activity extends AppCompatActivity {
                     }else if(screenName.equals("AllTables")) {
                         Intent intent = new Intent(DeleteBooking_Activity.this, All_Tables_Activity.class);
                         Toast.makeText(DeleteBooking_Activity.this, "This booking was deleted successfully", Toast.LENGTH_SHORT).show();
+
+                        //push notification
+                        NotificationsHelper.displayNotification(DeleteBooking_Activity.this, "Booking Deleted!", "This booking was cancelled.");
 
                         //passing the staff details
                         intent.putExtra("staff_firstname", staff_firstname);

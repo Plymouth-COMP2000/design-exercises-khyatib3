@@ -21,6 +21,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.databases.MenuDatabaseHelper;
 import com.example.comp2000assessment.R;
+import com.example.comp2000assessment.notifications.NotificationsHelper;
 
 public class AddMenuItemActivity extends AppCompatActivity {
     private Bitmap selectedBitmap;
@@ -133,6 +134,9 @@ public class AddMenuItemActivity extends AppCompatActivity {
                 if(insert_result){
                     Intent intent = new Intent(AddMenuItemActivity.this, Item_Add_Confirm_Activity.class);
                     Toast.makeText(AddMenuItemActivity.this, "Menu Updated Successfully!", Toast.LENGTH_SHORT).show();
+
+                    //push notification that item was added
+                    NotificationsHelper.displayNotification(AddMenuItemActivity.this, "New Menu Item Added", "A new item has been added to the menu: " + itemName);
 
                     //passing staff details
                     intent.putExtra("staff_firstname", staff_firstname);

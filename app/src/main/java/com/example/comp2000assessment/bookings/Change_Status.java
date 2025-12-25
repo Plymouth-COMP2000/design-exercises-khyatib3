@@ -17,6 +17,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
 import com.example.comp2000assessment.R;
+import com.example.comp2000assessment.notifications.NotificationsHelper;
 
 public class Change_Status extends AppCompatActivity {
 
@@ -94,6 +95,9 @@ public class Change_Status extends AppCompatActivity {
 
                 if (updateResult) {
                     Intent intent = new Intent(Change_Status.this, Open_Requests.class);
+
+                    //notification for booking confirmed
+                    NotificationsHelper.displayNotification(Change_Status.this, "Booking Confirmed", "You have confirmed booking: " + firstName + " " + lastName);
 
                     //passing the staff details
                     intent.putExtra("staff_firstname", staff_firstname);

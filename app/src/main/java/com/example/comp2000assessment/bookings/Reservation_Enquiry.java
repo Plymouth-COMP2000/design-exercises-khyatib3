@@ -22,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
 import com.example.comp2000assessment.homepages.GuestHomepage;
 import com.example.comp2000assessment.R;
+import com.example.comp2000assessment.notifications.NotificationsHelper;
 
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -208,6 +209,9 @@ public class Reservation_Enquiry extends AppCompatActivity {
 
                 if(addRequestResult){
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Sent_Activity.class);
+
+                    //push notification
+                    NotificationsHelper.displayNotification(Reservation_Enquiry.this, "Reservation Enquiry Sent", "You have enquired for: " + date + ", " + time);
 
                     //passing the user details
                     intent.putExtra("user_firstname", user_firstname);

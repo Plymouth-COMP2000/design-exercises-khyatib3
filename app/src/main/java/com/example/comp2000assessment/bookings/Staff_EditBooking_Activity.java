@@ -22,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
+import com.example.comp2000assessment.notifications.NotificationsHelper;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -252,6 +253,9 @@ public class Staff_EditBooking_Activity extends AppCompatActivity {
                     Intent intent = new Intent(Staff_EditBooking_Activity.this, All_Tables_Activity.class);
 
                     Toast.makeText(Staff_EditBooking_Activity.this, "Booking updated", Toast.LENGTH_SHORT).show();
+
+                    //push notification that booking was updated
+                    NotificationsHelper.displayNotification(Staff_EditBooking_Activity.this, "Booking Updated", "Booking updated: " + updatedBooking.guestFirstName + " " + updatedBooking.guestLastName);
 
                     //passing the staff details
                     intent.putExtra("staff_firstname", staff_firstname);
