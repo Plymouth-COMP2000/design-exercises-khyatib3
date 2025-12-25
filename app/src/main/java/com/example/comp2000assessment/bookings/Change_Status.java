@@ -137,5 +137,30 @@ public class Change_Status extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button denyRequestBtn = findViewById(R.id.denyRequestBtn);
+        denyRequestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BookingRecord booking = new BookingRecord(date, time, noOfGuests, firstName, lastName, specialRequest, 0, R.drawable.ic_people_group);
+
+                //setting bookingID to it
+                booking.setBookingID(bookingID);
+
+                //setting booking to confirmed
+                booking.confirmed = false;
+
+                BookingsDatabaseHelper db = new BookingsDatabaseHelper(Change_Status.this);
+                boolean updateResult = db.updateBooking(booking);
+
+                if(updateResult) {
+                    Intent intent = new Intent(Change_Status.this, Open_Requests.class);
+
+                    Toast.makeText(Change_Status.this, "Booking denied: " + guest_fullName, Toast.LENGTH_SHORT).show();
+
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }
