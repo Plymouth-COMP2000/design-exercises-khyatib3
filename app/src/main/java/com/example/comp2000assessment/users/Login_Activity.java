@@ -42,10 +42,6 @@ public class Login_Activity extends AppCompatActivity {
         EditText usernameInput = findViewById(R.id.usernameInput);
         EditText passwordInput = findViewById(R.id.passwordInput);
 
-        String enteredUsername = usernameInput.getText().toString().trim();
-        String enteredPassword = passwordInput.getText().toString().trim();
-
-
         //find submit button
         Button submitBtn = findViewById(R.id.submitButton);
         //setting on click functionality
@@ -81,7 +77,6 @@ public class Login_Activity extends AppCompatActivity {
                                     //if match, login successful
                                     //so save the user globally and toast
                                     ManageUser.getInstance().setCurrentUser(user);
-
                                     Toast.makeText(Login_Activity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
                                     Intent intent;

@@ -179,19 +179,10 @@ public class SignUpActivity extends AppCompatActivity {
 
                         //check message says 'user created successfully'
                         if (message.equals("User created successfully")) {
-                            //if so, show the account created screen
+                            //if so, toast and save user globally
+                            ManageUser.getInstance().setCurrentUser(newUser);
                             Toast.makeText(SignUpActivity.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUpActivity.this, AccountCreated.class);
-
-                            //passing the user details to the next activity
-                            intent.putExtra("user_firstname", firstname);
-                            intent.putExtra("user_lastname", lastname);
-                            intent.putExtra("user_contact", contact);
-                            intent.putExtra("user_email", email);
-                            intent.putExtra("user_username", username);
-                            intent.putExtra("user_password", password);
-                            intent.putExtra("user_usertype", newUser.getUserType());
-                            intent.putExtra("user_logged_in", newUser.isLogged_in());
 
                             startActivity(intent);
                             finish();

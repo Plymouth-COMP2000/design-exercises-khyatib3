@@ -23,6 +23,9 @@ import com.example.comp2000assessment.homepages.GuestHomepage;
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.adapters.BookingRecordAdapter;
 import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
+import com.example.comp2000assessment.users.AppUser;
+import com.example.comp2000assessment.users.Login_Activity;
+import com.example.comp2000assessment.users.ManageUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,15 +54,19 @@ public class MyBookingsActivity extends AppCompatActivity {
         bookingRecycler = findViewById(R.id.bookingsRecyclerView);
         bookingRecycler.setLayoutManager(new LinearLayoutManager(this));
 
-        //getting details of user passed in the intent
-        String user_firstname = getIntent().getStringExtra("user_firstname");
-        String user_lastname = getIntent().getStringExtra("user_lastname");
-        String user_contact = getIntent().getStringExtra("user_contact");
-        String user_email = getIntent().getStringExtra("user_email");
-        String user_username = getIntent().getStringExtra("user_username");
-        String user_password = getIntent().getStringExtra("user_password");
-        String user_usertype = getIntent().getStringExtra("user_usertype");
-        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
+
 
         //setting options for spinner
         String[] categories = {"Confirmed Bookings", "Unconfirmed Requests"};
@@ -81,18 +88,17 @@ public class MyBookingsActivity extends AppCompatActivity {
 
                 //loading bookings as per bookingType
                 //TODO CHANGE PASSING NAME SANDRA SMITH TO USER.FIRSTNAME AND USER.LASTNAME ONCE API IS IMPLEMENTED
-                loadBookings(bookingType, user_firstname, user_lastname, user_contact, user_email, user_username, user_password, user_usertype, user_logged_in);
+                loadBookings(bookingType, currentUser);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 //default should be unconfirmed requests
-                loadBookings("Unconfirmed Requests", user_firstname, user_lastname, user_contact, user_email, user_username, user_password, user_usertype, user_logged_in);
+                loadBookings("Unconfirmed Requests",currentUser);
             }
         });
 
-        BookingRecordAdapter adapter = new BookingRecordAdapter(this, bookingRecords, user_firstname, user_lastname, user_contact, user_email,
-                user_username, user_password, user_usertype, user_logged_in);
+        BookingRecordAdapter adapter = new BookingRecordAdapter(this, bookingRecords);
         bookingRecycler.setAdapter(adapter);
 
         //home icon on click
@@ -102,17 +108,6 @@ public class MyBookingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(MyBookingsActivity.this, GuestHomepage.class);
-
-                //passing details
-                intent.putExtra("user_firstname", user_firstname);
-                intent.putExtra("user_lastname", user_lastname);
-                intent.putExtra("user_contact", user_contact);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_username", user_username);
-                intent.putExtra("user_password", user_password);
-                intent.putExtra("user_usertype", user_usertype);
-                intent.putExtra("user_logged_in", user_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -120,8 +115,13 @@ public class MyBookingsActivity extends AppCompatActivity {
 
     }
 
-    public void loadBookings(String bookingType, String fName, String lName, String user_contact, String user_email, String user_username, String user_password, String user_usertype, boolean user_logged_in){
+    public void loadBookings(String bookingType, AppUser currentUser){
         bookingRecords = new ArrayList<>();
+
+        //getting current user's first and last name
+        String fName = currentUser.getFirstname();
+        String lName = currentUser.getLastname();
+
         //retrieving items of the current category from DB
         db = new BookingsDatabaseHelper(MyBookingsActivity.this);
         if (bookingType.equals("Confirmed Bookings")) {
@@ -131,8 +131,7 @@ public class MyBookingsActivity extends AppCompatActivity {
         }
 
         //setting adapter to show list of bookings
-        adapter = new BookingRecordAdapter(this, bookingRecords, fName, lName, user_contact, user_email,
-                user_username, user_password, user_usertype, user_logged_in);
+        adapter = new BookingRecordAdapter(this, bookingRecords);
         bookingRecycler.setAdapter(adapter);
 
 

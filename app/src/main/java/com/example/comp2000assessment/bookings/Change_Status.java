@@ -18,6 +18,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.notifications.NotificationsHelper;
+import com.example.comp2000assessment.users.AppUser;
+import com.example.comp2000assessment.users.Login_Activity;
+import com.example.comp2000assessment.users.ManageUser;
 
 public class Change_Status extends AppCompatActivity {
 
@@ -44,15 +47,17 @@ public class Change_Status extends AppCompatActivity {
         int noOfGuests = getIntent().getIntExtra("noGuests", 0);
         int bookingID = getIntent().getIntExtra("bookingID", -1);
 
-        //getting staff details if passed
-        String staff_firstname = getIntent().getStringExtra("staff_firstname");
-        String staff_lastname = getIntent().getStringExtra("staff_lastname");
-        String staff_contact = getIntent().getStringExtra("staff_contact");
-        String staff_email = getIntent().getStringExtra("staff_email");
-        String staff_username = getIntent().getStringExtra("staff_username");
-        String staff_password = getIntent().getStringExtra("staff_password");
-        String staff_usertype = getIntent().getStringExtra("staff_usertype");
-        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         TextView guestFullName = findViewById(R.id.guestFullName);
         guestFullName.setText(guest_fullName);
@@ -99,16 +104,6 @@ public class Change_Status extends AppCompatActivity {
                     //notification for booking confirmed
                     NotificationsHelper.displayNotification(Change_Status.this, "Booking Confirmed", "You have confirmed booking: " + firstName + " " + lastName);
 
-                    //passing the staff details
-                    intent.putExtra("staff_firstname", staff_firstname);
-                    intent.putExtra("staff_lastname", staff_lastname);
-                    intent.putExtra("staff_contact", staff_contact);
-                    intent.putExtra("staff_email", staff_email);
-                    intent.putExtra("staff_username", staff_username);
-                    intent.putExtra("staff_password", staff_password);
-                    intent.putExtra("staff_usertype", staff_usertype);
-                    intent.putExtra("staff_logged_in", staff_logged_in);
-
                     startActivity(intent);
                 } else {
                     Toast.makeText(Change_Status.this, "Error updating booking", Toast.LENGTH_SHORT).show();
@@ -123,16 +118,6 @@ public class Change_Status extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Change_Status.this, Open_Requests.class);
-
-                //passing the staff details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
 
                 startActivity(intent);
             }
@@ -159,15 +144,6 @@ public class Change_Status extends AppCompatActivity {
                     NotificationsHelper.displayNotification(Change_Status.this, "Booking Denied", "You have denied booking: " + guest_fullName);
 
                     Toast.makeText(Change_Status.this, "Booking denied: " + guest_fullName, Toast.LENGTH_SHORT).show();
-                    //passing the staff details
-                    intent.putExtra("staff_firstname", staff_firstname);
-                    intent.putExtra("staff_lastname", staff_lastname);
-                    intent.putExtra("staff_contact", staff_contact);
-                    intent.putExtra("staff_email", staff_email);
-                    intent.putExtra("staff_username", staff_username);
-                    intent.putExtra("staff_password", staff_password);
-                    intent.putExtra("staff_usertype", staff_usertype);
-                    intent.putExtra("staff_logged_in", staff_logged_in);
 
                     startActivity(intent);
                 }

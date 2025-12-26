@@ -15,6 +15,9 @@ import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.bookings.All_Tables_Activity;
 import com.example.comp2000assessment.menu.Staff_Menu_Activity;
 import com.example.comp2000assessment.settings.Settings;
+import com.example.comp2000assessment.users.AppUser;
+import com.example.comp2000assessment.users.Login_Activity;
+import com.example.comp2000assessment.users.ManageUser;
 import com.example.comp2000assessment.users.New_Staff_Admin;
 
 public class StaffDashboard extends AppCompatActivity {
@@ -30,39 +33,39 @@ public class StaffDashboard extends AppCompatActivity {
             return insets;
         });
 
-        //getting staff details
-        String staff_firstname = getIntent().getStringExtra("staff_firstname");
-        String staff_lastname = getIntent().getStringExtra("staff_lastname");
-        String staff_contact = getIntent().getStringExtra("staff_contact");
-        String staff_email = getIntent().getStringExtra("staff_email");
-        String staff_username = getIntent().getStringExtra("staff_username");
-        String staff_password = getIntent().getStringExtra("staff_password");
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+        String user_firstname, user_lastname, user_username, user_password, user_email, user_contact, user_usertype;
+        boolean user_logged_in;
 
-        //in the event that staff_usertype is null, set it to staff
-        staff_usertype = getIntent().getStringExtra("staff_usertype");
-        //setting staff_usertype to staff in case it becomes null
-        if (staff_usertype == null || staff_usertype.isEmpty()) {
-            staff_usertype = "staff";
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }else{
+            user_firstname = currentUser.getFirstname();
+            user_lastname = currentUser.getLastname();
+            user_username = currentUser.getUsername();
+            user_password = currentUser.getPassword();
+            user_email = currentUser.getEmail();
+            user_contact = currentUser.getContact();
+            user_usertype = currentUser.getUserType();
+            user_logged_in = currentUser.isLoggedIn();
         }
-        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
 
+        if(user_usertype != null || !user_usertype.equals("staff")){
+            user_usertype = "staff";
+        }
         //navigate to menu
         Button toMenuBtn = findViewById(R.id.viewChangeMenuBtn);
         toMenuBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(StaffDashboard.this, Staff_Menu_Activity.class);
-
-                //passing staff details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -73,17 +76,6 @@ public class StaffDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StaffDashboard.this, All_Tables_Activity.class);
-
-                //passing staff details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -93,17 +85,6 @@ public class StaffDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StaffDashboard.this, New_Staff_Admin.class);
-
-                //passing staff details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
 
             }
@@ -115,17 +96,6 @@ public class StaffDashboard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(StaffDashboard.this, Settings.class);
-
-                //passing staff details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
             }
         });

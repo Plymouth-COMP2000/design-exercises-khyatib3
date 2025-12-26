@@ -23,6 +23,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.notifications.NotificationsHelper;
+import com.example.comp2000assessment.users.AppUser;
+import com.example.comp2000assessment.users.Login_Activity;
+import com.example.comp2000assessment.users.ManageUser;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -42,15 +45,29 @@ public class Guest_EditBooking_Activity extends AppCompatActivity {
             return insets;
         });
 
-        //getting user details from account created
-        String user_firstname = getIntent().getStringExtra("user_firstname");
-        String user_lastname = getIntent().getStringExtra("user_lastname");
-        String user_contact = getIntent().getStringExtra("user_contact");
-        String user_email = getIntent().getStringExtra("user_email");
-        String user_username = getIntent().getStringExtra("user_username");
-        String user_password = getIntent().getStringExtra("user_password");
-        String user_usertype = getIntent().getStringExtra("user_usertype");
-        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+        String user_firstname, user_lastname, user_username, user_password, user_email, user_contact, user_usertype;
+        boolean user_logged_in;
+
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }else{
+            user_firstname = currentUser.getFirstname();
+            user_lastname = currentUser.getLastname();
+            user_username = currentUser.getUsername();
+            user_password = currentUser.getPassword();
+            user_email = currentUser.getEmail();
+            user_contact = currentUser.getContact();
+            user_usertype = currentUser.getUserType();
+            user_logged_in = currentUser.isLoggedIn();
+        }
 
         //retrieving booking values passed
         String guestFirstName = getIntent().getStringExtra("guestFirstName");
@@ -215,16 +232,6 @@ public class Guest_EditBooking_Activity extends AppCompatActivity {
 
                 if(updateBookingResult){
                     Intent intent = new Intent(Guest_EditBooking_Activity.this, MyBookingsActivity.class);
-
-                    //passing the user details
-                    intent.putExtra("user_firstname", user_firstname);
-                    intent.putExtra("user_lastname", user_lastname);
-                    intent.putExtra("user_contact", user_contact);
-                    intent.putExtra("user_email", user_email);
-                    intent.putExtra("user_username", user_username);
-                    intent.putExtra("user_password", user_password);
-                    intent.putExtra("user_usertype", user_usertype);
-                    intent.putExtra("user_logged_in", user_logged_in);
 
                     Toast.makeText(Guest_EditBooking_Activity.this, "Booking updated", Toast.LENGTH_SHORT).show();
 

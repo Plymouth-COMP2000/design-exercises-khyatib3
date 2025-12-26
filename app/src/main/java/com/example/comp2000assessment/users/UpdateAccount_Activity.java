@@ -1,5 +1,6 @@
 package com.example.comp2000assessment.users;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -36,32 +37,28 @@ public class UpdateAccount_Activity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+        String user_firstname, user_lastname, user_username, user_password, user_email, user_contact, user_usertype;
+        boolean user_logged_in;
 
-        //receiving user details passed
-        String user_firstname = getIntent().getStringExtra("user_firstname");
-        String user_lastname = getIntent().getStringExtra("user_lastname");
-        String user_contact = getIntent().getStringExtra("user_contact");
-        String user_email = getIntent().getStringExtra("user_email");
-        String user_username = getIntent().getStringExtra("user_username");
-        String user_password = getIntent().getStringExtra("user_password");
-        String user_usertype = getIntent().getStringExtra("user_usertype");
-        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
-
-        //getting STAFF details (if staff details were passed)
-        String staff_firstname = getIntent().getStringExtra("staff_firstname");
-        String staff_lastname = getIntent().getStringExtra("staff_lastname");
-        String staff_contact = getIntent().getStringExtra("staff_contact");
-        String staff_email = getIntent().getStringExtra("staff_email");
-        String staff_username = getIntent().getStringExtra("staff_username");
-        String staff_password = getIntent().getStringExtra("staff_password");
-        String staff_usertype = getIntent().getStringExtra("staff_usertype");
-        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
-
-        //determing type of user logged in
-        if(user_usertype != null && user_usertype.equals("guest")){
-            isGuest = true;
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
         }else{
-            isGuest = false;
+            user_firstname = currentUser.getFirstname();
+            user_lastname = currentUser.getLastname();
+            user_username = currentUser.getUsername();
+            user_password = currentUser.getPassword();
+            user_email = currentUser.getEmail();
+            user_contact = currentUser.getContact();
+            user_usertype = currentUser.getUserType();
+            user_logged_in = currentUser.isLoggedIn();
         }
 
         EditText fNameInput = findViewById(R.id.accUpdate_firstName);
@@ -72,21 +69,13 @@ public class UpdateAccount_Activity extends AppCompatActivity {
         EditText passwordInput = findViewById(R.id.accUpdate_password);
 
         //so users can see their current info and make a change depending on that
-        if(isGuest){
-            fNameInput.setText(user_firstname);
-            lNameInput.setText(user_lastname);
-            emailInput.setText(user_email);
-            phoneInput.setText(user_contact);
-            usernameInput.setText(user_username);
-            passwordInput.setText(user_password);
-        }else{
-            fNameInput.setText(staff_firstname);
-            lNameInput.setText(staff_lastname);
-            emailInput.setText(staff_email);
-            phoneInput.setText(staff_contact);
-            usernameInput.setText(staff_username);
-            passwordInput.setText(staff_password);
-        }
+        fNameInput.setText(user_firstname);
+        lNameInput.setText(user_lastname);
+        emailInput.setText(user_email);
+        phoneInput.setText(user_contact);
+        usernameInput.setText(user_username);
+        passwordInput.setText(user_password);
+
 
         //back to settings
         ImageButton backToSettingsBtn = findViewById(R.id.updateAccountBackBtn);
@@ -94,29 +83,6 @@ public class UpdateAccount_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UpdateAccount_Activity.this, Settings.class);
-
-                if(isGuest){
-                    //passing the user details
-                    intent.putExtra("user_firstname", user_firstname);
-                    intent.putExtra("user_lastname", user_lastname);
-                    intent.putExtra("user_contact", user_contact);
-                    intent.putExtra("user_email", user_email);
-                    intent.putExtra("user_username", user_username);
-                    intent.putExtra("user_password", user_password);
-                    intent.putExtra("user_usertype", user_usertype);
-                    intent.putExtra("user_logged_in", user_logged_in);
-
-                }else{
-                    //passing the staff details
-                    intent.putExtra("staff_firstname", staff_firstname);
-                    intent.putExtra("staff_lastname", staff_lastname);
-                    intent.putExtra("staff_contact", staff_contact);
-                    intent.putExtra("staff_email", staff_email);
-                    intent.putExtra("staff_username", staff_username);
-                    intent.putExtra("staff_password", staff_password);
-                    intent.putExtra("staff_usertype", staff_usertype);
-                    intent.putExtra("staff_logged_in", staff_logged_in);
-                }
                 startActivity(intent);
 
             }
@@ -146,20 +112,13 @@ public class UpdateAccount_Activity extends AppCompatActivity {
                 }
                 updateAccountBtn.setText("Checking username...");
 
-                //determining who is logged in and what the details to be passed are
-                String currentUsername = isGuest ? user_username : staff_username;
-                String currentUserType = isGuest ? user_usertype : staff_usertype;
-                String currentFirstName = isGuest ? user_firstname : staff_firstname;
-                String currentLastName = isGuest ? user_lastname : staff_lastname;
-                boolean currentLoggedIn = isGuest ? user_logged_in : staff_logged_in;
-
                 //check to see if the username field has changed
-                if (!new_username.equalsIgnoreCase(currentUsername)) {
+                if (!new_username.equalsIgnoreCase(user_username)) {
                     //username changes so check it is unique
-                    checkUsernameAndUpdate(currentUsername, new_username, currentFirstName, currentLastName, new_firstname, new_lastname, new_contact, new_email, new_password, currentUserType, currentLoggedIn, updateAccountBtn);
+                    checkUsernameAndUpdate(user_username, new_username, user_firstname, user_lastname, new_firstname, new_lastname, new_contact, new_email, new_password, user_usertype, user_logged_in, updateAccountBtn);
                 } else {
                     //no change, straight to update
-                    performUpdate(currentUsername, new_username, currentFirstName, currentLastName, new_firstname, new_lastname, new_contact, new_email, new_password, currentUserType, currentLoggedIn, updateAccountBtn);
+                    performUpdate(user_username, new_username, user_firstname, user_lastname, new_firstname, new_lastname, new_contact, new_email, new_password, user_usertype, user_logged_in, updateAccountBtn);
                 }
             }
         });
@@ -232,6 +191,10 @@ public class UpdateAccount_Activity extends AppCompatActivity {
                 try {
                     String message = response.optString("message");
                     if (message.toLowerCase().contains("success") || response.has("message")) {
+
+                        //making current user the updates user so updated details can be seen
+                        ManageUser.getInstance().setCurrentUser(updatedUser);
+
                         Toast.makeText(UpdateAccount_Activity.this, "Account Updated!", Toast.LENGTH_SHORT).show();
 
                         //update the guest's existing bookings in db to have new name
@@ -244,34 +207,8 @@ public class UpdateAccount_Activity extends AppCompatActivity {
 
                         //go back to settings with updated info
                         Intent intent = new Intent(UpdateAccount_Activity.this, Settings.class);
-
-                        if(usertype.equals("guest")){
-                            intent.putExtra("user_firstname", fName);
-                            intent.putExtra("user_lastname", lName);
-                            intent.putExtra("user_contact", contact);
-                            intent.putExtra("user_email", email);
-                            intent.putExtra("user_username", newUsername);
-                            intent.putExtra("user_password", password);
-                            intent.putExtra("user_usertype", usertype);
-                            intent.putExtra("user_logged_in", loggedIn);
-
-                            startActivity(intent);
-                            finish();
-
-                        }else{
-                            //passing the staff details
-                            intent.putExtra("staff_firstname", fName);
-                            intent.putExtra("staff_lastname", lName);
-                            intent.putExtra("staff_contact", contact);
-                            intent.putExtra("staff_email", email);
-                            intent.putExtra("staff_username", newUsername);
-                            intent.putExtra("staff_password", password);
-                            intent.putExtra("staff_usertype", usertype);
-                            intent.putExtra("staff_logged_in", loggedIn);
-
-                            startActivity(intent);
-                            finish();
-                        }
+                        startActivity(intent);
+                        finish();
 
                     } else {
                         Toast.makeText(UpdateAccount_Activity.this, "Failed: " + message, Toast.LENGTH_LONG).show();

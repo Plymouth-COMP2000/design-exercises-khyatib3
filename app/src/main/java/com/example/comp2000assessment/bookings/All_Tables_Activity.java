@@ -14,6 +14,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.homepages.StaffDashboard;
+import com.example.comp2000assessment.users.AppUser;
+import com.example.comp2000assessment.users.Login_Activity;
+import com.example.comp2000assessment.users.ManageUser;
 
 public class All_Tables_Activity extends AppCompatActivity {
 
@@ -28,32 +31,24 @@ public class All_Tables_Activity extends AppCompatActivity {
             return insets;
         });
 
-        //getting staff details
-        String staff_firstname = getIntent().getStringExtra("staff_firstname");
-        String staff_lastname = getIntent().getStringExtra("staff_lastname");
-        String staff_contact = getIntent().getStringExtra("staff_contact");
-        String staff_email = getIntent().getStringExtra("staff_email");
-        String staff_username = getIntent().getStringExtra("staff_username");
-        String staff_password = getIntent().getStringExtra("staff_password");
-        String staff_usertype = getIntent().getStringExtra("staff_usertype");
-        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         ImageButton homeBtn = findViewById(R.id.allTablesHomeButton);
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(All_Tables_Activity.this, StaffDashboard.class);
-
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -64,17 +59,6 @@ public class All_Tables_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(All_Tables_Activity.this, Open_Requests.class);
-
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
 
             }
@@ -87,17 +71,6 @@ public class All_Tables_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 1);
-
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -109,17 +82,6 @@ public class All_Tables_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 2);
-
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -132,15 +94,6 @@ public class All_Tables_Activity extends AppCompatActivity {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 3);
 
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
                 startActivity(intent);
             }
         });
@@ -153,15 +106,6 @@ public class All_Tables_Activity extends AppCompatActivity {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 4);
 
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
                 startActivity(intent);
             }
         });
@@ -174,15 +118,6 @@ public class All_Tables_Activity extends AppCompatActivity {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 5);
 
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
                 startActivity(intent);
             }
         });
@@ -194,16 +129,6 @@ public class All_Tables_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 6);
-
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
                 startActivity(intent);
             }
         });
@@ -215,16 +140,6 @@ public class All_Tables_Activity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 7);
-
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
                 startActivity(intent);
             }
         });
@@ -237,15 +152,6 @@ public class All_Tables_Activity extends AppCompatActivity {
                 Intent intent = new Intent(All_Tables_Activity.this, TableNo_ReservationActivity.class);
                 intent.putExtra("tableNumber", 8);
 
-                //passing the user details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
                 startActivity(intent);
             }
         });

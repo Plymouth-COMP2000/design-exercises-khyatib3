@@ -18,6 +18,9 @@ import com.example.comp2000assessment.databases.BookingsDatabaseHelper;
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.homepages.StaffDashboard;
 import com.example.comp2000assessment.adapters.S_BookingRequestAdapter;
+import com.example.comp2000assessment.users.AppUser;
+import com.example.comp2000assessment.users.Login_Activity;
+import com.example.comp2000assessment.users.ManageUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,15 +40,18 @@ public class Open_Requests extends AppCompatActivity {
             return insets;
         });
 
-        //getting staff details
-        String staff_firstname = getIntent().getStringExtra("staff_firstname");
-        String staff_lastname = getIntent().getStringExtra("staff_lastname");
-        String staff_contact = getIntent().getStringExtra("staff_contact");
-        String staff_email = getIntent().getStringExtra("staff_email");
-        String staff_username = getIntent().getStringExtra("staff_username");
-        String staff_password = getIntent().getStringExtra("staff_password");
-        String staff_usertype = getIntent().getStringExtra("staff_usertype");
-        boolean staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         requestsRecycler = findViewById(R.id.openReqsRecyclerView);
         requestsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -58,7 +64,7 @@ public class Open_Requests extends AppCompatActivity {
         openRequestsList = db.showStaffUnconfirmedReqs();
 
         //setting list to adapter and adapter to recycler view
-        adapter = new S_BookingRequestAdapter(this, openRequestsList, staff_firstname, staff_lastname, staff_contact, staff_email, staff_username, staff_password, "staff", staff_logged_in);
+        adapter = new S_BookingRequestAdapter(this, openRequestsList);
         requestsRecycler.setAdapter(adapter);
 
         if (openRequestsList.isEmpty()) {
@@ -71,16 +77,6 @@ public class Open_Requests extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Open_Requests.this, All_Tables_Activity.class);
-
-                //passing the staff details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
 
                 startActivity(intent);
             }

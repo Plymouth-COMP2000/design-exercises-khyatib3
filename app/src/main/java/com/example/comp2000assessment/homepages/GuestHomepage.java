@@ -16,6 +16,9 @@ import com.example.comp2000assessment.settings.Settings;
 import com.example.comp2000assessment.bookings.MyBookingsActivity;
 import com.example.comp2000assessment.bookings.Reservation_Enquiry;
 import com.example.comp2000assessment.menu.Guest_Menu_Options_Activity;
+import com.example.comp2000assessment.users.AppUser;
+import com.example.comp2000assessment.users.Login_Activity;
+import com.example.comp2000assessment.users.ManageUser;
 
 public class GuestHomepage extends AppCompatActivity {
 
@@ -30,16 +33,18 @@ public class GuestHomepage extends AppCompatActivity {
             return insets;
         });
 
-        //getting user details from account created
-        String user_firstname = getIntent().getStringExtra("user_firstname");
-        String user_lastname = getIntent().getStringExtra("user_lastname");
-        String user_contact = getIntent().getStringExtra("user_contact");
-        String user_email = getIntent().getStringExtra("user_email");
-        String user_username = getIntent().getStringExtra("user_username");
-        String user_password = getIntent().getStringExtra("user_password");
-        String user_usertype = getIntent().getStringExtra("user_usertype");
-        boolean user_logged_in = getIntent().getBooleanExtra("user_logged_in", true);
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
 
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         //menu options button-- on click logic
         Button viewMenuBtn = findViewById(R.id.viewMenuBtn);
@@ -48,17 +53,6 @@ public class GuestHomepage extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(GuestHomepage.this, Guest_Menu_Options_Activity.class);
-
-                //passing the user details
-                intent.putExtra("user_firstname", user_firstname);
-                intent.putExtra("user_lastname", user_lastname);
-                intent.putExtra("user_contact", user_contact);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_username", user_username);
-                intent.putExtra("user_password", user_password);
-                intent.putExtra("user_usertype", user_usertype);
-                intent.putExtra("user_logged_in", user_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -70,16 +64,6 @@ public class GuestHomepage extends AppCompatActivity {
             public void onClick(View view){
                 Intent intent = new Intent(GuestHomepage.this, MyBookingsActivity.class);
 
-                //passing the user details
-                intent.putExtra("user_firstname", user_firstname);
-                intent.putExtra("user_lastname", user_lastname);
-                intent.putExtra("user_contact", user_contact);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_username", user_username);
-                intent.putExtra("user_password", user_password);
-                intent.putExtra("user_usertype", user_usertype);
-                intent.putExtra("user_logged_in", user_logged_in);
-
                 startActivity(intent);
             }
         });
@@ -90,16 +74,6 @@ public class GuestHomepage extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(GuestHomepage.this, Reservation_Enquiry.class);
-
-                //passing the user details
-                intent.putExtra("user_firstname", user_firstname);
-                intent.putExtra("user_lastname", user_lastname);
-                intent.putExtra("user_contact", user_contact);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_username", user_username);
-                intent.putExtra("user_password", user_password);
-                intent.putExtra("user_usertype", user_usertype);
-                intent.putExtra("user_logged_in", user_logged_in);
                 startActivity(intent);
             }
         });
@@ -110,16 +84,6 @@ public class GuestHomepage extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Intent intent = new Intent(GuestHomepage.this, Settings.class);
-
-                //passing the user details
-                intent.putExtra("user_firstname", user_firstname);
-                intent.putExtra("user_lastname", user_lastname);
-                intent.putExtra("user_contact", user_contact);
-                intent.putExtra("user_email", user_email);
-                intent.putExtra("user_username", user_username);
-                intent.putExtra("user_password", user_password);
-                intent.putExtra("user_usertype", user_usertype);
-                intent.putExtra("user_logged_in", user_logged_in);
 
                 startActivity(intent);
             }

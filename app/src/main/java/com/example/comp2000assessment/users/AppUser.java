@@ -104,7 +104,7 @@ public class AppUser {
         this.firstname = firstname;
     }
 
-    public boolean isLogged_in() {
+    public boolean isLoggedIn() {
         return logged_in;
     }
 

@@ -28,15 +28,6 @@ import com.example.comp2000assessment.homepages.StaffDashboard;
 public class New_Staff_Admin extends AppCompatActivity {
 
     private UserAPI_Helper api_helper;
-    private static String staff_firstname;
-    private static String staff_lastname;
-    private static String staff_contact;
-    private static String staff_email;
-    private static String staff_username;
-    private static String staff_password;
-    private static String staff_usertype;
-    private static boolean staff_logged_in;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +40,18 @@ public class New_Staff_Admin extends AppCompatActivity {
             return insets;
         });
 
-        //getting staff details
-        staff_firstname = getIntent().getStringExtra("staff_firstname");
-        staff_lastname = getIntent().getStringExtra("staff_lastname");
-        staff_contact = getIntent().getStringExtra("staff_contact");
-        staff_email = getIntent().getStringExtra("staff_email");
-        staff_username = getIntent().getStringExtra("staff_username");
-        staff_password = getIntent().getStringExtra("staff_password");
-        staff_usertype = getIntent().getStringExtra("staff_usertype");
-        staff_logged_in = getIntent().getBooleanExtra("staff_logged_in", true);
+        //get the current user using ManageUser
+        AppUser currentUser = ManageUser.getInstance().getCurrentUser();
+
+        //check that current user isnt null
+        if (currentUser == null) {
+            //in case the app was killed in the background, send user back to the login screen
+            //as a safety measure
+            Intent intent = new Intent(this, Login_Activity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }
 
         //navigate to staff dashboard
         ImageButton register_HomeBtn = findViewById(R.id.staff_RegisterHomeBtn);
@@ -65,16 +59,6 @@ public class New_Staff_Admin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(New_Staff_Admin.this, StaffDashboard.class);
-
-                //passing staff details
-                intent.putExtra("staff_firstname", staff_firstname);
-                intent.putExtra("staff_lastname", staff_lastname);
-                intent.putExtra("staff_contact", staff_contact);
-                intent.putExtra("staff_email", staff_email);
-                intent.putExtra("staff_username", staff_username);
-                intent.putExtra("staff_password", staff_password);
-                intent.putExtra("staff_usertype", staff_usertype);
-                intent.putExtra("staff_logged_in", staff_logged_in);
 
                 startActivity(intent);
             }
@@ -207,19 +191,10 @@ public class New_Staff_Admin extends AppCompatActivity {
 
                         //check message says 'user created successfully'
                         if (message.equals("User created successfully")) {
-                            //if so, show the account created screen
+                            //if so, toast
                             Toast.makeText(New_Staff_Admin.this, "New staff member successfully added!", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(New_Staff_Admin.this, Staff_Added_Confirmation.class);
 
-                            //passing the current staff details to the next activity
-                            intent.putExtra("staff_firstname", staff_firstname);
-                            intent.putExtra("staff_lastname", staff_lastname);
-                            intent.putExtra("staff_contact", staff_contact);
-                            intent.putExtra("staff_email", staff_email);
-                            intent.putExtra("staff_username", staff_username);
-                            intent.putExtra("staff_password", staff_password);
-                            intent.putExtra("staff_usertype", staff_usertype);
-                            intent.putExtra("staff_logged_in", staff_logged_in);
+                            Intent intent = new Intent(New_Staff_Admin.this, Staff_Added_Confirmation.class);
 
                             startActivity(intent);
                             finish();
