@@ -8,7 +8,7 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
-public class UserAPI_Helper {
+public class UserAPI_Helper{
     private static String BASE_URL = "http://10.240.72.69/comp2000/coursework/";
     private static String CREATE_USER_ENDPOINT = "create_user/10920850";
     private static String CREATE_STUDENT_DATABASE_ENDPOINT = "create_student/10920850";
@@ -97,7 +97,8 @@ public class UserAPI_Helper {
 
     //get specific user endpoint
     public static void getSpecificUser(String username, UserAPI_Helper apiHelper, Response.Listener<org.json.JSONObject> callback, Response.ErrorListener errorCallback){
-        String cleanUsername = username.trim();    String url = BASE_URL + READ_ALL_USERS_ENDPOINT;
+        String cleanUsername = username.trim();
+        String url = BASE_URL + READ_ALL_USERS_ENDPOINT;
 
         com.android.volley.toolbox.StringRequest request = new com.android.volley.toolbox.StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
