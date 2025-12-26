@@ -102,7 +102,7 @@ public class Change_Status extends AppCompatActivity {
                     Intent intent = new Intent(Change_Status.this, Open_Requests.class);
 
                     //notification for booking confirmed
-                    NotificationsHelper.displayNotification(Change_Status.this, "Booking Confirmed", "You have confirmed booking: " + firstName + " " + lastName);
+                    NotificationsHelper.displayNotification(Change_Status.this, "Booking Confirmed", "You have confirmed booking: " + firstName + " " + lastName, "booking");
 
                     startActivity(intent);
                 } else {
@@ -141,7 +141,7 @@ public class Change_Status extends AppCompatActivity {
                 if(updateResult) {
                     Intent intent = new Intent(Change_Status.this, Open_Requests.class);
 
-                    NotificationsHelper.displayNotification(Change_Status.this, "Booking Denied", "You have denied booking: " + guest_fullName);
+                    NotificationsHelper.displayNotification(Change_Status.this, "Booking Denied", "You have denied booking: " + guest_fullName, "booking");
 
                     Toast.makeText(Change_Status.this, "Booking denied: " + guest_fullName, Toast.LENGTH_SHORT).show();
 

@@ -180,7 +180,7 @@ public class EditMenu_Activity extends AppCompatActivity {
                     Toast.makeText(EditMenu_Activity.this, "Item updated successfully: " + Integer.toString(THIS_ITEM_ID), Toast.LENGTH_SHORT).show();
 
                     //push notification that an item was changed
-                    NotificationsHelper.displayNotification(EditMenu_Activity.this, "Menu Item Changed", "You just edited item: " + itemName);
+                    NotificationsHelper.displayNotification(EditMenu_Activity.this, "Menu Item Changed", "You just edited item: " + itemName, "menu");
 
                     startActivity(intent);
 

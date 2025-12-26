@@ -86,7 +86,7 @@ public class DeleteBooking_Activity extends AppCompatActivity {
                         Toast.makeText(DeleteBooking_Activity.this, "This booking was deleted successfully", Toast.LENGTH_SHORT).show();
 
                         //push notification
-                        NotificationsHelper.displayNotification(DeleteBooking_Activity.this, "Booking Deleted!", "You successfully deleted your booking!");
+                        NotificationsHelper.displayNotification(DeleteBooking_Activity.this, "Booking Deleted!", "You successfully deleted your booking!", "booking");
 
 
                         startActivity(intent);
@@ -96,7 +96,7 @@ public class DeleteBooking_Activity extends AppCompatActivity {
                         Toast.makeText(DeleteBooking_Activity.this, "This booking was deleted successfully", Toast.LENGTH_SHORT).show();
 
                         //push notification
-                        NotificationsHelper.displayNotification(DeleteBooking_Activity.this, "Booking Deleted!", "This booking was cancelled.");
+                        NotificationsHelper.displayNotification(DeleteBooking_Activity.this, "Booking Deleted!", "This booking was cancelled.", "booking");
 
 
                         startActivity(intent);

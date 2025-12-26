@@ -236,7 +236,7 @@ public class Guest_EditBooking_Activity extends AppCompatActivity {
                     Toast.makeText(Guest_EditBooking_Activity.this, "Booking updated", Toast.LENGTH_SHORT).show();
 
                     //push notification
-                    NotificationsHelper.displayNotification(Guest_EditBooking_Activity.this, "Booking Updated", "You have updated booking: "+ newDate + ", " + newTime);
+                    NotificationsHelper.displayNotification(Guest_EditBooking_Activity.this, "Booking Updated", "You have updated booking: "+ newDate + ", " + newTime, "booking");
 
                     startActivity(intent);
                 }else{

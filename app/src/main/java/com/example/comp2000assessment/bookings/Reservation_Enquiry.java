@@ -209,7 +209,7 @@ public class Reservation_Enquiry extends AppCompatActivity {
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Sent_Activity.class);
 
                     //push notification
-                    NotificationsHelper.displayNotification(Reservation_Enquiry.this, "Reservation Enquiry Sent", "You have enquired for: " + date + ", " + time);
+                    NotificationsHelper.displayNotification(Reservation_Enquiry.this, "Reservation Enquiry Sent", "You have enquired for: " + date + ", " + time, "booking");
                     startActivity(intent);
                 }else{
                     Intent intent = new Intent(Reservation_Enquiry.this, Enquiry_Failed_Activity.class);

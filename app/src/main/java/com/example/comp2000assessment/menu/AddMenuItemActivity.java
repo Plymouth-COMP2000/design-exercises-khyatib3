@@ -121,7 +121,7 @@ public class AddMenuItemActivity extends AppCompatActivity {
                     Toast.makeText(AddMenuItemActivity.this, "Menu Updated Successfully!", Toast.LENGTH_SHORT).show();
 
                     //push notification that item was added
-                    NotificationsHelper.displayNotification(AddMenuItemActivity.this, "New Menu Item Added", "A new item has been added to the menu: " + itemName);
+                    NotificationsHelper.displayNotification(AddMenuItemActivity.this, "New Menu Item Added", "A new item has been added to the menu: " + itemName, "menu");
 
                     startActivity(intent);
                 }else{

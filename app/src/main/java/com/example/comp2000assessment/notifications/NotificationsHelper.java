@@ -2,6 +2,7 @@ package com.example.comp2000assessment.notifications;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import androidx.core.app.ActivityCompat;
@@ -31,8 +32,23 @@ public class NotificationsHelper {
     }
 
     //method to show the notification (this is the one to be used in the other activities)
-    public static void displayNotification(Context context, String notifTitle, String notifMessage){
-        //first call the method to create notifcation channel
+    public static void displayNotification(Context context, String notifTitle, String notifMessage, String notifType){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        boolean shouldShow = true;
+
+        //check preferences on type
+        if (notifType.equals("booking")) {
+            shouldShow = sharedPreferences.getBoolean("notif_bookings", true);
+        } else if (notifType.equals("menu")) {
+            shouldShow = sharedPreferences.getBoolean("notif_menu", true);
+        }
+
+        //if turned off, dont show
+        if (!shouldShow) {
+            return;
+        }
+
+        //call the method to create notifcation channel
         createNotificationChannel(context);
 
         //then make the notification

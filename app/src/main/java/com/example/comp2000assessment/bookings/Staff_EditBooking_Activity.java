@@ -249,7 +249,7 @@ public class Staff_EditBooking_Activity extends AppCompatActivity {
                     Toast.makeText(Staff_EditBooking_Activity.this, "Booking updated", Toast.LENGTH_SHORT).show();
 
                     //push notification that booking was updated
-                    NotificationsHelper.displayNotification(Staff_EditBooking_Activity.this, "Booking Updated", "Booking updated: " + updatedBooking.guestFirstName + " " + updatedBooking.guestLastName);
+                    NotificationsHelper.displayNotification(Staff_EditBooking_Activity.this, "Booking Updated", "Booking updated: " + updatedBooking.guestFirstName + " " + updatedBooking.guestLastName, "booking");
 
                     startActivity(intent);
                 }else{

@@ -12,6 +12,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import android.content.SharedPreferences;
+import androidx.appcompat.widget.SwitchCompat;
+import android.widget.CompoundButton;
+import android.Manifest;
+import androidx.core.app.ActivityCompat;
+import android.content.pm.PackageManager;
+import android.widget.TextView;
+
 import com.example.comp2000assessment.R;
 import com.example.comp2000assessment.homepages.StaffDashboard;
 import com.example.comp2000assessment.users.AppUser;
@@ -51,10 +59,51 @@ public class Settings extends AppCompatActivity {
 
         String currentUser_usertype = currentUser.getUserType();
 
+        //debug log below
         android.util.Log.d("SETTINGS_DEBUG", "UserType: " + currentUser_usertype);
-        android.util.Log.d("SETTINGS_DEBUG", "StaffType: " + currentUser_usertype);
+
         boolean isGuest = (currentUser_usertype != null && currentUser_usertype.equals("guest"));
         boolean isStaff = (currentUser != null && currentUser_usertype.equals("staff"));
+
+        //find notification preferences switch buttons
+        SwitchCompat switchBooking = findViewById(R.id.switchBookingUpdates);
+        SwitchCompat switchMenu = findViewById(R.id.switchMenuUpdates);
+
+        //get the shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+
+        //get saved states
+        boolean bookingsEnabled = sharedPreferences.getBoolean("notif_bookings", true);
+        boolean menuEnabled = sharedPreferences.getBoolean("notif_menu", true);
+
+        //instead of creating a separate screen with all but one difference for guest, set visibility to menu updates option to OFF
+        if(currentUser_usertype.equals("guest")){
+            switchBooking.setEnabled(true);
+            switchBooking.setChecked(bookingsEnabled);
+            TextView notifMenuTxt = findViewById(R.id.notifMenuTxt);
+            notifMenuTxt.setVisibility(View.GONE);
+            switchMenu.setVisibility(View.GONE);
+        }else{
+            //user is staff, so enable all notification switches
+            switchBooking.setChecked(bookingsEnabled);
+            switchMenu.setChecked(menuEnabled);
+        }
+
+        //booking notif listener
+        switchBooking.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("notif_bookings", isChecked);
+            editor.apply();
+            checkPermissionIfEnabled(isChecked);
+        });
+
+        //menu notif listener
+        switchMenu.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("notif_menu", isChecked);
+            editor.apply();
+            checkPermissionIfEnabled(isChecked);
+        });
 
         ImageButton takeMeHomeBtn = findViewById(R.id.settingsGoHomeBtn);
         //setting on click functionality
@@ -114,4 +163,13 @@ public class Settings extends AppCompatActivity {
             }
         });
     }
+
+    private void checkPermissionIfEnabled(boolean isChecked) {
+        if (isChecked && android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 101);
+            }
+        }
+    }
+
 }

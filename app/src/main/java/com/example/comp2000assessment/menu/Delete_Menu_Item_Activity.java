@@ -74,7 +74,7 @@ public class Delete_Menu_Item_Activity extends AppCompatActivity {
                     Intent intent = new Intent(Delete_Menu_Item_Activity.this, Staff_Menu_Activity.class);
 
                     //push notification to tell it was deleted
-                    NotificationsHelper.displayNotification(Delete_Menu_Item_Activity.this, "Menu Item Deleted", "You just deleted from the database: " + CURRENT_NAME);
+                    NotificationsHelper.displayNotification(Delete_Menu_Item_Activity.this, "Menu Item Deleted", "You just deleted from the database: " + CURRENT_NAME, "menu");
                     startActivity(intent);
                 }else{
                     Toast.makeText(Delete_Menu_Item_Activity.this, "Error! Item could not be deleted: " + CURRENT_NAME, Toast.LENGTH_SHORT).show();

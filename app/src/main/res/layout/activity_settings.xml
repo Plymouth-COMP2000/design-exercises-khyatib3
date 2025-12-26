@@ -179,17 +179,17 @@
         app:layout_constraintStart_toEndOf="@+id/updateDetailsTxt"
         app:layout_constraintTop_toBottomOf="@+id/updateAccountLbl" />
 
-    <!-- SIGN OUT-->
-
+    <!-- sign out -->
     <View
-        android:id="@+id/divider3"
+        android:id="@+id/divider5"
         android:layout_width="380dp"
         android:layout_height="1dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="12dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/updateDetailsBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountScreenBtn" />
 
     <TextView
         android:id="@+id/logoutLbl"
@@ -232,5 +232,74 @@
         app:layout_constraintStart_toEndOf="@+id/logoutTxt"
         app:layout_constraintTop_toBottomOf="@+id/logoutLbl" />
 
+    <TextView
+        android:id="@+id/notificationLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/coustard"
+        android:text="Notifications"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/settingsGoHomeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <TextView
+        android:id="@+id/notifBookingTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/coustard"
+        android:text="Booking Updates:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/notificationLbl"
+        app:layout_constraintTop_toBottomOf="@+id/notificationLbl" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchBookingUpdates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:theme="@style/Theme.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toEndOf="@+id/notifBookingTxt"
+        app:layout_constraintTop_toBottomOf="@+id/notificationLbl" />
+
+    <TextView
+        android:id="@+id/notifMenuTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/coustard"
+        android:text="Menu Changes:"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/notificationLbl"
+        app:layout_constraintTop_toBottomOf="@+id/notifBookingTxt" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchMenuUpdates"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:theme="@style/Theme.AppCompat.Light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintStart_toEndOf="@+id/notifMenuTxt"
+        app:layout_constraintTop_toBottomOf="@+id/switchBookingUpdates" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="380dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notifMenuTxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
