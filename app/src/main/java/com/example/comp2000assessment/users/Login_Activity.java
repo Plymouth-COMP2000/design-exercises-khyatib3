@@ -79,6 +79,9 @@ public class Login_Activity extends AppCompatActivity {
                                 //check both creds match
                                 if (user.getPassword().equalsIgnoreCase(enteredPassword) && user.getUsername().equalsIgnoreCase(enteredUsername)) {
                                     //if match, login successful
+                                    //so save the user globally and toast
+                                    ManageUser.getInstance().setCurrentUser(user);
+
                                     Toast.makeText(Login_Activity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
 
                                     Intent intent;
@@ -86,34 +89,12 @@ public class Login_Activity extends AppCompatActivity {
                                     //find out where to navigate to depending on user type
                                     if(user.getUserType().equalsIgnoreCase("guest")){
                                         intent = new Intent(Login_Activity.this, GuestHomepage.class);
-                                        user.setLogged_in(true);
-
-                                        //pass user details
-                                        intent.putExtra("user_firstname", user.getFirstname());
-                                        intent.putExtra("user_lastname", user.getLastname());
-                                        intent.putExtra("user_contact", user.getContact());
-                                        intent.putExtra("user_email", user.getEmail());
-                                        intent.putExtra("user_username", user.getUsername());
-                                        intent.putExtra("user_password", user.getPassword());
-                                        intent.putExtra("user_usertype", user.getUserType());
-                                        intent.putExtra("user_logged_in", user.isLogged_in());
 
                                         startActivity(intent);
                                         finish();
 
                                     }else if (user.getUserType().equalsIgnoreCase("staff")){
                                         intent = new Intent(Login_Activity.this, StaffDashboard.class);
-                                        user.setLogged_in(true);
-
-                                        //pass user details
-                                        intent.putExtra("staff_firstname", user.getFirstname());
-                                        intent.putExtra("staff_lastname", user.getLastname());
-                                        intent.putExtra("staff_contact", user.getContact());
-                                        intent.putExtra("staff_email", user.getEmail());
-                                        intent.putExtra("staff_username", user.getUsername());
-                                        intent.putExtra("staff_password", user.getPassword());
-                                        intent.putExtra("staff_usertype", user.getUserType());
-                                        intent.putExtra("staff_logged_in", user.isLogged_in());
 
                                         startActivity(intent);
                                         finish();
