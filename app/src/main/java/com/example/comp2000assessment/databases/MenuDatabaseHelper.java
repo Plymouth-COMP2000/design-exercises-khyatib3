@@ -151,11 +151,11 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        //dropping all dependencies
-        // so referential integrity is maintained
-//        db.execSQL("DROP TABLE IF EXISTS " + CATEGORY_TABLE_NAME);
-//        db.execSQL("DROP TABLE IF EXISTS " + ITEM_TABLE_NAME);
-//        db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
+//        dropping all dependencies
+//         so referential integrity is maintained
+        db.execSQL("DROP TABLE IF EXISTS " + CATEGORY_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + ITEM_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + LOG_TABLE_NAME);
 
         //dropping views
         db.execSQL("DROP VIEW IF EXISTS StartersView");

@@ -99,7 +99,6 @@ public class AddMenuItemActivity extends AppCompatActivity {
                 smallBitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
                 byte[] imageBytes = stream.toByteArray();
 
-
                 //locating elements via their id
                 EditText addName = findViewById(R.id.inputItemName);
                 EditText addPrice = findViewById(R.id.inputItemPrice);
@@ -111,6 +110,11 @@ public class AddMenuItemActivity extends AppCompatActivity {
                 String itemDesc = addDescription.getText().toString();
                 String categoryString = categorySpinner.getSelectedItem().toString();
                 int itemCategory = Integer.parseInt(categoryString.substring(0, 1));
+
+                if(itemName.isEmpty() || itemPrice == 0 || itemDesc.isEmpty() || categoryString.isEmpty() || selectedBitmap == null){
+                    Toast.makeText(AddMenuItemActivity.this, "You must enter all the fields!", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 RestMenuItem menuItem = new RestMenuItem(itemName, itemPrice, itemCategory, itemDesc, imageBytes);
                 MenuDatabaseHelper db = new MenuDatabaseHelper(AddMenuItemActivity.this);
