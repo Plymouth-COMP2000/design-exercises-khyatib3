@@ -172,7 +172,7 @@ public class UpdateAccount_Activity extends AppCompatActivity {
         });
     }
 
-    // Method 2: The actual Update Call
+
     private void performUpdate(String originalUsername, String newUsername, String oldFName, String oldLName, String fName, String lName, String contact, String email, String password, String usertype, boolean loggedIn, Button btn) {
         btn.setText("Updating...");
         btn.setEnabled(false);
