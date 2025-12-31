@@ -150,7 +150,6 @@ public class UpdateAccount_Activity extends AppCompatActivity {
                         resetButton(btn);
                     } else {
                         //new username is unique, update user, pass original username
-                        String originalUsername = getIntent().getStringExtra("user_username");
                         performUpdate(originalUsername, new_username, oldFName, oldLName, fName, lName, contact, email, password, usertype, loggedIn, btn);
                     }
 
@@ -164,7 +163,6 @@ public class UpdateAccount_Activity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //if error 404 occurs, where there are no users
                 if (error.networkResponse != null && error.networkResponse.statusCode == 404) {
-                    String originalUsername = getIntent().getStringExtra("user_username");
                     performUpdate(originalUsername, new_username, oldFName, oldLName, fName, lName, contact, email, password, usertype, loggedIn, btn);
                 } else {
                     Toast.makeText(UpdateAccount_Activity.this, "Network check failed", Toast.LENGTH_SHORT).show();
