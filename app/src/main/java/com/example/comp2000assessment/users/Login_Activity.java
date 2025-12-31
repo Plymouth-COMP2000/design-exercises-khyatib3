@@ -73,7 +73,7 @@ public class Login_Activity extends AppCompatActivity {
                                 AppUser user = AppUser.returnAppUserFromJson(userObj);
 
                                 //check both creds match
-                                if (user.getPassword().equalsIgnoreCase(enteredPassword) && user.getUsername().equalsIgnoreCase(enteredUsername)) {
+                                if (user.getPassword().equals(enteredPassword) && user.getUsername().equals(enteredUsername)) {
                                     //if match, login successful
                                     //so save the user globally and toast
                                     ManageUser.getInstance().setCurrentUser(user);
@@ -94,9 +94,13 @@ public class Login_Activity extends AppCompatActivity {
                                         startActivity(intent);
                                         finish();
                                     }
-                                } else {
+                                } else if (!user.getPassword().equals(enteredPassword)) {
                                     //if password entered was incorrect tell user
                                     Toast.makeText(Login_Activity.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
+                                    resetButton(submitBtn);
+                                }else if (!user.getUsername().equals(enteredUsername)){
+                                    //if username entered was incorrect tell user
+                                    Toast.makeText(Login_Activity.this, "Incorrect Username", Toast.LENGTH_SHORT).show();
                                     resetButton(submitBtn);
                                 }
                             } else {

@@ -132,7 +132,7 @@ public class Change_Status extends AppCompatActivity {
                 //setting bookingID to it
                 booking.setBookingID(bookingID);
 
-                //setting booking to confirmed
+                //setting booking to false
                 booking.confirmed = false;
 
                 BookingsDatabaseHelper db = new BookingsDatabaseHelper(Change_Status.this);

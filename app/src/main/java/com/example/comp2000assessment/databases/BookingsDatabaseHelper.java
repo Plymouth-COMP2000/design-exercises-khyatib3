@@ -325,16 +325,21 @@ public class BookingsDatabaseHelper extends SQLiteOpenHelper {
             String whereClause = "bookingID = ?";
             String[] whereArgs = {String.valueOf(booking.getBookingID())};
 
-            //updating the db with the updated booking and closing db
-            long updateResult = db.update(TABLE_NAME, bookingVals, whereClause, whereArgs);
+            if(booking.confirmed == true){
+                //updating the db with the updated booking and closing db
+                long updateResult = db.update(TABLE_NAME, bookingVals, whereClause, whereArgs);
+                //return result
+                return updateResult > 0;
+            }else if (booking.confirmed == false){
+                boolean result = this.deleteBooking(booking.getBookingID());
+                return result;
+            }
 
-
-            //return result
-            return updateResult > 0;
         } else {
             return false;
         }
 
+        return false;
     }
 
     //DELETE
