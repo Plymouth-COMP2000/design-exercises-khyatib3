@@ -97,6 +97,38 @@ public class New_Staff_Admin extends AppCompatActivity {
                 addNewStaffBtn.setEnabled(false);
                 addNewStaffBtn.setText("Validating account...");
 
+                //feedback change below
+                if(newStaff_firstname.matches(".*[0-9].*") || newStaff_lastname.matches(".*[0-9].*")){
+                    Toast.makeText(New_Staff_Admin.this, "A name cannot contain numbers!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!newStaff_email.contains("@") || !newStaff_email.contains(".")){
+                    Toast.makeText(New_Staff_Admin.this, "Email must contain @ and .", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!newStaff_contact.startsWith("0") || newStaff_contact.length() != 11){
+                    Toast.makeText(New_Staff_Admin.this, "Please enter a valid phone number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(newStaff_password.length() < 8){
+                    Toast.makeText(New_Staff_Admin.this, "Password must be at least 8 characters!", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!newStaff_password.contains("!£$%^&*()_+{}:@~<>?|.,/")) {
+                    Toast.makeText(New_Staff_Admin.this, "Password must contain at least 1 special character!", Toast.LENGTH_LONG).show();
+                    return;
+                }else if(!newStaff_password.matches(".*[A-Z].*")){
+                    Toast.makeText(New_Staff_Admin.this, "Password must contain at least 1 uppercase character!", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!newStaff_password.matches(".*[0-9]*")) {
+                    Toast.makeText(New_Staff_Admin.this, "Password must contain at least 1 number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                //end of feedback change
+
+
                 //performing a check on username to see if it is unique
                 checkUsernameRegister(newStaff_username, newStaff_password, newStaff_firstname, newStaff_lastname, newStaff_email, newStaff_contact, addNewStaffBtn);
             }

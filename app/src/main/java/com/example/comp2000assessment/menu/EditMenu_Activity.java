@@ -160,12 +160,24 @@ public class EditMenu_Activity extends AppCompatActivity {
                 EditText editPrice = findViewById(R.id.editPriceInput);
                 Spinner editCategorySpinner = findViewById(R.id.editCategory);
 
+
                 //extracting values from the elements
                 String newName = editName.getText().toString();
                 String newDescription = editDescription.getText().toString();
                 double newPrice = Double.parseDouble(String.valueOf(editPrice.getText()));
                 String categoryString = editCategorySpinner.getSelectedItem().toString();
                 int newItemCategory = Integer.parseInt(categoryString.substring(0, 1));
+
+
+                if(newName.isEmpty() || newDescription.isEmpty() || newPrice == 0.00 || newItemCategory == 0 || categoryString.isEmpty()){
+                    Toast.makeText(EditMenu_Activity.this, "Please fill in all fields", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(newName.length() >20){
+                    Toast.makeText(EditMenu_Activity.this, "Item name cannot exceed 20 characters!", Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 //creating a menu item object to pass into updateItem()
                 RestMenuItem item = new RestMenuItem(THIS_ITEM_ID, newName, newPrice, newItemCategory, newDescription, finalImageBytes);

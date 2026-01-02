@@ -80,6 +80,37 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
+                //feedback change below:
+                if(firstname.matches(".*[0-9].*") || firstname.matches(".*[0-9].*")){
+                    Toast.makeText(SignUpActivity.this, "A name cannot contain numbers!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!email.contains("@") || !email.contains(".")){
+                    Toast.makeText(SignUpActivity.this, "Email must contain @ and .", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!contact.startsWith("0") || contact.length() != 11){
+                    Toast.makeText(SignUpActivity.this, "Please enter a valid phone number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(password.length() < 8){
+                    Toast.makeText(SignUpActivity.this, "Password must be at least 8 characters!", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!password.matches(".*[!£$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>/?@#~].*")) {
+                    Toast.makeText(SignUpActivity.this, "Password must contain at least 1 special character!", Toast.LENGTH_LONG).show();
+                    return;
+                }else if(!password.matches(".*[A-Z].*")){
+                    Toast.makeText(SignUpActivity.this, "Password must contain at least 1 uppercase character!", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!password.matches(".*[0-9]*")) {
+                    Toast.makeText(SignUpActivity.this, "Password must contain at least 1 number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                //end of feedback change
+
                 //disabling the button from being clicked so user account doesn't get made accidentally whilst checks are being performed
                 submitBtn.setEnabled(false);
                 submitBtn.setText("Validating account...");

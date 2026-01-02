@@ -40,6 +40,7 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
 
         public SMItemViewHolder(View menuItemView){
             super(menuItemView);
+            name = menuItemView.findViewById(R.id.item_name);
             image = menuItemView.findViewById(R.id.item_Img);
             description = menuItemView.findViewById(R.id.item_Desc);
             price = menuItemView.findViewById(R.id.item_Price);
@@ -68,6 +69,8 @@ public class StaffMenuAdapter extends RecyclerView.Adapter<StaffMenuAdapter.SMIt
         } else {
             holder.image.setImageResource(R.drawable.ic_placeholder);
         }
+
+        holder.name.setText(item.getName());
 
         holder.description.setText(item.getDescription());
         holder.price.setText(item.getPrice());

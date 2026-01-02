@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -56,6 +57,12 @@ public class DeleteAccount_Activity extends AppCompatActivity {
             user_contact = currentUser.getContact();
             user_usertype = currentUser.getUserType();
             user_logged_in = currentUser.isLoggedIn();
+        }
+
+        if(user_usertype.equals("staff")){
+            String deleteMsg = getIntent().getStringExtra("deleteMsg");
+            TextView deleteMsgTxt = findViewById(R.id.deleteAccountPrompt);
+            deleteMsgTxt.setText(deleteMsg);
         }
 
         Button cancelDeleteAccountBtn = findViewById(R.id.cancelDelAccountBtn);

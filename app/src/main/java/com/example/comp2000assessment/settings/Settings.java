@@ -149,6 +149,11 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Settings.this, DeleteAccount_Activity.class);
+
+                if(currentUser_usertype.equals("staff")){
+                    intent.putExtra("deleteMsg", "You are deleting your account! \n That means you are leaving the Restaurant. \n Are you sure you want to do this?");
+                }
+
                 startActivity(intent);
             }
         });

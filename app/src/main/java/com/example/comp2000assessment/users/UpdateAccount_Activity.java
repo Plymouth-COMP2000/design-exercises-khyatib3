@@ -24,7 +24,6 @@ import com.example.comp2000assessment.settings.Settings;
 import org.json.JSONObject;
 
 public class UpdateAccount_Activity extends AppCompatActivity {
-    private boolean isGuest;
     private UserAPI_Helper api_helper;
 
     @Override
@@ -110,6 +109,38 @@ public class UpdateAccount_Activity extends AppCompatActivity {
                     Toast.makeText(UpdateAccount_Activity.this, "All fields must be filled out!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                //feedback change below
+                if(new_firstname.matches(".*[0-9].*") || new_lastname.matches(".*[0-9].*")){
+                    Toast.makeText(UpdateAccount_Activity.this, "A name cannot contain numbers!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!new_email.contains("@") || !new_email.contains(".")){
+                    Toast.makeText(UpdateAccount_Activity.this, "Email must contain @ and .", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(!new_contact.startsWith("0") || new_contact.length() != 11){
+                    Toast.makeText(UpdateAccount_Activity.this, "Please enter a valid phone number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                if(new_password.length() < 8){
+                    Toast.makeText(UpdateAccount_Activity.this, "Password must be at least 8 characters!", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!new_password.contains("!£$%^&*()_+{}:@~<>?|.,/")) {
+                    Toast.makeText(UpdateAccount_Activity.this, "Password must contain at least 1 special character!", Toast.LENGTH_LONG).show();
+                    return;
+                }else if(!new_password.matches(".*[A-Z].*")){
+                    Toast.makeText(UpdateAccount_Activity.this, "Password must contain at least 1 uppercase character!", Toast.LENGTH_LONG).show();
+                    return;
+                } else if (!new_password.matches(".*[0-9]*")) {
+                    Toast.makeText(UpdateAccount_Activity.this, "Password must contain at least 1 number!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                //end of feedback change
+
                 updateAccountBtn.setText("Checking username...");
 
                 //check to see if the username field has changed

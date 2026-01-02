@@ -72,9 +72,9 @@ public class Staff_EditBooking_Activity extends AppCompatActivity {
 
         //changing elements to pre fill booking details
         EditText fNameInput = findViewById(R.id.s_HolderFNameInput);
-        fNameInput.setHint(guestFirstName);
+        fNameInput.setText(guestFirstName);
         EditText lNameInput = findViewById(R.id.s_HolderLNameInput);
-        lNameInput.setHint(guestLastName);
+        lNameInput.setText(guestLastName);
 
         TextView dateDisplay = findViewById(R.id.s_editDateDisplay);
         dateDisplay.setText(date);
@@ -223,6 +223,17 @@ public class Staff_EditBooking_Activity extends AppCompatActivity {
                 int newGuestNo = Integer.parseInt(noGuestsSpinner.getSelectedItem().toString());
                 int newTableNo = Integer.parseInt(tableNoSpinner.getSelectedItem().toString());
 
+                //feedback change:
+                if(newFName.isEmpty() || newLName.isEmpty() || newDate.isEmpty() || newTime.isEmpty() || newGuestNo == 0 || newTableNo == 0){
+                    Toast.makeText(Staff_EditBooking_Activity.this, "Please fill in all fields", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                //if name left empty set it to original name
+                if(newFName.isEmpty() || newFName.isEmpty()){
+                    newFName = guestFirstName;
+                    newLName = guestLastName;
+                }
 
                 //creating a booking record object to pass into updateBooking
                 BookingRecord updatedBooking = new BookingRecord(

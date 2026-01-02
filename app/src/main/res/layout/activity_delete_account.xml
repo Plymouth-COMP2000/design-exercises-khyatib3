@@ -41,7 +41,7 @@
 
         <!--Delete prompt -->
         <TextView
-            android:id="@+id/deleteBookingPrompt"
+            android:id="@+id/deleteAccountPrompt"
             android:layout_width="314dp"
             android:layout_height="111dp"
             android:layout_gravity="center"
