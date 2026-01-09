@@ -87,7 +87,6 @@ public class MyBookingsActivity extends AppCompatActivity {
                 String bookingType = parent.getItemAtPosition(position).toString();
 
                 //loading bookings as per bookingType
-                //TODO CHANGE PASSING NAME SANDRA SMITH TO USER.FIRSTNAME AND USER.LASTNAME ONCE API IS IMPLEMENTED
                 loadBookings(bookingType, currentUser);
             }
 

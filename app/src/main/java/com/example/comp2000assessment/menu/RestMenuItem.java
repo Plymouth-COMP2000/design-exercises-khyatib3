@@ -67,16 +67,8 @@ public class RestMenuItem {
 
     private byte[] imageBlob; // for uploaded images
 
-    //placeholder construct
-    public RestMenuItem(String price, String name, String description, int categoryID, int imageId) {
-        this.price = price;
-        this.name = name;
-        this.description = description;
-        this.categoryID = categoryID;
-        this.imageId = imageId;
-    }
 
-    //actual items constructor
+    //actual items constructor -- used when passing item to DB
     public RestMenuItem(String name, double price, int categoryID, String description, byte[] imageBytes){
         this.name = name;
         this.price = String.format("£%.2f", price);

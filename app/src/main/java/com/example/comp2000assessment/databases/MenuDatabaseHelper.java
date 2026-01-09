@@ -203,15 +203,15 @@ public class MenuDatabaseHelper extends SQLiteOpenHelper {
 
     //READ
     public ArrayList<RestMenuItem> showMenuItems(String category) {
-//        declare and initiate an array list of type RestMenuItems
-//        this will hold all the records of items that the query returns (matching the category given)
+        //declare and initiate an array list of type RestMenuItems
+        //this will hold all the records of items that the query returns (matching the category given)
         ArrayList<RestMenuItem> menuItems = new ArrayList<>();
 
         //getting a readable database
         SQLiteDatabase db = this.getReadableDatabase();
 
-//        since menu items are shown in categories, (for which there are views created above)
-//        I will select from that view to return menu items
+        //since menu items are shown in categories, (for which there are views created above)
+        //I will select from that view to return menu items
         String viewName;
 
         //given the category passed in to this method, set the content of viewName
