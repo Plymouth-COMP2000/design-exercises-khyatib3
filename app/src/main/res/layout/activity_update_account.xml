@@ -34,12 +34,14 @@
 
     <!-- account details section -->
 
+    <!-- updateAccount button-->
+
     <TextView
         android:id="@+id/explanationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="92dp"
         android:fontFamily="@font/coustard"
         android:text="Please enter your new information in the \n fields provided below:"
         android:textAlignment="center"
@@ -49,8 +51,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/updateAccountBackBtn"
         app:layout_constraintTop_toBottomOf="@+id/updateAccountTitle" />
-
-    <!-- updateAccount button-->
 
     <LinearLayout
         android:id="@+id/linearLayout2"

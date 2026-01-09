@@ -82,12 +82,12 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuIt
             List<RestMenuItem> filteredList = new ArrayList<>();
 
             if (constraint == null || constraint.length() == 0) {
-                // If the search text is empty, show all items
+                //if search field is empty, show all the items
                 filteredList.addAll(itemsListFull);
             } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
                 for (RestMenuItem item : itemsListFull) {
-                    // Your filtering logic
+                    //filter by name and description
                     if (item.getDescription().toLowerCase().contains(filterPattern) || item.getName().toLowerCase().contains(filterPattern)) {
                         filteredList.add(item);
                     }
@@ -95,7 +95,7 @@ public class MenuItemAdapter extends RecyclerView.Adapter<MenuItemAdapter.MenuIt
             }
 
             FilterResults results = new FilterResults();
-            results.values = filteredList;
+            results.values = filteredList; //map values to filtered list
             return results;
         }
 

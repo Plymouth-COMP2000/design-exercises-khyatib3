@@ -214,7 +214,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:backgroundTint="#c9184a"
+            android:backgroundTint="@color/success_green"
             android:fontFamily="@font/coustard"
             android:text="@string/addItemTitle"
             android:textColor="@color/black"
